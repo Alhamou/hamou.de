@@ -1338,7 +1338,7 @@
            </p>
            <div class="footer-signature">
                <p style="margin-bottom: 15px;">
-                   &copy; 2025 عماد الحمو. جميع الحقوق محفوظة.
+                   &copy; <span id="current-year">2025</span> عماد الحمو. جميع الحقوق محفوظة.
                </p>
                <p style="font-size: 0.85rem; opacity: 0.8;">
                    <i class="fas fa-code" style="margin: 0 8px; color: var(--accent-cyan);"></i>
@@ -1625,6 +1625,14 @@
                `;
                document.body.appendChild(themeCustomizer);
            }
+
+           // Set current year dynamically
+           setDynamicYear() {
+               const yearSpan = document.getElementById('current-year');
+               if (yearSpan) {
+                   yearSpan.textContent = new Date().getFullYear();
+               }
+           }
        }
 
        // Professional Loading Screen
@@ -1681,13 +1689,23 @@
                    }, 1500);
                });
            }
+
+           // Set current year dynamically
+           setDynamicYear() {
+               const yearSpan = document.getElementById('current-year');
+               if (yearSpan) {
+                   yearSpan.textContent = new Date().getFullYear();
+               }
+           }
        }
 
        // Initialize all systems when DOM is ready
        document.addEventListener('DOMContentLoaded', () => {
            new LoadingScreen();
            new ExecutivePortfolio();
-           new ThemeManager();
+           const themeManager = new ThemeManager();
+           // Set dynamic year
+           themeManager.setDynamicYear();
        });
 
        // Add custom CSS animations
