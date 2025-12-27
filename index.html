@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عماد الحمو | خبير تكنولوجيا المعلومات المتقدم | استشارة المشاريع الكبيرة</title>
     <meta name="description" content="عماد الحمو - قائد تقني محترف وخبير تطوير Full Stack مع خبرة 10+ سنوات في الحلول التقنية المتقدمة والقيادة التقنية">
-    
+
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+
     <style>
         :root {
             /* Professional Dark Theme Colors */
@@ -19,40 +19,40 @@
             --bg-card: #1E1E2E;
             --bg-elevated: #262640;
             --bg-glass: rgba(30, 30, 46, 0.85);
-            
+
             /* Text Colors */
             --text-primary: #F8F9FA;
             --text-secondary: #B0BEC5;
             --text-muted: #78909C;
             --text-accent: #64FFDA;
-            
+
             /* Brand Colors */
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --accent-gradient: linear-gradient(135deg, #64FFDA 0%, #4FC3F7 100%);
             --success-gradient: linear-gradient(135deg, #00E676 0%, #00BCD4 100%);
             --warning-gradient: linear-gradient(135deg, #FFB74D 0%, #FF8A65 100%);
             --danger-gradient: linear-gradient(135deg, #FF5252 0%, #E91E63 100%);
-            
+
             /* Professional Accents */
             --accent-cyan: #64FFDA;
             --accent-blue: #4FC3F7;
             --accent-purple: #BA68C8;
             --accent-orange: #FFB74D;
             --accent-green: #81C784;
-            
+
             /* Shadows */
             --shadow-sm: 0 4px 15px rgba(0,0,0,0.3);
             --shadow-md: 0 8px 25px rgba(0,0,0,0.4);
             --shadow-lg: 0 15px 35px rgba(0,0,0,0.5);
             --shadow-xl: 0 25px 50px rgba(0,0,0,0.6);
             --shadow-glow: 0 0 30px rgba(100, 255, 218, 0.3);
-            
+
             /* Border Radius */
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 20px;
             --radius-xl: 30px;
-            
+
             /* Glassmorphism */
             --glass-bg: rgba(30, 30, 46, 0.8);
             --glass-border: rgba(255, 255, 255, 0.1);
@@ -82,7 +82,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 20% 80%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(79, 195, 247, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(186, 104, 200, 0.1) 0%, transparent 50%);
@@ -103,7 +103,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -715,7 +715,7 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            
+
             .executive-hero { margin-top: 30px; padding: 60px 0; }
             .executive-title { font-size: 2.5rem; }
             .card-header { padding: 25px; flex-direction: column; text-align: center; }
@@ -765,6 +765,54 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-cyan);
         }
+
+        /* Premium CV Button */
+        .cv-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent-gradient);
+            color: var(--bg-primary);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-glow);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 30px;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cv-download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4FC3F7 0%, #64FFDA 100%);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .cv-download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(100, 255, 218, 0.4);
+            color: var(--bg-primary);
+        }
+
+        .cv-download-btn:hover::before {
+            opacity: 1;
+        }
+
+        .cv-download-btn i {
+            font-size: 1.3rem;
+        }
     </style>
 </head>
 <body>
@@ -787,7 +835,7 @@
                 <h1 class="executive-title">عماد الحمو</h1>
                 <h2 class="executive-subtitle">قائد تقني محترف | خبير تطوير Full Stack | استشاري بناء مشاريع كبيرة</h2>
                 <p class="executive-tagline">"تحويل الرؤى التقنية إلى حلول رائدة تقود التطور"</p>
-                
+
                 <div class="executive-stats">
                     <div class="stat-card">
                         <span class="stat-number">10+</span>
@@ -833,7 +881,7 @@
                 <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 30px;">
                     قائد تقني متمرس مع سجل حافل في تطوير وقيادة الحلول التقنية المبتكرة. خبير في بناء الفرق عالية الأداء وتحقيق التميز التشغيلي في بيئات تقنية معقدة.
                 </p>
-                
+
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 30px 0;">
                     <div style="background: var(--bg-elevated); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
                         <h4 style="color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.2rem;">
@@ -866,7 +914,7 @@
                        <p style="color: var(--text-secondary); line-height: 1.6;">تحسين الأداء التشغيلي بنسبة 40%+ وتقليل التكاليف التقنية مع زيادة الكفاءة</p>
                    </div>
                </div>
-               
+
                <div style="background: var(--bg-elevated); padding: 30px; border-radius: var(--radius-lg); border: 1px solid rgba(100,255,218,0.2); margin-top: 30px;">
                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; text-align: center;">
                        <div>
@@ -917,7 +965,7 @@
                <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.8;">
                    قائد تقني ومطور خلفية رئيسي في مشروع Shfli المبتكر. تطبيق متكامل يهدف إلى ثورة تقنية في السوق السوري مع حلول مبتكرة ومتطورة.
                </p>
-               
+
                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
                    <div style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
                        <h4 style="color: var(--accent-cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
@@ -930,20 +978,20 @@
                            <li><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>استراتيجي التطوير</li>
                        </ul>
                    </div>
-                   
+
                    <div style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
                        <h4 style="color: var(--accent-cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
                            <i class="fas fa-trophy"></i> الإنجازات الرئيسية
                        </h4>
                        <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
                             <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>تصميم البنية التقنية الكاملة</li>
-                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>APIs متقدمة لـ 15M+ مستخدم</li>                           
+                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>APIs متقدمة لـ 15M+ مستخدم</li>
                             <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>تحقيق 99.9% uptime</li>
                            <li><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>حلول Cloud Computing متطورة</li>
                        </ul>
                    </div>
                </div>
-               
+
                <div style="margin-top: 25px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid rgba(100,255,218,0.2);">
                    <h4 style="color: var(--accent-cyan); margin-bottom: 15px;">التقنيات المتقدمة المستخدمة</h4>
                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
@@ -958,7 +1006,7 @@
                        <span class="tech-item">Postman Documentation</span>
                    </div>
                </div>
-               
+
                <div style="margin-top: 25px; padding: 20px; background: var(--success-gradient); color: var(--bg-primary); border-radius: var(--radius-md); text-align: center;">
                    <h4 style="margin-bottom: 10px;"><i class="fas fa-rocket"></i> حالة المشروع</h4>
                    <p style="margin: 0; opacity: 0.9;">قيد التطوير النشط - نعمل عليه حتى اليوم مع تحديثات مستمرة وميزات متطورة</p>
@@ -996,7 +1044,7 @@
                            <span class="skill-tag">Project Architecture</span>
                        </div>
                    </div>
-                   
+
                    <div class="skill-category">
                        <div class="category-header">
                            <div class="category-icon">
@@ -1014,7 +1062,7 @@
                            <span class="skill-tag">Rust</span>
                        </div>
                    </div>
-                   
+
                    <div class="skill-category">
                        <div class="category-header">
                            <div class="category-icon">
@@ -1032,7 +1080,7 @@
                            <span class="skill-tag">API Gateway</span>
                        </div>
                    </div>
-                   
+
                    <div class="skill-category">
                        <div class="category-header">
                            <div class="category-icon">
@@ -1049,7 +1097,7 @@
                            <span class="skill-tag">Progressive Web Apps</span>
                        </div>
                    </div>
-                   
+
                    <div class="skill-category">
                        <div class="category-header">
                            <div class="category-icon">
@@ -1067,7 +1115,7 @@
                            <span class="skill-tag">Security & Compliance</span>
                        </div>
                    </div>
-                   
+
                    <div class="skill-category">
                        <div class="category-header">
                            <div class="category-icon">
@@ -1100,7 +1148,7 @@
            <div class="card-content">
                <div class="experience-timeline">
                    <div class="timeline-line"></div>
-                   
+
                    <!-- Current Position -->
                    <div class="experience-item">
                        <div class="experience-header">
@@ -1273,7 +1321,7 @@
            <p class="contact-subtitle">
                دعني أقود التحول التقني لمؤسستك. متخصص في بناء الحلول المبتكرة وقيادة الفرق نحو التميز التقني والنجاح المستدام.
            </p>
-           
+
            <div class="contact-methods">
                <a href="mailto:emadalhamo(at)gmail.com" class="contact-method" title="البريد الإلكتروني التنفيذي">
                    <i class="fas fa-envelope"></i>
@@ -1336,6 +1384,11 @@
            <p class="footer-text">
                "في عالم التكنولوجيا المتسارع، النجاح لا يأتي من التقنيات التي نستخدمها، بل من الرؤية التي نحملها والفرق التي نقودها نحو التميز"
            </p>
+
+           <a href="cv_print.html" target="_blank" class="cv-download-btn">
+               <i class="fas fa-file-pdf"></i>
+               تحميل السيرة الذاتية (PDF)
+           </a><br><br>
            <div class="footer-signature">
                <p style="margin-bottom: 15px;">
                    &copy; <span id="current-year">2025</span> عماد الحمو. جميع الحقوق محفوظة.
@@ -1369,7 +1422,7 @@
            initNavigationSystem() {
                const navLinks = document.querySelectorAll('.nav-link');
                const sections = document.querySelectorAll('section, [id]');
-               
+
                // Active navigation highlighting
                window.addEventListener('scroll', () => {
                    let current = '';
@@ -1395,7 +1448,7 @@
                        e.preventDefault();
                        const targetId = link.getAttribute('href').substring(1);
                        const targetSection = document.getElementById(targetId);
-                       
+
                        if (targetSection) {
                            const offsetTop = targetSection.offsetTop - 100;
                            window.scrollTo({
@@ -1411,11 +1464,11 @@
                // Parallax scrolling for hero section
                const hero = document.querySelector('.executive-hero');
                const heroContent = document.querySelector('.hero-content');
-               
+
                window.addEventListener('scroll', () => {
                    const scrolled = window.pageYOffset;
                    const rate = scrolled * -0.5;
-                   
+
                    if (hero && heroContent) {
                        heroContent.style.transform = `translateY(${rate}px)`;
                    }
@@ -1447,12 +1500,12 @@
 
            initStatisticsAnimation() {
                const statNumbers = document.querySelectorAll('.stat-number');
-               
+
                statNumbers.forEach(stat => {
                    const target = parseInt(stat.textContent.replace('+', ''));
                    let current = 0;
                    const increment = target / 60; // 60 frames animation
-                   
+
                    const observer = new IntersectionObserver((entries) => {
                        if (entries[0].isIntersecting) {
                            const updateCounter = () => {
@@ -1464,12 +1517,12 @@
                                    stat.textContent = target + '+';
                                }
                            };
-                           
+
                            setTimeout(updateCounter, 500);
                            observer.disconnect();
                        }
                    }, { threshold: 0.5 });
-                   
+
                    observer.observe(stat);
                });
            }
@@ -1481,7 +1534,7 @@
                        this.style.transform = 'translateY(-2px) scale(1.02)';
                        this.style.boxShadow = 'var(--shadow-md)';
                    });
-                   
+
                    tag.addEventListener('mouseleave', function() {
                        this.style.transform = 'translateY(0) scale(1)';
                        this.style.boxShadow = 'none';
@@ -1495,7 +1548,7 @@
                        const ripple = document.createElement('div');
                        const rect = this.getBoundingClientRect();
                        const size = Math.max(rect.width, rect.height);
-                       
+
                        ripple.style.cssText = `
                            position: absolute;
                            border-radius: 50%;
@@ -1508,9 +1561,9 @@
                            animation: ripple-effect 0.6s ease-out;
                            pointer-events: none;
                        `;
-                       
+
                        this.appendChild(ripple);
-                       
+
                        setTimeout(() => {
                            ripple.remove();
                        }, 600);
@@ -1522,13 +1575,13 @@
                    const header = item.querySelector('.experience-header');
                    const content = item.querySelector('.job-description');
                    const achievements = item.querySelector('.achievements-list');
-                   
+
                    let isExpanded = true; // Default expanded
-                   
+
                    header.style.cursor = 'pointer';
                    header.addEventListener('click', () => {
                        isExpanded = !isExpanded;
-                       
+
                        if (isExpanded) {
                            content.style.maxHeight = content.scrollHeight + 'px';
                            achievements.style.maxHeight = achievements.scrollHeight + 'px';
@@ -1545,7 +1598,7 @@
            initPerformanceOptimization() {
                // Lazy loading for enhanced performance
                const lazyElements = document.querySelectorAll('[data-src]');
-               
+
                if ('IntersectionObserver' in window) {
                    const lazyObserver = new IntersectionObserver((entries) => {
                        entries.forEach(entry => {
@@ -1557,7 +1610,7 @@
                            }
                        });
                    });
-                   
+
                    lazyElements.forEach(el => lazyObserver.observe(el));
                }
 
@@ -1565,7 +1618,7 @@
                const criticalResources = [
                    'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap'
                ];
-               
+
                criticalResources.forEach(resource => {
                    const link = document.createElement('link');
                    link.rel = 'preload';
@@ -1601,7 +1654,7 @@
            applyDarkTheme() {
                // Ensure dark theme is always applied
                document.body.classList.add('dark-theme');
-               
+
                // Apply professional dark color scheme
                document.documentElement.style.setProperty('--scrollbar-track', 'var(--bg-secondary)');
                document.documentElement.style.setProperty('--scrollbar-thumb', 'var(--accent-gradient)');
@@ -1768,46 +1821,46 @@
                .executive-hero {
                    padding: 60px 20px;
                }
-               
+
                .pro-card {
                    margin: 0 -10px 30px;
                    border-radius: var(--radius-md);
                }
-               
+
                .card-content {
                    padding: 25px 20px;
                }
-               
+
                .executive-stats {
                    grid-template-columns: repeat(2, 1fr);
                    gap: 15px;
                }
-               
+
                .skills-premium {
                    grid-template-columns: 1fr;
                    gap: 20px;
                }
-               
+
                .skill-category {
                    padding: 25px 20px;
                }
-               
+
                .premium-nav {
                    padding: 12px 20px;
                    gap: 15px;
                    margin: 10px;
                    width: calc(100% - 10px);
                }
-               
+
                .nav-link {
                    padding: 8px 15px;
                    font-size: 0.9rem;
                }
-               
+
                .contact-methods {
                    gap: 15px;
                }
-               
+
                .contact-method {
                    width: 70px;
                    height: 70px;
@@ -1824,7 +1877,7 @@
                #theme-toggle {
                    display: none !important;
                }
-               
+
                .pro-card,
                .executive-hero,
                .executive-role {
@@ -1834,14 +1887,14 @@
                    border: 1px solid #ddd !important;
                    page-break-inside: avoid;
                }
-               
+
                body {
                    background: white !important;
                    color: black !important;
                    font-size: 12pt;
                    line-height: 1.4;
                }
-               
+
                .executive-title {
                    color: #2c3e50 !important;
                }
@@ -1865,7 +1918,7 @@
            "address": {
                "@type": "PostalAddress",
                "addressLocality": "Erfurt",
-               "addressRegion": "Thuringia", 
+               "addressRegion": "Thuringia",
                "addressCountry": "Germany"
            },
            "email": "emadalhamo(at)gmail.com",
@@ -1886,7 +1939,7 @@
                },
                "skills": [
                    "Technical Leadership",
-                   "Full Stack Development", 
+                   "Full Stack Development",
                    "Team Management",
                    "Cloud Computing",
                    "Software Architecture"
@@ -1894,7 +1947,7 @@
            },
            "award": [
                "10+ Years Technical Excellence",
-               "50+ Successful Projects", 
+               "50+ Successful Projects",
                "5+ Teams Led to Success"
            ]
        };
