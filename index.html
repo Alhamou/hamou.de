@@ -1,2264 +1,284 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عماد الحمو | خبير تكنولوجيا المعلومات المتقدم | استشارة المشاريع الكبيرة</title>
-    <meta name="description" content="عماد الحمو - قائد تقني محترف وخبير تطوير Full Stack مع خبرة 10+ سنوات في الحلول التقنية المتقدمة والقيادة التقنية">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <style>
-        :root {
-            /* Professional Dark Theme Colors */
-            --bg-primary: #0A0A0F;
-            --bg-secondary: #12121A;
-            --bg-tertiary: #1A1A24;
-            --bg-card: #1E1E2E;
-            --bg-elevated: #262640;
-            --bg-glass: rgba(30, 30, 46, 0.85);
-
-            /* Text Colors */
-            --text-primary: #F8F9FA;
-            --text-secondary: #B0BEC5;
-            --text-muted: #78909C;
-            --text-accent: #64FFDA;
-
-            /* Brand Colors */
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --accent-gradient: linear-gradient(135deg, #64FFDA 0%, #4FC3F7 100%);
-            --success-gradient: linear-gradient(135deg, #00E676 0%, #00BCD4 100%);
-            --warning-gradient: linear-gradient(135deg, #FFB74D 0%, #FF8A65 100%);
-            --danger-gradient: linear-gradient(135deg, #FF5252 0%, #E91E63 100%);
-
-            /* Professional Accents */
-            --accent-cyan: #64FFDA;
-            --accent-blue: #4FC3F7;
-            --accent-purple: #BA68C8;
-            --accent-orange: #FFB74D;
-            --accent-green: #81C784;
-
-            /* Shadows */
-            --shadow-sm: 0 4px 15px rgba(0,0,0,0.3);
-            --shadow-md: 0 8px 25px rgba(0,0,0,0.4);
-            --shadow-lg: 0 15px 35px rgba(0,0,0,0.5);
-            --shadow-xl: 0 25px 50px rgba(0,0,0,0.6);
-            --shadow-glow: 0 0 30px rgba(100, 255, 218, 0.3);
-
-            /* Border Radius */
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --radius-xl: 30px;
-
-            /* Glassmorphism */
-            --glass-bg: rgba(30, 30, 46, 0.8);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --backdrop-blur: blur(20px);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', 'Cairo', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        /* Professional Background Pattern */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(79, 195, 247, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(186, 104, 200, 0.1) 0%, transparent 50%);
-            z-index: -1;
-            animation: ambientGlow 15s ease-in-out infinite alternate;
-        }
-
-        @keyframes ambientGlow {
-            0% { opacity: 0.5; }
-            100% { opacity: 0.8; }
-        }
-
-        /* Grid Pattern Overlay */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            opacity: 0.3;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Premium Navigation Bar */
-        .premium-nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--glass-bg);
-            backdrop-filter: var(--backdrop-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            padding: 15px 30px;
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
-            display: flex;
-            gap: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            font-size: 0.95rem;
-        }
-
-        .nav-link:hover {
-            color: var(--accent-cyan);
-            background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .nav-link.active {
-            background: var(--accent-gradient);
-            color: var(--bg-primary);
-            box-shadow: var(--shadow-glow);
-        }
-
-        /* Executive Hero Section */
-        .executive-hero {
-            background: var(--bg-secondary);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-xl);
-            padding: 80px 0;
-            margin: 100px 0 50px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .executive-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(100, 255, 218, 0.05) 50%, transparent 70%);
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { transform: translateX(-100%); }
-            50% { transform: translateX(100%); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .executive-avatar {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 40px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4.5rem;
-            border: 4px solid rgba(100, 255, 218, 0.3);
-            box-shadow: var(--shadow-glow);
-            position: relative;
-        }
-
-        .executive-avatar::after {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--accent-cyan), var(--accent-blue), var(--accent-purple), var(--accent-cyan));
-            z-index: -1;
-            animation: rotate 8s linear infinite;
-            opacity: 0.8;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .executive-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-
-        .executive-subtitle {
-            font-size: 1.6rem;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            font-weight: 300;
-        }
-
-        .executive-tagline {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            font-style: italic;
-        }
-
-        .executive-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .stat-card {
-            background: var(--bg-glass);
-            backdrop-filter: var(--backdrop-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md);
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            box-shadow: var(--shadow-md);
-            border-color: var(--accent-cyan);
-        }
-
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--accent-cyan);
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        /* Professional Cards System */
-        .pro-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-lg);
-            margin-bottom: 40px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .pro-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(100, 255, 218, 0.3);
-        }
-
-        .card-header {
-            background: var(--bg-elevated);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 30px 40px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-gradient);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--bg-primary);
-        }
-
-        .card-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .card-content {
-            padding: 40px;
-        }
-
-        /* Executive Current Role */
-        .executive-role {
-            background: var(--success-gradient);
-            color: var(--bg-primary);
-            padding: 50px;
-            border-radius: var(--radius-lg);
-            margin-bottom: 50px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .executive-role::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            opacity: 0.3;
-        }
-
-        .role-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .role-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .role-company {
-            font-size: 1.4rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-
-        .role-description {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Premium Skills Grid */
-        .skills-premium {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-category {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-lg);
-            padding: 35px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: var(--shadow-md);
-        }
-
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .category-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--accent-gradient);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--bg-primary);
-        }
-
-        .category-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .skill-tag {
-            background: var(--bg-elevated);
-            color: var(--text-secondary);
-            padding: 12px 18px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: var(--accent-gradient);
-            color: var(--bg-primary);
-            border-color: transparent;
-            transform: translateY(-1px);
-        }
-
-        /* Executive Experience Timeline */
-        .experience-timeline {
-            position: relative;
-            padding-right: 40px;
-        }
-
-        .timeline-line {
-            position: absolute;
-            right: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--accent-gradient);
-            border-radius: 1px;
-        }
-
-        .experience-item {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            margin-bottom: 30px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .experience-item:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: var(--shadow-md);
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            right: -31px;
-            top: 50px;
-            width: 20px;
-            height: 20px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            border: 3px solid var(--bg-primary);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .job-info h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .company-name {
-            color: var(--accent-cyan);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .job-location {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .date-range {
-            background: var(--accent-gradient);
-            color: var(--bg-primary);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-
-        .job-description {
-            color: var(--text-secondary);
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-
-        .achievements-list {
-            margin-bottom: 25px;
-        }
-
-        .achievement-item {
-            display: flex;
-            align-items: start;
-            gap: 12px;
-            margin-bottom: 12px;
-            color: var(--text-secondary);
-        }
-
-        .achievement-icon {
-            color: var(--accent-cyan);
-            font-size: 1rem;
-            margin-top: 2px;
-            min-width: 16px;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tech-item {
-            background: var(--bg-elevated);
-            color: var(--accent-cyan);
-            padding: 6px 14px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid rgba(100, 255, 218, 0.3);
-        }
-
-        /* Executive Contact Section */
-        .contact-executive {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-lg);
-            padding: 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .contact-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-methods {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .contact-method {
-            width: 80px;
-            height: 80px;
-            background: var(--bg-elevated);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .contact-method:hover {
-            background: var(--accent-gradient);
-            color: var(--bg-primary);
-            border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .info-item {
-            background: var(--bg-elevated);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--bg-primary);
-            font-size: 1rem;
-        }
-
-        /* Premium Footer */
-        .premium-footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 50px 0;
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .footer-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer-text {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .footer-signature {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .executive-title { font-size: 3rem; }
-            .skills-premium { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-            .card-content { padding: 30px; }
-        }
-
-        @media (max-width: 768px) {
-            .premium-nav {
-                position: relative;
-                top: 0;
-                /*transform: none;*/
-                margin-bottom: 30px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .executive-hero { margin-top: 30px; padding: 60px 0; }
-            .executive-title { font-size: 2.5rem; }
-            .card-header { padding: 25px; flex-direction: column; text-align: center; }
-            .card-content { padding: 25px; }
-            .experience-header { flex-direction: column; align-items: start; }
-            .contact-executive { padding: 40px 25px; }
-        }
-
-        @media (max-width: 480px) {
-            .container { padding: 15px; }
-            .executive-title { font-size: 2rem; }
-            .executive-stats { grid-template-columns: repeat(2, 1fr); }
-            .skills-premium { grid-template-columns: 1fr; }
-        }
-
-        /* Accessibility & Performance */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Print Styles */
-        @media print {
-            .premium-nav,
-            .premium-footer { display: none !important; }
-            .pro-card { background: white !important; color: black !important; }
-            body { background: white !important; }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-gradient);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-cyan);
-        }
-
-        /* Premium CV Button */
-        .cv-download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--accent-gradient);
-            color: var(--bg-primary);
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: var(--shadow-glow);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-top: 30px;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .cv-download-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #4FC3F7 0%, #64FFDA 100%);
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.3s ease;
-        }
-
-        .cv-download-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(100, 255, 218, 0.4);
-            color: var(--bg-primary);
-        }
-
-        .cv-download-btn:hover::before {
-            opacity: 1;
-        }
-
-        .cv-download-btn i {
-            font-size: 1.3rem;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emad Alhamou | Founder &amp; Product Builder</title>
+  <meta name="description" content="Founder &amp; Builder of TakeCar, Shfli, and Arab Solutions. Building technology products for mobility, marketplaces, AI-powered customer support, and emerging markets.">
+
+  <!-- Favicon and Manifest -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hamou.de/">
+  <meta property="og:title" content="Emad Alhamou | Founder &amp; Product Builder">
+  <meta property="og:description" content="Founder &amp; Builder of TakeCar, Shfli, and Arab Solutions. Building products for mobility, marketplaces, and AI.">
+  <meta property="og:image" content="https://hamou.de/og.png">
+  <meta property="og:image:width" content="1731">
+  <meta property="og:image:height" content="909">
+  <meta property="og:image:alt" content="Emad Alhamou — Founder of TakeCar, Shfli, and Arab Solutions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Emad Alhamou | Founder &amp; Product Builder">
+  <meta name="twitter:description" content="Founder &amp; Builder of TakeCar, Shfli, and Arab Solutions. Building products for mobility, marketplaces, and AI.">
+  <meta name="twitter:image" content="https://hamou.de/og.png">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Premium Navigation -->
-    <nav class="premium-nav">
-        <a href="#hero" class="nav-link active"><i class="fas fa-home"></i> الرئيسية</a>
-        <a href="#about" class="nav-link"><i class="fas fa-user-tie"></i> نبذة</a>
-        <a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> خبرات</a>
-        <a href="#skills" class="nav-link"><i class="fas fa-code"></i> مهارات</a>
-        <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> تواصل</a>
+  <main>
+    <!-- Navigation -->
+    <nav class="nav container">
+      <a class="brand" href="#top" aria-label="الصفحة الرئيسية">
+        <span>EA</span> Emad Alhamou
+      </a>
+      <div class="links">
+        <a href="#about">عني</a>
+        <a href="#takecar">تيك كار</a>
+        <a href="#arab-solutions">حلول عربية</a>
+        <a href="#shfli">شفلي</a>
+      </div>
+      <a class="navCta" href="#contact">لنتواصل</a>
     </nav>
 
-    <div class="container">
-        <!-- Executive Hero Section -->
-        <section id="hero" class="executive-hero">
-            <div class="hero-content">
-                <div class="executive-avatar">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <h1 class="executive-title">عماد الحمو</h1>
-                <h2 class="executive-subtitle">قائد تقني محترف | خبير تطوير Full Stack | استشاري بناء مشاريع كبيرة</h2>
-                <p class="executive-tagline">"تحويل الرؤى التقنية إلى حلول رائدة تقود التطور"</p>
-
-                <div class="executive-stats">
-                    <div class="stat-card">
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">سنوات خبرة</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">مشروع منجز</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">تقنية متقنة</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">فرق قادها</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Executive Current Role -->
-        <div class="executive-role">
-            <div class="role-content">
-                <h2 class="role-title">المنصب القيادي الحالي</h2>
-                <div class="role-company">Senior Technical Lead & Full Stack Developer</div>
-                <div class="role-company">IBYKUS AG / WIBank | إرفورت، ألمانيا</div>
-                <p class="role-description">
-                    قيادة استراتيجية للفرق التقنية وتطوير الحلول المصرفية المتقدمة مع التركيز على الابتكار والتميز التقني. خبرة متخصصة في استشارة وبناء المشاريع التقنية الكبيرة والمعقدة
-                </p>
-            </div>
+    <!-- Hero Section -->
+    <section id="top" class="hero container">
+      <div class="heroCopy">
+        <p class="eyebrow"><i></i> مؤسس · صانع منتجات · رائد أعمال تقني</p>
+        <h1>أبني تقنيات<br>تحل مشاكل <em>حقيقية.</em></h1>
+        <p class="lead">أنا عماد الحمو، مؤسس <strong>تيك كار</strong> و<strong>حلول عربية</strong> و<strong>شفلي</strong>. أعمل عند تقاطع التقنية، التشغيل، وفهم السوق لتحويل الأفكار المعقدة إلى منتجات بسيطة يستخدمها الناس كل يوم.</p>
+        <div class="actions">
+          <a class="primary" href="#takecar">اكتشف رحلتي <b>←</b></a>
+          <a class="secondary" href="#about">المزيد عني</a>
         </div>
+      </div>
+      <div class="heroArt" aria-label="Emad Alhamou monogram">
+        <div class="orbit orbit1"></div>
+        <div class="orbit orbit2"></div>
+        <div class="monogram">E<span>A</span></div>
+        <div class="tag tag1">SYRIA <b>→</b> GLOBAL</div>
+        <div class="tag tag2"><i></i> BUILDING NOW</div>
+      </div>
+    </section>
 
-        <!-- Professional About -->
-        <div id="about" class="pro-card">
-            <div class="card-header">
-                <div class="card-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <h2 class="card-title">الملف التنفيذي المتقدم</h2>
+    <!-- Statement Section -->
+    <section class="statement">
+      <div class="container statementGrid">
+        <p class="sectionNo">01 / الفكرة</p>
+        <blockquote>التكنولوجيا الجيدة لا تستعرض تعقيدها.<br><span>بل تجعل حياة الناس أبسط.</span></blockquote>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section container about">
+      <div>
+        <p class="label">عني</p>
+        <h2>بين ألمانيا وسوريا،<br>برؤية واحدة.</h2>
+      </div>
+      <div class="aboutText">
+        <p>رائد أعمال سوري ألماني، شغوف ببناء منتجات رقمية تتعامل مع تحديات واقعية: النقل، الخرائط، الأنظمة التشغيلية، وتجربة المستخدم.</p>
+        <p>لا أنظر إلى المنتج كواجهة جميلة فقط. أهتم بكل ما خلفها: البنية التحتية، البيانات، الأداء، التكاليف، وثقة المستخدم. أتعلم بسرعة، أختبر في السوق، ثم أبني أفضل.</p>
+        <div class="facts">
+          <div><b>Founder</b><span>TakeCar · Shfli · Arab Solutions</span></div>
+          <div><b>Focus</b><span>Mobility · E-Commerce · AI</span></div>
+          <div><b>Based</b><span>Germany · Syria</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TakeCar Section -->
+    <section id="takecar" class="takecar">
+      <div class="container takeGrid">
+        <div class="takeIntro">
+          <p class="label light">المشروع الرئيسي</p>
+          <div class="takeLogo">T</div>
+          <h2 style="font-family:'Guesswhat', 'IBM Plex Sans Arabic', sans-serif;font-weight:400;letter-spacing:0">تيك كار</h2>
+          <p class="en">TakeCar — Syrian mobility, built from the ground up.</p>
+        </div>
+        <div class="takeCopy">
+          <h3>منصة تنقّل سورية<br>بطموح عالمي.</h3>
+          <p>تيك كار تطبيق يجمع الراكب والسفير في تجربة واحدة سهلة. صُمم للسوق السوري، مع تركيز على المرونة، سهولة الاستخدام، والتقنية المملوكة محلياً.</p>
+          <div class="featureRows">
+            <div><span>01</span><b>تجربة واحدة للراكب والسفير</b></div>
+            <div><span>02</span><b>تسعير مرن وعروض مباشرة</b></div>
+            <div><span>03</span><b>خرائط وتوجيه محسّنان للسوق المحلي</b></div>
+            <div><span>04</span><b>بنية تقنية قابلة للنمو</b></div>
+          </div>
+          <a class="outline" href="https://takecarapp.com" target="_blank" rel="noreferrer">زيارة TakeCar <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Arab Solutions Section -->
+    <section id="arab-solutions" class="arabSolutions">
+      <div class="container arabGrid">
+        <div class="arabIntro">
+          <div class="projectStatus"><i></i> قيد التطوير · منذ أبريل 2026</div>
+          <p class="label arabLabel">المشروع الحالي</p>
+          <div class="arabLogo">HS</div>
+          <h2 style="font-family:'Guesswhat', 'IBM Plex Sans Arabic', sans-serif;font-weight:400;letter-spacing:0">حلول عربية</h2>
+          <p class="arabTagline">دعم عملاء أذكى،<br>مصمم للعالم العربي.</p>
+        </div>
+        <div class="arabCopy">
+          <h3>منصة دعم عملاء بالذكاء الاصطناعي، تجمع المعرفة والقنوات في مكان واحد.</h3>
+          <p>أبني حلول عربية كمنصة SaaS عربية أولًا، تساعد الشركات على تحويل محتواها وقاعدة معرفتها إلى مساعد ذكي يفهم أسئلة العملاء ويقدّم إجابات دقيقة ومتسقة.</p>
+          <p>تدعم المنصة المحادثات متعددة القنوات، إدارة المعرفة، وتقنيات RAG، مع اهتمام خاص باللغة العربية، الخصوصية، وسهولة الدمج مع التطبيقات والمواقع.</p>
+          <div class="arabFeatures">
+            <div><span>01</span><b>مساعد ذكي مبني على معرفة الشركة</b></div>
+            <div><span>02</span><b>دعم عربي أولًا وقنوات موحّدة</b></div>
+            <div><span>03</span><b>تكامل مرن عبر الويب والتطبيقات وواجهات API</b></div>
+          </div>
+          <a class="arabCta" href="https://omysyria.com/ar" target="_blank" rel="noreferrer">زيارة حلول عربية <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shfli Section -->
+    <section id="shfli" class="shfli">
+      <div class="container shfliGrid">
+        <div class="shfliIntro">
+          <div class="projectStatus shfliStatus"><i></i> مكتمل · 2025.2 — 2026.4</div>
+          <p class="label shfliLabel">المشروع الريادي</p>
+          <div class="shfliLogo">S</div>
+          <h2 style="font-family:'Guesswhat', 'IBM Plex Sans Arabic', sans-serif;font-weight:400;letter-spacing:0">شفلي</h2>
+          <p class="shfliTagline">سوق إلكتروني متكامل،<br>لربط الناس والفرص في سوريا.</p>
+        </div>
+        <div class="shfliCopy">
+          <h3>منصة شاملة للبيع والشراء والمزادات، تجمع المعاملات والفرص في مكان واحد.</h3>
+          <p>قدت الفريق التقني وبنيت الأنظمة الخلفية لمنصة وتطبيق شفلي كأول سوق إلكتروني تفاعلي متقدم في سوريا، يربط البائعين والمشترين في مجالات السيارات، العقارات، المزادات المباشرة، البازارات، وفرص العمل.</p>
+          <p>تم تصميم البنية التحتية السحابية وواجهات REST APIs لتوفير أداء فائق السرعة واستقرارية 99.9%، مع توجيه وخرائط محسّنة تلائم خصائص السوق السوري.</p>
+          <div class="shfliFeatures">
+            <div><span>01</span><b>سوق إلكتروني متعدد الأقسام ومزادات وبازارات مباشرة</b></div>
+            <div><span>02</span><b>خرائط محلية وتجربة مستخدم مخصصة للهواتف والويب</b></div>
+            <div><span>03</span><b>بنية سحابية فائقة السرعة وواجهات API متطورة</b></div>
+          </div>
+          <a class="shfliCta" href="https://www.shfli.com/?section=items" target="_blank" rel="noreferrer">زيارة منصة شفلي <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How I Work Section -->
+    <section id="work" class="section container work">
+      <div class="workHead">
+        <div>
+          <p class="label">كيف أعمل</p>
+          <h2>من الفكرة إلى<br>منتج يعمل.</h2>
+        </div>
+        <p>أجمع بين التفكير التجاري والتنفيذ التقني. هذا يمنحني القدرة على رؤية الصورة الكاملة، ثم النزول إلى التفاصيل التي تصنع الفرق.</p>
+      </div>
+      <div class="cards">
+        <article>
+          <span>01</span>
+          <h3>أفهم المشكلة</h3>
+          <p>أبدأ بالمستخدم والسوق، لا بالتقنية. أبحث عن المشكلة الحقيقية وما الذي يجعل الحل مفيداً وقابلاً للنمو.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>أبني النظام</h3>
+          <p>أحوّل الرؤية إلى منتج متكامل: تطبيقات، واجهات، خدمات خلفية، خرائط، بيانات، وأنظمة تشغيل.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>أتعلم وأطوّر</h3>
+          <p>أراقب الاستخدام الفعلي، أحل نقاط الاحتكاك، وأطوّر المنتج باستمرار وفق أثر واضح على الناس والعمل.</p>
+        </article>
+      </div>
+      <div class="skillLine">
+        <span>Product Strategy</span>
+        <span>Mobile Apps</span>
+        <span>Backend Systems</span>
+        <span>Real-time Infrastructure</span>
+        <span>Maps &amp; Routing</span>
+        <span>Business Operations</span>
+      </div>
+    </section>
+
+    <!-- Career Section -->
+    <section class="career">
+      <div class="container careerGrid">
+        <div>
+          <p class="label light">المسيرة المهنية</p>
+          <h2>أكثر من 10 سنوات<br>في صناعة التقنية.</h2>
+          <p>خبرة عملية في ألمانيا وسوريا، من تطوير المنتجات المستقلة إلى قيادة الأنظمة والفرق التقنية.</p>
+        </div>
+        <div class="timeline">
+          <article>
+            <time>2020 — الآن</time>
+            <div>
+              <h3>Senior Technical Lead &amp; Full Stack Developer</h3>
+              <p>IBYKUS AG / WIBank · إرفورت، ألمانيا</p>
             </div>
-            <div class="card-content">
-                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 30px;">
-                    قائد تقني متمرس مع سجل حافل في تطوير وقيادة الحلول التقنية المبتكرة. خبير في بناء الفرق عالية الأداء وتحقيق التميز التشغيلي في بيئات تقنية معقدة.
-                </p>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 30px 0;">
-                    <div style="background: var(--bg-elevated); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                        <h4 style="color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.2rem;">
-                           <i class="fas fa-chess-king"></i> القيادة الاستراتيجية
-                       </h4>
-                       <p style="color: var(--text-secondary); line-height: 1.6;">قيادة فرق متعددة التخصصات وإدارة مشاريع بميزانيات تتجاوز المليون يورو مع تحقيق معدلات نجاح 95%+</p>
-                   </div>
-                   <div style="background: var(--bg-elevated); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                       <h4 style="color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.2rem;">
-                           <i class="fas fa-building"></i> استشارة المشاريع الكبيرة
-                       </h4>
-                       <p style="color: var(--text-secondary); line-height: 1.6;">خبرة متخصصة في تخطيط وبناء وإدارة المشاريع التقنية الكبيرة والمعقدة مع ضمان الجودة والتسليم في الوقت المحدد. خبير في هندسة البيانات وبناء أنظمة البيانات الضخمة وتحليلها</p>
-                   </div>
-                   <div style="background: var(--bg-elevated); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                       <h4 style="color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.2rem;">
-                           <i class="fas fa-globe-europe"></i> الخبرة الدولية
-                       </h4>
-                       <p style="color: var(--text-secondary); line-height: 1.6;">خبرة واسعة في الأسواق الأوروبية والشرق أوسطية مع فهم عميق للمتطلبات التقنية المتنوعة</p>
-                   </div>
-                   <div style="background: var(--bg-elevated); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                       <h4 style="color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.2rem;">
-                           <i class="fas fa-rocket"></i> الابتكار التقني
-                       </h4>
-                       <p style="color: var(--text-secondary); line-height: 1.6;">رائد في تطبيق أحدث التقنيات مثل Microservices، Cloud Native، وAI Integration</p>
-                   </div>
-                   <div style="background: var(--bg-elevated); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                       <h4 style="color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.2rem;">
-                           <i class="fas fa-chart-line"></i> النمو المؤسسي
-                       </h4>
-                       <p style="color: var(--text-secondary); line-height: 1.6;">تحسين الأداء التشغيلي بنسبة 40%+ وتقليل التكاليف التقنية مع زيادة الكفاءة</p>
-                   </div>
-               </div>
-
-               <div style="background: var(--bg-elevated); padding: 30px; border-radius: var(--radius-lg); border: 1px solid rgba(100,255,218,0.2); margin-top: 30px;">
-                   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; text-align: center;">
-                       <div>
-                           <div style="width: 60px; height: 60px; background: var(--danger-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem;">
-                               <i class="fas fa-map-marker-alt"></i>
-                           </div>
-                           <h4 style="margin-bottom: 8px; color: var(--text-primary);">الموقع الحالي</h4>
-                           <p style="color: var(--text-secondary); font-size: 0.95rem;">إرفورت، ألمانيا</p>
-                       </div>
-                       <div>
-                           <div style="width: 60px; height: 60px; background: var(--success-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem;">
-                               <i class="fas fa-heart"></i>
-                           </div>
-                           <h4 style="margin-bottom: 8px; color: var(--text-primary);">الأصل</h4>
-                           <p style="color: var(--text-secondary); font-size: 0.95rem;">دمشق، سوريا</p>
-                       </div>
-                       <div>
-                           <div style="width: 60px; height: 60px; background: var(--warning-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem;">
-                               <i class="fas fa-calendar-alt"></i>
-                           </div>
-                           <h4 style="margin-bottom: 8px; color: var(--text-primary);">المولود</h4>
-                           <p style="color: var(--text-secondary); font-size: 0.95rem;">1986</p>
-                       </div>
-                       <div>
-                           <div style="width: 60px; height: 60px; background: var(--accent-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem;">
-                               <i class="fas fa-users"></i>
-                           </div>
-                           <h4 style="margin-bottom: 8px; color: var(--text-primary);">العائلة</h4>
-                           <p style="color: var(--text-secondary); font-size: 0.95rem;">متزوج، أب لطفلتين</p>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-
-              <!-- Featured Project - Arab Solutions -->
-       <div class="pro-card" style="background: var(--bg-elevated); border: 1px solid rgba(100,255,218,0.3);">
-           <div class="card-header" style="background: var(--accent-gradient); color: var(--bg-primary);">
-               <div class="card-icon" style="background: rgba(255,255,255,0.2);">
-                   <i class="fas fa-brain"></i>
-               </div>
-               <div>
-                   <h2 class="card-title" style="color: var(--bg-primary);">المشروع الحالي - Arab Solutions (حلول عربية)</h2>
-                   <p style="opacity: 0.9; margin-top: 5px;">المالك والمؤسس | منصة ذكاء اصطناعي لدعم العملاء SaaS متعددة المستأجرين (Arabic-First)</p>
-               </div>
-           </div>
-           <div class="card-content">
-               <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.8;">
-                   مالك ومؤسس ومعمار مشروع "حلول عربية" (Arab Solutions)، أول منصة SaaS سحابية عربية متكاملة لخدمة ودعم العملاء بالذكاء الاصطناعي متعددة المستأجرين (Multi-Tenant). تتيح للشركات بناء وتدريب مساعدين أذكياء على قواعد معرفتها واسترجاع إجابات دقيقة وموثوقة (RAG)، مع لوحة تحكم متقدمة، ودجت محادثة فوري (Embeddable Widget)، ونظام تحويل ذكي للدعم البشري.
-               </p>
-
-               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
-                   <div style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                       <h4 style="color: var(--accent-cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                           <i class="fas fa-crown"></i> الدور القيادي
-                       </h4>
-                       <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
-                           <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>المالك والمؤسس ومعمار النظم الشامل</li>
-                           <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>تصميم معمارية Multi-Tenant مع عزل صارم للبيانات والمشاريع</li>
-                           <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>بناء محرك تنسيق الذكاء الاصطناعي (AI Orchestrator) واسترجاع المعرفة (RAG)</li>
-                           <li><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>قيادة هندسة وتطوير الـ Go Backend والـ React Dashboard والـ Widget</li>
-                       </ul>
-                   </div>
-
-                   <div style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                       <h4 style="color: var(--accent-cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                           <i class="fas fa-trophy"></i> المكونات والابتكارات
-                       </h4>
-                       <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
-                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>Backend فائق السرعة بـ <strong>Go (Golang)</strong> مع معمارية نظيفة وREST APIs</li>
-                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>محرك RAG بـ <strong>PostgreSQL + pgvector</strong> مع تأريض الإجابات والاستشهاد بالمصادر</li>
-                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>لوحة تحكم إدارية بـ <strong>React + TypeScript</strong> مع بيئة تجارب تفاعلية (Playground)</li>
-                           <li><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>ودجت محادثة قابل للتضمين (@ahs/widget) خفيف الوزن وعالي الأداء</li>
-                       </ul>
-                   </div>
-               </div>
-
-               <div style="margin-top: 25px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid rgba(100,255,218,0.2);">
-                   <h4 style="color: var(--accent-cyan); margin-bottom: 15px;">الميزات والتقنيات المستخدمة</h4>
-                   <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                       <span class="tech-item">Go (Golang)</span>
-                       <span class="tech-item">PostgreSQL + pgvector</span>
-                       <span class="tech-item">Redis</span>
-                       <span class="tech-item">AI Orchestration</span>
-                       <span class="tech-item">RAG & Embeddings</span>
-                       <span class="tech-item">Multi-Tenant SaaS</span>
-                       <span class="tech-item">React 19 + TypeScript</span>
-                       <span class="tech-item">Vite</span>
-                       <span class="tech-item">Embeddable JS Widget</span>
-                       <span class="tech-item">WebSocket & SSE</span>
-                       <span class="tech-item">Docker</span>
-                       <span class="tech-item">Playwright & Vitest</span>
-                       <span class="tech-item">CI/CD Pipelines</span>
-                       <span class="tech-item">Arabic-First / RTL UX</span>
-                   </div>
-               </div>
-
-               <div style="margin-top: 25px; padding: 20px; background: var(--success-gradient); color: var(--bg-primary); border-radius: var(--radius-md); text-align: center;">
-                   <h4 style="margin-bottom: 10px;"><i class="fas fa-rocket"></i> حالة المشروع</h4>
-                   <p style="margin: 0; opacity: 0.9;">قيد التطوير النشط منذ 3 أسابيع - مستمر في إضافة ميزات وتحديثات متقدمة</p>
-               </div>
-           </div>
-       </div>
-
-<!-- Featured Project - TakeCar -->
-       <div class="pro-card" style="background: var(--bg-elevated); border: 1px solid rgba(100,255,218,0.3);">
-           <div class="card-header" style="background: var(--accent-gradient); color: var(--bg-primary);">
-               <div class="card-icon" style="background: rgba(255,255,255,0.2);">
-                   <i class="fas fa-car-side"></i>
-               </div>
-               <div>
-                   <h2 class="card-title" style="color: var(--bg-primary);">مشروع مميز - TakeCar</h2>
-                   <p style="opacity: 0.9; margin-top: 5px;">المالك والمؤسس | منصة مشاركة الرحلات الذكية</p>
-               </div>
-           </div>
-           <div class="card-content">
-               <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.8;">
-                   مالك ومؤسس مشروع TakeCar، منصة متكاملة لمشاركة الرحلات تجمع بين نظام المزايدة على الرحلات الفورية، حجز المقاعد في الرحلات المجدولة، ودعم الرحلات المقسّمة بمحطات متعددة. مشروع متكامل بمعمارية احترافية يخدم السوق السوري.
-               </p>
-
-               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
-                   <div style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                       <h4 style="color: var(--accent-cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                           <i class="fas fa-crown"></i> الدور القيادي
-                       </h4>
-                       <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
-                           <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>المالك والمؤسس الكامل للمشروع</li>
-                           <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>مهندس البنية التقنية الشاملة</li>
-                           <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>مطور Full Stack رئيسي</li>
-                           <li><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>قائد استراتيجية المنتج والتطوير</li>
-                       </ul>
-                   </div>
-
-                   <div style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                       <h4 style="color: var(--accent-cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                           <i class="fas fa-trophy"></i> المكونات الرئيسية
-                       </h4>
-                       <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
-                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>تطبيق Mobile (Expo / React Native)</li>
-                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>Backend API بـ Bun + Express + Socket.IO</li>
-                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>لوحة تحكم إدارية متكاملة</li>
-                           <li><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>نظام تتبع مواقع لحظي بـ Redis GEO</li>
-                       </ul>
-                   </div>
-               </div>
-
-               <div style="margin-top: 25px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid rgba(100,255,218,0.2);">
-                   <h4 style="color: var(--accent-cyan); margin-bottom: 15px;">الميزات والتقنيات المستخدمة</h4>
-                   <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                       <span class="tech-item">Bun Runtime</span>
-                       <span class="tech-item">TypeScript</span>
-                       <span class="tech-item">Express.js</span>
-                       <span class="tech-item">PostgreSQL + PostGIS</span>
-                       <span class="tech-item">Redis GEO</span>
-                       <span class="tech-item">Socket.IO</span>
-                       <span class="tech-item">Expo / React Native</span>
-                       <span class="tech-item">Zustand</span>
-                       <span class="tech-item">NativeWind</span>
-                       <span class="tech-item">Vite + React</span>
-                       <span class="tech-item">Radix UI</span>
-                       <span class="tech-item">AWS S3</span>
-                       <span class="tech-item">Firebase FCM</span>
-                       <span class="tech-item">JWT Auth</span>
-                       <span class="tech-item">WhatsApp OTP</span>
-                   </div>
-               </div>
-
-               <div style="margin-top: 25px; padding: 20px; background: var(--success-gradient); color: var(--bg-primary); border-radius: var(--radius-md); text-align: center;">
-                   <h4 style="margin-bottom: 10px;"><i class="fas fa-rocket"></i> حالة المشروع</h4>
-                   <p style="margin: 0; opacity: 0.9;">قيد التطوير النشط منذ 02.2026 - تحديثات وميزات متطورة بشكل مستمر</p>
-               </div>
-           </div>
-       </div>
-
-       <!-- Featured Project - Shfli -->
-       <div class="pro-card" style="background: var(--bg-elevated); border: 1px solid rgba(100,255,218,0.3);">
-           <div class="card-header" style="background: var(--accent-gradient); color: var(--bg-primary);">
-               <div class="card-icon" style="background: rgba(255,255,255,0.2);">
-                   <i class="fas fa-star"></i>
-               </div>
-               <div>
-                   <h2 class="card-title" style="color: var(--bg-primary);">المشروع الرائد - Shfli</h2>
-                   <p style="opacity: 0.9; margin-top: 5px;">shfli.com | مشروع تقني رائد في السوق السوري</p>
-               </div>
-           </div>
-           <div class="card-content">
-               <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.8;">
-                   قائد تقني ومطور خلفية رئيسي في مشروع Shfli المبتكر. تطبيق متكامل يهدف إلى ثورة تقنية في السوق السوري مع حلول مبتكرة ومتطورة.
-               </p>
-
-               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
-                   <div style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                       <h4 style="color: var(--accent-cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                           <i class="fas fa-crown"></i> الدور القيادي
-                       </h4>
-                       <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
-                           <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>قائد الفريق التقني (6 مطورين)</li>
-                           <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>مطور Backend رئيسي</li>
-                           <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>مهندس البنية التحتية</li>
-                           <li><i class="fas fa-check" style="color: var(--accent-cyan); margin-left: 10px;"></i>استراتيجي التطوير</li>
-                       </ul>
-                   </div>
-
-                   <div style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                       <h4 style="color: var(--accent-cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                           <i class="fas fa-trophy"></i> الإنجازات الرئيسية
-                       </h4>
-                       <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
-                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>تصميم البنية التقنية الكاملة</li>
-                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>APIs متقدمة لـ 15M+ مستخدم</li>
-                            <li style="margin-bottom: 10px;"><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>تحقيق 99.9% uptime</li>
-                           <li><i class="fas fa-star" style="color: var(--accent-cyan); margin-left: 10px;"></i>حلول Cloud Computing متطورة</li>
-                       </ul>
-                   </div>
-               </div>
-
-               <div style="margin-top: 25px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid rgba(100,255,218,0.2);">
-                   <h4 style="color: var(--accent-cyan); margin-bottom: 15px;">التقنيات المتقدمة المستخدمة</h4>
-                   <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                       <span class="tech-item">Node.js TypeScript</span>
-                       <span class="tech-item">RESTful APIs</span>
-                       <span class="tech-item">React Native CLI</span>
-                       <span class="tech-item">PostgreSQL</span>
-                       <span class="tech-item">Redis Cache</span>
-                       <span class="tech-item">AWS S3</span>
-                       <span class="tech-item">Docker</span>
-                       <span class="tech-item">WebSocket</span>
-                       <span class="tech-item">Postman Documentation</span>
-                   </div>
-               </div>
-
-               <div style="margin-top: 25px; padding: 20px; background: var(--success-gradient); color: var(--bg-primary); border-radius: var(--radius-md); text-align: center;">
-                   <h4 style="margin-bottom: 10px;"><i class="fas fa-flag-checkered"></i> حالة المشروع</h4>
-                   <p style="margin: 0; opacity: 0.9;">مشروع مكتمل - انتهى التطوير في 11.2025 بعد قيادة ناجحة لكامل الدورة التقنية</p>
-               </div>
-           </div>
-       </div>
-
-       <!-- Premium Skills Section -->
-       <div id="skills" class="pro-card">
-           <div class="card-header">
-               <div class="card-icon">
-                   <i class="fas fa-brain"></i>
-               </div>
-               <h2 class="card-title">الخبرات التقنية المتقدمة 2025</h2>
-           </div>
-           <div class="card-content">
-               <div class="skills-premium">
-                   <div class="skill-category">
-                       <div class="category-header">
-                           <div class="category-icon">
-                               <i class="fas fa-chess-queen"></i>
-                           </div>
-                           <div class="category-title">القيادة التقنية التنفيذية</div>
-                       </div>
-                       <div class="skill-tags">
-                           <span class="skill-tag">Strategic Leadership</span>
-                           <span class="skill-tag">Team Architecture</span>
-                           <span class="skill-tag">Large Project Consulting</span>
-                           <span class="skill-tag">استشارة المشاريع الكبيرة</span>
-                           <span class="skill-tag">Data Engineer</span>
-                           <span class="skill-tag">Agile Transformation</span>
-                           <span class="skill-tag">DevOps Culture</span>
-                           <span class="skill-tag">Product Strategy</span>
-                           <span class="skill-tag">Technical Vision</span>
-                           <span class="skill-tag">Project Architecture</span>
-                       </div>
-                   </div>
-
-                   <div class="skill-category">
-                       <div class="category-header">
-                           <div class="category-icon">
-                               <i class="fab fa-js-square"></i>
-                           </div>
-                           <div class="category-title">لغات البرمجة المتطورة</div>
-                       </div>
-                       <div class="skill-tags">
-                           <span class="skill-tag">JavaScript ES2025</span>
-                           <span class="skill-tag">TypeScript Advanced</span>
-                           <span class="skill-tag">Python 3.12</span>
-                           <span class="skill-tag">Java Enterprise</span>
-                           <span class="skill-tag">PHP 8.3</span>
-                           <span class="skill-tag">Go (Golang)</span>
-                           <span class="skill-tag">Rust</span>
-                       </div>
-                   </div>
-
-                   <div class="skill-category">
-                       <div class="category-header">
-                           <div class="category-icon">
-                               <i class="fas fa-server"></i>
-                           </div>
-                           <div class="category-title">Backend المؤسسي</div>
-                       </div>
-                       <div class="skill-tags">
-                           <span class="skill-tag">Node.js Ecosystem</span>
-                           <span class="skill-tag">Microservices Architecture</span>
-                           <span class="skill-tag">GraphQL Federation</span>
-                           <span class="skill-tag">REST & gRPC</span>
-                           <span class="skill-tag">Event-Driven Architecture</span>
-                           <span class="skill-tag">Message Queues</span>
-                           <span class="skill-tag">API Gateway</span>
-                           <span class="skill-tag">AI Agents</span>
-                       </div>
-                   </div>
-
-                   <div class="skill-category">
-                       <div class="category-header">
-                           <div class="category-icon">
-                               <i class="fab fa-react"></i>
-                           </div>
-                           <div class="category-title">Frontend المتقدم</div>
-                       </div>
-                       <div class="skill-tags">
-                           <span class="skill-tag">React 18+ Ecosystem</span>
-                           <span class="skill-tag">Next.js 14 App Router</span>
-                           <span class="skill-tag">Vue.js 3 Composition</span>
-                           <span class="skill-tag">Angular 17 Signals</span>
-                           <span class="skill-tag">React Native CLI</span>
-                           <span class="skill-tag">Progressive Web Apps</span>
-                       </div>
-                   </div>
-
-                   <div class="skill-category">
-                       <div class="category-header">
-                           <div class="category-icon">
-                               <i class="fas fa-cloud"></i>
-                           </div>
-                           <div class="category-title">Cloud & Infrastructure</div>
-                       </div>
-                       <div class="skill-tags">
-                           <span class="skill-tag">AWS Solutions Architect</span>
-                           <span class="skill-tag">Kubernetes Orchestration</span>
-                           <span class="skill-tag">Docker Containerization</span>
-                           <span class="skill-tag">Terraform IaC</span>
-                           <span class="skill-tag">CI/CD Pipelines</span>
-                           <span class="skill-tag">Monitoring & Observability</span>
-                           <span class="skill-tag">Security & Compliance</span>
-                       </div>
-                   </div>
-
-                   <div class="skill-category">
-                       <div class="category-header">
-                           <div class="category-icon">
-                               <i class="fas fa-database"></i>
-                           </div>
-                           <div class="category-title">Data & Analytics</div>
-                       </div>
-                       <div class="skill-tags">
-                           <span class="skill-tag">PostgreSQL & pgvector</span>
-                           <span class="skill-tag">RAG & Vector Search</span>
-                           <span class="skill-tag">MongoDB Atlas</span>
-                           <span class="skill-tag">Redis Clustering</span>
-                           <span class="skill-tag">Elasticsearch ELK</span>
-                           <span class="skill-tag">InfluxDB Time-series</span>
-                           <span class="skill-tag">Neo4j Graph DB</span>
-                           <span class="skill-tag">Data Architecture</span>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-
-       <!-- Executive Experience Timeline -->
-       <div id="experience" class="pro-card">
-           <div class="card-header">
-               <div class="card-icon">
-                   <i class="fas fa-briefcase"></i>
-               </div>
-               <h2 class="card-title">المسيرة المهنية التنفيذية</h2>
-           </div>
-           <div class="card-content">
-               <div class="experience-timeline">
-                   <div class="timeline-line"></div>
-
-                   <!-- Current Position -->
-                   <div class="experience-item">
-                       <div class="experience-header">
-                           <div class="job-info">
-                               <h3>Senior Full Stack Developer & Technical Lead</h3>
-                               <div class="company-name">IBYKUS AG / WIBank</div>
-                               <div class="job-location">إرفورت، ألمانيا</div>
-                           </div>
-                           <div class="date-range">فبراير 2020 - الآن</div>
-                       </div>
-                       <div class="job-description">
-                           قيادة استراتيجية لفريق من 9 مطورين متخصصين في تطوير حلول مصرفية متقدمة. إدارة دورة التطوير الكاملة من التخطيط الاستراتيجي إلى النشر والصيانة، مع التركيز على الأمان المصرفي والأداء العالي.
-                       </div>
-                       <div class="achievements-list">
-                           <div class="achievement-item">
-                               <i class="fas fa-chart-line achievement-icon"></i>
-                               <span>تحسين أداء النظام بنسبة 45% من خلال تحسين الخوارزميات والبنية التحتية</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-shield-alt achievement-icon"></i>
-                               <span>تطبيق معايير الأمان المصرفية الأوروبية (PCI DSS, GDPR) بنسبة امتثال 100%</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-users-cog achievement-icon"></i>
-                               <span>قيادة فرق متعددة الثقافات مع تحقيق 98% معدل رضا الفريق</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-rocket achievement-icon"></i>
-                               <span>تقليل زمن التطوير بنسبة 35% من خلال تطبيق DevOps وAutomation</span>
-                           </div>
-                       </div>
-                       <div class="tech-stack">
-                           <span class="tech-item">Node.js Enterprise</span>
-                           <span class="tech-item">PostgreSQL</span>
-                           <span class="tech-item">JavaScript ES2024</span>
-                           <span class="tech-item">JavaFX</span>
-                           <span class="tech-item">Docker Swarm</span>
-                           <span class="tech-item">Kubernetes</span>
-                           <span class="tech-item">Jest/Cypress</span>
-                           <span class="tech-item">GitLab CI/CD</span>
-                           <span class="tech-item">Jira/Confluence</span>
-                       </div>
-                   </div>
-
-                                      <!-- Arab Solutions Project -->
-                   <div class="experience-item">
-                       <div class="experience-header">
-                           <div class="job-info">
-                               <h3>Founder & Owner - AI Systems Architect</h3>
-                               <div class="company-name">Arab Solutions | Syria Group (حلول عربية)</div>
-                               <div class="job-location">سوريا / ألمانيا (عن بُعد)</div>
-                           </div>
-                           <div class="date-range">منذ 3 أسابيع - الآن</div>
-                       </div>
-                       <div class="job-description">
-                           تأسيس وبناء مشروع "حلول عربية" (Arab Solutions)، أول منصة SaaS متعددة المستأجرين لدعم العملاء بالذكاء الاصطناعي مصممة بالأساس للغة العربية. هندسة وتطوير النظام بالكامل من الصفر (Go Backend + pgvector RAG + React Dashboard + Embeddable Widget SDK).
-                       </div>
-                       <div class="achievements-list">
-                           <div class="achievement-item">
-                               <i class="fas fa-sitemap achievement-icon"></i>
-                               <span>تصميم وبناء Backend عالي السرعة والأداء باستخدام <strong>Go (Golang)</strong> مع دعم كامل للـ Multi-Tenancy وعزل البيانات</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-brain achievement-icon"></i>
-                               <span>تطوير محرك استرجاع ذكي <strong>RAG</strong> باستخدام <strong>PostgreSQL + pgvector</strong> مع خوارزميات الاستشهاد بالمصادر والتأريض المعرفي</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-desktop achievement-icon"></i>
-                               <span>بناء لوحة تحكم متقدمة بـ <strong>React + TypeScript + Vite</strong> مع بيئة تفاعلية لاختبار المساعد الذكي (AI Playground) ونظام تحويل للدعم البشري</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-code achievement-icon"></i>
-                               <span>تطوير ودجت محادثة ذكي (@ahs/widget) قابل للتضمين في أي موقع أو تطبيق بـ Vanilla JS/TS خفيف الوزن وعالي الأداء</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-shield-alt achievement-icon"></i>
-                               <span>تطبيق أعلى معايير الجودة باختبارات تكاملية وشاملة (Playwright E2E + Vitest + Go Tests) مع خطوط CI/CD مؤتمتة</span>
-                           </div>
-                       </div>
-                       <div class="tech-stack">
-                           <span class="tech-item">Go (Golang)</span>
-                           <span class="tech-item">PostgreSQL + pgvector</span>
-                           <span class="tech-item">Redis</span>
-                           <span class="tech-item">AI Orchestration</span>
-                           <span class="tech-item">RAG</span>
-                           <span class="tech-item">React</span>
-                           <span class="tech-item">TypeScript</span>
-                           <span class="tech-item">Vite</span>
-                           <span class="tech-item">Embeddable Widget</span>
-                           <span class="tech-item">Docker</span>
-                           <span class="tech-item">Playwright</span>
-                           <span class="tech-item">CI/CD</span>
-                       </div>
-                   </div>
-
-<!-- TakeCar Project -->
-                   <div class="experience-item">
-                       <div class="experience-header">
-                           <div class="job-info">
-                               <h3>Founder & Owner - Full Stack Architect</h3>
-                               <div class="company-name">TakeCar - منصة مشاركة الرحلات</div>
-                               <div class="job-location">سوريا / ألمانيا (عن بُعد)</div>
-                           </div>
-                           <div class="date-range">فبراير 2026 - الآن</div>
-                       </div>
-                       <div class="job-description">
-                           تأسيس وامتلاك مشروع TakeCar، منصة ذكية لمشاركة الرحلات تدعم المزايدة على الرحلات الفورية، حجز مقاعد الرحلات المجدولة، والرحلات المقسّمة بمحطات متعددة. تصميم وتطوير المعمارية الكاملة (Mobile + Backend + Dashboard) بشكل مستقل من الصفر.
-                       </div>
-                       <div class="achievements-list">
-                           <div class="achievement-item">
-                               <i class="fas fa-sitemap achievement-icon"></i>
-                               <span>تصميم معمارية Monorepo متكاملة: Backend + Mobile + Frontend + Dashboard</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-bolt achievement-icon"></i>
-                               <span>تطوير Backend عالي الأداء على <strong>Bun</strong> مع PostgreSQL + PostGIS للاستعلامات الجغرافية</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-map-marked-alt achievement-icon"></i>
-                               <span>بناء نظام تتبع مواقع لحظي للسائقين بـ <strong>Redis GEO</strong> و Socket.IO مع دعم العمل في الخلفية</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-mobile-alt achievement-icon"></i>
-                               <span>تطوير تطبيق موبايل احترافي بـ <strong>Expo / React Native</strong> مع دعم RTL يدوي ولغة عربية</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-wallet achievement-icon"></i>
-                               <span>تصميم نظام عمولات ومحفظة متكامل مع دفع إلكتروني وإشعارات push عبر Firebase FCM</span>
-                           </div>
-                       </div>
-                       <div class="tech-stack">
-                           <span class="tech-item">Bun</span>
-                           <span class="tech-item">TypeScript</span>
-                           <span class="tech-item">Express.js</span>
-                           <span class="tech-item">PostgreSQL + PostGIS</span>
-                           <span class="tech-item">Redis GEO</span>
-                           <span class="tech-item">Socket.IO</span>
-                           <span class="tech-item">Expo / React Native</span>
-                           <span class="tech-item">Zustand</span>
-                           <span class="tech-item">NativeWind</span>
-                           <span class="tech-item">Vite + React</span>
-                           <span class="tech-item">AWS S3</span>
-                           <span class="tech-item">Firebase FCM</span>
-                       </div>
-                   </div>
-
-                   <!-- Shfli Project -->
-                   <div class="experience-item">
-                       <div class="experience-header">
-                           <div class="job-info">
-                               <h3>Technical Lead & Senior Backend Developer</h3>
-                               <div class="company-name">Shfli Project (shfli.com)</div>
-                               <div class="job-location">سوريا (عن بُعد)</div>
-                           </div>
-                           <div class="date-range">2024 - نوفمبر 2025</div>
-                       </div>
-                       <div class="job-description">
-                           قيادة تقنية شاملة لمشروع Shfli الرائد في السوق السوري. إشراف على 6 مطورين وإدارة كامل الدورة التقنية من التصميم إلى النشر مع التركيز على الابتكار والجودة العالية.
-                       </div>
-                       <div class="achievements-list">
-                           <div class="achievement-item">
-                               <i class="fas fa-code achievement-icon"></i>
-                               <span>تصميم وتطوير البنية التحتية الكاملة من الصفر باستخدام أحدث التقنيات</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-mobile-alt achievement-icon"></i>
-                               <span>تطوير APIs عالية الأداء تدعم أكثر من 100,000 مستخدم متزامن</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-chart-bar achievement-icon"></i>
-                               <span>تحقيق 99.9% uptime مع نظام monitoring متقدم وإنذار مبكر</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-cloud achievement-icon"></i>
-                               <span>تطبيق حلول Cloud Computing للتوسع التلقائي والكفاءة التشغيلية</span>
-                           </div>
-                       </div>
-                       <div class="tech-stack">
-                           <span class="tech-item">Node.js TypeScript</span>
-                           <span class="tech-item">RESTful APIs</span>
-                           <span class="tech-item">React Native CLI</span>
-                           <span class="tech-item">PostgreSQL</span>
-                           <span class="tech-item">Redis Cache</span>
-                           <span class="tech-item">AWS S3</span>
-                           <span class="tech-item">Docker</span>
-                           <span class="tech-item">WebSocket</span>
-                           <span class="tech-item">Postman Doc</span>
-                       </div>
-                   </div>
-
-                    <!-- Pagesshop Project -->
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <div class="job-info">
-                                <h3>Founder & Owner</h3>
-                                <div class="company-name">Pagesshop.com - منصة قوالب eBay</div>
-                                <div class="job-location">سوريا / ألمانيا</div>
-                            </div>
-                            <div class="date-range">2019 - 2021</div>
-                        </div>
-                        <div class="job-description">
-                            تأسيس وإدارة مشروع Pagesshop، منصة رائدة لتصميم واستضافة قوالب eBay الاحترافية. المشروع قدم حلاً تقنياً متكاملاً (SaaS) مكّن البائعين من إنشاء واجهات بيع جذابة عبر محرر مرئي متطور (Online Editor) دون الحاجة لخبرة برمجية.
-                        </div>
-                        <div class="achievements-list">
-                            <div class="achievement-item">
-                                <i class="fas fa-layer-group achievement-icon"></i>
-                                <span>تطوير واجهة مستخدم تفاعلية (SPA) باستخدام <strong>Angular</strong> لتقديم تجربة تحرير سلسة</span>
-                            </div>
-                            <div class="achievement-item">
-                                <i class="fas fa-server achievement-icon"></i>
-                                <span>بناء <strong>REST API</strong> متكامل باستخدام Node.js لإدارة الاشتراكات والقوالب</span>
-                            </div>
-                            <div class="achievement-item">
-                                <i class="fas fa-database achievement-icon"></i>
-                                <span>إدارة قواعد بيانات <strong>PostgreSQL</strong> لضمان سلامة وكفاءة البيانات</span>
-                            </div>
-                            <div class="achievement-item">
-                                <i class="fas fa-credit-card achievement-icon"></i>
-                                <span>دمج بوابات <strong>الدفع الإلكتروني</strong> (Payment Gateways) لاستقبال المدفوعات العالمية</span>
-                            </div>
-                            <div class="achievement-item">
-                                <i class="fas fa-terminal achievement-icon"></i>
-                                <span>إعداد وإدارة استضافة المشروع على سيرفرات <strong>Linux</strong> (DevOps) مع ضمان الأمان</span>
-                            </div>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech-item">Angular</span>
-                            <span class="tech-item">REST API</span>
-                            <span class="tech-item">PostgreSQL</span>
-                            <span class="tech-item">Linux Server</span>
-                            <span class="tech-item">Payment Gateways</span>
-                            <span class="tech-item">SaaS</span>
-                        </div>
-                    </div>
-
-                   <!-- Previous ANG Experience -->
-                   <div class="experience-item">
-                       <div class="experience-header">
-                           <div class="job-info">
-                               <h3>Senior Full Stack Developer</h3>
-                               <div class="company-name">ANG / Agentur für Arbeit</div>
-                               <div class="job-location">ألمانيا</div>
-                           </div>
-                           <div class="date-range">أبريل 2019 - فبراير 2020</div>
-                       </div>
-                       <div class="job-description">
-                           تطوير نظام إدارة محتوى مؤسسي متقدم باستخدام Joomla Framework مع تطوير مكونات مخصصة ووظائف معقدة. العمل في فريق Scrum متعدد التخصصات مع التركيز على الجودة والأداء.
-                       </div>
-                       <div class="achievements-list">
-                           <div class="achievement-item">
-                               <i class="fas fa-puzzle-piece achievement-icon"></i>
-                               <span>تطوير 20+ مكون Joomla مخصص مع وظائف متقدمة وواجهات تفاعلية</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-database achievement-icon"></i>
-                               <span>تصميم نظام قواعد البيانات المحسن لمعالجة البيانات الكبيرة بكفاءة</span>
-                           </div>
-                       </div>
-                       <div class="tech-stack">
-                           <span class="tech-item">PHP 7.4</span>
-                           <span class="tech-item">Joomla CMS</span>
-                           <span class="tech-item">MySQL</span>
-                           <span class="tech-item">JavaScript ES6</span>
-                           <span class="tech-item">jQuery</span>
-                           <span class="tech-item">RESTful APIs</span>
-                           <span class="tech-item">Jenkins</span>
-                       </div>
-                   </div>
-
-                   <!-- Earlier Projects Summary -->
-                   <div class="experience-item">
-                       <div class="experience-header">
-                           <div class="job-info">
-                               <h3>مطور ويب متكامل - مشاريع تخصصية</h3>
-                               <div class="company-name">مشاريع مستقلة ومؤسسية</div>
-                               <div class="job-location">ألمانيا / سوريا</div>
-                           </div>
-                           <div class="date-range">2015 - 2019</div>
-                       </div>
-                       <div class="job-description">
-                           تطوير محفظة متنوعة من التطبيقات والمنصات الرقمية المتقدمة بما في ذلك أنظمة إدارة المحتوى، منصات التجارة الإلكترونية، وحلول تقنية مخصصة للعملاء المؤسسيين.
-                       </div>
-                       <div class="achievements-list">
-                           <div class="achievement-item">
-                               <i class="fas fa-store achievement-icon"></i>
-                               <span>تطوير نظام eBay Template متكامل مع إدارة متقدمة للمنتجات (2018-2019)</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-book achievement-icon"></i>
-                               <span>إنشاء قاموس إلكتروني تفاعلي متعدد اللغات (2017-2018)</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-ad achievement-icon"></i>
-                               <span>منصة إعلانات مبوبة شاملة مع نظام دفع متكامل (2017)</span>
-                           </div>
-                           <div class="achievement-item">
-                               <i class="fas fa-globe achievement-icon"></i>
-                               <span>منصة ويب متعددة الوظائف مع لوحة تحكم متقدمة (2015-2017)</span>
-                           </div>
-                       </div>
-                       <div class="tech-stack">
-                           <span class="tech-item">MEAN Stack</span>
-                           <span class="tech-item">Angular</span>
-                           <span class="tech-item">MongoDB</span>
-                           <span class="tech-item">PHP Laravel</span>
-                           <span class="tech-item">Bootstrap</span>
-                           <span class="tech-item">Nginx</span>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-
-       <!-- Executive Contact Section -->
-       <div id="contact" class="contact-executive">
-           <h2 class="contact-title">شراكة تقنية استراتيجية</h2>
-           <p class="contact-subtitle">
-               دعني أقود التحول التقني لمؤسستك. متخصص في بناء الحلول المبتكرة وقيادة الفرق نحو التميز التقني والنجاح المستدام.
-           </p>
-
-           <div class="contact-methods">
-               <a href="mailto:emadalhamo(at)gmail.com" class="contact-method" title="البريد الإلكتروني التنفيذي">
-                   <i class="fas fa-envelope"></i>
-               </a>
-               <a href="#" class="contact-method" title="LinkedIn Professional">
-                   <i class="fab fa-linkedin-in"></i>
-               </a>
-               <a href="#" class="contact-method" title="GitHub Portfolio">
-                   <i class="fab fa-github"></i>
-               </a>
-               <a href="#" class="contact-method" title="Professional Network">
-                   <i class="fab fa-twitter"></i>
-               </a>
-           </div>
-           <div class="contact-info">
-               <div class="info-item">
-                   <div class="info-icon">
-                       <i class="fas fa-envelope"></i>
-                   </div>
-                   <div>
-                       <h4 style="color: var(--text-primary); margin-bottom: 5px;">البريد التنفيذي</h4>
-                       <span style="color: var(--text-secondary);">emadalhamo(at)gmail.com</span>
-                   </div>
-               </div>
-               <div class="info-item">
-                   <div class="info-icon">
-                       <i class="fas fa-map-marker-alt"></i>
-                   </div>
-                   <div>
-                       <h4 style="color: var(--text-primary); margin-bottom: 5px;">المقر الرئيسي</h4>
-                       <span style="color: var(--text-secondary);">إرفورت، تورينغن، ألمانيا</span>
-                   </div>
-               </div>
-               <div class="info-item">
-                   <div class="info-icon">
-                       <i class="fas fa-briefcase"></i>
-                   </div>
-                   <div>
-                       <h4 style="color: var(--text-primary); margin-bottom: 5px;">التوفر للمشاريع</h4>
-                       <span style="color: var(--accent-cyan);">متاح للاستشارات والمشاريع الاستراتيجية</span>
-                   </div>
-               </div>
-               <div class="info-item">
-                   <div class="info-icon">
-                       <i class="fas fa-clock"></i>
-                   </div>
-                   <div>
-                       <h4 style="color: var(--text-primary); margin-bottom: 5px;">ساعات العمل</h4>
-                       <span style="color: var(--text-secondary);">24/7 للمشاريع الحرجة</span>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
-
-   <!-- Premium Footer -->
-   <footer class="premium-footer">
-       <div class="footer-content">
-           <h3 class="footer-title">عماد الحمو - القائد التقني المتقدم</h3>
-           <p class="footer-text">
-               "في عالم التكنولوجيا المتسارع، النجاح لا يأتي من التقنيات التي نستخدمها، بل من الرؤية التي نحملها والفرق التي نقودها نحو التميز"
-           </p>
-
-           <a href="cv_print.html" target="_blank" class="cv-download-btn">
-               <i class="fas fa-file-pdf"></i>
-               تحميل السيرة الذاتية (PDF)
-           </a><br><br>
-           <div class="footer-signature">
-               <p style="margin-bottom: 15px;">
-                   &copy; <span id="current-year">2025</span> عماد الحمو. جميع الحقوق محفوظة.
-               </p>
-               <p style="font-size: 0.85rem; opacity: 0.8;">
-                   <i class="fas fa-code" style="margin: 0 8px; color: var(--accent-cyan);"></i>
-                   مصمم بخبرة تقنية متقدمة ورؤية إبداعية
-                   <i class="fas fa-heart" style="color: #e74c3c; margin: 0 8px;"></i>
-               </p>
-               <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                   <p style="font-size: 0.8rem; opacity: 0.6; font-style: italic;">
-                       "القيادة التقنية الحقيقية تكمن في تحويل التحديات إلى فرص للنمو والابتكار"
-                   </p>
-               </div>
-           </div>
-       </div>
-   </footer>
-
-   <!-- Enhanced JavaScript -->
-   <script>
-       // Professional Portfolio Enhancement System
-       class ExecutivePortfolio {
-           constructor() {
-               this.initNavigationSystem();
-               this.initScrollEffects();
-               this.initStatisticsAnimation();
-               this.initInteractiveElements();
-               this.initPerformanceOptimization();
-           }
-
-           initNavigationSystem() {
-               const navLinks = document.querySelectorAll('.nav-link');
-               const sections = document.querySelectorAll('section, [id]');
-
-               // Active navigation highlighting
-               window.addEventListener('scroll', () => {
-                   let current = '';
-                   sections.forEach(section => {
-                       const sectionTop = section.offsetTop;
-                       const sectionHeight = section.clientHeight;
-                       if (window.pageYOffset >= (sectionTop - 200)) {
-                           current = section.getAttribute('id');
-                       }
-                   });
-
-                   navLinks.forEach(link => {
-                       link.classList.remove('active');
-                       if (link.getAttribute('href') === '#' + current) {
-                           link.classList.add('active');
-                       }
-                   });
-               });
-
-               // Smooth scrolling
-               navLinks.forEach(link => {
-                   link.addEventListener('click', (e) => {
-                       e.preventDefault();
-                       const targetId = link.getAttribute('href').substring(1);
-                       const targetSection = document.getElementById(targetId);
-
-                       if (targetSection) {
-                           const offsetTop = targetSection.offsetTop - 100;
-                           window.scrollTo({
-                               top: offsetTop,
-                               behavior: 'smooth'
-                           });
-                       }
-                   });
-               });
-           }
-
-           initScrollEffects() {
-               // Parallax scrolling for hero section
-               const hero = document.querySelector('.executive-hero');
-               const heroContent = document.querySelector('.hero-content');
-
-               window.addEventListener('scroll', () => {
-                   const scrolled = window.pageYOffset;
-                   const rate = scrolled * -0.5;
-
-                   if (hero && heroContent) {
-                       heroContent.style.transform = `translateY(${rate}px)`;
-                   }
-               });
-
-               // Fade in animation on scroll
-               const observerOptions = {
-                   threshold: 0.1,
-                   rootMargin: '0px 0px -50px 0px'
-               };
-
-               const observer = new IntersectionObserver((entries) => {
-                   entries.forEach(entry => {
-                       if (entry.isIntersecting) {
-                           entry.target.style.opacity = '1';
-                           entry.target.style.transform = 'translateY(0)';
-                       }
-                   });
-               }, observerOptions);
-
-               // Observe all cards for animation
-               document.querySelectorAll('.pro-card, .executive-role, .contact-executive').forEach(el => {
-                   el.style.opacity = '0';
-                   el.style.transform = 'translateY(30px)';
-                   el.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                   observer.observe(el);
-               });
-           }
-
-           initStatisticsAnimation() {
-               const statNumbers = document.querySelectorAll('.stat-number');
-
-               statNumbers.forEach(stat => {
-                   const target = parseInt(stat.textContent.replace('+', ''));
-                   let current = 0;
-                   const increment = target / 60; // 60 frames animation
-
-                   const observer = new IntersectionObserver((entries) => {
-                       if (entries[0].isIntersecting) {
-                           const updateCounter = () => {
-                               if (current < target) {
-                                   current += increment;
-                                   stat.textContent = Math.ceil(current) + '+';
-                                   requestAnimationFrame(updateCounter);
-                               } else {
-                                   stat.textContent = target + '+';
-                               }
-                           };
-
-                           setTimeout(updateCounter, 500);
-                           observer.disconnect();
-                       }
-                   }, { threshold: 0.5 });
-
-                   observer.observe(stat);
-               });
-           }
-
-           initInteractiveElements() {
-               // Enhanced hover effects for skill tags
-               document.querySelectorAll('.skill-tag').forEach(tag => {
-                   tag.addEventListener('mouseenter', function() {
-                       this.style.transform = 'translateY(-2px) scale(1.02)';
-                       this.style.boxShadow = 'var(--shadow-md)';
-                   });
-
-                   tag.addEventListener('mouseleave', function() {
-                       this.style.transform = 'translateY(0) scale(1)';
-                       this.style.boxShadow = 'none';
-                   });
-               });
-
-               // Interactive contact methods
-               document.querySelectorAll('.contact-method').forEach(method => {
-                   method.addEventListener('click', function(e) {
-                       // Create ripple effect
-                       const ripple = document.createElement('div');
-                       const rect = this.getBoundingClientRect();
-                       const size = Math.max(rect.width, rect.height);
-
-                       ripple.style.cssText = `
-                           position: absolute;
-                           border-radius: 50%;
-                           background: rgba(100, 255, 218, 0.6);
-                           width: ${size}px;
-                           height: ${size}px;
-                           left: ${e.clientX - rect.left - size / 2}px;
-                           top: ${e.clientY - rect.top - size / 2}px;
-                           transform: scale(0);
-                           animation: ripple-effect 0.6s ease-out;
-                           pointer-events: none;
-                       `;
-
-                       this.appendChild(ripple);
-
-                       setTimeout(() => {
-                           ripple.remove();
-                       }, 600);
-                   });
-               });
-
-               // Experience item expand/collapse functionality
-               document.querySelectorAll('.experience-item').forEach(item => {
-                   const header = item.querySelector('.experience-header');
-                   const content = item.querySelector('.job-description');
-                   const achievements = item.querySelector('.achievements-list');
-
-                   let isExpanded = true; // Default expanded
-
-                   header.style.cursor = 'pointer';
-                   header.addEventListener('click', () => {
-                       isExpanded = !isExpanded;
-
-                       if (isExpanded) {
-                           content.style.maxHeight = content.scrollHeight + 'px';
-                           achievements.style.maxHeight = achievements.scrollHeight + 'px';
-                           item.style.opacity = '1';
-                       } else {
-                           content.style.maxHeight = '0';
-                           achievements.style.maxHeight = '0';
-                           item.style.opacity = '0.7';
-                       }
-                   });
-               });
-           }
-
-           initPerformanceOptimization() {
-               // Lazy loading for enhanced performance
-               const lazyElements = document.querySelectorAll('[data-src]');
-
-               if ('IntersectionObserver' in window) {
-                   const lazyObserver = new IntersectionObserver((entries) => {
-                       entries.forEach(entry => {
-                           if (entry.isIntersecting) {
-                               const element = entry.target;
-                               element.src = element.dataset.src;
-                               element.removeAttribute('data-src');
-                               lazyObserver.unobserve(element);
-                           }
-                       });
-                   });
-
-                   lazyElements.forEach(el => lazyObserver.observe(el));
-               }
-
-               // Preload critical resources
-               const criticalResources = [
-                   'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap'
-               ];
-
-               criticalResources.forEach(resource => {
-                   const link = document.createElement('link');
-                   link.rel = 'preload';
-                   link.as = 'style';
-                   link.href = resource;
-                   document.head.appendChild(link);
-               });
-
-               // Error handling
-               window.addEventListener('error', (e) => {
-                   console.warn('Portfolio Error:', e.message);
-               });
-
-               // Performance monitoring
-               if ('performance' in window) {
-                   window.addEventListener('load', () => {
-                       setTimeout(() => {
-                           const perfData = performance.getEntriesByType('navigation')[0];
-                           console.log('Portfolio Load Time:', Math.round(perfData.loadEventEnd - perfData.fetchStart) + 'ms');
-                       }, 1000);
-                   });
-               }
-           }
-       }
-
-       // Theme Management System
-       class ThemeManager {
-           constructor() {
-               this.initThemeControls();
-               this.applyDarkTheme();
-           }
-
-           applyDarkTheme() {
-               // Ensure dark theme is always applied
-               document.body.classList.add('dark-theme');
-
-               // Apply professional dark color scheme
-               document.documentElement.style.setProperty('--scrollbar-track', 'var(--bg-secondary)');
-               document.documentElement.style.setProperty('--scrollbar-thumb', 'var(--accent-gradient)');
-           }
-
-           initThemeControls() {
-               // Professional theme customization
-               const themeCustomizer = document.createElement('div');
-               themeCustomizer.innerHTML = `
-                   <div style="position: fixed; bottom: 30px; right: 30px; z-index: 999;">
-                       <button id="theme-toggle" style="
-                           width: 60px; height: 60px; border-radius: 50%;
-                           background: var(--accent-gradient); border: none;
-                           color: var(--bg-primary); font-size: 1.2rem;
-                           cursor: pointer; box-shadow: var(--shadow-xl);
-                           transition: all 0.3s ease; display: none;
-                       ">
-                           <i class="fas fa-palette"></i>
-                       </button>
-                   </div>
-               `;
-               document.body.appendChild(themeCustomizer);
-           }
-
-           // Set current year dynamically
-           setDynamicYear() {
-               const yearSpan = document.getElementById('current-year');
-               if (yearSpan) {
-                   yearSpan.textContent = new Date().getFullYear();
-               }
-           }
-       }
-
-       // Professional Loading Screen
-       class LoadingScreen {
-           constructor() {
-               this.createLoadingScreen();
-           }
-
-           createLoadingScreen() {
-               const loader = document.createElement('div');
-               loader.id = 'executive-loader';
-               loader.innerHTML = `
-                   <div style="
-                       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                       background: var(--bg-primary); display: flex;
-                       flex-direction: column; align-items: center;
-                       justify-content: center; z-index: 9999;
-                       transition: opacity 0.5s ease;
-                   ">
-                       <div style="margin-bottom: 30px;">
-                           <div style="
-                               width: 80px; height: 80px; border: 3px solid rgba(100, 255, 218, 0.1);
-                               border-top: 3px solid var(--accent-cyan); border-radius: 50%;
-                               animation: professional-spin 1s linear infinite;
-                           "></div>
-                       </div>
-                       <h3 style="
-                           color: var(--text-primary); font-size: 1.5rem;
-                           font-weight: 600; margin-bottom: 10px;
-                       ">عماد الحمو</h3>
-                       <p style="
-                           color: var(--text-secondary); font-size: 1rem;
-                       ">تحميل الملف التنفيذي...</p>
-                       <div style="
-                           width: 200px; height: 2px; background: rgba(100, 255, 218, 0.1);
-                           border-radius: 1px; margin-top: 20px; overflow: hidden;
-                       ">
-                           <div style="
-                               width: 0%; height: 100%; background: var(--accent-gradient);
-                               animation: loading-progress 2s ease-out forwards;
-                           "></div>
-                       </div>
-                   </div>
-               `;
-               document.body.appendChild(loader);
-
-               // Remove loader after page loads
-               window.addEventListener('load', () => {
-                   setTimeout(() => {
-                       loader.style.opacity = '0';
-                       setTimeout(() => {
-                           loader.remove();
-                       }, 500);
-                   }, 1500);
-               });
-           }
-
-           // Set current year dynamically
-           setDynamicYear() {
-               const yearSpan = document.getElementById('current-year');
-               if (yearSpan) {
-                   yearSpan.textContent = new Date().getFullYear();
-               }
-           }
-       }
-
-       // Always open at the top of the page on load (ignore browser scroll restoration / hash jumps)
-       if ('scrollRestoration' in history) {
-           history.scrollRestoration = 'manual';
-       }
-       window.addEventListener('beforeunload', () => window.scrollTo(0, 0));
-       window.addEventListener('load', () => window.scrollTo(0, 0));
-
-       // Initialize all systems when DOM is ready
-       document.addEventListener('DOMContentLoaded', () => {
-           window.scrollTo(0, 0);
-           new LoadingScreen();
-           new ExecutivePortfolio();
-           const themeManager = new ThemeManager();
-           // Set dynamic year
-           themeManager.setDynamicYear();
-       });
-
-       // Add custom CSS animations
-       const customAnimations = document.createElement('style');
-       customAnimations.textContent = `
-           @keyframes professional-spin {
-               0% { transform: rotate(0deg); }
-               100% { transform: rotate(360deg); }
-           }
-
-           @keyframes loading-progress {
-               0% { width: 0%; }
-               100% { width: 100%; }
-           }
-
-           @keyframes ripple-effect {
-               to {
-                   transform: scale(4);
-                   opacity: 0;
-               }
-           }
-
-           @keyframes pulse-glow {
-               0%, 100% {
-                   box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
-               }
-               50% {
-                   box-shadow: 0 0 40px rgba(100, 255, 218, 0.6);
-               }
-           }
-
-           /* Enhanced focus styles for accessibility */
-           *:focus {
-               outline: 2px solid var(--accent-cyan);
-               outline-offset: 2px;
-           }
-
-           /* Smooth transitions for all interactive elements */
-           .pro-card,
-           .skill-category,
-           .experience-item,
-           .contact-method,
-           .nav-link {
-               transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-           }
-
-           /* Professional selection highlighting */
-           ::selection {
-               background: rgba(100, 255, 218, 0.3);
-               color: var(--text-primary);
-           }
-
-           ::-moz-selection {
-               background: rgba(100, 255, 218, 0.3);
-               color: var(--text-primary);
-           }
-
-           /* Enhanced mobile responsiveness */
-           @media (max-width: 640px) {
-               .executive-hero {
-                   padding: 60px 20px;
-               }
-
-               .pro-card {
-                   margin: 0 -10px 30px;
-                   border-radius: var(--radius-md);
-               }
-
-               .card-content {
-                   padding: 25px 20px;
-               }
-
-               .executive-stats {
-                   grid-template-columns: repeat(2, 1fr);
-                   gap: 15px;
-               }
-
-               .skills-premium {
-                   grid-template-columns: 1fr;
-                   gap: 20px;
-               }
-
-               .skill-category {
-                   padding: 25px 20px;
-               }
-
-               .premium-nav {
-                   padding: 12px 20px;
-                   gap: 15px;
-                   margin: 10px;
-                   width: calc(100% - 10px);
-               }
-
-               .nav-link {
-                   padding: 8px 15px;
-                   font-size: 0.9rem;
-               }
-
-               .contact-methods {
-                   gap: 15px;
-               }
-
-               .contact-method {
-                   width: 70px;
-                   height: 70px;
-                   font-size: 1.5rem;
-               }
-           }
-
-           /* Print optimizations */
-           @media print {
-               .premium-nav,
-               .premium-footer,
-               .contact-methods,
-               #executive-loader,
-               #theme-toggle {
-                   display: none !important;
-               }
-
-               .pro-card,
-               .executive-hero,
-               .executive-role {
-                   background: white !important;
-                   color: black !important;
-                   box-shadow: none !important;
-                   border: 1px solid #ddd !important;
-                   page-break-inside: avoid;
-               }
-
-               body {
-                   background: white !important;
-                   color: black !important;
-                   font-size: 12pt;
-                   line-height: 1.4;
-               }
-
-               .executive-title {
-                   color: #2c3e50 !important;
-               }
-           }
-       `;
-       document.head.appendChild(customAnimations);
-
-       // Add structured data for SEO
-       const structuredData = {
-           "@context": "https://schema.org",
-           "@type": "Person",
-           "name": "عماد الحمو",
-           "alternateName": "Emad Alhamou",
-           "jobTitle": "Senior Technical Lead & Full Stack Developer",
-           "description": "قائد تقني محترف مع خبرة 10+ سنوات في تطوير الحلول التقنية المتقدمة",
-           "worksFor": {
-               "@type": "Organization",
-               "name": "IBYKUS AG",
-               "location": "Erfurt, Germany"
-           },
-           "address": {
-               "@type": "PostalAddress",
-               "addressLocality": "Erfurt",
-               "addressRegion": "Thuringia",
-               "addressCountry": "Germany"
-           },
-           "email": "emadalhamo(at)gmail.com",
-           "birthPlace": "Damascus, Syria",
-           "birthDate": "1986",
-           "nationality": "Syrian",
-           "knowsAbout": [
-               "JavaScript", "TypeScript", "Node.js", "React", "Full Stack Development",
-               "Technical Leadership", "Team Management", "DevOps", "Cloud Computing",
-               "Microservices", "Database Design", "Software Architecture"
-           ],
-           "hasOccupation": {
-               "@type": "Occupation",
-               "name": "Senior Technical Lead",
-               "occupationLocation": {
-                   "@type": "City",
-                   "name": "Erfurt, Germany"
-               },
-               "skills": [
-                   "Technical Leadership",
-                   "Full Stack Development",
-                   "Team Management",
-                   "Cloud Computing",
-                   "Software Architecture"
-               ]
-           },
-           "award": [
-               "10+ Years Technical Excellence",
-               "50+ Successful Projects",
-               "5+ Teams Led to Success"
-           ]
-       };
-
-       const scriptTag = document.createElement('script');
-       scriptTag.type = 'application/ld+json';
-       scriptTag.textContent = JSON.stringify(structuredData);
-       document.head.appendChild(scriptTag);
-   </script>
+          </article>
+          <article>
+            <time>أبريل 2026 — الآن</time>
+            <div>
+              <h3>Founder · Arab Solutions</h3>
+              <p>منصة عربية لدعم العملاء بالذكاء الاصطناعي</p>
+            </div>
+          </article>
+          <article>
+            <time>2025.2 — 2026.4</time>
+            <div>
+              <h3>Technical Lead &amp; Co-Founder · Shfli</h3>
+              <p>منصة التجارة الإلكترونية والإعلانات المبوبة في سوريا (shfli.com)</p>
+            </div>
+          </article>
+          <article>
+            <time>Founder</time>
+            <div>
+              <h3>TakeCar</h3>
+              <p>بناء وإدارة منصة تنقّل سورية متكاملة</p>
+            </div>
+          </article>
+          <article>
+            <time>2019 — 2021</time>
+            <div>
+              <h3>Founder · PageShop</h3>
+              <p>منصة SaaS للتجارة الإلكترونية</p>
+            </div>
+          </article>
+          <article>
+            <time>2015 — 2020</time>
+            <div>
+              <h3>Full Stack Developer</h3>
+              <p>مشاريع مؤسسية ومستقلة · ألمانيا وسوريا</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container contactInner">
+        <p class="label light">القادم</p>
+        <h2>أبني للمستقبل،<br><em>خطوة حقيقية كل يوم.</em></h2>
+        <p>مهتم بالنقل الذكي، الذكاء الاصطناعي، والمنتجات الرقمية التي تخدم الأسواق الناشئة.</p>
+        <div class="contactLinks">
+          <a href="mailto:emadalhamo@gmail.com">راسلني <b>↗</b></a>
+          <a href="https://omysyria.com/ar" target="_blank" rel="noreferrer">اكتشف حلول عربية <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="container">
+      <div class="brand"><span>EA</span> Emad Alhamou</div>
+      <p>Founder &amp; Product Builder</p>
+      <p>© 2026</p>
+    </footer>
+  </main>
 </body>
 </html>
