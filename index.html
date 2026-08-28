@@ -37,7 +37,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=8">
   <noscript>
     <style>.reveal{opacity:1;transform:none;transition:none}</style>
   </noscript>
@@ -57,6 +57,7 @@
 </head>
 <body>
   <a class="skipLink" href="#main">تخطَّ إلى المحتوى</a>
+  <div class="progress" aria-hidden="true"><b></b></div>
   <main id="main">
     <!-- Navigation -->
     <nav class="nav container" id="top" aria-label="التنقل الرئيسي">
@@ -75,7 +76,7 @@
     <!-- Hero Section -->
     <section class="hero container">
       <div class="heroCopy">
-        <p class="eyebrow"><i></i> مؤسس · صانع منتجات · رائد أعمال تقني</p>
+        <p class="eyebrow"><i></i> مؤسس <span class="sep">·</span> صانع منتجات <span class="sep">·</span> رائد أعمال تقني</p>
         <h1>أبني تقنيات<br>تحل مشاكل <em>حقيقية.</em></h1>
         <p class="lead">أنا عماد الحمو، مؤسس <strong>تيك كار</strong> و<strong>حلول عربية</strong> و<strong>شفلي</strong>. أعمل عند تقاطع التقنية، التشغيل، وفهم السوق لتحويل الأفكار المعقدة إلى منتجات بسيطة يستخدمها الناس كل يوم.</p>
         <div class="actions">
@@ -129,7 +130,7 @@
         <div class="takeCopy reveal">
           <h3>منصة تنقّل سورية<br>بطموح عالمي.</h3>
           <p>تيك كار تطبيق يجمع الراكب والسفير في تجربة واحدة سهلة. صُمم للسوق السوري، مع تركيز على المرونة، سهولة الاستخدام، والتقنية المملوكة محلياً.</p>
-          <div class="featureRows">
+          <div class="featureRows stagger">
             <div><span>01</span><b>تجربة واحدة للراكب والسفير</b></div>
             <div><span>02</span><b>تسعير مرن وعروض مباشرة</b></div>
             <div><span>03</span><b>خرائط وتوجيه محسّنان للسوق المحلي</b></div>
@@ -154,7 +155,7 @@
           <h3>منصة دعم عملاء بالذكاء الاصطناعي، تجمع المعرفة والقنوات في مكان واحد.</h3>
           <p>أبني حلول عربية كمنصة SaaS عربية أولًا، تساعد الشركات على تحويل محتواها وقاعدة معرفتها إلى مساعد ذكي يفهم أسئلة العملاء ويقدّم إجابات دقيقة ومتسقة.</p>
           <p>تدعم المنصة المحادثات متعددة القنوات، إدارة المعرفة، وتقنيات RAG، مع اهتمام خاص باللغة العربية، الخصوصية، وسهولة الدمج مع التطبيقات والمواقع.</p>
-          <div class="arabFeatures">
+          <div class="arabFeatures stagger">
             <div><span>01</span><b>مساعد ذكي مبني على معرفة الشركة</b></div>
             <div><span>02</span><b>دعم عربي أولًا وقنوات موحّدة</b></div>
             <div><span>03</span><b>تكامل مرن عبر الويب والتطبيقات وواجهات API</b></div>
@@ -178,7 +179,7 @@
           <h3>منصة شاملة للبيع والشراء والمزادات، تجمع المعاملات والفرص في مكان واحد.</h3>
           <p>قدت الفريق التقني وبنيت الأنظمة الخلفية لمنصة وتطبيق شفلي كأول سوق إلكتروني تفاعلي متقدم في سوريا، يربط البائعين والمشترين في مجالات السيارات، العقارات، المزادات المباشرة، البازارات، وفرص العمل.</p>
           <p>تم تصميم البنية التحتية السحابية وواجهات REST APIs لتوفير أداء فائق السرعة واستقرارية 99.9%، مع توجيه وخرائط محسّنة تلائم خصائص السوق السوري.</p>
-          <div class="shfliFeatures">
+          <div class="shfliFeatures stagger">
             <div><span>01</span><b>سوق إلكتروني متعدد الأقسام ومزادات وبازارات مباشرة</b></div>
             <div><span>02</span><b>خرائط محلية وتجربة مستخدم مخصصة للهواتف والويب</b></div>
             <div><span>03</span><b>بنية سحابية فائقة السرعة وواجهات API متطورة</b></div>
@@ -214,14 +215,6 @@
           <p>أراقب الاستخدام الفعلي، أحل نقاط الاحتكاك، وأطوّر المنتج باستمرار وفق أثر واضح على الناس والعمل.</p>
         </article>
       </div>
-      <div class="skillLine">
-        <span>Product Strategy</span>
-        <span>Mobile Apps</span>
-        <span>Backend Systems</span>
-        <span>Real-time Infrastructure</span>
-        <span>Maps &amp; Routing</span>
-        <span>Business Operations</span>
-      </div>
     </section>
 
     <!-- Career Section -->
@@ -232,7 +225,7 @@
           <h2>أكثر من 10 سنوات<br>في صناعة التقنية.</h2>
           <p>خبرة عملية في ألمانيا وسوريا، من تطوير المنتجات المستقلة إلى قيادة الأنظمة والفرق التقنية.</p>
         </div>
-        <div class="timeline reveal">
+        <div class="timeline stagger">
           <article>
             <time>2020 — الآن</time>
             <div>
@@ -302,8 +295,38 @@
   <script>
   (function () {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // stagger indexes (cascade delay per child)
+    Array.prototype.forEach.call(document.querySelectorAll('.stagger'), function (box) {
+      Array.prototype.forEach.call(box.children, function (child, i) {
+        child.style.transitionDelay = (i * 80) + 'ms';
+      });
+    });
+
+    // scroll progress (RTL: fills from the right)
+    var bar = document.querySelector('.progress b');
+    if (bar) {
+      var tick = function () {
+        var root = document.documentElement;
+        var max = root.scrollHeight - root.clientHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? root.scrollTop / max : 0) + ')';
+      };
+      var raf = false;
+      window.addEventListener('scroll', function () {
+        if (!raf) {
+          raf = true;
+          requestAnimationFrame(function () { raf = false; tick(); });
+        }
+      }, { passive: true });
+      tick();
+    }
+  })();
+  </script>
+  <script>
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
     var supported = 'IntersectionObserver' in window;
-    var els = document.querySelectorAll('.reveal');
+    var els = document.querySelectorAll('.reveal, .stagger');
     function showAll(list) { Array.prototype.forEach.call(list, function (el) { el.classList.add('in'); }); }
 
     if (!supported || reduce.matches) { showAll(els); return; }
@@ -318,7 +341,7 @@
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
 
     Array.prototype.forEach.call(els, function (el) { io.observe(el); });
-    setTimeout(function () { showAll(document.querySelectorAll('.reveal:not(.in)')); }, 6000);
+    setTimeout(function () { showAll(document.querySelectorAll('.reveal:not(.in), .stagger:not(.in)')); }, 6000);
   })();
   </script>
 </body>

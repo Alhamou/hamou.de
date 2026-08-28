@@ -111,13 +111,22 @@ footer a:focus-visible,
   display: flex;
 }
 
-.links a {
+".links a {
   color: #55564f;
-  transition: color 0.2s ease;
+  background: linear-gradient(currentColor, currentColor) no-repeat right calc(100% - 1px);
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, background-size 0.25s ease;
+}
+
+::selection {
+  background: var(--acid);
+  color: var(--ink);
 }
 
 .links a:hover {
   color: var(--ink);
+  background-size: 100% 1px;
 }
 
 .navCta {
@@ -153,8 +162,16 @@ footer a:focus-visible,
   display: flex;
 }
 
+.eyebrow {
+  letter-spacing: 0;
+}
+
+.eyebrow .sep {
+  color: var(--ink);
+}
+
 .eyebrow i {
-  background: var(--acid);
+  background: var(--ink);
   border-radius: 50%;
   width: 8px;
   height: 8px;
@@ -781,21 +798,6 @@ footer a:focus-visible,
   line-height: 1.8;
 }
 
-.skillLine {
-  border-top: 1px solid var(--line);
-  flex-wrap: wrap;
-  gap: 8px;
-  padding-top: 28px;
-  display: flex;
-}
-
-.skillLine span {
-  border: 1px solid #cbcac0;
-  border-radius: 50px;
-  padding: 9px 13px;
-  font: 11px 'Manrope', sans-serif;
-}
-
 /* Career Section */
 .career {
   color: #fff;
@@ -943,6 +945,248 @@ footer p {
     transform: none;
     transition: none;
   }
+
+  .js .stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .statement blockquote span {
+    transition: none;
+    background-size: 100% 3px;
+  }
+
+  .progress {
+    display: none;
+  }
+}
+
+/* ============ Motion System ============ */
+.progress {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  z-index: 95;
+}
+
+.progress b {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--acid);
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero entrance choreography */
+  .js .heroCopy > * {
+    animation: riseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .js .heroCopy > *:nth-child(1) { animation-delay: 0.05s; }
+  .js .heroCopy > *:nth-child(2) { animation-delay: 0.16s; }
+  .js .heroCopy > *:nth-child(3) { animation-delay: 0.28s; }
+  .js .heroCopy > *:nth-child(4) { animation-delay: 0.4s; }
+
+  .js .heroArt {
+    animation: artIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+  }
+
+  .js .monogram {
+    animation: stamp 0.55s cubic-bezier(0.3, 1.35, 0.6, 1) 0.8s both;
+  }
+
+  .js .orbit1 {
+    animation: spin 60s linear infinite;
+  }
+
+  .js .orbit2 {
+    animation: spin 45s linear infinite reverse;
+  }
+
+  .js .orbit1::before,
+  .js .orbit2::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    border-radius: 50%;
+  }
+
+  .js .orbit1::before { background: var(--acid); }
+  .js .orbit2::before { background: var(--ink); }
+
+  .js .tag {
+    animation: floaty 5s ease-in-out infinite alternate;
+  }
+
+  .js .tag2 {
+    animation-delay: -2.5s;
+  }
+
+  .js .projectStatus i,
+  .js .shfliStatus i {
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  /* Staggered children (feature lists, timeline) */
+  .js .stagger > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .js .stagger.in > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Statement underline draw */
+  .statement blockquote span {
+    background: linear-gradient(var(--acid), var(--acid)) no-repeat right bottom;
+    background-size: 0% 3px;
+    padding-bottom: 6px;
+    transition: background-size 0.9s ease 0.35s;
+  }
+
+  .statement .reveal.in span {
+    background-size: 100% 3px;
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes artIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes stamp {
+  0% {
+    opacity: 0;
+    transform: scale(1.6) rotate(-7deg);
+    box-shadow: 0 0 0 var(--acid);
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-7deg);
+    box-shadow: 20px 24px 0 var(--acid);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floaty {
+  to {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.4);
+  }
+}
+
+/* ============ Micro-interactions ============ */
+.actions a,
+.outline,
+.arabCta,
+.shfliCta,
+.cards article,
+.timeline article,
+.contactLinks a {
+  transition: transform 0.18s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.actions a b,
+.outline b,
+.arabCta b,
+.shfliCta b,
+.contactLinks b {
+  display: inline-block;
+  transition: transform 0.18s ease;
+}
+
+.actions a:hover,
+.outline:hover,
+.arabCta:hover,
+.shfliCta:hover,
+.contactLinks a:hover {
+  transform: translateY(-2px);
+}
+
+.actions a:hover b,
+.outline:hover b,
+.arabCta:hover b,
+.shfliCta:hover b,
+.contactLinks a:hover b {
+  transform: translateX(-5px);
+}
+
+.cards article {
+  position: relative;
+}
+
+.cards article::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  inset-inline-start: 0;
+  width: 0;
+  height: 3px;
+  background: var(--ink);
+  transition: width 0.25s ease;
+}
+
+.cards article:hover::before {
+  width: 44px;
+}
+
+.cards article:hover {
+  transform: translateY(-4px);
+}
+
+.cards article span {
+  transition: color 0.2s ease;
+}
+
+.cards article:hover span {
+  color: var(--ink);
+}
+
+.timeline article:hover {
+  background: #ffffff08;
 }
 
 /* Responsive Media Queries */
