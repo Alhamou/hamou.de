@@ -352,7 +352,8 @@ footer a:focus-visible,
 }
 
 .about h2,
-.work h2 {
+.work h2,
+.ossHead h2 {
   margin: 32px 0;
   font-size: 50px;
   line-height: 1.3;
@@ -751,6 +752,160 @@ footer a:focus-visible,
   padding-right: 22px;
 }
 
+/* Open Source Section */
+.ossHead {
+  grid-template-columns: 1.3fr 1fr;
+  align-items: end;
+  gap: 100px;
+  display: grid;
+}
+
+.ossHead > p {
+  color: #5f6058;
+  padding-bottom: 25px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.ossGrid {
+  border-top: 1px solid var(--ink);
+  grid-template-columns: 1fr 1fr;
+  margin-top: 12px;
+  display: grid;
+}
+
+.ossCard {
+  grid-template-columns: 64px 1fr;
+  align-items: start;
+  gap: 22px;
+  padding-block: 36px 40px;
+  display: grid;
+  border-bottom: 1px solid var(--line);
+}
+
+.ossCard:nth-child(odd) {
+  border-inline-end: 1px solid var(--line);
+  padding-inline-end: 40px;
+}
+
+.ossCard:nth-child(even) {
+  padding-inline-start: 40px;
+}
+
+.ossCard img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #12130f;
+}
+
+.ossCard header {
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  display: flex;
+}
+
+.ossCard h3 {
+  margin: 0;
+  font: 600 22px 'Manrope', 'IBM Plex Sans Arabic', sans-serif;
+  letter-spacing: -0.3px;
+}
+
+.ossCard time {
+  color: var(--muted);
+  flex: none;
+  font: 11px 'Manrope', sans-serif;
+}
+
+.ossCard > div > p {
+  color: #56574f;
+  margin: 14px 0 0;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.ossBody span {
+  color: var(--ink);
+  margin-inline-end: 8px;
+  font-weight: 700;
+}
+
+.ossTags {
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ossTags li {
+  direction: ltr;
+  color: #3d3e38;
+  border: 1px solid var(--line);
+  padding: 4px 8px;
+  font: 11px 'Manrope', sans-serif;
+}
+
+.ossLinks {
+  gap: 22px;
+  margin-top: 18px;
+  display: flex;
+}
+
+.ossLinks a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 3px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ossLinks b {
+  padding-inline-start: 8px;
+}
+
+.ossInvite {
+  color: #fff;
+  background: #24251f;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: end;
+  gap: 64px;
+  margin-top: 48px;
+  padding: 48px 44px 52px;
+  display: grid;
+}
+
+.ossInvite h3 {
+  margin: 28px 0 0;
+  font-size: 40px;
+  line-height: 1.35;
+}
+
+.ossInvite p {
+  color: #c4c5bc;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.ossInvite a {
+  color: var(--acid);
+  border-bottom: 1px solid var(--acid);
+  margin-top: 22px;
+  padding-bottom: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.ossInvite a b {
+  padding-inline-start: 10px;
+}
+
 /* How I Work Section */
 .workHead {
   grid-template-columns: 1.3fr 1fr;
@@ -908,6 +1063,8 @@ footer p {
 .statement blockquote,
 .about h2,
 .work h2,
+.ossHead h2,
+.ossInvite h3,
 .takeCopy h3,
 .cards h3,
 .career h2,
@@ -1123,6 +1280,8 @@ footer p {
 .outline,
 .arabCta,
 .shfliCta,
+.ossLinks a,
+.ossInvite a,
 .cards article,
 .timeline article,
 .contactLinks a {
@@ -1133,6 +1292,8 @@ footer p {
 .outline b,
 .arabCta b,
 .shfliCta b,
+.ossLinks b,
+.ossInvite a b,
 .contactLinks b {
   display: inline-block;
   transition: transform 0.18s ease;
@@ -1142,6 +1303,8 @@ footer p {
 .outline:hover,
 .arabCta:hover,
 .shfliCta:hover,
+.ossLinks a:hover,
+.ossInvite a:hover,
 .contactLinks a:hover {
   transform: translateY(-2px);
 }
@@ -1150,6 +1313,8 @@ footer p {
 .outline:hover b,
 .arabCta:hover b,
 .shfliCta:hover b,
+.ossLinks a:hover b,
+.ossInvite a:hover b,
 .contactLinks a:hover b {
   transform: translateX(-5px);
 }
@@ -1201,7 +1366,8 @@ footer p {
   .arabGrid,
   .shfliGrid,
   .careerGrid,
-  .workHead {
+  .workHead,
+  .ossHead {
     gap: 70px;
   }
 
@@ -1263,9 +1429,30 @@ footer p {
   .statementGrid,
   .about,
   .takeGrid,
-  .workHead {
+  .workHead,
+  .ossHead,
+  .ossInvite {
     grid-template-columns: 1fr;
     gap: 30px;
+  }
+
+  .ossGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ossCard,
+  .ossCard:nth-child(odd),
+  .ossCard:nth-child(even) {
+    border-inline-end: 0;
+    padding: 28px 0 32px;
+  }
+
+  .ossInvite {
+    padding: 32px 24px 36px;
+  }
+
+  .ossInvite h3 {
+    font-size: 32px;
   }
 
   .statement blockquote {
@@ -1277,7 +1464,8 @@ footer p {
   }
 
   .about h2,
-  .work h2 {
+  .work h2,
+  .ossHead h2 {
     font-size: 40px;
   }
 
