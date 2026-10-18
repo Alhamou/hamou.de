@@ -1295,8 +1295,24 @@ footer p {
 .ossLinks b,
 .ossInvite a b,
 .contactLinks b {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   transition: transform 0.18s ease;
+}
+
+.icon-arr {
+  display: inline-block;
+  vertical-align: middle;
+  stroke: currentColor;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.tag1 b {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 4px;
+  vertical-align: middle;
 }
 
 .actions a:hover,
