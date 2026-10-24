@@ -441,37 +441,7 @@ h1 .line { display: block; }
   background-clip: text;
   color: transparent;
 }
-.coord {
-  position: absolute;
-  direction: ltr;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-.coord b { display: block; color: var(--text); font-weight: 500; letter-spacing: 0.14em; font-size: 11px; }
-.coordA { top: 12%; left: 30%; }
-.coordB { bottom: 16%; left: 54%; text-align: left; }
-.tag {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  direction: ltr;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  background: rgba(12, 15, 20, 0.8);
-  border: 1px solid var(--line2);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
 .tag b { color: var(--signal); }
-.tag1 { top: 4%; right: 2%; animation: float 6s ease-in-out infinite reverse; }
-.tag2 { bottom: 4%; left: 2%; animation: float 8s ease-in-out infinite; }
-.tag2 i { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: blink 1.6s ease-in-out infinite; }
 
 .heroFoot {
   display: flex;
@@ -736,11 +706,7 @@ h2 {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 14px;
   margin-bottom: 26px;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--acc) 35%, transparent);
-  background: color-mix(in srgb, var(--acc) 8%, transparent);
   color: var(--acc);
   font-size: 13px;
   font-weight: 600;
@@ -756,25 +722,17 @@ h2 {
 }
 .ventureCopy > p { color: var(--muted); font-size: 17px; line-height: 2; margin-bottom: 14px; }
 .featureRows {
-  margin: 30px 0 34px;
+  margin: 26px 0 34px;
   display: grid;
-  gap: 10px;
 }
 .featureRows div {
   display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 16px 20px;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.02);
-  transition: border-color 0.3s ease, background 0.3s ease, transform 0.4s var(--ease);
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
 }
-.featureRows div:hover {
-  border-color: color-mix(in srgb, var(--acc) 45%, transparent);
-  background: color-mix(in srgb, var(--acc) 6%, transparent);
-  transform: translateX(-6px);
-}
+.featureRows div:last-child { border-bottom: 0; }
 .featureRows span { font-family: var(--mono); font-size: 12px; color: var(--acc); }
 .featureRows b { font-weight: 500; font-size: 16px; }
 .venture-cta { background: var(--acc); color: #0b0d10; border-color: transparent; box-shadow: 0 10px 40px -14px var(--acc); }
@@ -1094,7 +1052,6 @@ footer .mark { width: 32px; height: 32px; border-radius: 10px; font-size: 11px; 
 .js .stagger.in > * { opacity: 1; transform: none; }
 .js .stagger.in > .ossCard:hover,
 .js .stagger.in > .facts div:hover { transform: translateY(-6px); }
-.js .stagger.in.featureRows > div:hover { transform: translateX(-6px); }
 .js .stagger.in.facts > div:hover { transform: translateY(-3px); }
 
 .hero .reveal:nth-child(2) { transition-delay: 0.1s; }
@@ -1154,27 +1111,4 @@ footer .mark { width: 32px; height: 32px; border-radius: 10px; font-size: 11px; 
   .navWrap.scrolled .nav { width: calc(100% - 24px); }
   .brandName { display: none; }
   .heroArt { width: 100%; }
-  .coord { font-size: 9px; }
-  .coord b { font-size: 9px; }
-  .tag { font-size: 9px; padding: 6px 10px; }
-  .heroFoot { margin-top: 40px; gap: 8px 16px; font-size: 10px; }
-  .heroFoot .scroll { display: none; }
-  .actions .btn { flex: 1 1 auto; justify-content: space-between; }
-  .actions .btn.ghost { justify-content: center; }
-  .facts { grid-template-columns: 1fr; gap: 12px; }
-  .ventureCard { border-radius: 26px; padding: 28px 22px; }
-  .ventureName { font-size: 60px; }
-  .wordmark { font-size: 92px; }
-  .featureRows div { padding: 14px 16px; gap: 14px; }
-  .featureRows b { font-size: 15px; }
-  .ossGrid { grid-template-columns: 1fr; }
-  .ossCard.wide, .ossCard.wide:last-child { grid-column: auto; }
-  .ossBodyWrap { padding: 20px; }
-  .timeline { padding-right: 28px; }
-  .timeline article { grid-template-columns: 1fr; gap: 4px; }
-  .timeline article::before { right: -28px; }
-  .timeline h3 { text-align: right; }
-  .contactLinks { width: 100%; flex-direction: column; }
-  .contactLinks .btn { justify-content: space-between; }
-  footer { flex-direction: column; text-align: center; gap: 8px; }
-}
+  
