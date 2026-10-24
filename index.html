@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Emad Alhamou | Founder &amp; Product Builder</title>
   <meta name="description" content="Founder &amp; Builder of TakeCar, Shfli, and Arab Solutions. Building technology products for mobility, marketplaces, AI-powered customer support, and emerging markets.">
-  <meta name="theme-color" content="#07090c">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#12130f">
 
   <!-- Favicon and Manifest -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -35,12 +34,12 @@
   <!-- Google Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="styles.css?v=11">
   <noscript>
-    <style>.reveal,.stagger>*{opacity:1!important;transform:none!important;transition:none!important}.statement .w{opacity:1!important}</style>
+    <style>.reveal{opacity:1;transform:none;transition:none}</style>
   </noscript>
   <script type="application/ld+json">
   {
@@ -59,13 +58,11 @@
 <body>
   <a class="skipLink" href="#main">تخطَّ إلى المحتوى</a>
   <div class="progress" aria-hidden="true"><b></b></div>
-  <div class="glow" aria-hidden="true"></div>
-
-  <!-- Navigation -->
-  <header class="navWrap" id="top">
-    <nav class="nav" aria-label="التنقل الرئيسي">
+  <main id="main">
+    <!-- Navigation -->
+    <nav class="nav container" id="top" aria-label="التنقل الرئيسي">
       <a class="brand" href="#top" aria-label="الصفحة الرئيسية">
-        <span class="mark">EA</span><span class="brandName">Emad Alhamou</span>
+        <span>EA</span> Emad Alhamou
       </a>
       <div class="links">
         <a href="#about">عني</a>
@@ -74,91 +71,47 @@
         <a href="#shfli">شفلي</a>
         <a href="#oss">مفتوح المصدر</a>
       </div>
-      <a class="navCta" href="#contact"><i></i>لنتواصل</a>
+      <a class="navCta" href="#contact">لنتواصل</a>
     </nav>
-  </header>
 
-  <main id="main">
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="heroGrid container">
-        <div class="heroCopy">
-          <p class="eyebrow reveal"><i></i> مؤسس <span class="sep">·</span> صانع منتجات <span class="sep">·</span> رائد أعمال تقني</p>
-          <h1 class="reveal">
-            <span class="line">أبني تقنيات</span>
-            <span class="line">تحل مشاكل <em>حقيقية.</em></span>
-          </h1>
-          <p class="lead reveal">أنا عماد الحمو، مؤسس <strong>تيك كار</strong> و<strong>حلول عربية</strong> و<strong>شفلي</strong>. أعمل عند تقاطع التقنية، التشغيل، وفهم السوق لتحويل الأفكار المعقدة إلى منتجات بسيطة يستخدمها الناس كل يوم.</p>
-          <div class="actions reveal">
-            <a class="btn primary" href="#takecar">اكتشف رحلتي <b><svg class="ic" viewBox="0 0 12 12" width="13" height="13" aria-hidden="true"><path d="M8.5 6H3.5M3.5 6L6 3.5M3.5 6L6 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-            <a class="btn ghost" href="#about">المزيد عني</a>
-          </div>
-        </div>
-
-        <div class="heroArt" role="img" aria-label="شعار حرفي EA لإيماد الحمو">
-          <svg class="map" viewBox="0 0 520 520" aria-hidden="true" focusable="false">
-            <defs>
-              <radialGradient id="g-core" cx="50%" cy="50%" r="50%">
-                <stop offset="0" stop-color="#ffb547" stop-opacity=".35"/>
-                <stop offset="1" stop-color="#ffb547" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="g-route" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#ffd38a"/>
-                <stop offset="1" stop-color="#ff7a45"/>
-              </linearGradient>
-            </defs>
-            <g class="contours" fill="none" stroke="currentColor">
-              <circle cx="260" cy="260" r="80"/>
-              <circle cx="260" cy="260" r="130"/>
-              <circle cx="260" cy="260" r="180"/>
-              <circle cx="260" cy="260" r="230"/>
-              <path d="M30 260H490M260 30V490"/>
-            </g>
-            <circle cx="260" cy="260" r="200" fill="url(#g-core)"/>
-            <path id="route" class="routeBase" d="M128 128 C 210 40, 420 150, 300 260 S 330 430, 400 392" fill="none"/>
-            <path class="route" d="M128 128 C 210 40, 420 150, 300 260 S 330 430, 400 392" fill="none" stroke="url(#g-route)"/>
-            <g class="pin pinA">
-              <circle class="pulse" cx="128" cy="128" r="6"/>
-              <circle class="dot" cx="128" cy="128" r="6"/>
-            </g>
-            <g class="pin pinB">
-              <circle class="pulse" cx="400" cy="392" r="6"/>
-              <circle class="dot" cx="400" cy="392" r="6"/>
-            </g>
-            <circle class="car" r="4.5">
-              <animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#route"/></animateMotion>
-            </circle>
-          </svg>
-          <div class="monogram" aria-hidden="true"><span>E</span><span>A</span></div>
+    <section class="hero container">
+      <div class="heroCopy">
+        <p class="eyebrow"><i></i> مؤسس <span class="sep">·</span> صانع منتجات <span class="sep">·</span> رائد أعمال تقني</p>
+        <h1>أبني تقنيات<br>تحل مشاكل <em>حقيقية.</em></h1>
+        <p class="lead">أنا عماد الحمو، مؤسس <strong>تيك كار</strong> و<strong>حلول عربية</strong> و<strong>شفلي</strong>. أعمل عند تقاطع التقنية، التشغيل، وفهم السوق لتحويل الأفكار المعقدة إلى منتجات بسيطة يستخدمها الناس كل يوم.</p>
+        <div class="actions">
+          <a class="primary" href="#takecar">اكتشف رحلتي <b><svg class="icon-arr" viewBox="0 0 12 12" width="13" height="13" aria-hidden="true"><path d="M8.5 6H3.5M3.5 6L6 3.5M3.5 6L6 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+          <a class="secondary" href="#about">المزيد عني</a>
         </div>
       </div>
-
-      <div class="heroFoot container" aria-hidden="true">
-        <span>Mobility</span><span>Marketplaces</span><span>AI Support</span><span>macOS</span>
-        <span class="scroll">Scroll <i></i></span>
+      <div class="heroArt" role="img" aria-label="شعار حرفي EA لإيماد الحمو">
+        <div class="orbit orbit1" aria-hidden="true"></div>
+        <div class="orbit orbit2" aria-hidden="true"></div>
+        <div class="monogram" aria-hidden="true">E<span>A</span></div>
+        <div class="tag tag1" aria-hidden="true">SYRIA <b><svg class="icon-arr" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M3.5 6H8.5M8.5 6L6 3.5M8.5 6L6 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b> GLOBAL</div>
+        <div class="tag tag2" aria-hidden="true"><i></i> BUILDING NOW</div>
       </div>
     </section>
 
     <!-- Statement Section -->
-    <section class="statement" aria-labelledby="statementText">
+    <section class="statement">
       <div class="container statementGrid">
         <p class="sectionNo">01 / الفكرة</p>
-        <blockquote id="statementText" class="reveal">التكنولوجيا الجيدة لا تستعرض تعقيدها.<br><span>بل تجعل حياة الناس أبسط.</span></blockquote>
+        <blockquote class="reveal">التكنولوجيا الجيدة لا تستعرض تعقيدها.<br><span>بل تجعل حياة الناس أبسط.</span></blockquote>
       </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about">
-      <div class="container aboutGrid">
-        <div class="aboutHead reveal">
-          <p class="label">عني</p>
-          <h2>بين ألمانيا وسوريا،<br><em>برؤية واحدة.</em></h2>
-        </div>
-        <div class="aboutText reveal">
-          <p>رائد أعمال سوري ألماني، شغوف ببناء منتجات رقمية تتعامل مع تحديات واقعية: النقل، الخرائط، الأنظمة التشغيلية، وتجربة المستخدم.</p>
-          <p>لا أنظر إلى المنتج كواجهة جميلة فقط. أهتم بكل ما خلفها: البنية التحتية، البيانات، الأداء، التكاليف، وثقة المستخدم. أتعلم بسرعة، أختبر في السوق، ثم أبني أفضل.</p>
-        </div>
-        <div class="facts stagger">
+    <section id="about" class="section container about">
+      <div class="reveal">
+        <p class="label">عني</p>
+        <h2>بين ألمانيا وسوريا،<br>برؤية واحدة.</h2>
+      </div>
+      <div class="aboutText reveal">
+        <p>رائد أعمال سوري ألماني، شغوف ببناء منتجات رقمية تتعامل مع تحديات واقعية: النقل، الخرائط، الأنظمة التشغيلية، وتجربة المستخدم.</p>
+        <p>لا أنظر إلى المنتج كواجهة جميلة فقط. أهتم بكل ما خلفها: البنية التحتية، البيانات، الأداء، التكاليف، وثقة المستخدم. أتعلم بسرعة، أختبر في السوق، ثم أبني أفضل.</p>
+        <div class="facts">
           <div><b>Founder</b><span>TakeCar · Shfli · Arab Solutions</span></div>
           <div><b>Focus</b><span>Mobility · E-Commerce · AI</span></div>
           <div><b>Based</b><span>Germany · Syria</span></div>
@@ -166,124 +119,95 @@
       </div>
     </section>
 
-    <!-- Ventures -->
-    <div class="ventures">
-      <div class="container venturesHead reveal">
-        <p class="label">المشاريع</p>
-        <p class="venturesCount" aria-hidden="true"><b>03</b> ventures</p>
+    <!-- TakeCar Section -->
+    <section id="takecar" class="takecar">
+      <div class="container takeGrid">
+        <div class="takeIntro reveal">
+          <p class="label light">المشروع الرئيسي</p>
+          <div class="takeLogo">T</div>
+          <h2 style="font-family:'Guesswhat', 'IBM Plex Sans Arabic', sans-serif;font-weight:400;letter-spacing:0">تيك كار</h2>
+          <p class="en">TakeCar — Syrian mobility, built from the ground up.</p>
+        </div>
+        <div class="takeCopy reveal">
+          <h3>منصة تنقّل سورية<br>بطموح عالمي.</h3>
+          <p>تيك كار تطبيق يجمع الراكب والسفير في تجربة واحدة سهلة. صُمم للسوق السوري، مع تركيز على المرونة، سهولة الاستخدام، والتقنية المملوكة محلياً.</p>
+          <div class="featureRows stagger">
+            <div><span>01</span><b>تجربة واحدة للراكب والسفير</b></div>
+            <div><span>02</span><b>تسعير مرن وعروض مباشرة</b></div>
+            <div><span>03</span><b>خرائط وتوجيه محسّنان للسوق المحلي</b></div>
+            <div><span>04</span><b>بنية تقنية قابلة للنمو</b></div>
+          </div>
+          <a class="outline" href="https://takecarapp.com" target="_blank" rel="noreferrer noopener">زيارة TakeCar <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+        </div>
       </div>
+    </section>
 
-      <!-- TakeCar Section -->
-      <section id="takecar" class="venture takecar">
-        <div class="container">
-          <div class="ventureCard">
-            <div class="wordmark" aria-hidden="true">TAKECAR</div>
-            <div class="ventureIntro reveal">
-              <div class="ventureTop">
-                <p class="label">المشروع الرئيسي</p>
-                <span class="ventureIdx" aria-hidden="true">V/01</span>
-              </div>
-              <div class="ventureLogo">T</div>
-              <h2 class="ventureName">تيك كار</h2>
-              <p class="ventureTagline en">TakeCar — Syrian mobility, built from the ground up.</p>
-            </div>
-            <div class="ventureCopy reveal">
-              <h3>منصة تنقّل سورية<br>بطموح عالمي.</h3>
-              <p>تيك كار تطبيق يجمع الراكب والسفير في تجربة واحدة سهلة. صُمم للسوق السوري، مع تركيز على المرونة، سهولة الاستخدام، والتقنية المملوكة محلياً.</p>
-              <div class="featureRows stagger">
-                <div><span>01</span><b>تجربة واحدة للراكب والسفير</b></div>
-                <div><span>02</span><b>تسعير مرن وعروض مباشرة</b></div>
-                <div><span>03</span><b>خرائط وتوجيه محسّنان للسوق المحلي</b></div>
-                <div><span>04</span><b>بنية تقنية قابلة للنمو</b></div>
-              </div>
-              <a class="btn venture-cta" href="https://takecarapp.com" target="_blank" rel="noreferrer noopener">زيارة TakeCar <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-            </div>
-          </div>
+    <!-- Arab Solutions Section -->
+    <section id="arab-solutions" class="arabSolutions">
+      <div class="container arabGrid">
+        <div class="arabIntro reveal">
+          <div class="projectStatus"><i></i> قيد التطوير · منذ أبريل 2026</div>
+          <p class="label arabLabel">المشروع الحالي</p>
+          <div class="arabLogo">HS</div>
+          <h2 style="font-family:'Guesswhat', 'IBM Plex Sans Arabic', sans-serif;font-weight:400;letter-spacing:0">حلول عربية</h2>
+          <p class="arabTagline">دعم عملاء أذكى،<br>مصمم للعالم العربي.</p>
         </div>
-      </section>
+        <div class="arabCopy reveal">
+          <h3>منصة دعم عملاء بالذكاء الاصطناعي، تجمع المعرفة والقنوات في مكان واحد.</h3>
+          <p>أبني حلول عربية كمنصة SaaS عربية أولًا، تساعد الشركات على تحويل محتواها وقاعدة معرفتها إلى مساعد ذكي يفهم أسئلة العملاء ويقدّم إجابات دقيقة ومتسقة.</p>
+          <p>تدعم المنصة المحادثات متعددة القنوات، إدارة المعرفة، وتقنيات RAG، مع اهتمام خاص باللغة العربية، الخصوصية، وسهولة الدمج مع التطبيقات والمواقع.</p>
+          <div class="arabFeatures stagger">
+            <div><span>01</span><b>مساعد ذكي مبني على معرفة الشركة</b></div>
+            <div><span>02</span><b>دعم عربي أولًا وقنوات موحّدة</b></div>
+            <div><span>03</span><b>تكامل مرن عبر الويب والتطبيقات وواجهات API</b></div>
+          </div>
+          <a class="arabCta" href="https://omysyria.com/ar" target="_blank" rel="noreferrer noopener">زيارة حلول عربية <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+        </div>
+      </div>
+    </section>
 
-      <!-- Arab Solutions Section -->
-      <section id="arab-solutions" class="venture arabSolutions">
-        <div class="container">
-          <div class="ventureCard">
-            <div class="wordmark" aria-hidden="true">AHS</div>
-            <div class="ventureIntro reveal">
-              <div class="projectStatus"><i></i> قيد التطوير · منذ أبريل 2026</div>
-              <div class="ventureTop">
-                <p class="label">المشروع الحالي</p>
-                <span class="ventureIdx" aria-hidden="true">V/02</span>
-              </div>
-              <div class="ventureLogo">HS</div>
-              <h2 class="ventureName">حلول عربية</h2>
-              <p class="ventureTagline">دعم عملاء أذكى،<br>مصمم للعالم العربي.</p>
-            </div>
-            <div class="ventureCopy reveal">
-              <h3>منصة دعم عملاء بالذكاء الاصطناعي، تجمع المعرفة والقنوات في مكان واحد.</h3>
-              <p>أبني حلول عربية كمنصة SaaS عربية أولًا، تساعد الشركات على تحويل محتواها وقاعدة معرفتها إلى مساعد ذكي يفهم أسئلة العملاء ويقدّم إجابات دقيقة ومتسقة.</p>
-              <p>تدعم المنصة المحادثات متعددة القنوات، إدارة المعرفة، وتقنيات RAG، مع اهتمام خاص باللغة العربية، الخصوصية، وسهولة الدمج مع التطبيقات والمواقع.</p>
-              <div class="featureRows stagger">
-                <div><span>01</span><b>مساعد ذكي مبني على معرفة الشركة</b></div>
-                <div><span>02</span><b>دعم عربي أولًا وقنوات موحّدة</b></div>
-                <div><span>03</span><b>تكامل مرن عبر الويب والتطبيقات وواجهات API</b></div>
-              </div>
-              <a class="btn venture-cta" href="https://omysyria.com/ar" target="_blank" rel="noreferrer noopener">زيارة حلول عربية <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-            </div>
-          </div>
+    <!-- Shfli Section -->
+    <section id="shfli" class="shfli">
+      <div class="container shfliGrid">
+        <div class="shfliIntro reveal">
+          <div class="projectStatus shfliStatus"><i></i> مكتمل · 2025.2 — 2026.4</div>
+          <p class="label shfliLabel">المشروع الريادي</p>
+          <div class="shfliLogo">S</div>
+          <h2 style="font-family:'Guesswhat', 'IBM Plex Sans Arabic', sans-serif;font-weight:400;letter-spacing:0">شفلي</h2>
+          <p class="shfliTagline">سوق إلكتروني متكامل،<br>لربط الناس والفرص في سوريا.</p>
         </div>
-      </section>
-
-      <!-- Shfli Section -->
-      <section id="shfli" class="venture shfli">
-        <div class="container">
-          <div class="ventureCard">
-            <div class="wordmark" aria-hidden="true">SHFLI</div>
-            <div class="ventureIntro reveal">
-              <div class="projectStatus"><i></i> مكتمل · 2025.2 — 2026.4</div>
-              <div class="ventureTop">
-                <p class="label">المشروع الريادي</p>
-                <span class="ventureIdx" aria-hidden="true">V/03</span>
-              </div>
-              <div class="ventureLogo">S</div>
-              <h2 class="ventureName">شفلي</h2>
-              <p class="ventureTagline">سوق إلكتروني متكامل،<br>لربط الناس والفرص في سوريا.</p>
-            </div>
-            <div class="ventureCopy reveal">
-              <h3>منصة شاملة للبيع والشراء والمزادات، تجمع المعاملات والفرص في مكان واحد.</h3>
-              <p>قدت الفريق التقني وبنيت الأنظمة الخلفية لمنصة وتطبيق شفلي كأول سوق إلكتروني تفاعلي متقدم في سوريا، يربط البائعين والمشترين في مجالات السيارات، العقارات، المزادات المباشرة، البازارات، وفرص العمل.</p>
-              <p>تم تصميم البنية التحتية السحابية وواجهات REST APIs لتوفير أداء فائق السرعة واستقرارية 99.9%، مع توجيه وخرائط محسّنة تلائم خصائص السوق السوري.</p>
-              <div class="featureRows stagger">
-                <div><span>01</span><b>سوق إلكتروني متعدد الأقسام ومزادات وبازارات مباشرة</b></div>
-                <div><span>02</span><b>خرائط محلية وتجربة مستخدم مخصصة للهواتف والويب</b></div>
-                <div><span>03</span><b>بنية سحابية فائقة السرعة وواجهات API متطورة</b></div>
-              </div>
-              <a class="btn venture-cta" href="https://www.shfli.com/?section=items" target="_blank" rel="noreferrer noopener">زيارة منصة شفلي <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-            </div>
+        <div class="shfliCopy reveal">
+          <h3>منصة شاملة للبيع والشراء والمزادات، تجمع المعاملات والفرص في مكان واحد.</h3>
+          <p>قدت الفريق التقني وبنيت الأنظمة الخلفية لمنصة وتطبيق شفلي كأول سوق إلكتروني تفاعلي متقدم في سوريا، يربط البائعين والمشترين في مجالات السيارات، العقارات، المزادات المباشرة، البازارات، وفرص العمل.</p>
+          <p>تم تصميم البنية التحتية السحابية وواجهات REST APIs لتوفير أداء فائق السرعة واستقرارية 99.9%، مع توجيه وخرائط محسّنة تلائم خصائص السوق السوري.</p>
+          <div class="shfliFeatures stagger">
+            <div><span>01</span><b>سوق إلكتروني متعدد الأقسام ومزادات وبازارات مباشرة</b></div>
+            <div><span>02</span><b>خرائط محلية وتجربة مستخدم مخصصة للهواتف والويب</b></div>
+            <div><span>03</span><b>بنية سحابية فائقة السرعة وواجهات API متطورة</b></div>
           </div>
+          <a class="shfliCta" href="https://www.shfli.com/?section=items" target="_blank" rel="noreferrer noopener">زيارة منصة شفلي <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- Open Source Section -->
     <section id="oss" class="section oss">
       <div class="container">
-        <div class="sectionHead">
+        <div class="ossHead">
           <div class="reveal">
             <p class="label">مفتوح المصدر</p>
-            <h2>أدوات صنعتها،<br><em>ومفتوحة لمن يبني معي.</em></h2>
+            <h2>أدوات صنعتها،<br>ومفتوحة لمن يبني معي.</h2>
           </div>
           <p class="reveal">سبعة تطبيقات أصلية لنظام ماك. صغيرة، وخاصة، كتبتها لأنني أحتاجها في يومي. الكود مفتوح، والمساهمة مرحّب بها: من سطر يُصلح عيبًا إلى فكرة تكبر مع الفريق.</p>
         </div>
 
         <div class="ossGrid stagger">
-          <article class="ossCard wide">
-            <div class="winBar" aria-hidden="true"><i></i><i></i><i></i><span>RemoteDesk.app</span></div>
-            <div class="ossBodyWrap">
+          <article class="ossCard">
+            <img src="oss/remotedesk.png" width="64" height="64" alt="">
+            <div>
               <header>
-                <img src="oss/remotedesk.png" width="64" height="64" alt="">
-                <div>
-                  <h3>RemoteDesk</h3>
-                  <time datetime="2026-10-18">18 أكتوبر 2026</time>
-                </div>
+                <h3>RemoteDesk</h3>
+                <time datetime="2026-10-18">18 أكتوبر 2026</time>
               </header>
               <p>تحكّم بجهاز ماك من ماك آخر عبر شبكتك المحلية بزمن استجابة يقارب الصفر ودون أي وسيط خارجي. بث فوري للشاشة بدقة عالية وتسريع عتادي كامل، مع نقل دقيق لحركات الفأرة ولوحة المفاتيح ومزامنة الحافظة.</p>
               <p class="ossBody"><span>المحتوى</span> تسريع H.264 عتادي عبر VideoToolbox وScreenCaptureKit، التقاط كامل للاختصارات، واكتشاف تلقائي عبر Bonjour.</p>
@@ -293,21 +217,18 @@
                 <li>MIT</li>
               </ul>
               <p class="ossLinks">
-                <a href="https://github.com/Alhamou/RemoteDesk" target="_blank" rel="noreferrer noopener"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>المستودع <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-                <a href="https://github.com/Alhamou/RemoteDesk/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/RemoteDesk" target="_blank" rel="noreferrer noopener">المستودع <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/RemoteDesk/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
               </p>
             </div>
           </article>
 
           <article class="ossCard">
-            <div class="winBar" aria-hidden="true"><i></i><i></i><i></i><span>pinFiy.app</span></div>
-            <div class="ossBodyWrap">
+            <img src="oss/pinfiy.png" width="64" height="64" alt="">
+            <div>
               <header>
-                <img src="oss/pinfiy.png" width="64" height="64" alt="">
-                <div>
-                  <h3>pinFiy</h3>
-                  <time datetime="2026-10-16">16 أكتوبر 2026</time>
-                </div>
+                <h3>pinFiy</h3>
+                <time datetime="2026-10-16">16 أكتوبر 2026</time>
               </header>
               <p>ملاحظات لاصقة ملوّنة تعيش في شريط قوائم الماك. العربية تُكتب من اليمين والإنجليزية من اليسار، والدبوس يُبقي الملاحظة فوق النوافذ دون أن يغطي الشريط. لا حساب ولا سحابة: ما تكتبه يبقى على جهازك.</p>
               <p class="ossBody"><span>المحتوى</span> ألوان فاتحة وداكنة، قفل يمنع التعديل والإغلاق، واختصارات للكتابة السريعة.</p>
@@ -317,21 +238,18 @@
                 <li>MIT</li>
               </ul>
               <p class="ossLinks">
-                <a href="https://github.com/Alhamou/pinFiy" target="_blank" rel="noreferrer noopener"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>المستودع <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-                <a href="https://github.com/Alhamou/pinFiy/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/pinFiy" target="_blank" rel="noreferrer noopener">المستودع <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/pinFiy/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
               </p>
             </div>
           </article>
 
           <article class="ossCard">
-            <div class="winBar" aria-hidden="true"><i></i><i></i><i></i><span>closeAll.app</span></div>
-            <div class="ossBodyWrap">
+            <img src="oss/closeall.png" width="64" height="64" alt="">
+            <div>
               <header>
-                <img src="oss/closeall.png" width="64" height="64" alt="">
-                <div>
-                  <h3>closeAll</h3>
-                  <time datetime="2026-10-16">16 أكتوبر 2026</time>
-                </div>
+                <h3>closeAll</h3>
+                <time datetime="2026-10-16">16 أكتوبر 2026</time>
               </header>
               <p>زر واحد يُغلق تطبيقات الماك دفعة واحدة. ترى أيقونة كل تطبيق قبل أن يُغلق، وتُبقي ما تريد مفتوحًا. Finder يبقى قائمًا، واختيارك يُحفظ للمرة التالية.</p>
               <p class="ossBody"><span>المحتوى</span> إغلاق قسري للتطبيقات العادية، قائمة استثناء، ومن دون شبكة أو تتبّع.</p>
@@ -341,21 +259,18 @@
                 <li>MIT</li>
               </ul>
               <p class="ossLinks">
-                <a href="https://github.com/Alhamou/closeAll" target="_blank" rel="noreferrer noopener"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>المستودع <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-                <a href="https://github.com/Alhamou/closeAll/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/closeAll" target="_blank" rel="noreferrer noopener">المستودع <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/closeAll/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
               </p>
             </div>
           </article>
 
           <article class="ossCard">
-            <div class="winBar" aria-hidden="true"><i></i><i></i><i></i><span>SafeShare.app</span></div>
-            <div class="ossBodyWrap">
+            <img src="oss/safeshare.png" width="64" height="64" alt="">
+            <div>
               <header>
-                <img src="oss/safeshare.png" width="64" height="64" alt="">
-                <div>
-                  <h3>SafeShare</h3>
-                  <time datetime="2026-10-10">10 أكتوبر 2026</time>
-                </div>
+                <h3>SafeShare</h3>
+                <time datetime="2026-10-10">10 أكتوبر 2026</time>
               </header>
               <p>حين تشارك شاشتك في Teams أو Zoom أو Meet، تُخفي التطبيقات والنوافذ التي لا تريد أن تُرى. أنت تعمل على مكتبك كاملًا، والحضور يرون النسخة التي سمحت بها فقط.</p>
               <p class="ossBody"><span>المحتوى</span> حماية لكل تطبيق ونافذة، بث محلي سريع، وإخفاء الإشعارات. يعمل دون إنترنت.</p>
@@ -365,21 +280,18 @@
                 <li>MIT</li>
               </ul>
               <p class="ossLinks">
-                <a href="https://github.com/Alhamou/SafeShare" target="_blank" rel="noreferrer noopener"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>المستودع <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-                <a href="https://github.com/Alhamou/SafeShare/issues" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/SafeShare" target="_blank" rel="noreferrer noopener">المستودع <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/SafeShare/issues" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
               </p>
             </div>
           </article>
 
           <article class="ossCard">
-            <div class="winBar" aria-hidden="true"><i></i><i></i><i></i><span>topMoves.app</span></div>
-            <div class="ossBodyWrap">
+            <img src="oss/topmoves.png" width="64" height="64" alt="">
+            <div>
               <header>
-                <img src="oss/topmoves.png" width="64" height="64" alt="">
-                <div>
-                  <h3>TopMovies</h3>
-                  <time datetime="2026-10-08">8 أكتوبر 2026</time>
-                </div>
+                <h3>TopMovies</h3>
+                <time datetime="2026-10-08">8 أكتوبر 2026</time>
               </header>
               <p>مكان هادئ لاكتشاف الأفلام والمسلسلات على الماك. تصفّح، اختَر ما يناسب ليلتك، واحتفظ بمكتبتك وتقييماتك عندك. بلا مفتاح اتصال، يعمل وضع تجريبي كامل.</p>
               <p class="ossBody"><span>المحتوى</span> تصنيفات وترشيحات، مكتبة محلية، ومفتاح الواجهة في سلسلة المفاتيح.</p>
@@ -389,21 +301,18 @@
                 <li>MIT</li>
               </ul>
               <p class="ossLinks">
-                <a href="https://github.com/Alhamou/topMoves" target="_blank" rel="noreferrer noopener"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>المستودع <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-                <a href="https://github.com/Alhamou/topMoves/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/topMoves" target="_blank" rel="noreferrer noopener">المستودع <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/topMoves/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
               </p>
             </div>
           </article>
 
           <article class="ossCard">
-            <div class="winBar" aria-hidden="true"><i></i><i></i><i></i><span>moveMouse.app</span></div>
-            <div class="ossBodyWrap">
+            <img src="oss/movemouse.png" width="64" height="64" alt="">
+            <div>
               <header>
-                <img src="oss/movemouse.png" width="64" height="64" alt="">
-                <div>
-                  <h3>moveMouse</h3>
-                  <time datetime="2026-10-08">8 أكتوبر 2026</time>
-                </div>
+                <h3>moveMouse</h3>
+                <time datetime="2026-10-08">8 أكتوبر 2026</time>
               </header>
               <p>يحرّك المؤشر بإيقاع تحدده أنت: لعرض على الشاشة، لاختبار، أو ليبقى الجهاز مستيقظًا أثناء مهمة طويلة. من شريط القوائم تبدأ، توقف، أو تحرّك الآن.</p>
               <p class="ossBody"><span>المحتوى</span> زمن من ثوانٍ إلى دقائق، نمطان للحركة، نقرة اختيارية، ومنع النوم أثناء التشغيل.</p>
@@ -413,21 +322,18 @@
                 <li>MIT</li>
               </ul>
               <p class="ossLinks">
-                <a href="https://github.com/Alhamou/moveMouse" target="_blank" rel="noreferrer noopener"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>المستودع <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-                <a href="https://github.com/Alhamou/moveMouse/issues" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/moveMouse" target="_blank" rel="noreferrer noopener">المستودع <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/moveMouse/issues" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
               </p>
             </div>
           </article>
 
-          <article class="ossCard wide">
-            <div class="winBar" aria-hidden="true"><i></i><i></i><i></i><span>Haki.app</span></div>
-            <div class="ossBodyWrap">
+          <article class="ossCard">
+            <img src="oss/haki.png" width="64" height="64" alt="">
+            <div>
               <header>
-                <img src="oss/haki.png" width="64" height="64" alt="">
-                <div>
-                  <h3>حكي</h3>
-                  <time datetime="2026-09-05">5 سبتمبر 2026</time>
-                </div>
+                <h3>حكي</h3>
+                <time datetime="2026-09-05">5 سبتمبر 2026</time>
               </header>
               <p>احكِ، وحكي يكتب. اضغط مطوّلًا وتكلّم بلهجتك، ثم أفلت: النص يظهر حيث المؤشر، في أي تطبيق. صُمم للعربية والشامية، ويفهم الإنجليزية والألمانية والفرنسية.</p>
               <p class="ossBody"><span>المحتوى</span> إملاء بالصوت، اختصار عام، والمفتاح يبقى في سلسلة المفاتيح. لا يُحفظ التسجيل.</p>
@@ -437,8 +343,8 @@
                 <li>MIT</li>
               </ul>
               <p class="ossLinks">
-                <a href="https://github.com/Alhamou/Haki" target="_blank" rel="noreferrer noopener"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>المستودع <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-                <a href="https://github.com/Alhamou/Haki/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/Haki" target="_blank" rel="noreferrer noopener">المستودع <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+                <a href="https://github.com/Alhamou/Haki/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer noopener">ساهم <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
               </p>
             </div>
           </article>
@@ -446,54 +352,51 @@
 
         <aside class="ossInvite reveal">
           <div>
-            <p class="label">انضم إلى الفريق</p>
+            <p class="label light">انضم إلى الفريق</p>
             <h3>تعال نبنيها معًا.</h3>
           </div>
           <div>
             <p>المساهمة هنا ليست للكود وحده. فكرة أوضح، ترجمة أدق، اختبار على جهازك، أو إصلاح صغير: كلها مكانها في الفريق. افتح «ساهم» في المشروع الذي يعجبك، ثم أرسل طلبك. أرحّب بمن يريد أن ينضم.</p>
-            <a class="btn primary" href="https://github.com/Alhamou" target="_blank" rel="noreferrer noopener">حسابي على GitHub <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+            <a href="https://github.com/Alhamou" target="_blank" rel="noreferrer noopener">حسابي على GitHub <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
           </div>
         </aside>
       </div>
     </section>
 
     <!-- How I Work Section -->
-    <section id="work" class="section work">
-      <div class="container">
-        <div class="sectionHead">
-          <div class="reveal">
-            <p class="label">كيف أعمل</p>
-            <h2>من الفكرة إلى<br><em>منتج يعمل.</em></h2>
-          </div>
-          <p class="reveal">أجمع بين التفكير التجاري والتنفيذ التقني. هذا يمنحني القدرة على رؤية الصورة الكاملة، ثم النزول إلى التفاصيل التي تصنع الفرق.</p>
+    <section id="work" class="section container work">
+      <div class="workHead">
+        <div class="reveal">
+          <p class="label">كيف أعمل</p>
+          <h2>من الفكرة إلى<br>منتج يعمل.</h2>
         </div>
-        <div class="steps">
-          <div class="stepsRoute" aria-hidden="true"><i></i></div>
-          <article class="reveal">
-            <span>01</span>
-            <h3>أفهم المشكلة</h3>
-            <p>أبدأ بالمستخدم والسوق، لا بالتقنية. أبحث عن المشكلة الحقيقية وما الذي يجعل الحل مفيداً وقابلاً للنمو.</p>
-          </article>
-          <article class="reveal">
-            <span>02</span>
-            <h3>أبني النظام</h3>
-            <p>أحوّل الرؤية إلى منتج متكامل: تطبيقات، واجهات، خدمات خلفية، خرائط، بيانات، وأنظمة تشغيل.</p>
-          </article>
-          <article class="reveal">
-            <span>03</span>
-            <h3>أتعلم وأطوّر</h3>
-            <p>أراقب الاستخدام الفعلي، أحل نقاط الاحتكاك، وأطوّر المنتج باستمرار وفق أثر واضح على الناس والعمل.</p>
-          </article>
-        </div>
+        <p>أجمع بين التفكير التجاري والتنفيذ التقني. هذا يمنحني القدرة على رؤية الصورة الكاملة، ثم النزول إلى التفاصيل التي تصنع الفرق.</p>
+      </div>
+      <div class="cards">
+        <article class="reveal">
+          <span>01</span>
+          <h3>أفهم المشكلة</h3>
+          <p>أبدأ بالمستخدم والسوق، لا بالتقنية. أبحث عن المشكلة الحقيقية وما الذي يجعل الحل مفيداً وقابلاً للنمو.</p>
+        </article>
+        <article class="reveal">
+          <span>02</span>
+          <h3>أبني النظام</h3>
+          <p>أحوّل الرؤية إلى منتج متكامل: تطبيقات، واجهات، خدمات خلفية، خرائط، بيانات، وأنظمة تشغيل.</p>
+        </article>
+        <article class="reveal">
+          <span>03</span>
+          <h3>أتعلم وأطوّر</h3>
+          <p>أراقب الاستخدام الفعلي، أحل نقاط الاحتكاك، وأطوّر المنتج باستمرار وفق أثر واضح على الناس والعمل.</p>
+        </article>
       </div>
     </section>
 
     <!-- Career Section -->
-    <section class="section career">
+    <section class="career">
       <div class="container careerGrid">
-        <div class="careerHead reveal">
-          <p class="label">المسيرة المهنية</p>
-          <h2>أكثر من <span class="big">10</span> سنوات<br><em>في صناعة التقنية.</em></h2>
+        <div class="reveal">
+          <p class="label light">المسيرة المهنية</p>
+          <h2>أكثر من 10 سنوات<br>في صناعة التقنية.</h2>
           <p>خبرة عملية في ألمانيا وسوريا، من تطوير المنتجات المستقلة إلى قيادة الأنظمة والفرق التقنية.</p>
         </div>
         <div class="timeline stagger">
@@ -545,120 +448,51 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-      <div class="marquee" aria-hidden="true">
-        <div class="marqueeTrack">
-          <span>TakeCar</span><i></i><span>Arab Solutions</span><i></i><span>Shfli</span><i></i><span>Open Source</span><i></i><span>Germany <svg class="ic swap" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 5.5h10M10.5 3L13 5.5 10.5 8M13 10.5H3M5.5 8L3 10.5 5.5 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Syria</span><i></i>
-          <span>TakeCar</span><i></i><span>Arab Solutions</span><i></i><span>Shfli</span><i></i><span>Open Source</span><i></i><span>Germany <svg class="ic swap" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 5.5h10M10.5 3L13 5.5 10.5 8M13 10.5H3M5.5 8L3 10.5 5.5 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Syria</span><i></i>
-        </div>
-      </div>
       <div class="container contactInner reveal">
-        <p class="label">القادم</p>
+        <p class="label light">القادم</p>
         <h2>أبني للمستقبل،<br><em>خطوة حقيقية كل يوم.</em></h2>
         <p>مهتم بالنقل الذكي، الذكاء الاصطناعي، والمنتجات الرقمية التي تخدم الأسواق الناشئة.</p>
         <div class="contactLinks">
-          <a class="btn primary big" href="mailto:emadalhamo@gmail.com">راسلني <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
-          <a class="btn ghost big" href="https://omysyria.com/ar" target="_blank" rel="noreferrer noopener">اكتشف حلول عربية <b><svg class="ic" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+          <a href="mailto:emadalhamo@gmail.com">راسلني <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+          <a href="https://omysyria.com/ar" target="_blank" rel="noreferrer noopener">اكتشف حلول عربية <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
         </div>
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="container">
+      <div class="brand"><span>EA</span> Emad Alhamou</div>
+      <p>Founder &amp; Product Builder</p>
+      <p>© 2026</p>
+    </footer>
   </main>
-
-  <!-- Footer -->
-  <footer class="container">
-    <div class="brand"><span class="mark">EA</span> Emad Alhamou</div>
-    <p>Founder &amp; Product Builder</p>
-    <p>© 2026</p>
-  </footer>
-
   <script>
   (function () {
-    var root = document.documentElement;
-    root.classList.add('js');
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     // stagger indexes (cascade delay per child)
     Array.prototype.forEach.call(document.querySelectorAll('.stagger'), function (box) {
       Array.prototype.forEach.call(box.children, function (child, i) {
-        child.style.transitionDelay = (i * 70) + 'ms';
+        child.style.transitionDelay = (i * 80) + 'ms';
       });
     });
 
-    // statement: split into words that light up with scroll
-    var quote = document.querySelector('.statement blockquote');
-    var words = [];
-    if (quote && !reduce) {
-      Array.prototype.forEach.call(quote.childNodes, function wrap(node) {
-        if (node.nodeType === 3) {
-          var frag = document.createDocumentFragment();
-          node.textContent.split(/(\s+)/).forEach(function (part) {
-            if (!part) return;
-            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
-            var s = document.createElement('span');
-            s.className = 'w';
-            s.textContent = part;
-            words.push(s);
-            frag.appendChild(s);
-          });
-          node.parentNode.replaceChild(frag, node);
-        } else if (node.nodeType === 1 && node.tagName !== 'BR') {
-          Array.prototype.slice.call(node.childNodes).forEach(wrap);
-        }
-      });
-    }
-
+    // scroll progress (RTL: fills from the right)
     var bar = document.querySelector('.progress b');
-    var nav = document.querySelector('.navWrap');
-    var raf = false;
-    function tick() {
-      raf = false;
-      var max = root.scrollHeight - root.clientHeight;
-      if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? root.scrollTop / max : 0) + ')';
-      if (nav) nav.classList.toggle('scrolled', root.scrollTop > 24);
-      if (words.length) {
-        var r = quote.getBoundingClientRect();
-        var vh = window.innerHeight;
-        var p = (vh * 0.85 - r.top) / (r.height + vh * 0.35);
-        p = Math.max(0, Math.min(1, p));
-        var lit = Math.round(p * words.length);
-        for (var i = 0; i < words.length; i++) words[i].classList.toggle('lit', i < lit);
-      }
-    }
-    window.addEventListener('scroll', function () {
-      if (!raf) { raf = true; requestAnimationFrame(tick); }
-    }, { passive: true });
-    window.addEventListener('resize', tick);
-    tick();
-
-    // active nav link
-    var links = document.querySelectorAll('.links a');
-    if ('IntersectionObserver' in window && links.length) {
-      var map = {};
-      Array.prototype.forEach.call(links, function (a) { map[a.getAttribute('href').slice(1)] = a; });
-      var spy = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting && map[e.target.id]) {
-            Array.prototype.forEach.call(links, function (a) { a.classList.remove('on'); });
-            map[e.target.id].classList.add('on');
-          }
-        });
-      }, { rootMargin: '-45% 0px -50% 0px' });
-      Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
-    }
-
-    // cursor glow + card spotlight (fine pointers only)
-    if (!reduce && window.matchMedia('(pointer: fine)').matches) {
-      var glow = document.querySelector('.glow');
-      window.addEventListener('pointermove', function (e) {
-        glow.style.transform = 'translate(' + (e.clientX - 300) + 'px,' + (e.clientY - 300) + 'px)';
-        glow.classList.add('on');
-        var card = e.target.closest && e.target.closest('.ossCard, .ventureCard, .steps article');
-        if (card) {
-          var b = card.getBoundingClientRect();
-          card.style.setProperty('--mx', (e.clientX - b.left) + 'px');
-          card.style.setProperty('--my', (e.clientY - b.top) + 'px');
+    if (bar) {
+      var tick = function () {
+        var root = document.documentElement;
+        var max = root.scrollHeight - root.clientHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? root.scrollTop / max : 0) + ')';
+      };
+      var raf = false;
+      window.addEventListener('scroll', function () {
+        if (!raf) {
+          raf = true;
+          requestAnimationFrame(function () { raf = false; tick(); });
         }
       }, { passive: true });
-      document.addEventListener('pointerleave', function () { glow.classList.remove('on'); });
+      tick();
     }
   })();
   </script>
