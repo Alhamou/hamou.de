@@ -1,0 +1,22 @@
+# Emad Alhamou
+
+> Personal site of Emad Alhamou, a Syrian-German founder and product builder based in Germany. He builds TakeCar, Shfli, and Arab Solutions: products for mobility, marketplaces, and AI-powered customer support in emerging markets. The site is in Arabic.
+
+## Main page
+
+- [hamou.de](https://hamou.de/): About Emad, his companies, open-source tools, experience, and contact.
+
+## Products
+
+- [TakeCar](https://takecarapp.com): Syrian mobility platform.
+- [Arab Solutions](https://omysyria.com/ar): AI customer support platform that brings knowledge and channels into one place.
+- [Shfli](https://www.shfli.com/?section=items): Platform for buying, selling, and auctions.
+- [Nadhif](https://nadhif.hamou.de/ar/): Mac cleaner app.
+
+## Open source
+
+- [GitHub profile](https://github.com/Alhamou): OpenBlock, RemoteDesk, pinFiy, closeAll, SafeShare, TopMovies, moveMouse, Haki.
+
+## Contact
+
+- Email: emadalhamo@gmail.com

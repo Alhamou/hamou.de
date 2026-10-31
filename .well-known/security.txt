@@ -1,0 +1,4 @@
+Contact: mailto:emadalhamo@gmail.com
+Expires: 2027-10-31T00:00:00.000Z
+Preferred-Languages: ar, en, de
+Canonical: https://hamou.de/.well-known/security.txt
