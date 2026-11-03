@@ -64,9 +64,11 @@ a:focus-visible {
 footer a:focus-visible,
 .takecar a:focus-visible,
 .shfli a:focus-visible,
+.nadhif a:focus-visible,
 .arabSolutions a:focus-visible,
 .statement a:focus-visible,
-.career a:focus-visible {
+.career a:focus-visible,
+.ossInvite a:focus-visible {
   outline-color: var(--acid);
 }
 
@@ -111,7 +113,7 @@ footer a:focus-visible,
   display: flex;
 }
 
-".links a {
+.links a {
   color: #55564f;
   background: linear-gradient(currentColor, currentColor) no-repeat right calc(100% - 1px);
   background-size: 0% 1px;
@@ -222,7 +224,7 @@ footer a:focus-visible,
 
 .primary b {
   color: var(--acid);
-  padding-right: 25px;
+  padding-inline-start: 25px;
 }
 
 .secondary {
@@ -471,7 +473,7 @@ footer a:focus-visible,
 
 .outline b {
   color: var(--acid);
-  padding-right: 20px;
+  padding-inline-start: 20px;
 }
 
 /* Shfli Section */
@@ -612,7 +614,7 @@ footer a:focus-visible,
 
 .shfliCta b {
   color: #0284c7;
-  padding-right: 22px;
+  padding-inline-start: 22px;
 }
 
 /* Arab Solutions Section */
@@ -749,7 +751,132 @@ footer a:focus-visible,
 
 .arabCta b {
   color: #2e766e;
-  padding-right: 22px;
+  padding-inline-start: 22px;
+}
+
+/* Nadhif Section */
+.nadhif {
+  color: #eef4fb;
+  background: #10233f;
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.nadhif:after {
+  content: "NADHIF";
+  color: #ffffff08;
+  letter-spacing: -18px;
+  pointer-events: none;
+  font: 700 clamp(110px, 20vw, 300px) 'Manrope', sans-serif;
+  position: absolute;
+  bottom: -60px;
+  left: -15px;
+}
+
+.nadhifGrid {
+  z-index: 1;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 130px;
+  display: grid;
+  position: relative;
+}
+
+.nadhifStatus {
+  color: #c9e9f7;
+  border-color: #6fd3f533;
+}
+
+.nadhifStatus i {
+  background: #6fd3f5;
+  box-shadow: 0 0 0 5px #6fd3f51c;
+}
+
+.nadhifLabel {
+  color: #9fb8d4;
+  border-color: #ffffff26;
+}
+
+.nadhifLogo {
+  width: 86px;
+  height: 86px;
+  margin-top: 45px;
+  margin-bottom: 25px;
+  box-shadow: 12px 12px #081629;
+}
+
+.nadhifLogo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nadhifIntro h2 {
+  margin: 0;
+  font-size: clamp(52px, 6vw, 78px);
+  line-height: 1.1;
+}
+
+.nadhifTagline {
+  color: #d6e3f2;
+  margin-top: 27px;
+  font-size: 24px;
+  line-height: 1.65;
+}
+
+.nadhifCopy {
+  padding-top: 72px;
+}
+
+.nadhifCopy h3 {
+  margin: 0 0 27px;
+  font-size: 32px;
+  line-height: 1.55;
+}
+
+.nadhifCopy > p {
+  color: #b9cadd;
+  font-size: 16px;
+  line-height: 1.95;
+}
+
+.nadhifFeatures {
+  margin: 38px 0;
+}
+
+.nadhifFeatures div {
+  border-top: 1px solid #ffffff24;
+  gap: 20px;
+  padding: 17px 0;
+  display: flex;
+}
+
+.nadhifFeatures span {
+  color: #6fd3f5;
+  font: 11px 'Manrope', sans-serif;
+}
+
+.nadhifFeatures b {
+  font-size: 15px;
+}
+
+.nadhifCta {
+  color: #10233f;
+  background: #e6eef7;
+  padding: 15px 19px;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.nadhifCta:hover {
+  background: #ffffff;
+}
+
+.nadhifCta b {
+  color: #1f7fb3;
+  padding-inline-start: 22px;
 }
 
 /* Open Source Section */
@@ -870,11 +997,13 @@ footer a:focus-visible,
 .ossInvite {
   color: #fff;
   background: #24251f;
+  padding: 80px 0 84px;
+}
+
+.ossInviteGrid {
   grid-template-columns: 1.05fr 0.95fr;
   align-items: end;
   gap: 64px;
-  margin-top: 48px;
-  padding: 48px 44px 52px;
   display: grid;
 }
 
@@ -928,7 +1057,7 @@ footer a:focus-visible,
 }
 
 .cards article {
-  border-left: 1px solid var(--line);
+  border-inline-end: 1px solid var(--line);
   padding: 35px 32px 45px;
 }
 
@@ -1040,7 +1169,7 @@ footer a:focus-visible,
 }
 
 .contactLinks b {
-  padding-right: 18px;
+  padding-inline-start: 18px;
 }
 
 /* Footer */
@@ -1055,6 +1184,99 @@ footer {
 footer p {
   color: #777;
   font: 11px 'Manrope', sans-serif;
+}
+
+/* Language switcher */
+.langPick {
+  position: relative;
+  align-items: center;
+  gap: 8px;
+  color: #55564f;
+  border: 1px solid var(--line);
+  padding: 0 10px;
+  height: 36px;
+  display: inline-flex;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.langPick:hover,
+.langPick:focus-within {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.langPick svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.langPick select {
+  appearance: none;
+  -webkit-appearance: none;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  cursor: pointer;
+  padding: 0 18px 0 0;
+  height: 100%;
+  font: 600 12px 'Manrope', 'IBM Plex Sans Arabic', sans-serif;
+}
+
+.langPick .chev {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -5px;
+}
+
+.langPick select option {
+  color: var(--ink);
+}
+
+.langPick:has(select:focus-visible) {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* LTR (English / German) */
+html[dir="ltr"] body {
+  font-family: 'Manrope', 'IBM Plex Sans Arabic', sans-serif;
+}
+
+html[dir="ltr"] .links,
+html[dir="ltr"] .heroCopy {
+  direction: ltr;
+  text-align: left;
+}
+
+html[dir="ltr"] .links a {
+  background-position: left calc(100% - 1px);
+}
+
+html[dir="ltr"] .skipLink {
+  right: auto;
+  left: 16px;
+}
+
+html[dir="ltr"] .primary b svg {
+  transform: scaleX(-1);
+}
+
+html[dir="ltr"] .progress b {
+  transform-origin: left;
+}
+
+html[dir="ltr"] .statement blockquote span {
+  background-position: left bottom;
+}
+
+html[dir="ltr"] .shfli:after,
+html[dir="ltr"] .arabSolutions:after,
+html[dir="ltr"] .nadhif:after {
+  left: auto;
+  right: -15px;
 }
 
 /* Display Font Settings */
@@ -1073,7 +1295,10 @@ footer p {
 .arabCopy h3,
 .shfliIntro h2,
 .shfliTagline,
-.shfliCopy h3 {
+.shfliCopy h3,
+.nadhifIntro h2,
+.nadhifTagline,
+.nadhifCopy h3 {
   letter-spacing: 0;
   font-family: 'Guesswhat', 'IBM Plex Sans Arabic', sans-serif;
   font-weight: 400;
@@ -1189,7 +1414,8 @@ footer p {
   }
 
   .js .projectStatus i,
-  .js .shfliStatus i {
+  .js .shfliStatus i,
+  .js .nadhifStatus i {
     animation: pulse 2.4s ease-in-out infinite;
   }
 
@@ -1279,6 +1505,7 @@ footer p {
 .outline,
 .arabCta,
 .shfliCta,
+.nadhifCta,
 .ossLinks a,
 .ossInvite a,
 .cards article,
@@ -1291,6 +1518,7 @@ footer p {
 .outline b,
 .arabCta b,
 .shfliCta b,
+.nadhifCta b,
 .ossLinks b,
 .ossInvite a b,
 .contactLinks b {
@@ -1318,6 +1546,7 @@ footer p {
 .outline:hover,
 .arabCta:hover,
 .shfliCta:hover,
+.nadhifCta:hover,
 .ossLinks a:hover,
 .ossInvite a:hover,
 .contactLinks a:hover {
@@ -1328,10 +1557,56 @@ footer p {
 .outline:hover b,
 .arabCta:hover b,
 .shfliCta:hover b,
+.nadhifCta:hover b,
 .ossLinks a:hover b,
 .ossInvite a:hover b,
 .contactLinks a:hover b {
   transform: translateX(-5px);
+}
+
+html[dir="ltr"] .actions a:hover b,
+html[dir="ltr"] .outline:hover b,
+html[dir="ltr"] .arabCta:hover b,
+html[dir="ltr"] .shfliCta:hover b,
+html[dir="ltr"] .nadhifCta:hover b,
+html[dir="ltr"] .ossLinks a:hover b,
+html[dir="ltr"] .ossInvite a:hover b,
+html[dir="ltr"] .contactLinks a:hover b {
+  transform: translateX(5px);
+}
+
+/* Latin display type: the display face is Arabic-first */
+html[dir="ltr"] .hero h1,
+html[dir="ltr"] .statement blockquote,
+html[dir="ltr"] .about h2,
+html[dir="ltr"] .work h2,
+html[dir="ltr"] .ossHead h2,
+html[dir="ltr"] .ossInvite h3,
+html[dir="ltr"] .takeCopy h3,
+html[dir="ltr"] .cards h3,
+html[dir="ltr"] .career h2,
+html[dir="ltr"] .contactInner h2,
+html[dir="ltr"] .arabIntro h2,
+html[dir="ltr"] .arabTagline,
+html[dir="ltr"] .arabCopy h3,
+html[dir="ltr"] .shfliIntro h2,
+html[dir="ltr"] .shfliTagline,
+html[dir="ltr"] .shfliCopy h3,
+html[dir="ltr"] .nadhifIntro h2,
+html[dir="ltr"] .nadhifTagline,
+html[dir="ltr"] .nadhifCopy h3,
+html[dir="ltr"] .takeIntro h2 {
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+
+html[dir="ltr"] .statement blockquote {
+  font-weight: 300 !important;
+}
+
+html.i18n-wait body {
+  visibility: hidden;
 }
 
 .cards article {
@@ -1380,6 +1655,7 @@ footer p {
   .takeGrid,
   .arabGrid,
   .shfliGrid,
+  .nadhifGrid,
   .careerGrid,
   .workHead,
   .ossHead {
@@ -1387,7 +1663,8 @@ footer p {
   }
 
   .arabCopy,
-  .shfliCopy {
+  .shfliCopy,
+  .nadhifCopy {
     padding-top: 30px;
   }
 }
@@ -1446,7 +1723,7 @@ footer p {
   .takeGrid,
   .workHead,
   .ossHead,
-  .ossInvite {
+  .ossInviteGrid {
     grid-template-columns: 1fr;
     gap: 30px;
   }
@@ -1463,7 +1740,7 @@ footer p {
   }
 
   .ossInvite {
-    padding: 32px 24px 36px;
+    padding: 56px 0 60px;
   }
 
   .ossInvite h3 {
@@ -1510,7 +1787,7 @@ footer p {
   }
 
   .cards article {
-    border-left: 0;
+    border-inline-end: 0;
     border-bottom: 1px solid var(--line);
     padding-inline: 6px;
   }
@@ -1582,6 +1859,27 @@ footer p {
   }
 
   .arabSolutions:after {
+    letter-spacing: -8px;
+  }
+
+  .nadhif {
+    padding: 80px 0;
+  }
+
+  .nadhifGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .nadhifCopy {
+    padding-top: 10px;
+  }
+
+  .nadhifCopy h3 {
+    font-size: 27px;
+  }
+
+  .nadhif:after {
     letter-spacing: -8px;
   }
 
