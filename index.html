@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Emad Alhamou | Founder &amp; Product Builder</title>
   <meta name="description" content="Founder &amp; Builder of TakeCar, Shfli, and Arab Solutions. Building technology products for mobility, marketplaces, AI-powered customer support, and emerging markets.">
@@ -40,8 +40,9 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=13">
-  <script src="i18n.js?v=1"></script>
+  <link rel="stylesheet" href="styles.css?v=16">
+  <script src="i18n.js?v=2"></script>
+  <link rel="alternate" type="application/atom+xml" href="/articles/feed.xml" title="Articles">
   <noscript>
     <style>.reveal{opacity:1;transform:none;transition:none}</style>
   </noscript>
@@ -50,12 +51,14 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://hamou.de/#person",
     "name": "Emad Alhamou",
     "url": "https://hamou.de/",
     "jobTitle": "Founder & Product Builder",
     "description": "Syrian-German founder building TakeCar, Shfli, and Arab Solutions — products for mobility, marketplaces, and AI-powered customer support in emerging markets.",
     "knowsAbout": ["Product Strategy", "Mobile Apps", "Backend Systems", "Real-time Infrastructure", "Maps & Routing", "Business Operations"],
     "knowsLanguage": ["ar", "de", "en"],
+    "sameAs": ["https://github.com/Alhamou", "https://www.youtube.com/@emadalhamo"],
     "email": "mailto:emadalhamo@gmail.com"
   }
   </script>
@@ -77,6 +80,7 @@
         <a data-i18n="nav.arab" href="#arab-solutions">حلول عربية</a>
         <a data-i18n="nav.shfli" href="#shfli">شفلي</a>
         <a data-i18n="nav.oss" href="#oss">مفتوح المصدر</a>
+        <a data-i18n="nav.articles" href="#articles">مقالات</a>
       </div>
       <a data-i18n="nav.cta" class="navCta" href="#contact">لنتواصل</a>
     </nav>
@@ -135,6 +139,8 @@
           <div class="nadhifLogo"><img src="oss/nadhif.png" width="86" height="86" alt=""></div>
           <h2 data-i18n="nd.h2">نظيف</h2>
           <p data-i18n="nd.tagline" class="nadhifTagline">ماك أنظف،<br>وخوادم ومواقع أكثر أمانًا.</p>
+          <a class="yt nadhifVideo" href="https://www.youtube.com/watch?v=nDOR34xE_fQ" data-yt="nDOR34xE_fQ" data-title="Nadhif — Mac cleaner, developer tools and security checks (animated overview)" aria-label="تشغيل فيديو نظيف" data-i18n-aria="nd.play"><img src="articles/nadhif/poster.jpg" width="1280" height="720" alt="" loading="lazy" decoding="async"><span class="ytPlay" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.52.85l10.4-6.5a1 1 0 0 0 0-1.7L9.52 4.65A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg></span></a>
+          <p class="nadhifVideoCap" data-i18n="nd.videoCap">جولة متحركة في نظيف (بالإنجليزية). لا يُحمَّل الفيديو من يوتيوب إلا عند التشغيل.</p>
         </div>
         <div class="nadhifCopy reveal">
           <h3 data-i18n="nd.h3">تطبيق ماك ينظّف بهدوء، ويفحص أمان جهازك وخوادمك ومواقعك.</h3>
@@ -145,7 +151,10 @@
             <div><span>02</span><b data-i18n="nd.f2">أدوات للمطوّرين: Xcode والمحاكيات وnode_modules وHomebrew وDocker</b></div>
             <div><span>03</span><b data-i18n="nd.f3">فحص أمني للماك والخوادم والمواقع</b></div>
           </div>
-          <a class="nadhifCta" href="https://nadhif.hamou.de/ar/" data-href-en="https://nadhif.hamou.de/" data-href-de="https://nadhif.hamou.de/de/" target="_blank" rel="noopener"><span data-i18n="nd.cta">زيارة نظيف</span> <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+          <div class="nadhifLinks">
+            <a class="nadhifCta" href="https://nadhif.hamou.de/ar/" data-href-en="https://nadhif.hamou.de/" data-href-de="https://nadhif.hamou.de/de/" target="_blank" rel="noopener"><span data-i18n="nd.cta">زيارة نظيف</span> <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+            <a class="nadhifArticle" href="/ar/articles/nadhif/" data-href-en="/articles/nadhif/" data-href-de="/de/articles/nadhif/"><span data-i18n="nd.article">اقرأ المقال كاملًا</span> <b><svg class="icon-arr fwd" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M8.5 6H3.5M3.5 6L6 3.5M3.5 6L6 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+          </div>
         </div>
       </div>
     </section>
@@ -417,6 +426,30 @@
       </div>
     </aside>
 
+    <!-- Articles Section: cards between the markers come from tools/build_articles.py -->
+    <section id="articles" class="section container homeArticles">
+      <div class="ossHead">
+        <div class="reveal">
+          <p data-i18n="art.label" class="label">مقالات</p>
+          <h2 data-i18n="art.h2">قصص المنتجات،<br>من الداخل.</h2>
+        </div>
+        <p data-i18n="art.p" class="reveal">مقال لكل مشروع وأداة أبنيها: ماذا يفعل، ولماذا بنيته، وكيف يعمل.</p>
+      </div>
+      <div class="homeArtGrid stagger">
+        <!-- articles:start -->
+        <a class="homeArt" href="/ar/articles/nadhif/" data-href-en="/articles/nadhif/" data-href-de="/de/articles/nadhif/" style="--art-bg:#10233f;--art-accent:#6fd3f5;--art-fg:#eef4fb">
+          <span class="homeArtTop"><img src="/oss/nadhif.png" width="56" height="56" alt="" loading="lazy"><span class="ml"><span data-l="ar" lang="ar">قصة منتج</span><span data-l="en" lang="en">Product story</span><span data-l="de" lang="de">Produktgeschichte</span></span></span>
+          <span class="homeArtBody">
+            <h3 class="ml"><span data-l="ar" lang="ar">نظيف: منظّف ماك يشرح قبل أن يحذف</span><span data-l="en" lang="en">Nadhif: a Mac cleaner that explains before it deletes</span><span data-l="de" lang="de">Nadhif: ein Mac-Cleaner, der erklärt, bevor er löscht</span></h3>
+            <span class="homeArtDek ml"><span data-l="ar" lang="ar">نظيف هو تطبيق الماك الذي أبنيه لشركة الحمو: منظّف هادئ يخبرك ما هو كل ملف قبل أن يلمسه، مع فحوص أمنية لجهازك وخوادمك ومواقعك.</span><span data-l="en" lang="en">Nadhif is the Mac app I am building for Alhamou: a calm cleaner that tells you what every file is before it touches it, with security checks for your Mac, your servers and your websites.</span><span data-l="de" lang="de">Nadhif ist die Mac-App, die ich für Alhamou entwickle: ein ruhiger Cleaner, der dir zu jeder Datei sagt, was sie ist, bevor er sie anfasst, dazu Sicherheitsprüfungen für deinen Mac, deine Server und deine Websites.</span></span>
+            <span class="homeArtMeta ml"><span data-l="ar" lang="ar"><time datetime="2026-11-07">7 نوفمبر 2026</time> · قراءة 3 دقائق</span><span data-l="en" lang="en"><time datetime="2026-11-07">7 November 2026</time> · 3 min read</span><span data-l="de" lang="de"><time datetime="2026-11-07">7. November 2026</time> · 3 Min. Lesezeit</span></span>
+          </span>
+        </a>
+        <!-- articles:end -->
+      </div>
+      <a class="homeArtAll" href="/ar/articles/" data-href-en="/articles/" data-href-de="/de/articles/"><span data-i18n="art.all">كل المقالات</span> <b><svg class="icon-arr fwd" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M8.5 6H3.5M3.5 6L6 3.5M3.5 6L6 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
+    </section>
+
     <!-- How I Work Section -->
     <section id="work" class="section container work">
       <div class="workHead">
@@ -536,6 +569,7 @@
       <p>© 2026</p>
     </footer>
   </main>
+  <script src="video.js?v=1"></script>
   <script src="main.js?v=1"></script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+{
+  "slug": "nadhif",
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-07",
+  "theme": { "bg": "#10233f", "accent": "#6fd3f5", "fg": "#eef4fb" },
+  "mark": "NADHIF",
+  "icon": "oss/nadhif.png",
+  "product": {
+    "name": "Nadhif",
+    "alternate_name": "نظيف",
+    "category": "UtilitiesApplication",
+    "operating_system": "macOS 15 or later",
+    "requirements": "Mac with Apple silicon",
+    "since": "2026-09",
+    "url": {
+      "en": "https://nadhif.hamou.de/",
+      "de": "https://nadhif.hamou.de/de/",
+      "ar": "https://nadhif.hamou.de/ar/"
+    },
+    "languages": ["en", "de", "ar"]
+  },
+  "video": {
+    "youtube_id": "nDOR34xE_fQ",
+    "title": "Nadhif — Mac cleaner, developer tools and security checks (animated overview)",
+    "description": "An animated overview of Nadhif, the macOS app by Alhamou that cleans your Mac, removes apps completely, clears developer leftovers and checks the security of your Mac, servers and websites.",
+    "upload_date": "2026-11-07",
+    "duration": "",
+    "language": "en",
+    "poster_kicker": "Animated overview",
+    "poster_title": "Nadhif",
+    "poster_subtitle": "Mac cleaner, developer tools and security checks"
+  }
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="de">
+  <title>Artikel · Emad Alhamou</title>
+  <subtitle>Geschichten hinter den Produkten und Tools, die ich baue: was sie können, warum es sie gibt und wie sie funktionieren.</subtitle>
+  <link rel="self" type="application/atom+xml" href="https://hamou.de/de/articles/feed.xml"/>
+  <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/"/>
+  <id>https://hamou.de/de/articles/</id>
+  <updated>2026-11-07T00:00:00Z</updated>
+  <author><name>Emad Alhamou</name><uri>https://hamou.de/</uri></author>
+  <icon>https://hamou.de/favicon-32x32.png</icon>
+  <entry>
+    <title>Nadhif: ein Mac-Cleaner, der erklärt, bevor er löscht</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/nadhif/"/>
+    <id>https://hamou.de/de/articles/nadhif/</id>
+    <published>2026-11-07T00:00:00Z</published>
+    <updated>2026-11-07T00:00:00Z</updated>
+    <summary>Nadhif ist die Mac-App, die ich für Alhamou entwickle: ein ruhiger Cleaner, der dir zu jeder Datei sagt, was sie ist, bevor er sie anfasst, dazu Sicherheitsprüfungen für deinen Mac, deine Server und deine Websites.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-nadhif&quot;&gt;Was ist Nadhif?&lt;/h2&gt;
+&lt;p&gt;Nadhif (arabisch für „sauber“) ist eine native macOS-App für Macs mit Apple Chip ab macOS 15. Sie erledigt zwei Aufgaben in einem ruhigen Fenster: Sie schafft Platz, indem sie aufräumt, was dein Mac und deine Tools hinterlassen, und sie prüft die Sicherheit der Geräte und Websites, um die du dich kümmerst.&lt;/p&gt;
+&lt;p&gt;Ich entwickle Nadhif seit September 2026 für Alhamou, und die App ist weiterhin in aktiver Entwicklung. Sie spricht Englisch, Deutsch und Arabisch.&lt;/p&gt;
+&lt;h2 id=&quot;mac-aufraeumen-ohne-angst&quot;&gt;Mac aufräumen, ohne Angst&lt;/h2&gt;
+&lt;p&gt;Die meisten Cleaner verlangen, dass du einem großen Knopf vertraust. Nadhif macht es umgekehrt. Ein einziger Scan findet Caches, Logs, Entwickler-Reste, alte Installer und große Dateien, und jede Kategorie erklärt in einer Zeile, was sie ist und warum das Entfernen sicher ist oder eben nicht. Du entscheidest, was wegkommt.&lt;/p&gt;
+&lt;p&gt;Aufräumen heißt verschieben, nicht löschen. Alles, was Nadhif bereinigt, landet in &lt;strong&gt;Zuletzt bereinigt&lt;/strong&gt;, wo du es sieben Tage lang wiederherstellen kannst. Deine persönlichen Dateien und deine Schlüssel bleiben tabu.&lt;/p&gt;
+&lt;h2 id=&quot;mehr-als-ein-cleaner&quot;&gt;Mehr als ein Cleaner&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Deinstallation:&lt;/strong&gt; entfernt eine App samt ihrer Dateien in Library und findet Reste von Apps, die du schon früher gelöscht hast.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Entwickler-Aufräumen:&lt;/strong&gt; Xcode-Daten, Simulatoren, &lt;code&gt;node_modules&lt;/code&gt;-Ordner, Homebrew und Docker, also die Stellen, die auf einem Entwickler-Mac still und leise Gigabytes fressen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dieser Mac:&lt;/strong&gt; ein Sicherheitscheck für den Mac, an dem du gerade arbeitest.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Server:&lt;/strong&gt; prüft Debian- und Ubuntu-Server per SSH.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Websites:&lt;/strong&gt; testet deine eigenen Websites mit echten Angriffstechniken, damit du Schwachstellen findest, bevor es ein anderer tut.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;privatsphaere-von-anfang-an&quot;&gt;Privatsphäre von Anfang an&lt;/h2&gt;
+&lt;p&gt;Nadhif sammelt keine persönlichen Daten und lässt keinen Prozess im Hintergrund laufen. Scan-Ergebnisse und Sicherheitsberichte bleiben auf deinem Mac.&lt;/p&gt;
+&lt;h2 id=&quot;wer-hinter-nadhif-steht&quot;&gt;Wer hinter Nadhif steht&lt;/h2&gt;
+&lt;p&gt;Ich bin Emad Alhamou, syrisch-deutscher Gründer und Produktentwickler. Nadhif ist ein Produkt von Alhamou und folgt derselben Regel wie alles, was ich baue: Gute Technologie stellt ihre Komplexität nicht zur Schau, sie macht das Leben der Menschen einfacher.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Ist Nadhif sicher?&lt;/h3&gt;
+&lt;p&gt;Ja. Nadhif erklärt jede Kategorie, bevor aufgeräumt wird, rührt deine persönlichen Dateien und Schlüssel nie an und verschiebt alles Bereinigte für sieben Tage nach „Zuletzt bereinigt“. So lässt sich jede Bereinigung rückgängig machen.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was brauche ich für Nadhif?&lt;/h3&gt;
+&lt;p&gt;Einen Mac mit Apple Chip und macOS 15 oder neuer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Sammelt Nadhif meine Daten?&lt;/h3&gt;
+&lt;p&gt;Nein. Nadhif sammelt keine persönlichen Daten, und die Berichte bleiben auf deinem Mac.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Kann Nadhif Server und Websites prüfen?&lt;/h3&gt;
+&lt;p&gt;Ja. Nadhif prüft Debian- und Ubuntu-Server per SSH und testet Websites, die dir gehören.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wo bekomme ich Nadhif?&lt;/h3&gt;
+&lt;p&gt;Auf der offiziellen Website &lt;a href=&quot;https://nadhif.hamou.de/de/&quot;&gt;nadhif.hamou.de&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+</feed>

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /content/
+Disallow: /tools/
 
 Sitemap: https://hamou.de/sitemap.xml

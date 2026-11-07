@@ -1,9 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://hamou.de/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://hamou.de/articles/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/"/>
+  </url>
+  <url>
+    <loc>https://hamou.de/de/articles/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/"/>
+  </url>
+  <url>
+    <loc>https://hamou.de/ar/articles/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/"/>
+  </url>
+  <url>
+    <loc>https://hamou.de/articles/nadhif/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/nadhif/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/nadhif/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/nadhif/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/nadhif/"/>
+    <image:image>
+      <image:loc>https://hamou.de/articles/nadhif/og.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://hamou.de/articles/nadhif/poster.jpg</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://hamou.de/articles/nadhif/poster.jpg</video:thumbnail_loc>
+      <video:title>Nadhif — Mac cleaner, developer tools and security checks (animated overview)</video:title>
+      <video:description>An animated overview of Nadhif, the macOS app by Alhamou that cleans your Mac, removes apps completely, clears developer leftovers and checks the security of your Mac, servers and websites.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/nDOR34xE_fQ</video:player_loc>
+      <video:publication_date>2026-11-07</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://hamou.de/de/articles/nadhif/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/nadhif/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/nadhif/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/nadhif/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/nadhif/"/>
+    <image:image>
+      <image:loc>https://hamou.de/de/articles/nadhif/og.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://hamou.de/articles/nadhif/poster.jpg</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://hamou.de/articles/nadhif/poster.jpg</video:thumbnail_loc>
+      <video:title>Nadhif — Mac cleaner, developer tools and security checks (animated overview)</video:title>
+      <video:description>An animated overview of Nadhif, the macOS app by Alhamou that cleans your Mac, removes apps completely, clears developer leftovers and checks the security of your Mac, servers and websites.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/nDOR34xE_fQ</video:player_loc>
+      <video:publication_date>2026-11-07</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://hamou.de/ar/articles/nadhif/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/nadhif/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/nadhif/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/nadhif/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/nadhif/"/>
+    <image:image>
+      <image:loc>https://hamou.de/ar/articles/nadhif/og.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://hamou.de/articles/nadhif/poster.jpg</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://hamou.de/articles/nadhif/poster.jpg</video:thumbnail_loc>
+      <video:title>Nadhif — Mac cleaner, developer tools and security checks (animated overview)</video:title>
+      <video:description>An animated overview of Nadhif, the macOS app by Alhamou that cleans your Mac, removes apps completely, clears developer leftovers and checks the security of your Mac, servers and websites.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/nDOR34xE_fQ</video:player_loc>
+      <video:publication_date>2026-11-07</video:publication_date>
+    </video:video>
   </url>
 </urlset>

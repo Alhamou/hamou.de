@@ -1,0 +1,667 @@
+/* Article pages. The pages are written by tools/build_articles.py and load
+   styles.css first, so they share the nav, footer, fonts and tokens. */
+
+.art {
+  --art-bg: #191a16;
+  --art-accent: var(--acid);
+  --art-fg: #f4f2ea;
+}
+
+/* Hero band */
+.artHero {
+  color: var(--art-fg);
+  background: var(--art-bg);
+  padding: 56px 0 170px;
+  position: relative;
+  overflow: hidden;
+}
+
+.artHero.noVideo {
+  padding-bottom: 80px;
+}
+
+.artHero::after {
+  content: attr(data-mark);
+  color: #ffffff08;
+  letter-spacing: -14px;
+  pointer-events: none;
+  font: 700 clamp(100px, 17vw, 250px) / 1 'Manrope', sans-serif;
+  position: absolute;
+  bottom: -30px;
+  inset-inline-end: -12px;
+}
+
+.artHeroIn {
+  position: relative;
+  z-index: 1;
+}
+
+.artHeroIn > * {
+  max-width: 900px;
+}
+
+.crumbs ol {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  list-style: none;
+  display: flex;
+}
+
+.crumbs li {
+  opacity: 0.72;
+}
+
+.crumbs li + li::before {
+  content: "/";
+  margin-inline-end: 8px;
+  opacity: 0.55;
+}
+
+.crumbs a {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.crumbs a:hover {
+  border-color: currentColor;
+}
+
+.artKicker {
+  color: var(--art-accent);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 46px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+}
+
+.artKicker img {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 8px 14px #0006);
+}
+
+.artStatus {
+  color: var(--art-fg);
+  border: 1px solid #ffffff26;
+  border-radius: 50px;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+}
+
+.artStatus i {
+  background: var(--art-accent);
+  border-radius: 50%;
+  width: 7px;
+  height: 7px;
+  box-shadow: 0 0 0 4px #ffffff12;
+}
+
+.artHero h1 {
+  letter-spacing: 0;
+  margin: 26px 0 0;
+  font-family: 'Guesswhat', 'IBM Plex Sans Arabic', sans-serif;
+  font-size: clamp(40px, 5.4vw, 74px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.artDek {
+  margin: 26px 0 0;
+  font-size: 20px;
+  line-height: 1.8;
+  opacity: 0.86;
+}
+
+.artMeta {
+  border-top: 1px solid #ffffff1f;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 28px;
+  margin-top: 38px;
+  padding-top: 24px;
+  font-size: 13px;
+  display: flex;
+}
+
+.artMeta > span:not(.artAuthor) {
+  opacity: 0.82;
+}
+
+.artAuthor {
+  align-items: center;
+  gap: 12px;
+  display: flex;
+}
+
+.artAuthor .mono {
+  background: var(--acid);
+  width: 38px;
+  height: 38px;
+  color: var(--ink);
+  place-items: center;
+  font: 700 12px 'Manrope', sans-serif;
+  display: grid;
+}
+
+.artAuthor b {
+  font-size: 14px;
+  display: block;
+}
+
+.artAuthor small {
+  opacity: 0.7;
+  margin-top: 2px;
+  font-size: 12px;
+  display: block;
+}
+
+.artLangs a,
+.artFeed a {
+  border-bottom: 1px solid currentColor;
+}
+
+.artFeed {
+  opacity: 0.75;
+  margin: 26px 0 0;
+  font-size: 13px;
+}
+
+/* Video */
+.artVideo {
+  z-index: 2;
+  width: min(1000px, 100% - 96px);
+  margin: -120px auto 0;
+  position: relative;
+}
+
+.artVideo figcaption {
+  color: var(--muted);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 20px;
+  margin-top: 14px;
+  font-size: 13px;
+  display: flex;
+}
+
+.artVideo figcaption a {
+  color: var(--ink);
+  border-bottom: 1px solid;
+  font-weight: 600;
+}
+
+.artVideo figcaption b {
+  padding-inline-start: 6px;
+  display: inline-flex;
+}
+
+.artVideo small {
+  flex-basis: 100%;
+  font-size: 12px;
+}
+
+/* Body */
+.artGrid {
+  grid-template-columns: 220px minmax(0, 680px);
+  justify-content: center;
+  gap: 80px;
+  padding: 80px 0 60px;
+  display: grid;
+}
+
+.artToc {
+  align-self: start;
+  position: sticky;
+  top: 28px;
+}
+
+.artToc ol {
+  counter-reset: toc;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.artToc li {
+  counter-increment: toc;
+}
+
+.artToc a {
+  color: #55564f;
+  border-bottom: 1px solid var(--line);
+  gap: 10px;
+  padding: 9px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: color 0.2s ease;
+  display: flex;
+}
+
+.artToc a::before {
+  content: counter(toc, decimal-leading-zero);
+  color: #9a9b92;
+  flex: none;
+  padding-top: 3px;
+  font: 11px 'Manrope', sans-serif;
+}
+
+.artToc a:hover {
+  color: var(--ink);
+}
+
+.artBody {
+  color: #34352f;
+  font-size: 18px;
+  line-height: 1.95;
+}
+
+.artBody h2 {
+  color: var(--ink);
+  letter-spacing: 0;
+  scroll-margin-top: 24px;
+  margin: 64px 0 18px;
+  font-family: 'Guesswhat', 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.artBody > h2:first-child {
+  margin-top: 0;
+}
+
+.artBody h3 {
+  color: var(--ink);
+  margin: 0 0 6px;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.artBody p {
+  margin: 0 0 20px;
+}
+
+.artBody ul {
+  border-top: 1px solid var(--line);
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.artBody li {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+
+.artBody strong {
+  color: var(--ink);
+}
+
+.artBody a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.artBody code {
+  direction: ltr;
+  unicode-bidi: isolate;
+  background: #e6e3d8;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font: 0.84em ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.artFaq {
+  margin-top: 64px;
+}
+
+.artQ {
+  border-top: 1px solid var(--line);
+  padding: 22px 0 6px;
+}
+
+.artQ p {
+  margin-bottom: 14px;
+}
+
+/* Product card */
+.artProduct {
+  color: var(--art-fg);
+  background: var(--art-bg);
+  grid-template-columns: 72px 1fr;
+  align-items: start;
+  gap: 24px;
+  margin-top: 64px;
+  padding: 34px;
+  display: grid;
+}
+
+.artProduct > img {
+  width: 72px;
+  height: 72px;
+  filter: drop-shadow(0 14px 18px #0007);
+}
+
+.artProduct .label {
+  color: inherit;
+  opacity: 0.7;
+  border-color: #ffffff26;
+  margin: 0;
+}
+
+.artProductName {
+  margin: 18px 0 4px;
+  font: 600 26px 'Manrope', 'IBM Plex Sans Arabic', sans-serif;
+}
+
+.artProduct p {
+  margin: 0;
+}
+
+.artProduct > div > p:not(.label):not(.artProductName):not(.artActions) {
+  opacity: 0.85;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.artFacts {
+  border: 0 !important;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 0 !important;
+  display: flex;
+}
+
+.artFacts li {
+  border: 1px solid #ffffff2e !important;
+  padding: 4px 10px !important;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.artActions {
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px !important;
+  display: flex;
+}
+
+.artBody .artBtn {
+  color: var(--art-bg);
+  background: var(--art-fg);
+  border: 1px solid var(--art-fg);
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  transition: transform 0.18s ease, background 0.2s ease;
+  display: inline-flex;
+}
+
+.artBody .artBtn.ghost {
+  color: var(--art-fg);
+  background: transparent;
+  border-color: #ffffff40;
+}
+
+.artBody .artBtn:hover {
+  transform: translateY(-2px);
+}
+
+.artBtn b {
+  display: inline-flex;
+}
+
+/* Cards: article list, "more articles" */
+.artList {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 28px;
+  display: grid;
+}
+
+.artListMain {
+  padding: 72px 0 110px;
+}
+
+.artMore {
+  padding: 20px 0 110px;
+}
+
+.artMore .artList {
+  margin-top: 22px;
+}
+
+.artCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+}
+
+.artCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 44px -26px #0005;
+}
+
+.artCardTop {
+  color: var(--art-fg);
+  background: var(--art-bg);
+  align-items: center;
+  gap: 14px;
+  padding: 26px 28px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+}
+
+.artCardTop img {
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 10px 14px #0006);
+}
+
+.artCardBody {
+  flex-direction: column;
+  flex: 1;
+  padding: 24px 28px 28px;
+  display: flex;
+}
+
+.artCardTitle {
+  color: var(--ink);
+  margin: 0 0 10px;
+  font-family: 'Guesswhat', 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.artCardDek {
+  color: #56574f;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.artCardMeta {
+  color: var(--muted);
+  margin-top: auto;
+  padding-top: 18px;
+  font-size: 12px;
+}
+
+.artEmpty {
+  color: var(--muted);
+}
+
+/* A single article in the list gets a wide card */
+.artListMain .artCard:only-child {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+
+.artListMain .artCard:only-child .artCardTop {
+  flex-direction: column;
+  flex: none;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 18px;
+  width: 300px;
+  padding: 34px;
+}
+
+.artListMain .artCard:only-child .artCardTop img {
+  width: 76px;
+  height: 76px;
+}
+
+.artListMain .artCard:only-child .artCardBody {
+  justify-content: center;
+  padding: 34px 40px;
+}
+
+.artListMain .artCard:only-child .artCardTitle {
+  font-size: 32px;
+}
+
+html[dir="ltr"] .artListMain .artCard:only-child .artCardTitle {
+  font-size: 40px;
+}
+
+/* English and German */
+html[dir="ltr"] .artHero h1 {
+  letter-spacing: -0.01em;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(46px, 6.2vw, 88px);
+  line-height: 1.04;
+}
+
+html[dir="ltr"] .artDek {
+  font-size: 21px;
+  line-height: 1.6;
+}
+
+html[dir="ltr"] .artBody {
+  line-height: 1.75;
+}
+
+html[dir="ltr"] .artBody h2 {
+  letter-spacing: -0.01em;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 42px;
+  line-height: 1.12;
+}
+
+html[dir="ltr"] .artCardTitle {
+  letter-spacing: -0.01em;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 30px;
+  line-height: 1.12;
+}
+
+html[dir="ltr"] .artProductName {
+  font-family: 'Inter', 'Manrope', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Smaller screens */
+@media (max-width: 1000px) {
+  .artGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    padding-top: 56px;
+  }
+
+  .artToc {
+    position: static;
+  }
+}
+
+@media (max-width: 850px) {
+  .artHero {
+    padding: 36px 0 120px;
+  }
+
+  .artHero.noVideo {
+    padding-bottom: 60px;
+  }
+
+  .artKicker {
+    margin-top: 34px;
+  }
+
+  .artDek,
+  html[dir="ltr"] .artDek {
+    font-size: 18px;
+  }
+
+  .artVideo {
+    width: min(100% - 48px, 650px);
+    margin-top: -86px;
+  }
+
+  .artBody {
+    font-size: 17px;
+  }
+
+  .artBody h2 {
+    margin-top: 52px;
+    font-size: 30px;
+  }
+
+  html[dir="ltr"] .artBody h2 {
+    font-size: 34px;
+  }
+
+  .artProduct {
+    grid-template-columns: 1fr;
+    padding: 26px 22px;
+  }
+
+  .artListMain {
+    padding: 48px 0 80px;
+  }
+
+  .artListMain .artCard:only-child {
+    flex-direction: column;
+  }
+
+  .artListMain .artCard:only-child .artCardTop {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 14px;
+    width: auto;
+    padding: 26px 28px;
+  }
+
+  .artListMain .artCard:only-child .artCardTop img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .artListMain .artCard:only-child .artCardBody {
+    padding: 24px 28px 28px;
+  }
+
+  .artListMain .artCard:only-child .artCardTitle,
+  html[dir="ltr"] .artListMain .artCard:only-child .artCardTitle {
+    font-size: 28px;
+  }
+
+  .artMore {
+    padding-bottom: 80px;
+  }
+}

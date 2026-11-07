@@ -1,10 +1,10 @@
 # Emad Alhamou
 
-> Personal site of Emad Alhamou, a Syrian-German founder and product builder based in Germany. He builds TakeCar, Shfli, and Arab Solutions: products for mobility, marketplaces, and AI-powered customer support in emerging markets. The site is in Arabic, English and German (picked from the browser language, switchable in the footer).
+> Personal site of Emad Alhamou, a Syrian-German founder and product builder based in Germany. He builds Nadhif, TakeCar, Shfli, and Arab Solutions: products for Mac maintenance and security, mobility, marketplaces, and AI-powered customer support in emerging markets. The site is in Arabic, English and German (picked from the browser language, switchable in the footer).
 
 ## Main page
 
-- [hamou.de](https://hamou.de/): About Emad, his companies, open-source tools, experience, and contact.
+- [hamou.de](https://hamou.de/): About Emad, his companies, open-source tools, articles, experience, and contact.
 
 ## Products
 
@@ -12,6 +12,14 @@
 - [Arab Solutions](https://omysyria.com/ar): AI customer support platform that brings knowledge and channels into one place.
 - [Shfli](https://www.shfli.com/?section=items): Platform for buying, selling, and auctions.
 - [Nadhif](https://nadhif.hamou.de/): Mac cleaner and security checker for Macs, servers and websites, built for Alhamou (in development since September 2026).
+
+<!-- articles:start -->
+## Articles
+
+Articles are static pages in English, German and Arabic (where a translation exists). Add index.md to an article URL for a plain Markdown copy. All English articles in one file: [llms-full.txt](https://hamou.de/llms-full.txt).
+
+- [Nadhif: a Mac cleaner that explains before it deletes](https://hamou.de/articles/nadhif/index.md): Nadhif is a native macOS app that cleans caches, logs and developer leftovers, removes apps completely, and checks the security of your Mac, servers and websites. Also in [Deutsch](https://hamou.de/de/articles/nadhif/index.md) and [العربية](https://hamou.de/ar/articles/nadhif/index.md).
+<!-- articles:end -->
 
 ## Open source
 

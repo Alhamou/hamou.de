@@ -127,7 +127,15 @@
   "lang.label": "Language",
   "aria.details": "Details: ",
   "meta.title": "Emad Alhamou | Founder & Product Builder",
-  "meta.desc": "Founder & Builder of TakeCar, Shfli, and Arab Solutions. Building technology products for mobility, marketplaces, AI-powered customer support, and emerging markets."
+  "meta.desc": "Founder & Builder of TakeCar, Shfli, and Arab Solutions. Building technology products for mobility, marketplaces, AI-powered customer support, and emerging markets.",
+  "nav.articles": "Articles",
+  "nd.play": "Play the Nadhif video",
+  "nd.videoCap": "An animated tour of Nadhif (in English). The video loads from YouTube only when you press play.",
+  "nd.article": "Read the full article",
+  "art.label": "Articles",
+  "art.h2": "Stories behind<br>the products.",
+  "art.p": "An article for every project and tool I build: what it does, why I built it, and how it works.",
+  "art.all": "All articles"
  },
  "de": {
   "skip": "Zum Inhalt springen",
@@ -251,7 +259,15 @@
   "lang.label": "Sprache",
   "aria.details": "Details zu ",
   "meta.title": "Emad Alhamou | Gründer & Produktentwickler",
-  "meta.desc": "Gründer und Entwickler von TakeCar, Shfli und Arab Solutions. Ich baue Technologieprodukte für Mobilität, Marktplätze, KI-gestützten Kundensupport und Wachstumsmärkte."
+  "meta.desc": "Gründer und Entwickler von TakeCar, Shfli und Arab Solutions. Ich baue Technologieprodukte für Mobilität, Marktplätze, KI-gestützten Kundensupport und Wachstumsmärkte.",
+  "nav.articles": "Artikel",
+  "nd.play": "Nadhif-Video abspielen",
+  "nd.videoCap": "Ein animierter Rundgang durch Nadhif (auf Englisch). Das Video wird erst beim Abspielen von YouTube geladen.",
+  "nd.article": "Ganzen Artikel lesen",
+  "art.label": "Artikel",
+  "art.h2": "Geschichten hinter<br>den Produkten.",
+  "art.p": "Ein Artikel zu jedem Projekt und Tool, das ich baue: was es kann, warum ich es gebaut habe und wie es funktioniert.",
+  "art.all": "Alle Artikel"
  }
 };
 

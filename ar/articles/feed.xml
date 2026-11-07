@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ar">
+  <title>مقالات · Emad Alhamou</title>
+  <subtitle>قصص المنتجات والأدوات التي أبنيها: ماذا تفعل، ولماذا وُجدت، وكيف تعمل.</subtitle>
+  <link rel="self" type="application/atom+xml" href="https://hamou.de/ar/articles/feed.xml"/>
+  <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/"/>
+  <id>https://hamou.de/ar/articles/</id>
+  <updated>2026-11-07T00:00:00Z</updated>
+  <author><name>Emad Alhamou</name><uri>https://hamou.de/</uri></author>
+  <icon>https://hamou.de/favicon-32x32.png</icon>
+  <entry>
+    <title>نظيف: منظّف ماك يشرح قبل أن يحذف</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/nadhif/"/>
+    <id>https://hamou.de/ar/articles/nadhif/</id>
+    <published>2026-11-07T00:00:00Z</published>
+    <updated>2026-11-07T00:00:00Z</updated>
+    <summary>نظيف هو تطبيق الماك الذي أبنيه لشركة الحمو: منظّف هادئ يخبرك ما هو كل ملف قبل أن يلمسه، مع فحوص أمنية لجهازك وخوادمك ومواقعك.</summary>
+    <content type="html">&lt;h2 id=&quot;ما-هو-نظيف&quot;&gt;ما هو نظيف؟&lt;/h2&gt;
+&lt;p&gt;نظيف تطبيق أصلي لنظام macOS، يعمل على أجهزة الماك بمعالجات Apple مع macOS 15 أو أحدث. يقوم بمهمتين في نافذة واحدة هادئة: يحرّر المساحة بتنظيف ما يتركه الماك وأدواتك خلفها، ويفحص أمان الأجهزة والمواقع التي تتولّى مسؤوليتها.&lt;/p&gt;
+&lt;p&gt;أبني نظيف لشركة الحمو منذ سبتمبر 2026، وما زال قيد التطوير النشط. التطبيق متوفر بالعربية والإنجليزية والألمانية.&lt;/p&gt;
+&lt;h2 id=&quot;نظ-ف-جهازك-دون-خوف&quot;&gt;نظّف جهازك دون خوف&lt;/h2&gt;
+&lt;p&gt;معظم برامج التنظيف تطلب منك أن تثق بزر كبير واحد. نظيف يعمل بالعكس: فحص واحد يجد ذاكرة التخزين المؤقت والسجلات وبقايا أدوات التطوير والمثبّتات القديمة والملفات الكبيرة، وكل فئة معها سطر يشرح ما هي ولماذا إزالتها آمنة، أو لماذا ليست كذلك. أنت من يقرر ما يُحذف.&lt;/p&gt;
+&lt;p&gt;التنظيف نقلٌ وليس حذفًا. كل ما ينظّفه نظيف ينتقل إلى &lt;strong&gt;المنظَّف مؤخرًا&lt;/strong&gt;، ويمكنك استرجاعه خلال سبعة أيام. ملفاتك الشخصية ومفاتيحك خارج نطاقه تمامًا.&lt;/p&gt;
+&lt;h2 id=&quot;أكثر-من-مجرد-منظ-ف&quot;&gt;أكثر من مجرد منظّف&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;مزيل التطبيقات:&lt;/strong&gt; يحذف التطبيق مع ملفاته في Library، ويجد بقايا التطبيقات التي حذفتها من قبل.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;تنظيف أدوات التطوير:&lt;/strong&gt; بيانات Xcode والمحاكيات ومجلدات &lt;code&gt;node_modules&lt;/code&gt; وHomebrew وDocker، وهي الأماكن التي تلتهم الغيغابايتات بصمت على أجهزة المطوّرين.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;هذا الماك:&lt;/strong&gt; فحص أمني للجهاز الذي تعمل عليه الآن.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;الخوادم:&lt;/strong&gt; يفحص خوادم Debian وUbuntu عبر SSH.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;المواقع:&lt;/strong&gt; يختبر المواقع التي تملكها بأساليب هجوم حقيقية، لتجد نقاط الضعف قبل أن يسبقك إليها غيرك.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;الخصوصية-من-الأساس&quot;&gt;الخصوصية من الأساس&lt;/h2&gt;
+&lt;p&gt;لا يجمع نظيف أي بيانات شخصية، ولا يترك أي عملية تعمل في الخلفية. نتائج الفحص والتقارير الأمنية تبقى على جهازك.&lt;/p&gt;
+&lt;h2 id=&quot;من-يقف-وراء-نظيف&quot;&gt;من يقف وراء نظيف&lt;/h2&gt;
+&lt;p&gt;أنا عماد الحمو، رائد أعمال سوري ألماني وصانع منتجات. نظيف منتج من شركة الحمو، ويتبع القاعدة نفسها التي أبني بها كل شيء: التكنولوجيا الجيدة لا تستعرض تعقيدها، بل تجعل حياة الناس أبسط.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;أسئلة-شائعة&quot;&gt;
+&lt;h2 id=&quot;أسئلة-شائعة&quot;&gt;أسئلة شائعة&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل استخدام نظيف آمن؟&lt;/h3&gt;
+&lt;p&gt;نعم. يشرح نظيف كل فئة قبل تنظيفها، ولا يقترب أبدًا من ملفاتك الشخصية أو مفاتيحك، وينقل كل ما ينظّفه إلى «المنظَّف مؤخرًا» لمدة سبعة أيام، فيمكنك التراجع عن أي تنظيف.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما الذي أحتاجه لتشغيل نظيف؟&lt;/h3&gt;
+&lt;p&gt;جهاز ماك بمعالج Apple ونظام macOS 15 أو أحدث.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل يجمع نظيف بياناتي؟&lt;/h3&gt;
+&lt;p&gt;لا. لا يجمع نظيف أي بيانات شخصية، وتبقى تقاريره على جهازك.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل يستطيع نظيف فحص الخوادم والمواقع؟&lt;/h3&gt;
+&lt;p&gt;نعم. يفحص نظيف خوادم Debian وUbuntu عبر SSH، ويختبر المواقع التي تملكها.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;من أين أحصل على نظيف؟&lt;/h3&gt;
+&lt;p&gt;من الموقع الرسمي &lt;a href=&quot;https://nadhif.hamou.de/ar/&quot;&gt;nadhif.hamou.de&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+</feed>
