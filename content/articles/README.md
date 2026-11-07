@@ -38,7 +38,8 @@ the generated HTML: the next build overwrites it.
 | `mark` | Large faint word in the hero background, e.g. `NADHIF`. |
 | `icon` | Path of a square icon in the repository, e.g. `oss/nadhif.png`. |
 | `product` | Optional. The product the article is about; becomes the product card and `SoftwareApplication` data. `since` is `YYYY-MM`. |
-| `video` | Optional. `youtube_id`, title, description, `upload_date` (`YYYY-MM-DD`), optional `duration` (ISO 8601, e.g. `PT1M45S`) and `duration_seconds`, and the poster texts. |
+| `video` | Optional. `youtube_id`, title, description, `upload_date` (`YYYY-MM-DD`), optional `duration` (ISO 8601, e.g. `PT1M45S`) and `duration_seconds`, `language`, and the poster texts. |
+| `video.by_lang` | Optional. A video recorded in another language, e.g. `"ar": {...}` with its own `youtube_id`, title, description, `upload_date`, `language` and poster texts. That language's page shows it, with its own poster in `/ar/articles/<slug>/poster.jpg`; languages without an entry show the main video. |
 | `draft` | Set to `true` to keep the article out of the build. |
 
 ## The Markdown files

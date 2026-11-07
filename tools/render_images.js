@@ -63,20 +63,28 @@ h1{font-family:${display};font-weight:400;font-size:${job.dir === 'rtl' ? 74 : 8
 }
 
 function poster(job) {
+  // Arabic posters mirror the layout: icon and text on the right.
+  const rtl = job.dir === 'rtl';
+  const start = rtl ? 'right' : 'left';
+  const end = rtl ? 'left' : 'right';
+  const text = rtl ? "'IBM Plex Sans Arabic',sans-serif" : "'Inter',sans-serif";
   return base(job, `
-body{background:radial-gradient(120% 90% at 85% 0%,color-mix(in srgb,var(--accent) 22%,var(--bg)) 0%,var(--bg) 55%,color-mix(in srgb,var(--bg) 80%,#000) 100%)}
-.mark{bottom:-70px;right:-30px;font-size:330px}
-.icon{position:absolute;top:70px;left:80px;width:150px;height:150px;filter:drop-shadow(0 22px 34px #0009)}
-.brand{position:absolute;top:92px;right:80px;display:flex;align-items:center;gap:14px;font:600 22px 'Inter',sans-serif;opacity:.85}
+body{background:radial-gradient(120% 90% at ${rtl ? '15%' : '85%'} 0%,color-mix(in srgb,var(--accent) 22%,var(--bg)) 0%,var(--bg) 55%,color-mix(in srgb,var(--bg) 80%,#000) 100%)}
+.mark{bottom:-70px;${end}:-30px;font-size:330px}
+.icon{position:absolute;top:70px;${start}:80px;width:150px;height:150px;filter:drop-shadow(0 22px 34px #0009)}
+.brand{position:absolute;top:92px;${end}:80px;display:flex;align-items:center;gap:14px;font:600 24px ${text};opacity:.85}
 .brand .mono{width:44px;height:44px}
-.copy{position:absolute;left:80px;bottom:78px;max-width:900px}
+.copy{position:absolute;${start}:80px;bottom:78px;max-width:900px}
 .kick{color:var(--accent);font:700 18px 'Inter',sans-serif;letter-spacing:4px;text-transform:uppercase}
 h1{font:400 132px/1 'Instrument Serif',Georgia,serif;letter-spacing:-0.01em;margin:16px 0 14px}
 p{font:500 31px/1.35 'Inter',sans-serif;opacity:.85}
+${rtl ? `.kick{font:600 27px/1.4 ${text};letter-spacing:0;text-transform:none}
+h1{font:400 150px/1.2 'Guesswhat','IBM Plex Sans Arabic',sans-serif;letter-spacing:0;margin:4px 0 6px}
+p{font:500 34px/1.5 ${text}}` : ''}
 `, `<div class="mark">${esc(job.mark)}</div>
 <img class="icon" src="${dataUri(job.icon, 'image/png')}" alt="">
-<div class="brand"><span class="mono">EA</span><span>${esc(job.author)}</span></div>
-<div class="copy"><div class="kick">${esc(job.kicker)}</div><h1>${esc(job.title)}</h1><p>${esc(job.subtitle)}</p></div>`);
+<div class="brand" dir="${esc(job.dir)}">${job.brand ? `<span>${esc(job.brand)}</span>` : `<span class="mono">EA</span><span>${esc(job.author)}</span>`}</div>
+<div class="copy" dir="${esc(job.dir)}"><div class="kick">${esc(job.kicker)}</div><h1>${esc(job.title)}</h1><p>${esc(job.subtitle)}</p></div>`);
 }
 
 (async () => {

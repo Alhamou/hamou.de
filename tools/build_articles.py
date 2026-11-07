@@ -46,13 +46,14 @@ SITE = 'https://hamou.de'
 WEBSITE_ID = SITE + '/#website'
 PERSON_ID = SITE + '/#person'
 ORG_ID = SITE + '/#alhamou'
+ORG_NAME = {'en': 'Alhamou', 'de': 'Alhamou', 'ar': 'شركة الحمو'}
 SAME_AS = ['https://github.com/Alhamou', 'https://www.youtube.com/@emadalhamo']
 
 OG_W, OG_H = 1200, 630
 POSTER_W, POSTER_H = 1280, 720
 FALLBACK_OG = ('/og.png', 1731, 909)
 
-CSP = ("default-src 'self'; script-src 'self'; "
+CSP = ("default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; "
        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
        "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; "
        "frame-src https://www.youtube-nocookie.com; connect-src 'self'; "
@@ -182,8 +183,29 @@ def og_rel(a, lang):
     return art_path(a, lang) + 'og.jpg'
 
 
-def poster_rel(a):
-    return '/articles/%s/poster.jpg' % a['slug']
+def video_for(a, lang):
+    """The video shown in one language: the article's video, with the fields
+    of video.by_lang[lang] on top (usually a video recorded in that language).
+    'owner' is the language the video belongs to: it names the video in the
+    structured data and decides where its poster lives."""
+    v = a.get('video')
+    if not v:
+        return None
+    out = {k: x for k, x in v.items() if k != 'by_lang'}
+    own = (v.get('by_lang') or {}).get(lang) if lang != DEFAULT else None
+    out.update(own or {})
+    out['owner'] = lang if own else DEFAULT
+    return out
+
+
+def video_ld_id(a, v):
+    return abs_url(art_path(a, v['owner'])) + '#video'
+
+
+def poster_rel(a, owner=DEFAULT):
+    # /articles/<slug>/poster.jpg for the main video, /ar/articles/<slug>/...
+    # for a language with its own video.
+    return art_path(a, owner) + 'poster.jpg'
 
 
 def exists(rel):
@@ -195,10 +217,11 @@ def og_for(a, lang):
     return (rel, OG_W, OG_H) if exists(rel) else FALLBACK_OG
 
 
-def poster_for(a):
-    if not a.get('video'):
+def poster_for(a, lang):
+    v = video_for(a, lang)
+    if not v:
         return None
-    rel = poster_rel(a)
+    rel = poster_rel(a, v['owner'])
     return rel if exists(rel) else None
 
 
@@ -636,7 +659,8 @@ def ld_article(a, lang):
     base_url = abs_url(art_path(a, DEFAULT))
     og_path, w, h = og_for(a, lang)
     images = [abs_url(og_path)]
-    poster = poster_for(a)
+    v = video_for(a, lang)
+    poster = poster_for(a, lang)
     if poster:
         images.append(abs_url(poster))
     graph = ld_base()
@@ -662,8 +686,8 @@ def ld_article(a, lang):
         article['keywords'] = [k.strip() for k in fm['keywords'].split(',') if k.strip()]
     if a.get('product'):
         article['about'] = {'@id': base_url + '#software'}
-    if a.get('video'):
-        article['video'] = {'@id': base_url + '#video'}
+    if v:
+        article['video'] = {'@id': video_ld_id(a, v)}
     others = [l for l in LANGS if l in a['langs'] and l != lang]
     if lang == DEFAULT and others:
         article['workTranslation'] = [{'@id': abs_url(art_path(a, l)) + '#article'} for l in others]
@@ -676,7 +700,7 @@ def ld_article(a, lang):
         sw = {'@type': 'SoftwareApplication', '@id': base_url + '#software', 'name': p['name'],
               'url': p.get('url', {}).get(lang) or p.get('url', {}).get(DEFAULT),
               'applicationCategory': p.get('category', 'UtilitiesApplication'),
-              'image': abs_url('/' + a['icon']), 'publisher': {'@id': ORG_ID}, 'author': {'@id': PERSON_ID}}
+              'image': abs_url('/' + a['icon']), 'publisher': {'@id': ORG_ID}, 'author': {'@id': ORG_ID}}
         for src, dst in (('alternate_name', 'alternateName'), ('operating_system', 'operatingSystem'),
                          ('requirements', 'softwareRequirements'), ('languages', 'inLanguage')):
             if p.get(src):
@@ -687,11 +711,10 @@ def ld_article(a, lang):
             sw['creativeWorkStatus'] = fm['status']
         graph.append(sw)
 
-    v = a.get('video')
     if v:
         yid = v['youtube_id']
         thumbs = ([abs_url(poster)] if poster else []) + ['https://i.ytimg.com/vi/%s/hqdefault.jpg' % yid]
-        video = {'@type': 'VideoObject', '@id': base_url + '#video', 'name': v['title'],
+        video = {'@type': 'VideoObject', '@id': video_ld_id(a, v), 'name': v['title'],
                  'description': v['description'], 'thumbnailUrl': thumbs, 'uploadDate': v['upload_date'],
                  'embedUrl': 'https://www.youtube.com/embed/%s' % yid,
                  'url': 'https://www.youtube.com/watch?v=%s' % yid,
@@ -730,7 +753,7 @@ def article_page(a, lang, articles):
                      extra='\n'.join(extra), jsonld=ld_article(a, lang), keywords=fm.get('keywords', ''),
                      md_alt=canonical + 'index.md')
 
-    v = a.get('video')
+    v = video_for(a, lang)
     status = fm.get('status')
     pill = ' <span class="artStatus"><i></i>%s</span>' % esc(status) if status else ''
     meta = ['<span class="artAuthor"><span class="mono" aria-hidden="true">EA</span>'
@@ -764,7 +787,7 @@ def article_page(a, lang, articles):
     if v:
         yid = v['youtube_id']
         watch = 'https://www.youtube.com/watch?v=%s' % yid
-        poster = poster_for(a)
+        poster = poster_for(a, lang)
         img = ('<img src="%s" width="%d" height="%d" alt="" fetchpriority="high" decoding="async">'
                % (poster, POSTER_W, POSTER_H)) if poster else \
               ('<span class="ytFallback"><img src="/%s" width="96" height="96" alt=""></span>' % esc(a['icon']))
@@ -873,7 +896,7 @@ def article_md(a, lang):
     if others:
         lines.append('- Other languages: ' + ', '.join(
             '[%s](%s)' % (LANG[l]['name'], abs_url(art_path(a, l)) + 'index.md') for l in others))
-    v = a.get('video')
+    v = video_for(a, lang)
     if v:
         lines.append('- Video: [%s](https://www.youtube.com/watch?v=%s)' % (v['title'], v['youtube_id']))
     p = a.get('product')
@@ -980,14 +1003,14 @@ def sitemap(articles):
             out += entry(p, idx_lastmod, idx_alts)
     for a in articles:
         alts = [(l, art_path(a, l)) for l in LANGS if l in a['langs']]
-        poster = poster_for(a)
         for l, p in alts:
             extra = []
+            poster = poster_for(a, l)
             og_path = og_for(a, l)[0]
             for img in [og_path] + ([poster] if poster else []):
                 extra += ['    <image:image>', '      <image:loc>%s</image:loc>' % esc(abs_url(img)),
                           '    </image:image>']
-            v = a.get('video')
+            v = video_for(a, l)
             if v:
                 thumb = abs_url(poster) if poster else 'https://i.ytimg.com/vi/%s/hqdefault.jpg' % v['youtube_id']
                 extra += ['    <video:video>',
@@ -1045,13 +1068,18 @@ def image_jobs(articles):
                          'author': UI[lang]['author'], 'section': UI[lang]['articles'],
                          'url': ('hamou.de' + art_path(a, lang)).rstrip('/'), 'icon': icon,
                          'theme': theme, 'mark': a.get('mark', '')})
-        v = a.get('video')
-        if v:
-            jobs.append({'kind': 'poster', 'out': os.path.join(ROOT, poster_rel(a).lstrip('/')),
-                         'width': POSTER_W, 'height': POSTER_H, 'lang': v.get('language', DEFAULT), 'dir': 'ltr',
-                         'title': v.get('poster_title') or a['langs'][DEFAULT]['fm']['short_title'],
-                         'subtitle': v.get('poster_subtitle', ''), 'kicker': v.get('poster_kicker', ''),
-                         'author': 'Emad Alhamou', 'icon': icon, 'theme': theme, 'mark': a.get('mark', '')})
+        if a.get('video'):
+            # One poster per video: the main one, and one for every language
+            # that has its own video (video.by_lang).
+            owners = [DEFAULT] + [l for l in a['video'].get('by_lang') or {} if l != DEFAULT and l in a['langs']]
+            for owner in owners:
+                v = video_for(a, owner)
+                vlang = v.get('language') if v.get('language') in LANG else owner
+                jobs.append({'kind': 'poster', 'out': os.path.join(ROOT, poster_rel(a, owner).lstrip('/')),
+                             'width': POSTER_W, 'height': POSTER_H, 'lang': vlang, 'dir': LANG[vlang]['dir'],
+                             'title': v.get('poster_title') or a['langs'][owner]['fm']['short_title'],
+                             'subtitle': v.get('poster_subtitle', ''), 'kicker': v.get('poster_kicker', ''),
+                             'brand': ORG_NAME[vlang], 'icon': icon, 'theme': theme, 'mark': a.get('mark', '')})
     return jobs
 
 

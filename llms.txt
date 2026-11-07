@@ -11,14 +11,14 @@
 - [TakeCar](https://takecarapp.com): Syrian mobility platform.
 - [Arab Solutions](https://omysyria.com/ar): AI customer support platform that brings knowledge and channels into one place.
 - [Shfli](https://www.shfli.com/?section=items): Platform for buying, selling, and auctions.
-- [Nadhif](https://nadhif.hamou.de/): Mac cleaner and security checker for Macs, servers and websites, built for Alhamou (in development since September 2026).
+- [Nadhif](https://nadhif.hamou.de/): Mac cleaner with developer tools and a vulnerability scanner that helps protect websites and servers from hackers, built by the Alhamou team (in development since September 2026).
 
 <!-- articles:start -->
 ## Articles
 
 Articles are static pages in English, German and Arabic (where a translation exists). Add index.md to an article URL for a plain Markdown copy. All English articles in one file: [llms-full.txt](https://hamou.de/llms-full.txt).
 
-- [Nadhif: a Mac cleaner that explains before it deletes](https://hamou.de/articles/nadhif/index.md): Nadhif is a native macOS app that cleans caches, logs and developer leftovers, removes apps completely, and checks the security of your Mac, servers and websites. Also in [Deutsch](https://hamou.de/de/articles/nadhif/index.md) and [العربية](https://hamou.de/ar/articles/nadhif/index.md).
+- [Nadhif: clean your Mac with developer tools and protect your website and server from hackers](https://hamou.de/articles/nadhif/index.md): Nadhif is a Mac cleaner with developer tools that also tests your websites and servers for vulnerabilities, so you can fix weak spots before hackers find them. Also in [Deutsch](https://hamou.de/de/articles/nadhif/index.md) and [العربية](https://hamou.de/ar/articles/nadhif/index.md).
 <!-- articles:end -->
 
 ## Open source

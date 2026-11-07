@@ -1338,12 +1338,49 @@ html[dir="ltr"] .nadhif:after {
   outline-offset: 4px;
 }
 
-.yt.on iframe {
+.yt.on {
+  cursor: default;
+}
+
+.yt.on:hover img {
+  transform: none;
+}
+
+.yt.on iframe,
+.ytSlot {
   border: 0;
   width: 100%;
   height: 100%;
   position: absolute;
   inset: 0;
+}
+
+/* While YouTube loads, the poster stays and a spinner takes the play button's place */
+.yt.loading:after {
+  content: "";
+  pointer-events: none;
+  z-index: 1;
+  border: 4px solid #ffffff4d;
+  border-top-color: #fff;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  margin: auto;
+  animation: 0.8s linear infinite ytSpin;
+  position: absolute;
+  inset: 0;
+}
+
+@keyframes ytSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yt.loading:after {
+    animation-duration: 2.4s;
+  }
 }
 
 .ytFallback {

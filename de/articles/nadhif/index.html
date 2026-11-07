@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Nadhif: ein Mac-Cleaner, der erklärt, bevor er löscht | Emad Alhamou</title>
-  <meta name="description" content="Nadhif ist eine native macOS-App: Sie räumt Caches, Logs und Entwickler-Reste auf, entfernt Apps restlos und prüft die Sicherheit von Mac, Servern und Websites.">
+  <title>Nadhif: Mac-Cleaner, Entwickler-Tools und Schwachstellen-Scanner</title>
+  <meta name="description" content="Nadhif ist ein Mac-Cleaner mit Entwickler-Tools, der auch deine Websites und Server auf Schwachstellen prüft, damit du Lücken schließt, bevor Hacker sie finden.">
   <meta name="author" content="Emad Alhamou">
-  <meta name="keywords" content="Nadhif, Mac Cleaner, Mac aufräumen, Mac Speicher freigeben, Mac Apps deinstallieren, Xcode aufräumen, node_modules löschen, Mac Sicherheitscheck, Server Sicherheitsprüfung, Website Sicherheitscheck, Alhamou">
+  <meta name="keywords" content="Nadhif, Mac Cleaner, Mac Entwickler-Tools, Mac aufräumen, Mac Speicher freigeben, Mac Apps deinstallieren, Xcode aufräumen, node_modules löschen, Docker aufräumen Mac, Mac Sicherheitscheck, Website Schwachstellen-Scan, Server auf Schwachstellen prüfen, Website vor Hackern schützen, Alhamou">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#12130f">
   <link rel="canonical" href="https://hamou.de/de/articles/nadhif/">
@@ -24,25 +24,25 @@
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:locale:alternate" content="ar_AR">
   <meta property="og:url" content="https://hamou.de/de/articles/nadhif/">
-  <meta property="og:title" content="Nadhif: ein Mac-Cleaner, der erklärt, bevor er löscht">
-  <meta property="og:description" content="Nadhif ist eine native macOS-App: Sie räumt Caches, Logs und Entwickler-Reste auf, entfernt Apps restlos und prüft die Sicherheit von Mac, Servern und Websites.">
+  <meta property="og:title" content="Nadhif: Räum deinen Mac mit Entwickler-Tools auf und schütze Website und Server vor Hackern">
+  <meta property="og:description" content="Nadhif ist ein Mac-Cleaner mit Entwickler-Tools, der auch deine Websites und Server auf Schwachstellen prüft, damit du Lücken schließt, bevor Hacker sie finden.">
   <meta property="og:image" content="https://hamou.de/de/articles/nadhif/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Nadhif: ein Mac-Cleaner, der erklärt, bevor er löscht">
+  <meta property="og:image:alt" content="Nadhif: Räum deinen Mac mit Entwickler-Tools auf und schütze Website und Server vor Hackern">
   <meta property="article:published_time" content="2026-11-07">
   <meta property="article:modified_time" content="2026-11-07">
   <meta property="article:author" content="https://hamou.de/">
   <meta property="article:section" content="Produktgeschichte">
   <meta property="article:tag" content="Nadhif">
   <meta property="article:tag" content="Mac Cleaner">
+  <meta property="article:tag" content="Mac Entwickler-Tools">
   <meta property="article:tag" content="Mac aufräumen">
   <meta property="article:tag" content="Mac Speicher freigeben">
   <meta property="article:tag" content="Mac Apps deinstallieren">
-  <meta property="article:tag" content="Xcode aufräumen">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nadhif: ein Mac-Cleaner, der erklärt, bevor er löscht">
-  <meta name="twitter:description" content="Nadhif ist eine native macOS-App: Sie räumt Caches, Logs und Entwickler-Reste auf, entfernt Apps restlos und prüft die Sicherheit von Mac, Servern und Websites.">
+  <meta name="twitter:title" content="Nadhif: Räum deinen Mac mit Entwickler-Tools auf und schütze Website und Server vor Hackern">
+  <meta name="twitter:description" content="Nadhif ist ein Mac-Cleaner mit Entwickler-Tools, der auch deine Websites und Server auf Schwachstellen prüft, damit du Lücken schließt, bevor Hacker sie finden.">
   <meta name="twitter:image" content="https://hamou.de/de/articles/nadhif/og.jpg">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -53,7 +53,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=d2ef5668">
+  <link rel="stylesheet" href="/styles.css?v=92264e45">
   <link rel="stylesheet" href="/articles/article.css?v=0ac81189">
   <script type="application/ld+json">
 {
@@ -131,8 +131,8 @@
       "@type": "WebPage",
       "@id": "https://hamou.de/de/articles/nadhif/#webpage",
       "url": "https://hamou.de/de/articles/nadhif/",
-      "name": "Nadhif: ein Mac-Cleaner, der erklärt, bevor er löscht | Emad Alhamou",
-      "description": "Nadhif ist eine native macOS-App: Sie räumt Caches, Logs und Entwickler-Reste auf, entfernt Apps restlos und prüft die Sicherheit von Mac, Servern und Websites.",
+      "name": "Nadhif: Mac-Cleaner, Entwickler-Tools und Schwachstellen-Scanner",
+      "description": "Nadhif ist ein Mac-Cleaner mit Entwickler-Tools, der auch deine Websites und Server auf Schwachstellen prüft, damit du Lücken schließt, bevor Hacker sie finden.",
       "inLanguage": "de",
       "isPartOf": {
         "@id": "https://hamou.de/#website"
@@ -153,14 +153,14 @@
       "contentUrl": "https://hamou.de/de/articles/nadhif/og.jpg",
       "width": 1200,
       "height": 630,
-      "caption": "Nadhif: ein Mac-Cleaner, der erklärt, bevor er löscht"
+      "caption": "Nadhif: Räum deinen Mac mit Entwickler-Tools auf und schütze Website und Server vor Hackern"
     },
     {
       "@type": "Article",
       "@id": "https://hamou.de/de/articles/nadhif/#article",
-      "headline": "Nadhif: ein Mac-Cleaner, der erklärt, bevor er löscht",
-      "description": "Nadhif ist eine native macOS-App: Sie räumt Caches, Logs und Entwickler-Reste auf, entfernt Apps restlos und prüft die Sicherheit von Mac, Servern und Websites.",
-      "abstract": "Nadhif ist die Mac-App, die ich für Alhamou entwickle: ein ruhiger Cleaner, der dir zu jeder Datei sagt, was sie ist, bevor er sie anfasst, dazu Sicherheitsprüfungen für deinen Mac, deine Server und deine Websites.",
+      "headline": "Nadhif: Räum deinen Mac mit Entwickler-Tools auf und schütze Website und Server vor Hackern",
+      "description": "Nadhif ist ein Mac-Cleaner mit Entwickler-Tools, der auch deine Websites und Server auf Schwachstellen prüft, damit du Lücken schließt, bevor Hacker sie finden.",
+      "abstract": "Nadhif ist die Mac-App, die unser Team bei Alhamou entwickelt. Sie räumt deinen Mac auf und erklärt jede Datei, bevor sie sie anfasst, gibt Entwicklern Tools für die Gigabytes, die Xcode, Node und Docker hinterlassen, und prüft deine Websites und Server auf Schwachstellen, damit du sie schließt, bevor jemand sie ausnutzt.",
       "inLanguage": "de",
       "datePublished": "2026-11-07",
       "dateModified": "2026-11-07",
@@ -181,19 +181,22 @@
         "https://hamou.de/articles/nadhif/poster.jpg"
       ],
       "articleSection": "Produktgeschichte",
-      "wordCount": 417,
+      "wordCount": 491,
       "isAccessibleForFree": true,
       "keywords": [
         "Nadhif",
         "Mac Cleaner",
+        "Mac Entwickler-Tools",
         "Mac aufräumen",
         "Mac Speicher freigeben",
         "Mac Apps deinstallieren",
         "Xcode aufräumen",
         "node_modules löschen",
+        "Docker aufräumen Mac",
         "Mac Sicherheitscheck",
-        "Server Sicherheitsprüfung",
-        "Website Sicherheitscheck",
+        "Website Schwachstellen-Scan",
+        "Server auf Schwachstellen prüfen",
+        "Website vor Hackern schützen",
         "Alhamou"
       ],
       "about": {
@@ -217,7 +220,7 @@
         "@id": "https://hamou.de/#alhamou"
       },
       "author": {
-        "@id": "https://hamou.de/#person"
+        "@id": "https://hamou.de/#alhamou"
       },
       "alternateName": "نظيف",
       "operatingSystem": "macOS 15 or later",
@@ -227,7 +230,7 @@
         "de",
         "ar"
       ],
-      "description": "Mac-Cleaner und Sicherheitsprüfungen für Mac, Server und Websites.",
+      "description": "Mac-Cleaner und Entwickler-Tools, dazu Schwachstellen-Scans für Websites und Server.",
       "creativeWorkStatus": "In Entwicklung"
     },
     {
@@ -284,10 +287,18 @@
         },
         {
           "@type": "Question",
-          "name": "Kann Nadhif Server und Websites prüfen?",
+          "name": "Hat Nadhif Tools für Entwickler?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja. Nadhif prüft Debian- und Ubuntu-Server per SSH und testet Websites, die dir gehören."
+            "text": "Ja. Nadhif findet und räumt auf, was Xcode, Simulatoren, node_modules-Ordner, Homebrew und Docker auf deinem Mac hinterlassen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann Nadhif meine Website und meinen Server auf Schwachstellen prüfen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Nadhif testet Websites, die dir gehören, mit echten Angriffstechniken und prüft Debian- und Ubuntu-Server per SSH auf Schwachstellen."
           }
         },
         {
@@ -322,8 +333,8 @@
       <div class="container artHeroIn">
         <nav class="crumbs" aria-label="Brotkrümelnavigation"><ol><li><a href="/?lang=de">Startseite</a></li><li><a href="/de/articles/">Artikel</a></li><li aria-current="page">Nadhif</li></ol></nav>
         <p class="artKicker"><img src="/oss/nadhif.png" width="40" height="40" alt="">Produktgeschichte <span class="artStatus"><i></i>In Entwicklung</span></p>
-        <h1>Nadhif: ein Mac-Cleaner, der erklärt, bevor er löscht</h1>
-        <p class="artDek">Nadhif ist die Mac-App, die ich für Alhamou entwickle: ein ruhiger Cleaner, der dir zu jeder Datei sagt, was sie ist, bevor er sie anfasst, dazu Sicherheitsprüfungen für deinen Mac, deine Server und deine Websites.</p>
+        <h1>Nadhif: Räum deinen Mac mit Entwickler-Tools auf und schütze Website und Server vor Hackern</h1>
+        <p class="artDek">Nadhif ist die Mac-App, die unser Team bei Alhamou entwickelt. Sie räumt deinen Mac auf und erklärt jede Datei, bevor sie sie anfasst, gibt Entwicklern Tools für die Gigabytes, die Xcode, Node und Docker hinterlassen, und prüft deine Websites und Server auf Schwachstellen, damit du sie schließt, bevor jemand sie ausnutzt.</p>
         <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Gründer &amp; Produktentwickler</small></span></span><span>Veröffentlicht am <time datetime="2026-11-07">7. November 2026</time></span><span>3 Min. Lesezeit</span><span class="artLangs">Auch auf: <a href="/articles/nadhif/" hreflang="en" lang="en">English</a> · <a href="/ar/articles/nadhif/" hreflang="ar" lang="ar">العربية</a></span></div>
       </div>
     </header>
@@ -332,26 +343,28 @@
       <figcaption><span>Nadhif als animierter Überblick (auf Englisch).</span><a href="https://www.youtube.com/watch?v=nDOR34xE_fQ" target="_blank" rel="noopener">Auf YouTube ansehen <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a><small>Das Video wird erst beim Abspielen von YouTube (Google) geladen.</small></figcaption>
     </figure>
     <div class="container artGrid">
-      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">Auf dieser Seite</p><ol><li><a href="#was-ist-nadhif">Was ist Nadhif?</a></li><li><a href="#mac-aufraeumen-ohne-angst">Mac aufräumen, ohne Angst</a></li><li><a href="#mehr-als-ein-cleaner">Mehr als ein Cleaner</a></li><li><a href="#privatsphaere-von-anfang-an">Privatsphäre von Anfang an</a></li><li><a href="#wer-hinter-nadhif-steht">Wer hinter Nadhif steht</a></li><li><a href="#haeufige-fragen">Häufige Fragen</a></li></ol></aside>
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">Auf dieser Seite</p><ol><li><a href="#was-ist-nadhif">Was ist Nadhif?</a></li><li><a href="#mac-aufraeumen-ohne-angst">Mac aufräumen, ohne Angst</a></li><li><a href="#tools-fuer-entwickler">Tools für Entwickler</a></li><li><a href="#schuetze-website-und-server-vor-hackern">Schütze Website und Server vor Hackern</a></li><li><a href="#privatsphaere-von-anfang-an">Privatsphäre von Anfang an</a></li><li><a href="#wer-hinter-nadhif-steht">Wer hinter Nadhif steht</a></li><li><a href="#haeufige-fragen">Häufige Fragen</a></li></ol></aside>
       <div class="artBody">
 <h2 id="was-ist-nadhif">Was ist Nadhif?</h2>
-<p>Nadhif (arabisch für „sauber“) ist eine native macOS-App für Macs mit Apple Chip ab macOS 15. Sie erledigt zwei Aufgaben in einem ruhigen Fenster: Sie schafft Platz, indem sie aufräumt, was dein Mac und deine Tools hinterlassen, und sie prüft die Sicherheit der Geräte und Websites, um die du dich kümmerst.</p>
-<p>Ich entwickle Nadhif seit September 2026 für Alhamou, und die App ist weiterhin in aktiver Entwicklung. Sie spricht Englisch, Deutsch und Arabisch.</p>
+<p>Nadhif (arabisch für „sauber“) ist eine native macOS-App für Macs mit Apple Chip ab macOS 15. Sie erledigt drei Aufgaben in einem ruhigen Fenster: Sie räumt deinen Mac ohne Risiko auf, sie gibt den Platz frei, den deine Entwickler-Tools still belegen, und sie findet die Schwachstellen in deinem Mac, deinen Servern und deinen Websites, bevor Hacker es tun.</p>
+<p>Unser Team bei Alhamou entwickelt Nadhif seit September 2026, und die App ist weiterhin in aktiver Entwicklung. Sie spricht Englisch, Deutsch und Arabisch.</p>
 <h2 id="mac-aufraeumen-ohne-angst">Mac aufräumen, ohne Angst</h2>
 <p>Die meisten Cleaner verlangen, dass du einem großen Knopf vertraust. Nadhif macht es umgekehrt. Ein einziger Scan findet Caches, Logs, Entwickler-Reste, alte Installer und große Dateien, und jede Kategorie erklärt in einer Zeile, was sie ist und warum das Entfernen sicher ist oder eben nicht. Du entscheidest, was wegkommt.</p>
 <p>Aufräumen heißt verschieben, nicht löschen. Alles, was Nadhif bereinigt, landet in <strong>Zuletzt bereinigt</strong>, wo du es sieben Tage lang wiederherstellen kannst. Deine persönlichen Dateien und deine Schlüssel bleiben tabu.</p>
-<h2 id="mehr-als-ein-cleaner">Mehr als ein Cleaner</h2>
+<p>Die Deinstallation entfernt eine App samt ihrer Dateien in Library und findet Reste von Apps, die du schon früher gelöscht hast.</p>
+<h2 id="tools-fuer-entwickler">Tools für Entwickler</h2>
+<p>Ein Entwickler-Mac füllt sich an Stellen, an die die meisten Cleaner nie schauen. Nadhif kennt sie: Xcode-Daten, Simulatoren, <code>node_modules</code>-Ordner, Homebrew und Docker, also die Stellen, die auf einem Entwickler-Mac still und leise Gigabytes fressen.</p>
+<h2 id="schuetze-website-und-server-vor-hackern">Schütze Website und Server vor Hackern</h2>
+<p>Der dritte Teil von Nadhif sucht die Lücken, durch die Angreifer hereinkommen:</p>
 <ul>
-<li><strong>Deinstallation:</strong> entfernt eine App samt ihrer Dateien in Library und findet Reste von Apps, die du schon früher gelöscht hast.</li>
-<li><strong>Entwickler-Aufräumen:</strong> Xcode-Daten, Simulatoren, <code>node_modules</code>-Ordner, Homebrew und Docker, also die Stellen, die auf einem Entwickler-Mac still und leise Gigabytes fressen.</li>
 <li><strong>Dieser Mac:</strong> ein Sicherheitscheck für den Mac, an dem du gerade arbeitest.</li>
-<li><strong>Server:</strong> prüft Debian- und Ubuntu-Server per SSH.</li>
+<li><strong>Server:</strong> prüft Debian- und Ubuntu-Server per SSH auf Schwachstellen.</li>
 <li><strong>Websites:</strong> testet deine eigenen Websites mit echten Angriffstechniken, damit du Schwachstellen findest, bevor es ein anderer tut.</li>
 </ul>
 <h2 id="privatsphaere-von-anfang-an">Privatsphäre von Anfang an</h2>
 <p>Nadhif sammelt keine persönlichen Daten und lässt keinen Prozess im Hintergrund laufen. Scan-Ergebnisse und Sicherheitsberichte bleiben auf deinem Mac.</p>
 <h2 id="wer-hinter-nadhif-steht">Wer hinter Nadhif steht</h2>
-<p>Ich bin Emad Alhamou, syrisch-deutscher Gründer und Produktentwickler. Nadhif ist ein Produkt von Alhamou und folgt derselben Regel wie alles, was ich baue: Gute Technologie stellt ihre Komplexität nicht zur Schau, sie macht das Leben der Menschen einfacher.</p>
+<p>Wir sind ein Team von Entwicklern bei Alhamou und bauen Nadhif gemeinsam. Dabei folgen wir derselben Regel wie bei allem, was wir bauen: Gute Technologie stellt ihre Komplexität nicht zur Schau, sie macht das Leben der Menschen einfacher.</p>
 <section class="artFaq" aria-labelledby="haeufige-fragen">
 <h2 id="haeufige-fragen">Häufige Fragen</h2>
 <div class="artQ">
@@ -367,8 +380,12 @@
 <p>Nein. Nadhif sammelt keine persönlichen Daten, und die Berichte bleiben auf deinem Mac.</p>
 </div>
 <div class="artQ">
-<h3>Kann Nadhif Server und Websites prüfen?</h3>
-<p>Ja. Nadhif prüft Debian- und Ubuntu-Server per SSH und testet Websites, die dir gehören.</p>
+<h3>Hat Nadhif Tools für Entwickler?</h3>
+<p>Ja. Nadhif findet und räumt auf, was Xcode, Simulatoren, <code>node_modules</code>-Ordner, Homebrew und Docker auf deinem Mac hinterlassen.</p>
+</div>
+<div class="artQ">
+<h3>Kann Nadhif meine Website und meinen Server auf Schwachstellen prüfen?</h3>
+<p>Ja. Nadhif testet Websites, die dir gehören, mit echten Angriffstechniken und prüft Debian- und Ubuntu-Server per SSH auf Schwachstellen.</p>
 </div>
 <div class="artQ">
 <h3>Wo bekomme ich Nadhif?</h3>
@@ -380,7 +397,7 @@
         <div>
           <p class="label">Zum Produkt</p>
           <p class="artProductName" id="product-title">Nadhif</p>
-          <p>Mac-Cleaner und Sicherheitsprüfungen für Mac, Server und Websites.</p>
+          <p>Mac-Cleaner und Entwickler-Tools, dazu Schwachstellen-Scans für Websites und Server.</p>
           <ul class="artFacts"><li>In Entwicklung · seit September 2026</li><li>macOS 15 oder neuer · Apple Chip</li></ul>
           <p class="artActions"><a class="artBtn" href="https://nadhif.hamou.de/de/">nadhif.hamou.de besuchen <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a><a class="artBtn ghost" href="https://www.youtube.com/watch?v=nDOR34xE_fQ" target="_blank" rel="noopener">Auf YouTube ansehen <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
         </div>
@@ -395,7 +412,7 @@
     <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Sprache" data-nav><option value="/articles/nadhif/" lang="en">English</option><option value="/de/articles/nadhif/" lang="de" selected>Deutsch</option><option value="/ar/articles/nadhif/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
     <p>© 2026</p>
   </footer>
-  <script src="/video.js?v=ca2b747b"></script>
+  <script src="/video.js?v=6b57a398"></script>
   <script src="/articles/article.js?v=d9035dc0"></script>
 </body>
 </html>

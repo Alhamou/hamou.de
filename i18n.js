@@ -40,7 +40,7 @@
   "nd.label": "Latest project",
   "nd.h2": "Nadhif",
   "nd.tagline": "A cleaner Mac,<br>safer servers and websites.",
-  "nd.h3": "A Mac app that cleans calmly and checks the security of your Mac, servers and websites.",
+  "nd.h3": "A Mac app that cleans calmly, gives developers their own tools and protects your website and server from hackers.",
   "nd.p1": "I'm building Nadhif for Alhamou as a native macOS app. It scans and explains before it deletes: every category comes with a line on what it is and why removing it is safe, and everything cleaned moves to “Recently Cleaned”, where it can be restored for seven days.",
   "nd.p2": "Beyond cleaning, it includes an uninstaller, developer tools, and security checks for your Mac, for Debian and Ubuntu servers over SSH, and for the websites you own. Your personal files are off limits, it collects no data, and your reports stay on your Mac.",
   "nd.f1": "Safe cleaning you can undo for seven days",
@@ -130,7 +130,7 @@
   "meta.desc": "Founder & Builder of TakeCar, Shfli, and Arab Solutions. Building technology products for mobility, marketplaces, AI-powered customer support, and emerging markets.",
   "nav.articles": "Articles",
   "nd.play": "Play the Nadhif video",
-  "nd.videoCap": "An animated tour of Nadhif (in English). The video loads from YouTube only when you press play.",
+  "nd.videoCap": "An animated tour of Nadhif. The video loads from YouTube only when you press play.",
   "nd.article": "Read the full article",
   "art.label": "Articles",
   "art.h2": "Stories behind<br>the products.",
@@ -172,7 +172,7 @@
   "nd.label": "Neuestes Projekt",
   "nd.h2": "Nadhif",
   "nd.tagline": "Ein aufgeräumter Mac,<br>sicherere Server und Websites.",
-  "nd.h3": "Eine Mac-App, die in Ruhe aufräumt und die Sicherheit von Mac, Servern und Websites prüft.",
+  "nd.h3": "Eine Mac-App, die in Ruhe aufräumt, Entwicklern eigene Tools gibt und deine Website und deinen Server vor Hackern schützt.",
   "nd.p1": "Ich entwickle Nadhif für Alhamou als native macOS-App. Sie prüft und erklärt, bevor sie löscht: Jede Kategorie sagt in einer Zeile, was sie ist und warum das Entfernen sicher ist, und alles Bereinigte landet in „Zuletzt bereinigt“, wo es sieben Tage lang wiederhergestellt werden kann.",
   "nd.p2": "Neben dem Aufräumen bietet sie ein Deinstallationsprogramm, Entwickler-Tools und Sicherheitsprüfungen für deinen Mac, für Debian- und Ubuntu-Server per SSH und für deine eigenen Websites. Persönliche Dateien bleiben tabu, es werden keine Daten gesammelt, und deine Berichte bleiben auf deinem Mac.",
   "nd.f1": "Sicheres Aufräumen, sieben Tage lang umkehrbar",
@@ -307,6 +307,10 @@
 
   var orig = null;
 
+  // Attributes whose value depends on the language. The Arabic value is the
+  // attribute itself; the others sit in data-href-en, data-href-de and so on.
+  var SWAP = [['href', 'data-href-'], ['src', 'data-src-'], ['data-yt', 'data-yt-'], ['data-title', 'data-title-']];
+
   function each(sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
 
   function capture() {
@@ -315,7 +319,9 @@
     if (m) orig.desc = m.getAttribute('content');
     each('[data-i18n]', function (el) { el.__ar = el.innerHTML; });
     each('[data-i18n-aria], .ossTags[aria-label]', function (el) { el.__arAria = el.getAttribute('aria-label'); });
-    each('[data-href-en]', function (el) { el.__arHref = el.getAttribute('href'); });
+    SWAP.forEach(function (s) {
+      each('[' + s[1] + 'en]', function (el) { el['__ar_' + s[0]] = el.getAttribute(s[0]); });
+    });
     each('.ossCard time[datetime]', function (el) { el.__ar = el.textContent; });
   }
 
@@ -336,8 +342,11 @@
       h = h && h.querySelector('h3');
       el.setAttribute('aria-label', dict['aria.details'] + (h ? h.textContent : ''));
     });
-    each('[data-href-en]', function (el) {
-      el.setAttribute('href', dict ? el.getAttribute('data-href-' + l) : el.__arHref);
+    SWAP.forEach(function (s) {
+      each('[' + s[1] + 'en]', function (el) {
+        var v = dict ? el.getAttribute(s[1] + l) : el['__ar_' + s[0]];
+        if (v != null) el.setAttribute(s[0], v);
+      });
     });
     var fmt = null;
     try { fmt = new Intl.DateTimeFormat(l === 'de' ? 'de-DE' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) {}

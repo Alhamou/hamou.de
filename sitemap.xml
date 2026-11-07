@@ -86,13 +86,13 @@
       <image:loc>https://hamou.de/ar/articles/nadhif/og.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://hamou.de/articles/nadhif/poster.jpg</image:loc>
+      <image:loc>https://hamou.de/ar/articles/nadhif/poster.jpg</image:loc>
     </image:image>
     <video:video>
-      <video:thumbnail_loc>https://hamou.de/articles/nadhif/poster.jpg</video:thumbnail_loc>
-      <video:title>Nadhif — Mac cleaner, developer tools and security checks (animated overview)</video:title>
-      <video:description>An animated overview of Nadhif, the macOS app by Alhamou that cleans your Mac, removes apps completely, clears developer leftovers and checks the security of your Mac, servers and websites.</video:description>
-      <video:player_loc>https://www.youtube.com/embed/nDOR34xE_fQ</video:player_loc>
+      <video:thumbnail_loc>https://hamou.de/ar/articles/nadhif/poster.jpg</video:thumbnail_loc>
+      <video:title>نظيف Nadhif: نظّف جهاز الماك وسرّعه بأدوات للمطورين وفحص أمان | شرح سريع</video:title>
+      <video:description>شرح سريع لتطبيق نظيف للماك من شركة الحمو: ينظّف جهازك ويسرّعه، ويحذف التطبيقات بالكامل، ويزيل مخلفات أدوات المطوّرين، ويفحص أمان جهازك وسيرفراتك ومواقعك.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/rkKqnyS2Blk</video:player_loc>
       <video:publication_date>2026-11-07</video:publication_date>
     </video:video>
   </url>

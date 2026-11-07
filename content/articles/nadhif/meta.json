@@ -28,6 +28,19 @@
     "language": "en",
     "poster_kicker": "Animated overview",
     "poster_title": "Nadhif",
-    "poster_subtitle": "Mac cleaner, developer tools and security checks"
+    "poster_subtitle": "Mac cleaner, developer tools and security checks",
+    "by_lang": {
+      "ar": {
+        "youtube_id": "rkKqnyS2Blk",
+        "title": "نظيف Nadhif: نظّف جهاز الماك وسرّعه بأدوات للمطورين وفحص أمان | شرح سريع",
+        "description": "شرح سريع لتطبيق نظيف للماك من شركة الحمو: ينظّف جهازك ويسرّعه، ويحذف التطبيقات بالكامل، ويزيل مخلفات أدوات المطوّرين، ويفحص أمان جهازك وسيرفراتك ومواقعك.",
+        "upload_date": "2026-11-07",
+        "duration": "",
+        "language": "ar",
+        "poster_kicker": "شرح سريع",
+        "poster_title": "نظيف",
+        "poster_subtitle": "منظّف للماك، وأدوات للمطوّرين، وفحص أمان"
+      }
+    }
   }
 }
