@@ -8,7 +8,7 @@
 
 ## Products
 
-- [TakeCar](https://takecarapp.com): Syrian mobility platform.
+- [TakeCar](https://takecarapp.com): Syrian ride-sharing and mobility app. Drivers sell the empty seats of trips they already plan, passengers travel between governorates for less, and the app also covers city rides and delivery. Built by the Alhamou team.
 - [Arab Solutions](https://omysyria.com/ar): AI customer support platform that brings knowledge and channels into one place.
 - [Shfli](https://www.shfli.com/?section=items): Platform for buying, selling, and auctions.
 - [Nadhif](https://nadhif.hamou.de/): Mac cleaner with developer tools and a vulnerability scanner that helps protect websites and servers from hackers, built by the Alhamou team (in development since September 2026).
@@ -18,6 +18,7 @@
 
 Articles are static pages in English, German and Arabic (where a translation exists). Add index.md to an article URL for a plain Markdown copy. All English articles in one file: [llms-full.txt](https://hamou.de/llms-full.txt).
 
+- [TakeCar: a Syrian app for ride sharing between cities, city rides and delivery](https://hamou.de/articles/takecar/index.md): TakeCar is a Syrian app for shared rides between cities: drivers sell the empty seats of trips they already plan, passengers travel for less. It also covers city rides and delivery. Also in [Deutsch](https://hamou.de/de/articles/takecar/index.md) and [العربية](https://hamou.de/ar/articles/takecar/index.md).
 - [Nadhif: clean your Mac with developer tools and protect your website and server from hackers](https://hamou.de/articles/nadhif/index.md): Nadhif is a Mac cleaner with developer tools that also tests your websites and servers for vulnerabilities, so you can fix weak spots before hackers find them. Also in [Deutsch](https://hamou.de/de/articles/nadhif/index.md) and [العربية](https://hamou.de/ar/articles/nadhif/index.md).
 <!-- articles:end -->
 

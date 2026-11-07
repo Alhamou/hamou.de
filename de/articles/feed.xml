@@ -9,6 +9,58 @@
   <author><name>Emad Alhamou</name><uri>https://hamou.de/</uri></author>
   <icon>https://hamou.de/favicon-32x32.png</icon>
   <entry>
+    <title>TakeCar: die syrische App für Mitfahrten zwischen Städten, Fahrten in der Stadt und Lieferungen</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/takecar/"/>
+    <id>https://hamou.de/de/articles/takecar/</id>
+    <published>2026-11-07T00:00:00Z</published>
+    <updated>2026-11-07T00:00:00Z</updated>
+    <summary>TakeCar ist die syrische Mobilitäts-App, die unser Team bei Alhamou entwickelt. Fahrer füllen die freien Plätze auf Fahrten, die sie ohnehin machen, Fahrgäste reisen günstiger zwischen den Gouvernements, und dieselbe App deckt Fahrten innerhalb der Stadt und Lieferungen ab.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-takecar&quot;&gt;Was ist TakeCar?&lt;/h2&gt;
+&lt;p&gt;TakeCar (arabisch „تيك كار“) ist eine Mobilitäts-App für Syrien. Sie bringt Fahrgäste und Fahrer in einer einfachen App zusammen. Geteilte Fahrten zwischen den Gouvernements stehen im Mittelpunkt, und dieselbe App deckt auch Fahrten innerhalb der Stadt und Lieferungen ab.&lt;/p&gt;
+&lt;p&gt;Unser Team bei Alhamou entwickelt TakeCar, und es ist unser Hauptprojekt. Wir bauen die App für den syrischen Markt, mit Fokus auf Flexibilität, einfache Bedienung und lokal verankerte Technologie.&lt;/p&gt;
+&lt;h2 id=&quot;so-funktionieren-geteilte-fahrten&quot;&gt;So funktionieren geteilte Fahrten&lt;/h2&gt;
+&lt;p&gt;Viele Fahrer sind ohnehin zwischen syrischen Städten unterwegs, oft mit leeren Sitzen. Mit TakeCar verkauft ein Fahrer die Plätze einer schon geplanten Fahrt zu einem reduzierten Preis, statt leer zu fahren. Fahrgäste bekommen eine geteilte Fahrt, auf die sie sich verlassen können, zu einem guten Preis.&lt;/p&gt;
+&lt;p&gt;Beide Seiten gewinnen: Der Fahrer verdient an Plätzen, die sonst leer geblieben wären, und der Fahrgast reist günstiger zwischen den Gouvernements.&lt;/p&gt;
+&lt;h2 id=&quot;mehr-als-fahrten-zwischen-staedten&quot;&gt;Mehr als Fahrten zwischen Städten&lt;/h2&gt;
+&lt;p&gt;TakeCar ist nicht nur für lange Strecken. Dieselbe App deckt Fahrten innerhalb der Stadt und Lieferungen ab, sodass eine App die verschiedenen Wege abdeckt, auf denen sich Menschen und Pakete bewegen.&lt;/p&gt;
+&lt;h2 id=&quot;gebaut-fuer-den-syrischen-markt&quot;&gt;Gebaut für den syrischen Markt&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Eine App für Fahrgäste und Fahrer:&lt;/strong&gt; beide Seiten nutzen dieselbe einfache App.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flexible Preise und Live-Angebote:&lt;/strong&gt; Preise bleiben flexibel, und Angebote entstehen live.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Karten und Routing für den lokalen Markt optimiert:&lt;/strong&gt; Wegbeschreibungen, die zu den Straßen und Orten passen, an denen die App genutzt wird.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Skalierbare technische Basis:&lt;/strong&gt; eine Basis, die mit der Zahl der Fahrgäste und Fahrer wachsen kann.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;wer-hinter-takecar-steht&quot;&gt;Wer hinter TakeCar steht&lt;/h2&gt;
+&lt;p&gt;Wir sind ein Team von Entwicklern bei Alhamou und bauen TakeCar gemeinsam. Dabei folgen wir derselben Regel wie bei allem, was wir bauen: Gute Technologie stellt ihre Komplexität nicht zur Schau, sie macht das Leben der Menschen einfacher.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist TakeCar?&lt;/h3&gt;
+&lt;p&gt;TakeCar ist eine syrische App für Mitfahrten und Transport. Fahrer verkaufen die freien Plätze ohnehin geplanter Fahrten, Fahrgäste reisen günstiger zwischen den Gouvernements, und die App deckt auch Stadtfahrten und Lieferungen ab.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wie macht TakeCar das Reisen günstiger?&lt;/h3&gt;
+&lt;p&gt;Ein Fahrer, der ohnehin unterwegs ist, verkauft die freien Plätze zu einem reduzierten Preis, statt leer zu fahren. Fahrgäste teilen sich die Fahrt und zahlen für einen Platz statt für ein ganzes Auto.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Bietet TakeCar auch Stadtfahrten und Lieferung an?&lt;/h3&gt;
+&lt;p&gt;Ja. Neben geteilten Fahrten zwischen den Gouvernements deckt TakeCar Fahrten innerhalb der Stadt und Lieferungen ab.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wo ist TakeCar nutzbar?&lt;/h3&gt;
+&lt;p&gt;TakeCar ist für Syrien gebaut, für Fahrten zwischen den Gouvernements und innerhalb der Städte.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wer entwickelt TakeCar?&lt;/h3&gt;
+&lt;p&gt;TakeCar wird von Alhamou entwickelt, einem Team von Entwicklern, als sein Hauptprojekt.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wo bekomme ich TakeCar?&lt;/h3&gt;
+&lt;p&gt;Starte auf &lt;a href=&quot;https://takecarapp.com/&quot;&gt;takecarapp.com&lt;/a&gt;, der offiziellen Website der App.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
     <title>Nadhif: Räum deinen Mac mit Entwickler-Tools auf und schütze Website und Server vor Hackern</title>
     <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/nadhif/"/>
     <id>https://hamou.de/de/articles/nadhif/</id>

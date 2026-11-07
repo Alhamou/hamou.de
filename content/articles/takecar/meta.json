@@ -1,0 +1,44 @@
+{
+  "slug": "takecar",
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-07",
+  "theme": { "bg": "#191a16", "accent": "#c7ff34", "fg": "#f4f2ea" },
+  "mark": "TAKECAR",
+  "icon": "oss/takecar.png",
+  "product": {
+    "name": "TakeCar",
+    "alternate_name": "تيك كار",
+    "category": "TravelApplication",
+    "operating_system": "Android, iOS",
+    "url": {
+      "en": "https://takecarapp.com/"
+    }
+  },
+  "video": {
+    "youtube_id": "0ke_UnuE7Z0",
+    "title": "TakeCar: ride sharing, city rides and delivery in Syria (video in Arabic)",
+    "description": "A short video overview of TakeCar, the Syrian mobility app by Alhamou: shared rides between governorates where drivers sell the empty seats of trips they already plan, plus city rides and delivery. The video is in Arabic.",
+    "upload_date": "2026-11-07",
+    "duration": "",
+    "language": "ar",
+    "poster_kicker": "Video · in Arabic",
+    "poster_title": "TakeCar",
+    "poster_subtitle": "Ride sharing, city rides and delivery in Syria",
+    "by_lang": {
+      "de": {
+        "title": "TakeCar: Mitfahren, Stadtfahrten und Lieferung in Syrien (Video auf Arabisch)",
+        "description": "Ein kurzer Video-Überblick über TakeCar, die syrische Mobilitäts-App von Alhamou: geteilte Fahrten zwischen Gouvernements, bei denen Fahrer die freien Plätze ohnehin geplanter Fahrten verkaufen, dazu Stadtfahrten und Lieferung. Das Video ist auf Arabisch.",
+        "poster_kicker": "Video · auf Arabisch",
+        "poster_title": "TakeCar",
+        "poster_subtitle": "Mitfahren, Stadtfahrten und Lieferung in Syrien"
+      },
+      "ar": {
+        "title": "تيك كار | تطبيق التوصيل والسفر بين المحافظات في سوريا",
+        "description": "شرح سريع لتطبيق تيك كار من شركة الحمو: رحلات مشتركة بين المحافظات يبيع فيها السائق المقاعد الفارغة في رحلاته المخطَّطة بسعر مخفّض، إضافةً إلى رحلات المدينة والتوصيل.",
+        "poster_kicker": "شرح سريع",
+        "poster_title": "تيك كار",
+        "poster_subtitle": "تشارك الرحلات بين المحافظات، ورحلات المدينة والتوصيل"
+      }
+    }
+  }
+}

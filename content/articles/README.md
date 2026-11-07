@@ -39,7 +39,7 @@ the generated HTML: the next build overwrites it.
 | `icon` | Path of a square icon in the repository, e.g. `oss/nadhif.png`. |
 | `product` | Optional. The product the article is about; becomes the product card and `SoftwareApplication` data. `since` is `YYYY-MM`. |
 | `video` | Optional. `youtube_id`, title, description, `upload_date` (`YYYY-MM-DD`), optional `duration` (ISO 8601, e.g. `PT1M45S`) and `duration_seconds`, `language`, and the poster texts. |
-| `video.by_lang` | Optional. A video recorded in another language, e.g. `"ar": {...}` with its own `youtube_id`, title, description, `upload_date`, `language` and poster texts. That language's page shows it, with its own poster in `/ar/articles/<slug>/poster.jpg`; languages without an entry show the main video. |
+| `video.by_lang` | Optional. A video recorded in another language, e.g. `"ar": {...}` with its own `youtube_id`, title, description, `upload_date`, `language` and poster texts. That language's page shows it, with its own poster in `/ar/articles/<slug>/poster.jpg`; languages without an entry show the main video. An entry can also reuse the same `youtube_id` and only translate `title`, `description` and the poster texts (TakeCar does this: one Arabic video, shown with English, German and Arabic text). The poster is always written in the page's language; `language` is the language spoken in the video. |
 | `draft` | Set to `true` to keep the article out of the build. |
 
 ## The Markdown files

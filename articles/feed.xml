@@ -9,6 +9,58 @@
   <author><name>Emad Alhamou</name><uri>https://hamou.de/</uri></author>
   <icon>https://hamou.de/favicon-32x32.png</icon>
   <entry>
+    <title>TakeCar: a Syrian app for ride sharing between cities, city rides and delivery</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/articles/takecar/"/>
+    <id>https://hamou.de/articles/takecar/</id>
+    <published>2026-11-07T00:00:00Z</published>
+    <updated>2026-11-07T00:00:00Z</updated>
+    <summary>TakeCar is the Syrian mobility app our team builds at Alhamou. Drivers fill the empty seats on trips they already make, passengers travel between governorates for less, and the same app covers rides inside the city and delivery.</summary>
+    <content type="html">&lt;h2 id=&quot;what-is-takecar&quot;&gt;What is TakeCar?&lt;/h2&gt;
+&lt;p&gt;TakeCar (تيك كار in Arabic) is a mobility app built for Syria. It brings riders and drivers together in one simple experience. Shared rides between governorates are at the heart of the app, and the same app also covers rides inside the city and delivery.&lt;/p&gt;
+&lt;p&gt;Our team at Alhamou builds TakeCar, and it is our flagship project. We design it for the Syrian market, with a focus on flexibility, ease of use and technology that is owned locally.&lt;/p&gt;
+&lt;h2 id=&quot;how-shared-rides-work&quot;&gt;How shared rides work&lt;/h2&gt;
+&lt;p&gt;Many drivers travel between Syrian cities anyway, and they often leave with empty seats. With TakeCar, a driver sells the seats of a trip they have already planned at a reduced price instead of travelling empty. Passengers get a shared ride they can rely on, at a good price.&lt;/p&gt;
+&lt;p&gt;Both sides gain. The driver earns from seats that would have stayed empty, and the passenger travels between governorates for less.&lt;/p&gt;
+&lt;h2 id=&quot;more-than-intercity-trips&quot;&gt;More than intercity trips&lt;/h2&gt;
+&lt;p&gt;TakeCar is not only for long trips. The same app covers rides inside the city and delivery, so one app serves the different ways people and parcels move around.&lt;/p&gt;
+&lt;h2 id=&quot;built-for-the-syrian-market&quot;&gt;Built for the Syrian market&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;One experience for riders and drivers:&lt;/strong&gt; both sides use the same simple app.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flexible pricing and live offers:&lt;/strong&gt; prices stay flexible, and offers are made live.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Maps and routing tuned for the local market:&lt;/strong&gt; directions that fit the roads and places where the app is used.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Infrastructure built to scale:&lt;/strong&gt; a technical base made to grow with the number of riders and drivers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;who-is-behind-takecar&quot;&gt;Who is behind TakeCar&lt;/h2&gt;
+&lt;p&gt;We are a team of developers at Alhamou, and we build TakeCar together. We follow the same rule in everything we make: good technology does not show off its complexity, it makes people&#x27;s lives simpler.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;frequently-asked-questions&quot;&gt;
+&lt;h2 id=&quot;frequently-asked-questions&quot;&gt;Frequently asked questions&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;What is TakeCar?&lt;/h3&gt;
+&lt;p&gt;TakeCar is a Syrian app for ride sharing and transport. Drivers sell the empty seats of trips they already plan, passengers travel between governorates for less, and the app also covers city rides and delivery.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;How does TakeCar make travel cheaper?&lt;/h3&gt;
+&lt;p&gt;A driver who is making a trip anyway sells the empty seats at a reduced price instead of travelling empty. Passengers share the ride, so each of them pays for a seat rather than for a whole car.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Does TakeCar also offer city rides and delivery?&lt;/h3&gt;
+&lt;p&gt;Yes. Besides shared trips between governorates, TakeCar covers rides inside the city and delivery.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Where does TakeCar work?&lt;/h3&gt;
+&lt;p&gt;TakeCar is built for Syria, for trips between governorates and rides inside cities.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Who builds TakeCar?&lt;/h3&gt;
+&lt;p&gt;TakeCar is built by Alhamou, a team of developers, as its flagship project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Where can I get TakeCar?&lt;/h3&gt;
+&lt;p&gt;Start at &lt;a href=&quot;https://takecarapp.com/&quot;&gt;takecarapp.com&lt;/a&gt;, the official website of the app.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
     <title>Nadhif: clean your Mac with developer tools and protect your website and server from hackers</title>
     <link rel="alternate" type="text/html" href="https://hamou.de/articles/nadhif/"/>
     <id>https://hamou.de/articles/nadhif/</id>

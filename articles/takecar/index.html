@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>TakeCar: ride sharing, city rides and delivery in Syria</title>
+  <meta name="description" content="TakeCar is a Syrian app for shared rides between cities: drivers sell the empty seats of trips they already plan, passengers travel for less. It also covers city rides and delivery.">
+  <meta name="author" content="Emad Alhamou">
+  <meta name="keywords" content="TakeCar, Syria ride sharing app, carpooling Syria, intercity travel Syria, Syrian mobility app, parcel delivery Syria, Alhamou">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/articles/takecar/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/takecar/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/takecar/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/takecar/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/takecar/">
+  <link rel="alternate" type="text/markdown" href="/articles/takecar/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/articles/feed.xml" title="Atom feed">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:url" content="https://hamou.de/articles/takecar/">
+  <meta property="og:title" content="TakeCar: a Syrian app for ride sharing between cities, city rides and delivery">
+  <meta property="og:description" content="TakeCar is a Syrian app for shared rides between cities: drivers sell the empty seats of trips they already plan, passengers travel for less. It also covers city rides and delivery.">
+  <meta property="og:image" content="https://hamou.de/articles/takecar/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TakeCar: a Syrian app for ride sharing between cities, city rides and delivery">
+  <meta property="article:published_time" content="2026-11-07">
+  <meta property="article:modified_time" content="2026-11-07">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="Product story">
+  <meta property="article:tag" content="TakeCar">
+  <meta property="article:tag" content="Syria ride sharing app">
+  <meta property="article:tag" content="carpooling Syria">
+  <meta property="article:tag" content="intercity travel Syria">
+  <meta property="article:tag" content="Syrian mobility app">
+  <meta property="article:tag" content="parcel delivery Syria">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TakeCar: a Syrian app for ride sharing between cities, city rides and delivery">
+  <meta name="twitter:description" content="TakeCar is a Syrian app for shared rides between cities: drivers sell the empty seats of trips they already plan, passengers travel for less. It also covers city rides and delivery.">
+  <meta name="twitter:image" content="https://hamou.de/articles/takecar/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=13a4f771">
+  <link rel="stylesheet" href="/articles/article.css?v=0ac81189">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/articles/takecar/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://hamou.de/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "TakeCar",
+          "item": "https://hamou.de/articles/takecar/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/articles/takecar/#webpage",
+      "url": "https://hamou.de/articles/takecar/",
+      "name": "TakeCar: ride sharing, city rides and delivery in Syria",
+      "description": "TakeCar is a Syrian app for shared rides between cities: drivers sell the empty seats of trips they already plan, passengers travel for less. It also covers city rides and delivery.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/articles/takecar/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/articles/takecar/#primaryimage"
+      },
+      "datePublished": "2026-11-07",
+      "dateModified": "2026-11-07"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/articles/takecar/#primaryimage",
+      "url": "https://hamou.de/articles/takecar/og.jpg",
+      "contentUrl": "https://hamou.de/articles/takecar/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "TakeCar: a Syrian app for ride sharing between cities, city rides and delivery"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/articles/takecar/#article",
+      "headline": "TakeCar: a Syrian app for ride sharing between cities, city rides and delivery",
+      "description": "TakeCar is a Syrian app for shared rides between cities: drivers sell the empty seats of trips they already plan, passengers travel for less. It also covers city rides and delivery.",
+      "abstract": "TakeCar is the Syrian mobility app our team builds at Alhamou. Drivers fill the empty seats on trips they already make, passengers travel between governorates for less, and the same app covers rides inside the city and delivery.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-07",
+      "dateModified": "2026-11-07",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/articles/takecar/#webpage"
+      },
+      "image": [
+        "https://hamou.de/articles/takecar/og.jpg",
+        "https://hamou.de/articles/takecar/poster.jpg"
+      ],
+      "articleSection": "Product story",
+      "wordCount": 465,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "TakeCar",
+        "Syria ride sharing app",
+        "carpooling Syria",
+        "intercity travel Syria",
+        "Syrian mobility app",
+        "parcel delivery Syria",
+        "Alhamou"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/takecar/#software"
+      },
+      "video": {
+        "@id": "https://hamou.de/articles/takecar/#video"
+      },
+      "workTranslation": [
+        {
+          "@id": "https://hamou.de/de/articles/takecar/#article"
+        },
+        {
+          "@id": "https://hamou.de/ar/articles/takecar/#article"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/takecar/#software",
+      "name": "TakeCar",
+      "url": "https://takecarapp.com/",
+      "applicationCategory": "TravelApplication",
+      "image": "https://hamou.de/oss/takecar.png",
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "author": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "alternateName": "تيك كار",
+      "operatingSystem": "Android, iOS",
+      "description": "Syrian ride-sharing app: shared rides between governorates, city rides and delivery."
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://hamou.de/articles/takecar/#video",
+      "name": "TakeCar: ride sharing, city rides and delivery in Syria (video in Arabic)",
+      "description": "A short video overview of TakeCar, the Syrian mobility app by Alhamou: shared rides between governorates where drivers sell the empty seats of trips they already plan, plus city rides and delivery. The video is in Arabic.",
+      "thumbnailUrl": [
+        "https://hamou.de/articles/takecar/poster.jpg",
+        "https://i.ytimg.com/vi/0ke_UnuE7Z0/hqdefault.jpg"
+      ],
+      "uploadDate": "2026-11-07",
+      "embedUrl": "https://www.youtube.com/embed/0ke_UnuE7Z0",
+      "url": "https://www.youtube.com/watch?v=0ke_UnuE7Z0",
+      "inLanguage": "ar",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/articles/takecar/#faq",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/articles/takecar/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is TakeCar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TakeCar is a Syrian app for ride sharing and transport. Drivers sell the empty seats of trips they already plan, passengers travel between governorates for less, and the app also covers city rides and delivery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does TakeCar make travel cheaper?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A driver who is making a trip anyway sells the empty seats at a reduced price instead of travelling empty. Passengers share the ride, so each of them pays for a seat rather than for a whole car."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does TakeCar also offer city rides and delivery?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Besides shared trips between governorates, TakeCar covers rides inside the city and delivery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does TakeCar work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TakeCar is built for Syria, for trips between governorates and rides inside cities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who builds TakeCar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TakeCar is built by Alhamou, a team of developers, as its flagship project."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I get TakeCar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start at takecarapp.com, the official website of the app."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">Skip to content</a>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="/?lang=en" aria-label="Home"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=en">Home</a>
+        <a href="/articles/">Articles</a>
+      </div>
+      <a class="navCta" href="/?lang=en#contact">Let&#x27;s talk</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#191a16;--art-accent:#c7ff34;--art-fg:#f4f2ea">
+    <header class="artHero" data-mark="TAKECAR">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/?lang=en">Home</a></li><li><a href="/articles/">Articles</a></li><li aria-current="page">TakeCar</li></ol></nav>
+        <p class="artKicker"><img src="/oss/takecar.png" width="40" height="40" alt="">Product story</p>
+        <h1>TakeCar: a Syrian app for ride sharing between cities, city rides and delivery</h1>
+        <p class="artDek">TakeCar is the Syrian mobility app our team builds at Alhamou. Drivers fill the empty seats on trips they already make, passengers travel between governorates for less, and the same app covers rides inside the city and delivery.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Founder &amp; Product Builder</small></span></span><span>Published <time datetime="2026-11-07">7 November 2026</time></span><span>3 min read</span><span class="artLangs">Also in: <a href="/de/articles/takecar/" hreflang="de" lang="de">Deutsch</a> · <a href="/ar/articles/takecar/" hreflang="ar" lang="ar">العربية</a></span></div>
+      </div>
+    </header>
+    <figure class="container artVideo">
+      <a class="yt" href="https://www.youtube.com/watch?v=0ke_UnuE7Z0" data-yt="0ke_UnuE7Z0" data-title="TakeCar: ride sharing, city rides and delivery in Syria (video in Arabic)" aria-label="Play video: TakeCar: ride sharing, city rides and delivery in Syria (video in Arabic)"><img src="/articles/takecar/poster.jpg" width="1280" height="720" alt="" fetchpriority="high" decoding="async"><span class="ytPlay" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.52.85l10.4-6.5a1 1 0 0 0 0-1.7L9.52 4.65A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg></span></a>
+      <figcaption><span>A short video about TakeCar, in Arabic.</span><a href="https://www.youtube.com/watch?v=0ke_UnuE7Z0" target="_blank" rel="noopener">Watch on YouTube <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a><small>The video loads from YouTube (Google) only when you press play.</small></figcaption>
+    </figure>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">On this page</p><ol><li><a href="#what-is-takecar">What is TakeCar?</a></li><li><a href="#how-shared-rides-work">How shared rides work</a></li><li><a href="#more-than-intercity-trips">More than intercity trips</a></li><li><a href="#built-for-the-syrian-market">Built for the Syrian market</a></li><li><a href="#who-is-behind-takecar">Who is behind TakeCar</a></li><li><a href="#frequently-asked-questions">Frequently asked questions</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="what-is-takecar">What is TakeCar?</h2>
+<p>TakeCar (تيك كار in Arabic) is a mobility app built for Syria. It brings riders and drivers together in one simple experience. Shared rides between governorates are at the heart of the app, and the same app also covers rides inside the city and delivery.</p>
+<p>Our team at Alhamou builds TakeCar, and it is our flagship project. We design it for the Syrian market, with a focus on flexibility, ease of use and technology that is owned locally.</p>
+<h2 id="how-shared-rides-work">How shared rides work</h2>
+<p>Many drivers travel between Syrian cities anyway, and they often leave with empty seats. With TakeCar, a driver sells the seats of a trip they have already planned at a reduced price instead of travelling empty. Passengers get a shared ride they can rely on, at a good price.</p>
+<p>Both sides gain. The driver earns from seats that would have stayed empty, and the passenger travels between governorates for less.</p>
+<h2 id="more-than-intercity-trips">More than intercity trips</h2>
+<p>TakeCar is not only for long trips. The same app covers rides inside the city and delivery, so one app serves the different ways people and parcels move around.</p>
+<h2 id="built-for-the-syrian-market">Built for the Syrian market</h2>
+<ul>
+<li><strong>One experience for riders and drivers:</strong> both sides use the same simple app.</li>
+<li><strong>Flexible pricing and live offers:</strong> prices stay flexible, and offers are made live.</li>
+<li><strong>Maps and routing tuned for the local market:</strong> directions that fit the roads and places where the app is used.</li>
+<li><strong>Infrastructure built to scale:</strong> a technical base made to grow with the number of riders and drivers.</li>
+</ul>
+<h2 id="who-is-behind-takecar">Who is behind TakeCar</h2>
+<p>We are a team of developers at Alhamou, and we build TakeCar together. We follow the same rule in everything we make: good technology does not show off its complexity, it makes people's lives simpler.</p>
+<section class="artFaq" aria-labelledby="frequently-asked-questions">
+<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+<div class="artQ">
+<h3>What is TakeCar?</h3>
+<p>TakeCar is a Syrian app for ride sharing and transport. Drivers sell the empty seats of trips they already plan, passengers travel between governorates for less, and the app also covers city rides and delivery.</p>
+</div>
+<div class="artQ">
+<h3>How does TakeCar make travel cheaper?</h3>
+<p>A driver who is making a trip anyway sells the empty seats at a reduced price instead of travelling empty. Passengers share the ride, so each of them pays for a seat rather than for a whole car.</p>
+</div>
+<div class="artQ">
+<h3>Does TakeCar also offer city rides and delivery?</h3>
+<p>Yes. Besides shared trips between governorates, TakeCar covers rides inside the city and delivery.</p>
+</div>
+<div class="artQ">
+<h3>Where does TakeCar work?</h3>
+<p>TakeCar is built for Syria, for trips between governorates and rides inside cities.</p>
+</div>
+<div class="artQ">
+<h3>Who builds TakeCar?</h3>
+<p>TakeCar is built by Alhamou, a team of developers, as its flagship project.</p>
+</div>
+<div class="artQ">
+<h3>Where can I get TakeCar?</h3>
+<p>Start at <a href="https://takecarapp.com/">takecarapp.com</a>, the official website of the app.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/takecar.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">About the product</p>
+          <p class="artProductName" id="product-title">TakeCar</p>
+          <p>Syrian ride-sharing app: shared rides between governorates, city rides and delivery.</p>
+          <ul class="artFacts"><li>Android and iOS</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://takecarapp.com/">Visit takecarapp.com <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a><a class="artBtn ghost" href="https://www.youtube.com/watch?v=0ke_UnuE7Z0" target="_blank" rel="noopener">Watch on YouTube <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">More articles</p>
+    <div class="artList">
+<a class="artCard" href="/articles/nadhif/" style="--art-bg:#10233f;--art-accent:#6fd3f5;--art-fg:#eef4fb">
+  <span class="artCardTop"><img src="/oss/nadhif.png" width="56" height="56" alt="" loading="lazy"><span>Product story</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">Nadhif: clean your Mac with developer tools and protect your website and server from hackers</h3>
+    <span class="artCardDek">Nadhif is the Mac app our team is building at Alhamou. It cleans your Mac and explains every file before it touches it, gives developers tools for the gigabytes Xcode, Node and Docker leave behind, and tests your websites and servers for vulnerabilities, so you can close them before anyone uses them.</span>
+    <span class="artCardMeta"><time datetime="2026-11-07">7 November 2026</time> · 3 min read</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=en"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Language" data-nav><option value="/articles/takecar/" lang="en" selected>English</option><option value="/de/articles/takecar/" lang="de">Deutsch</option><option value="/ar/articles/takecar/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

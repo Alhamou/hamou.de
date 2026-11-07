@@ -1074,7 +1074,7 @@ def image_jobs(articles):
             owners = [DEFAULT] + [l for l in a['video'].get('by_lang') or {} if l != DEFAULT and l in a['langs']]
             for owner in owners:
                 v = video_for(a, owner)
-                vlang = v.get('language') if v.get('language') in LANG else owner
+                vlang = owner  # the poster text follows the page language, not the spoken language
                 jobs.append({'kind': 'poster', 'out': os.path.join(ROOT, poster_rel(a, owner).lstrip('/')),
                              'width': POSTER_W, 'height': POSTER_H, 'lang': vlang, 'dir': LANG[vlang]['dir'],
                              'title': v.get('poster_title') or a['langs'][owner]['fm']['short_title'],
