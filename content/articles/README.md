@@ -36,7 +36,7 @@ the generated HTML: the next build overwrites it.
 | `date_published`, `date_modified` | `YYYY-MM-DD`. Change `date_modified` when you update the text. |
 | `theme` | `bg`, `accent`, `fg` colors of the article's hero band and cards. |
 | `mark` | Large faint word in the hero background, e.g. `NADHIF`. |
-| `icon` | Path of a square icon in the repository, e.g. `oss/nadhif.png`. |
+| `icon` | Path of a square icon in the repository, e.g. `oss/nadhif.png`. Use the product's real icon from its own app or website repository (never a redrawn letter box): a 256 px PNG with rounded corners (about 22%), which is what the home page, the article hero, the cards and the share images draw. |
 | `product` | Optional. The product the article is about; becomes the product card and `SoftwareApplication` data. `since` is `YYYY-MM`. The maker is credited as Alhamou; set `"publisher": "none"` for a product Alhamou did not publish (Shfli). |
 | `video` | Optional. `youtube_id`, title, description, `upload_date` (`YYYY-MM-DD`), optional `duration` (ISO 8601, e.g. `PT1M45S`) and `duration_seconds`, `language`, and the poster texts. |
 | `video.by_lang` | Optional. A video recorded in another language, e.g. `"ar": {...}` with its own `youtube_id`, title, description, `upload_date`, `language` and poster texts. That language's page shows it, with its own poster in `/ar/articles/<slug>/poster.jpg`; languages without an entry show the main video. An entry can also reuse the same `youtube_id` and only translate `title`, `description` and the poster texts (TakeCar does this: one Arabic video, shown with English, German and Arabic text). The poster is always written in the page's language; `language` is the language spoken in the video. |

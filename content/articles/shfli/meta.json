@@ -4,7 +4,7 @@
   "date_modified": "2026-11-08",
   "theme": { "bg": "#142129", "accent": "#34d399", "fg": "#f1f5f9" },
   "mark": "SHFLI",
-  "icon": "oss/shfli.png",
+  "icon": "oss/shfli-logo.png",
   "product": {
     "name": "Shfli",
     "alternate_name": "شفلي",

@@ -4,7 +4,7 @@
   "date_modified": "2026-11-07",
   "theme": { "bg": "#191a16", "accent": "#c7ff34", "fg": "#f4f2ea" },
   "mark": "TAKECAR",
-  "icon": "oss/takecar.png",
+  "icon": "oss/takecar-logo.png",
   "product": {
     "name": "TakeCar",
     "alternate_name": "تيك كار",
