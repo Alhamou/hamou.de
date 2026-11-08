@@ -1424,7 +1424,9 @@ html[dir="ltr"] .nadhif:after {
 }
 
 .nadhifLinks,
-.takeLinks {
+.takeLinks,
+.arabLinks,
+.shfliLinks {
   flex-wrap: wrap;
   align-items: center;
   gap: 16px 28px;
@@ -1432,7 +1434,9 @@ html[dir="ltr"] .nadhif:after {
 }
 
 .nadhifArticle,
-.takeArticle {
+.takeArticle,
+.arabArticle,
+.shfliArticle {
   color: #e6eef7;
   border-bottom: 1px solid #e6eef7;
   align-items: center;
@@ -1446,6 +1450,16 @@ html[dir="ltr"] .nadhif:after {
 .takeArticle {
   color: #f4f2ea;
   border-bottom-color: #f4f2ea;
+}
+
+.arabArticle {
+  color: #f4f0e5;
+  border-bottom-color: #f4f0e5;
+}
+
+.shfliArticle {
+  color: #e2e8f0;
+  border-bottom-color: #e2e8f0;
 }
 
 /* Text in all three languages: only the page's language shows (home article cards) */
@@ -1540,20 +1554,26 @@ html[lang="de"] .ml > [data-l="de"] {
 
 .homeArtAll b,
 .nadhifArticle b,
-.takeArticle b {
+.takeArticle b,
+.arabArticle b,
+.shfliArticle b {
   transition: transform 0.18s ease;
   display: inline-flex;
 }
 
 .homeArtAll:hover b,
 .nadhifArticle:hover b,
-.takeArticle:hover b {
+.takeArticle:hover b,
+.arabArticle:hover b,
+.shfliArticle:hover b {
   transform: translateX(-5px);
 }
 
 html[dir="ltr"] .homeArtAll:hover b,
 html[dir="ltr"] .nadhifArticle:hover b,
-html[dir="ltr"] .takeArticle:hover b {
+html[dir="ltr"] .takeArticle:hover b,
+html[dir="ltr"] .arabArticle:hover b,
+html[dir="ltr"] .shfliArticle:hover b {
   transform: translateX(5px);
 }
 

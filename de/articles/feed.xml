@@ -5,9 +5,126 @@
   <link rel="self" type="application/atom+xml" href="https://hamou.de/de/articles/feed.xml"/>
   <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/"/>
   <id>https://hamou.de/de/articles/</id>
-  <updated>2026-11-07T00:00:00Z</updated>
+  <updated>2026-11-08T00:00:00Z</updated>
   <author><name>Emad Alhamou</name><uri>https://hamou.de/</uri></author>
   <icon>https://hamou.de/favicon-32x32.png</icon>
+  <entry>
+    <title>Shfli: ein syrischer Online-Marktplatz für Autos, Immobilien, Auktionen, Basare und Jobs</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/shfli/"/>
+    <id>https://hamou.de/de/articles/shfli/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>Shfli ist ein Online-Marktplatz für Syrien, der Käufer und Verkäufer an einem Ort zusammenbringt: Autos, Immobilien, Live-Auktionen, Basare, Jobs und mehr. Emad Alhamou war technischer Leiter und Mitgründer und hat die Backend-Systeme hinter Plattform und App gebaut.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-shfli&quot;&gt;Was ist Shfli?&lt;/h2&gt;
+&lt;p&gt;Shfli (arabisch „شفلي“) ist ein Online-Marktplatz mit App für Syrien. Er verbindet Verkäufer und Käufer an einem Ort, in den Bereichen Autos, Immobilien, Live-Auktionen, Basare und Jobs. Auf seiner Website bezeichnet sich Shfli als die erste Plattform zum Kaufen und Verkaufen in Syrien.&lt;/p&gt;
+&lt;p&gt;Shfli verbindet Kleinanzeigen und E-Commerce mit Live-Auktionen in einem interaktiven Marktplatz, sodass Kaufen, Verkaufen und die Suche nach Arbeit am selben Ort beginnen.&lt;/p&gt;
+&lt;h2 id=&quot;was-du-auf-shfli-findest&quot;&gt;Was du auf Shfli findest&lt;/h2&gt;
+&lt;p&gt;Shfli gliedert sein Angebot in Bereiche: Autos, Immobilien, Live-Auktionen, Basare, Jobs, Elektronik und mehr. Es ist eine Plattform für Kaufen, Verkaufen und Auktionen, die Geschäfte und Chancen an einem Ort bündelt.&lt;/p&gt;
+&lt;h2 id=&quot;gebaut-fuer-den-syrischen-markt&quot;&gt;Gebaut für den syrischen Markt&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ein Marktplatz mit vielen Kategorien:&lt;/strong&gt; eine Plattform für verschiedene Arten von Geschäften, mit Live-Auktionen und Basaren neben den Kleinanzeigen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lokale Karten und ein angepasstes Erlebnis:&lt;/strong&gt; Karten und Routing, die auf den syrischen Markt abgestimmt sind, und ein Erlebnis, das für Smartphones ebenso gedacht ist wie für das Web.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Schnelle Cloud-Infrastruktur und moderne APIs:&lt;/strong&gt; Cloud-Infrastruktur und REST-APIs wurden für sehr hohe Geschwindigkeit und 99,9 % Verfügbarkeit ausgelegt.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;wer-hinter-shfli-steht&quot;&gt;Wer hinter Shfli steht&lt;/h2&gt;
+&lt;p&gt;Emad Alhamou, der Autor dieser Website, war technischer Leiter und Mitgründer von Shfli. Von Februar 2025 bis April 2026 hat er das technische Team geleitet und die Backend-Systeme für Plattform und App gebaut.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist Shfli?&lt;/h3&gt;
+&lt;p&gt;Shfli ist ein Online-Marktplatz mit App für Syrien. Er bringt Käufer und Verkäufer an einem Ort zusammen, mit Bereichen für Autos, Immobilien, Live-Auktionen, Basare, Jobs und Elektronik.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was kann ich auf Shfli kaufen und verkaufen?&lt;/h3&gt;
+&lt;p&gt;Die Bereiche von Shfli umfassen Autos, Immobilien, Elektronik und mehr. Dazu kommen Live-Auktionen, Basare und Jobs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Gibt es auf Shfli Live-Auktionen?&lt;/h3&gt;
+&lt;p&gt;Ja. Live-Auktionen sind einer der Bereiche von Shfli, neben Basaren und Jobs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Gibt es eine Shfli-App?&lt;/h3&gt;
+&lt;p&gt;Ja. Shfli gibt es als Website und als App. Starte auf &lt;a href=&quot;https://www.shfli.com/&quot;&gt;shfli.com&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wo ist Shfli nutzbar?&lt;/h3&gt;
+&lt;p&gt;Shfli ist für Syrien gebaut.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wer hat die Technik von Shfli gebaut?&lt;/h3&gt;
+&lt;p&gt;Emad Alhamou, der Autor dieser Website, hat als technischer Leiter und Mitgründer von Februar 2025 bis April 2026 das technische Team von Shfli geleitet und dessen Backend-Systeme gebaut.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>Arab Solutions: KI-Kundensupport, der von Arabisch ausgeht und aus deinem eigenen Wissen antwortet</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/arab-solutions/"/>
+    <id>https://hamou.de/de/articles/arab-solutions/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>Arab Solutions ist die KI-Plattform für Kundensupport, die unser Team bei Alhamou für Unternehmen in der arabischen Welt entwickelt. Sie macht aus den Dokumenten eines Unternehmens einen Assistenten, der Kunden auf Arabisch antwortet, zeigt, woher jede Antwort stammt, und das Gespräch an einen Menschen übergibt, wenn es nötig ist.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-arab-solutions&quot;&gt;Was ist Arab Solutions?&lt;/h2&gt;
+&lt;p&gt;Arab Solutions (arabisch „حلول عربية“) ist eine KI-Plattform für Kundensupport, die von Anfang an für Arabisch gebaut ist. Ein Unternehmen hinterlegt seine Dokumente und seine Wissensdatenbank, und die Plattform macht daraus einen Assistenten, der die Fragen der Kunden versteht und genaue, einheitliche Antworten gibt. Du findest sie auf omysyria.com, unter der Marke O My Syria.&lt;/p&gt;
+&lt;p&gt;Unser Team bei Alhamou entwickelt sie seit April 2026, für Unternehmen in der arabischen Welt. Wir achten besonders auf Arabisch, auf Datenschutz und auf einfache Integration in Apps und Websites.&lt;/p&gt;
+&lt;h2 id=&quot;so-antwortet-der-assistent&quot;&gt;So antwortet der Assistent&lt;/h2&gt;
+&lt;p&gt;Der KI-Assistent (arabisch „خدمة المساعد الذكي“) ist der Kern der Plattform. Er ist dafür gemacht, dass man ihm Kundenfragen anvertrauen kann:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Antworten aus deinem Wissen:&lt;/strong&gt; Der Assistent antwortet aus den Dokumenten, die ein Unternehmen freigegeben hat. Steht die Information dort nicht, rät er nicht.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quellen, die du prüfen kannst:&lt;/strong&gt; Eine Antwort verweist auf die Textstelle und die Datei, aus der sie stammt, mit dem Datum der letzten Aktualisierung und einem Vertrauenswert.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ein Mensch, wenn es darauf ankommt:&lt;/strong&gt; Braucht ein Gespräch einen Menschen, übergibt die Plattform es an das Team, mit automatischer Zusammenfassung und dem Grund der Übergabe.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Technisch ist das Retrieval-Augmented Generation (RAG): Die Plattform findet zuerst die passenden Teile deines Wissens, und der Assistent antwortet auf dieser Grundlage.&lt;/p&gt;
+&lt;h2 id=&quot;alle-kanaele-an-einem-ort&quot;&gt;Alle Kanäle an einem Ort&lt;/h2&gt;
+&lt;p&gt;Kunden schreiben dort, wo es für sie passt, und Arab Solutions bündelt diese Kanäle:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Deine Website oder dein Online-Shop:&lt;/strong&gt; ein Chat-Widget, das du mit einer einzigen Zeile JavaScript einbaust.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WhatsApp Business und Facebook Messenger:&lt;/strong&gt; Der Assistent antwortet in den Apps, die deine Kunden ohnehin nutzen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deine eigenen Apps:&lt;/strong&gt; eine Messages-API, die eine Frage entgegennimmt und eine belegte Antwort zurückgibt, mit Dokumentation für Entwickler.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;arabisch-zuerst&quot;&gt;Arabisch zuerst&lt;/h2&gt;
+&lt;p&gt;Arabisch ist der Ausgangspunkt, keine Zusatzfunktion. Die Oberfläche läuft von rechts nach links, und der Assistent ist darauf ausgelegt, syrische, levantinische, Golf- und ägyptische Dialekte zu verstehen, ebenso wie das moderne Hocharabisch der Geschäftswelt. Englisch wird ebenfalls unterstützt.&lt;/p&gt;
+&lt;h2 id=&quot;deine-daten-gehoeren-dir&quot;&gt;Deine Daten gehören dir&lt;/h2&gt;
+&lt;p&gt;Laut der Datenschutzerklärung der Plattform werden Dokumente, Texte und Gespräche eines Unternehmens nicht verwendet, um öffentliche Sprachmodelle zu trainieren oder zu verbessern. Daten werden bei der Übertragung und bei der Speicherung verschlüsselt, die Daten jeder Organisation bleiben von denen der anderen getrennt, und ein Unternehmen kann seine Daten exportieren oder im Dashboard endgültig löschen.&lt;/p&gt;
+&lt;h2 id=&quot;ein-zweiter-dienst-maps-service&quot;&gt;Ein zweiter Dienst: Maps Service&lt;/h2&gt;
+&lt;p&gt;Neben dem Assistenten bietet O My Syria einen neuen Kartendienst (arabisch „خدمة الخرائط“) für Syrien, über eine einzige API: Routen mit Turn-by-Turn-Navigation für Auto, Lkw, Fahrrad und zu Fuß, Fahrzeiten und Entfernungen zwischen vielen Punkten, Ortssuche mit Autovervollständigung, Reverse-Geocoding, Orte in der Nähe und Map Matching. Die aktive Abdeckung umfasst Damaskus und Umland, Aleppo, Homs, Hama, Latakia, Tartus und Idlib.&lt;/p&gt;
+&lt;h2 id=&quot;wer-hinter-arab-solutions-steht&quot;&gt;Wer hinter Arab Solutions steht&lt;/h2&gt;
+&lt;p&gt;Wir sind ein Team von Entwicklern bei Alhamou (Hamou Software Co.), einem in Damaskus registrierten Softwareunternehmen, und bauen Arab Solutions gemeinsam. Dabei folgen wir derselben Regel wie bei allem, was wir bauen: Gute Technologie stellt ihre Komplexität nicht zur Schau, sie macht das Leben der Menschen einfacher.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist Arab Solutions?&lt;/h3&gt;
+&lt;p&gt;Arab Solutions ist eine KI-Plattform für Kundensupport, die von Arabisch ausgeht. Ein Unternehmen hinterlegt seine Dokumente und seine Wissensdatenbank, und ein KI-Assistent beantwortet die Fragen der Kunden daraus, auf Arabisch und Englisch, auf einer Website oder in Messaging-Apps. Veröffentlicht wird sie auf omysyria.com unter der Marke O My Syria.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wie vermeidet der Assistent erfundene Antworten?&lt;/h3&gt;
+&lt;p&gt;Er antwortet nur aus den Dokumenten, die ein Unternehmen freigegeben hat. Jede Antwort kann auf ihre Quelle verweisen, mit Aktualisierungsdatum und Vertrauenswert. Fehlt die Information, antwortet der Assistent nicht, und die Plattform kann das Gespräch an einen Menschen übergeben.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Auf welchen Kanälen funktioniert Arab Solutions?&lt;/h3&gt;
+&lt;p&gt;Als Chat-Widget für deine Website oder deinen Online-Shop, über WhatsApp Business, über Facebook Messenger und über eine Messages-API für deine eigenen Apps.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Versteht der Assistent arabische Dialekte?&lt;/h3&gt;
+&lt;p&gt;Ja. Er ist für Arabisch gebaut und versteht syrische, levantinische, Golf- und ägyptische Dialekte sowie das moderne Hocharabisch der Geschäftswelt.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Werden die Daten meines Unternehmens zum Training von KI-Modellen verwendet?&lt;/h3&gt;
+&lt;p&gt;Laut der Datenschutzerklärung nicht. Dokumente, Texte und Gespräche eines Unternehmens werden nicht verwendet, um öffentliche Sprachmodelle zu trainieren oder zu verbessern, und das Unternehmen kann seine Daten exportieren oder löschen.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was bietet O My Syria noch an?&lt;/h3&gt;
+&lt;p&gt;Einen Kartendienst für Syrien: Routing, Ortssuche, Geocoding und Map Matching über eine einzige API.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wer entwickelt Arab Solutions?&lt;/h3&gt;
+&lt;p&gt;Alhamou (Hamou Software Co.), ein Team von Entwicklern und ein in Damaskus registriertes Softwareunternehmen.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wo erfahre ich mehr?&lt;/h3&gt;
+&lt;p&gt;Starte auf &lt;a href=&quot;https://omysyria.com/en&quot;&gt;omysyria.com&lt;/a&gt; und lies die &lt;a href=&quot;https://omysyria.com/en/developers&quot;&gt;Entwicklerdokumentation&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
   <entry>
     <title>TakeCar: die syrische App für Mitfahrten zwischen Städten, Fahrten in der Stadt und Lieferungen</title>
     <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/takecar/"/>

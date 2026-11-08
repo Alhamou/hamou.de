@@ -5,13 +5,13 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://hamou.de/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://hamou.de/articles/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/"/>
@@ -19,7 +19,7 @@
   </url>
   <url>
     <loc>https://hamou.de/de/articles/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/"/>
@@ -27,11 +27,77 @@
   </url>
   <url>
     <loc>https://hamou.de/ar/articles/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/"/>
+  </url>
+  <url>
+    <loc>https://hamou.de/articles/shfli/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/shfli/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/shfli/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/shfli/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/shfli/"/>
+    <image:image>
+      <image:loc>https://hamou.de/articles/shfli/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://hamou.de/de/articles/shfli/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/shfli/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/shfli/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/shfli/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/shfli/"/>
+    <image:image>
+      <image:loc>https://hamou.de/de/articles/shfli/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://hamou.de/ar/articles/shfli/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/shfli/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/shfli/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/shfli/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/shfli/"/>
+    <image:image>
+      <image:loc>https://hamou.de/ar/articles/shfli/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://hamou.de/articles/arab-solutions/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/arab-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/arab-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/arab-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/arab-solutions/"/>
+    <image:image>
+      <image:loc>https://hamou.de/articles/arab-solutions/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://hamou.de/de/articles/arab-solutions/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/arab-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/arab-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/arab-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/arab-solutions/"/>
+    <image:image>
+      <image:loc>https://hamou.de/de/articles/arab-solutions/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://hamou.de/ar/articles/arab-solutions/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hamou.de/articles/arab-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/arab-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/arab-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/arab-solutions/"/>
+    <image:image>
+      <image:loc>https://hamou.de/ar/articles/arab-solutions/og.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://hamou.de/articles/takecar/</loc>

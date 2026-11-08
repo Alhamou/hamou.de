@@ -1,0 +1,20 @@
+{
+  "slug": "arab-solutions",
+  "date_published": "2026-11-08",
+  "date_modified": "2026-11-08",
+  "theme": { "bg": "#0f3f3c", "accent": "#7fe1c8", "fg": "#f4f0e5" },
+  "mark": "ARAB",
+  "icon": "oss/arab-solutions.png",
+  "product": {
+    "name": "Arab Solutions",
+    "alternate_name": ["حلول عربية", "O My Syria"],
+    "category": "BusinessApplication",
+    "operating_system": "Web",
+    "since": "2026-04",
+    "url": {
+      "en": "https://omysyria.com/en",
+      "ar": "https://omysyria.com/ar"
+    },
+    "languages": ["ar", "en"]
+  }
+}

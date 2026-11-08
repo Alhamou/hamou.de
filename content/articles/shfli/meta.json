@@ -1,0 +1,17 @@
+{
+  "slug": "shfli",
+  "date_published": "2026-11-08",
+  "date_modified": "2026-11-08",
+  "theme": { "bg": "#142129", "accent": "#34d399", "fg": "#f1f5f9" },
+  "mark": "SHFLI",
+  "icon": "oss/shfli.png",
+  "product": {
+    "name": "Shfli",
+    "alternate_name": "شفلي",
+    "category": "ShoppingApplication",
+    "publisher": "none",
+    "url": {
+      "en": "https://www.shfli.com/"
+    }
+  }
+}

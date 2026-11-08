@@ -5,9 +5,126 @@
   <link rel="self" type="application/atom+xml" href="https://hamou.de/articles/feed.xml"/>
   <link rel="alternate" type="text/html" href="https://hamou.de/articles/"/>
   <id>https://hamou.de/articles/</id>
-  <updated>2026-11-07T00:00:00Z</updated>
+  <updated>2026-11-08T00:00:00Z</updated>
   <author><name>Emad Alhamou</name><uri>https://hamou.de/</uri></author>
   <icon>https://hamou.de/favicon-32x32.png</icon>
+  <entry>
+    <title>Shfli: a Syrian online marketplace for cars, real estate, auctions, bazaars and jobs</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/articles/shfli/"/>
+    <id>https://hamou.de/articles/shfli/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>Shfli is an online marketplace for Syria that brings buyers and sellers together in one place: cars, real estate, live auctions, bazaars, jobs and more. Emad Alhamou was its technical lead and co-founder, and built the backend systems behind the platform and the app.</summary>
+    <content type="html">&lt;h2 id=&quot;what-is-shfli&quot;&gt;What is Shfli?&lt;/h2&gt;
+&lt;p&gt;Shfli (شفلي in Arabic) is an online marketplace and app for Syria. It connects sellers and buyers in one place, across cars, real estate, live auctions, bazaars and jobs. On its website, Shfli describes itself as the first platform for buying and selling in Syria.&lt;/p&gt;
+&lt;p&gt;It combines classified ads and e-commerce with live auctions in one interactive marketplace, so buying, selling and finding work all start from the same place.&lt;/p&gt;
+&lt;h2 id=&quot;what-you-can-find-on-shfli&quot;&gt;What you can find on Shfli&lt;/h2&gt;
+&lt;p&gt;Shfli groups its offers into sections: cars, real estate, live auctions, bazaars, jobs, electronics and more. It is an all-in-one platform for buying, selling and auctions, bringing deals and opportunities into one place.&lt;/p&gt;
+&lt;h2 id=&quot;built-for-the-syrian-market&quot;&gt;Built for the Syrian market&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;A marketplace with many categories:&lt;/strong&gt; one platform for different kinds of deals, with live auctions and bazaars alongside the classified listings.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Local maps and a tailored experience:&lt;/strong&gt; maps and routing tuned to the Syrian market, and an experience designed for phones as well as the web.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fast cloud infrastructure and advanced APIs:&lt;/strong&gt; the cloud infrastructure and the REST APIs were designed for very fast performance and 99.9% uptime.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;who-is-behind-shfli&quot;&gt;Who is behind Shfli&lt;/h2&gt;
+&lt;p&gt;Emad Alhamou, the author of this site, was Shfli&#x27;s technical lead and co-founder. From February 2025 to April 2026 he led the technical team and built the backend systems for the platform and the app.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;frequently-asked-questions&quot;&gt;
+&lt;h2 id=&quot;frequently-asked-questions&quot;&gt;Frequently asked questions&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;What is Shfli?&lt;/h3&gt;
+&lt;p&gt;Shfli is an online marketplace and app for Syria. It brings buyers and sellers together in one place, with sections for cars, real estate, live auctions, bazaars, jobs and electronics.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;What can I buy and sell on Shfli?&lt;/h3&gt;
+&lt;p&gt;Shfli&#x27;s sections cover cars, real estate, electronics and more, and it also has live auctions, bazaars and jobs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Does Shfli have live auctions?&lt;/h3&gt;
+&lt;p&gt;Yes. Live auctions are one of Shfli&#x27;s sections, next to bazaars and jobs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Is there a Shfli app?&lt;/h3&gt;
+&lt;p&gt;Yes. Shfli is available as a website and as an app. Start at &lt;a href=&quot;https://www.shfli.com/&quot;&gt;shfli.com&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Where does Shfli work?&lt;/h3&gt;
+&lt;p&gt;Shfli is built for Syria.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Who built Shfli&#x27;s technology?&lt;/h3&gt;
+&lt;p&gt;Emad Alhamou, the author of this site, led Shfli&#x27;s technical team and built its backend systems, as technical lead and co-founder, from February 2025 to April 2026.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>Arab Solutions: Arabic-first AI customer support that answers from your own knowledge</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/articles/arab-solutions/"/>
+    <id>https://hamou.de/articles/arab-solutions/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>Arab Solutions is the AI customer support platform our team at Alhamou builds for businesses in the Arab world. It turns a company&#x27;s documents into an assistant that answers customers in Arabic, shows where each answer comes from, and hands the conversation to a person when it should.</summary>
+    <content type="html">&lt;h2 id=&quot;what-is-arab-solutions&quot;&gt;What is Arab Solutions?&lt;/h2&gt;
+&lt;p&gt;Arab Solutions (حلول عربية in Arabic) is an AI customer support platform built Arabic-first. A company adds its documents and knowledge base, and the platform turns them into an assistant that understands customers&#x27; questions and gives accurate, consistent answers. You can find it at omysyria.com, under the O My Syria brand.&lt;/p&gt;
+&lt;p&gt;Our team at Alhamou has been building it since April 2026, for businesses in the Arab world. We pay special attention to Arabic, to privacy and to easy integration with apps and websites.&lt;/p&gt;
+&lt;h2 id=&quot;how-the-assistant-answers&quot;&gt;How the assistant answers&lt;/h2&gt;
+&lt;p&gt;The AI Support Assistant (خدمة المساعد الذكي) is the core of the platform, and it is made to be trusted with customer questions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Answers come from your knowledge:&lt;/strong&gt; the assistant answers from the documents a company has approved. If the information is not there, it does not guess.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sources you can check:&lt;/strong&gt; an answer points to the passage and the file it came from, with the date it was last updated and a confidence score.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A person when it matters:&lt;/strong&gt; when a conversation needs a human, the platform hands it to the team with an automatic summary and the reason for the handoff.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Technically this is retrieval-augmented generation (RAG): the platform first finds the relevant parts of your knowledge, and the assistant answers from them.&lt;/p&gt;
+&lt;h2 id=&quot;all-your-channels-in-one-place&quot;&gt;All your channels in one place&lt;/h2&gt;
+&lt;p&gt;Customers write wherever it suits them, and Arab Solutions brings those channels together:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Your website or online shop:&lt;/strong&gt; a chat widget you add with a single line of JavaScript.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WhatsApp Business and Facebook Messenger:&lt;/strong&gt; the assistant replies in the apps your customers already use.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Your own apps:&lt;/strong&gt; a Messages API that takes a question and returns a grounded answer, with documentation for developers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;arabic-first&quot;&gt;Arabic first&lt;/h2&gt;
+&lt;p&gt;Arabic is the starting point, not an add-on. The interface works right-to-left, and the assistant is built to understand Syrian, Levantine, Gulf and Egyptian dialects as well as business Modern Standard Arabic. English is supported too.&lt;/p&gt;
+&lt;h2 id=&quot;your-data-stays-yours&quot;&gt;Your data stays yours&lt;/h2&gt;
+&lt;p&gt;According to the platform&#x27;s privacy policy, a company&#x27;s documents, texts and conversations are not used to train or improve public language models. Data is encrypted in transit and at rest, the data of each organization is kept isolated from the others, and a company can export its records or delete them for good from the dashboard.&lt;/p&gt;
+&lt;h2 id=&quot;a-second-service-maps-service&quot;&gt;A second service: Maps Service&lt;/h2&gt;
+&lt;p&gt;Besides the assistant, O My Syria offers a new Maps Service (خدمة الخرائط) for Syria, through one API: routes with turn-by-turn directions for cars, trucks, bicycles and walking, travel times and distances between many points, place search with autocomplete, reverse geocoding, nearby places and map matching. Active coverage includes Damascus and its countryside, Aleppo, Homs, Hama, Latakia, Tartus and Idlib.&lt;/p&gt;
+&lt;h2 id=&quot;who-is-behind-arab-solutions&quot;&gt;Who is behind Arab Solutions&lt;/h2&gt;
+&lt;p&gt;We are a team of developers at Alhamou (Hamou Software Co.), a software company registered in Damascus, and we build Arab Solutions together. We follow the same rule in everything we make: good technology does not show off its complexity, it makes people&#x27;s lives simpler.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;frequently-asked-questions&quot;&gt;
+&lt;h2 id=&quot;frequently-asked-questions&quot;&gt;Frequently asked questions&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;What is Arab Solutions?&lt;/h3&gt;
+&lt;p&gt;Arab Solutions is an Arabic-first AI customer support platform. A company adds its documents and knowledge base, and an AI assistant answers customers&#x27; questions from them, in Arabic and English, on a website or in messaging apps. It is published at omysyria.com under the O My Syria brand.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;How does the assistant avoid making things up?&lt;/h3&gt;
+&lt;p&gt;It answers only from the documents a company has approved. Each answer can point to its source passage, with the update date and a confidence score. When the information is missing, the assistant does not answer, and the platform can hand the conversation to a person.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Which channels does it work on?&lt;/h3&gt;
+&lt;p&gt;A chat widget for your website or online shop, WhatsApp Business, Facebook Messenger, and a Messages API for your own apps.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Does it understand Arabic dialects?&lt;/h3&gt;
+&lt;p&gt;Yes. It is built for Arabic and understands Syrian, Levantine, Gulf and Egyptian dialects as well as business Modern Standard Arabic.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Is my company&#x27;s data used to train AI models?&lt;/h3&gt;
+&lt;p&gt;According to the privacy policy, no. A company&#x27;s documents, texts and conversations are not used to train or improve public language models, and the company can export or delete its data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;What else does O My Syria offer?&lt;/h3&gt;
+&lt;p&gt;A Maps Service for Syria: routing, place search, geocoding and map matching through one API.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Who builds Arab Solutions?&lt;/h3&gt;
+&lt;p&gt;Alhamou (Hamou Software Co.), a team of developers and a software company registered in Damascus.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Where can I learn more?&lt;/h3&gt;
+&lt;p&gt;Start at &lt;a href=&quot;https://omysyria.com/en&quot;&gt;omysyria.com&lt;/a&gt; and read the &lt;a href=&quot;https://omysyria.com/en/developers&quot;&gt;developer documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
   <entry>
     <title>TakeCar: a Syrian app for ride sharing between cities, city rides and delivery</title>
     <link rel="alternate" type="text/html" href="https://hamou.de/articles/takecar/"/>

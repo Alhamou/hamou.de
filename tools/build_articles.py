@@ -700,7 +700,11 @@ def ld_article(a, lang):
         sw = {'@type': 'SoftwareApplication', '@id': base_url + '#software', 'name': p['name'],
               'url': p.get('url', {}).get(lang) or p.get('url', {}).get(DEFAULT),
               'applicationCategory': p.get('category', 'UtilitiesApplication'),
-              'image': abs_url('/' + a['icon']), 'publisher': {'@id': ORG_ID}, 'author': {'@id': ORG_ID}}
+              'image': abs_url('/' + a['icon'])}
+        if p.get('publisher', 'org') != 'none':
+            # "publisher": "none" in meta.json leaves the maker out, for a product Alhamou did not publish
+            sw['publisher'] = {'@id': ORG_ID}
+            sw['author'] = {'@id': ORG_ID}
         for src, dst in (('alternate_name', 'alternateName'), ('operating_system', 'operatingSystem'),
                          ('requirements', 'softwareRequirements'), ('languages', 'inLanguage')):
             if p.get(src):
