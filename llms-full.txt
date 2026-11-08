@@ -288,3 +288,754 @@ Yes. Nadhif tests websites you own with real attack techniques and scans Debian 
 ### Where can I get Nadhif?
 
 On the official website, [nadhif.hamou.de](https://nadhif.hamou.de/).
+
+---
+
+# OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking
+
+> OpenBlock blocks ads and trackers in Safari on your Mac. It downloads real filter lists, converts them into Safari's own rule format and lets Safari enforce them, so nothing sits between you and the web. The code is open under the GPL-3.0 license.
+
+- Author: [Emad Alhamou](https://hamou.de/), Founder & Product Builder
+- Published: 2026-11-08 (updated 2026-11-08)
+- Language: English
+- Web page: https://hamou.de/articles/openblock/
+- Other languages: [Deutsch](https://hamou.de/de/articles/openblock/index.md), [العربية](https://hamou.de/ar/articles/openblock/index.md)
+- Tool: [OpenBlock](https://github.com/Alhamou/OpenBlock) · macOS 15 Sequoia or later · Swift · GPL-3.0 license
+- Source code: https://github.com/Alhamou/OpenBlock (GPL-3.0 license)
+
+## What is OpenBlock?
+
+OpenBlock is an open-source ad blocker for Safari on macOS. It follows the same recipe as AdGuard for Safari: filter lists go through a converter and become Safari content blockers. The app downloads the lists, converts them to Safari's native rule format and hands them to Safari, which compiles them into its own engine. Nothing sits between you and the web, and OpenBlock sends no data about your browsing anywhere.
+
+It blocks only inside Safari. Other browsers and apps never see the rules. DNS-based blocking for every app on the Mac is the next feature on the project's roadmap.
+
+## What it blocks with
+
+- **Four Safari content blockers:** Ads, Privacy, Annoyances and Custom. Each has its own budget of 150,000 rules.
+- **Real filter lists:** AdGuard Base, Tracking, Social, Cookie and Popups (the Safari builds), EasyList, EasyPrivacy, regional lists, or any list URL you add, in AdBlock syntax or as a hosts file.
+- **Your own rules and an allowlist,** written in AdBlock syntax. Sites on the allowlist are left alone.
+- **Automatic updates:** the lists refresh every 24 hours while OpenBlock is running, and the menu bar has an Update Filters Now command next to Pause Blocking and Launch at Login.
+
+## OpenBlock Advanced
+
+Safari's content blockers cannot express every rule. For the rest there is OpenBlock Advanced, a Safari web extension. It runs scriptlets (AdGuard's `#%#//scriptlet(...)` rules and uBlock Origin's `##+js(...)` rules), injects CSS (`#$#`), supports extended CSS selectors (`#?#`, `:has-text()`, `:remove()`) and handles rules for domains with a wildcard top-level domain such as `example.*`. The project names YouTube ads and anti-adblock walls as examples. Its toolbar button shows the status of the current site and lets you pause the advanced rules for that site.
+
+## Privacy
+
+The README describes OpenBlock as having no tracking, and its security policy says the only network traffic is the download of the filter lists you turned on. There is no telemetry, no analytics and no crash reporting, and OpenBlock does not read your browsing history. Because Safari compiles the rules itself, the app never sits in the path of your web traffic.
+
+## Install
+
+OpenBlock needs macOS 15 Sequoia or later. Download the DMG from the latest release on GitHub and drag OpenBlock to Applications. The build is signed with an Apple Development certificate and is not notarized, so macOS asks for confirmation the first time: open System Settings, go to Privacy & Security and choose Open Anyway next to OpenBlock.
+
+Then open OpenBlock, pick your filter lists and wait for the first conversion to finish. In Safari, open Settings, then Extensions: enable the four OpenBlock content blockers and OpenBlock Advanced, and allow it on every website. Keep a single copy of the app on disk, because Safari gets confused when two builds register the same extensions.
+
+To build it yourself you need Xcode 16 or later and XcodeGen. Safari only loads signed extensions, so an unsigned build does not block anything.
+
+## Open source
+
+OpenBlock is licensed under GPL-3.0, because OpenBlock Advanced bundles AdGuard's GPL-3 Scriptlets and ExtendedCss libraries. The filter lists are downloaded when the app runs and keep their own licenses. OpenBlock is not affiliated with AdGuard. The repository also includes a command-line converter that you can verify against WebKit's own rule compiler.
+
+Emad Alhamou, the author of this site, publishes OpenBlock on [GitHub](https://github.com/Alhamou/OpenBlock). Bug reports and pull requests are welcome.
+
+## Frequently asked questions
+
+### What is OpenBlock?
+
+OpenBlock is an open-source ad blocker for Safari on macOS. It converts real filter lists into Safari's native content blockers and adds a web extension for advanced rules.
+
+### Does OpenBlock work in Chrome, Firefox or other apps?
+
+No. OpenBlock blocks only inside Safari, because Safari compiles the rules into its own engine and other browsers and apps never see them. DNS-based blocking for every app is planned.
+
+### Which filter lists does OpenBlock use?
+
+AdGuard Base, Tracking, Social, Cookie and Popups, EasyList, EasyPrivacy and regional lists, plus any list URL you add. Lists can use AdBlock syntax or be hosts files.
+
+### Does OpenBlock collect my data?
+
+According to its README and security policy, no. It has no telemetry, analytics or crash reporting, and the only network traffic is the download of the filter lists you turned on.
+
+### Which macOS version does OpenBlock need?
+
+macOS 15 Sequoia or later.
+
+### Why does macOS warn me when I open OpenBlock?
+
+The release build is signed with an Apple Development certificate, not a Developer ID, and it is not notarized. Use Open Anyway in System Settings under Privacy & Security to open it. Signing with a Developer ID and notarization are on the project's roadmap.
+
+### Is OpenBlock affiliated with AdGuard?
+
+No. It is built the same way (filter lists, a converter, Safari content blockers) and bundles AdGuard's open-source Scriptlets and ExtendedCss libraries, which is why it is licensed under GPL-3.0.
+
+---
+
+# RemoteDesk: an open-source Mac-to-Mac remote desktop for your local network
+
+> RemoteDesk shares one Mac's screen and lets you control it from another Mac over your local network. It captures the screen with ScreenCaptureKit, compresses it with hardware H.264 and sends it over TCP. It has no encryption or login, so it is meant for trusted private networks only. The code is open under the MIT license.
+
+- Author: [Emad Alhamou](https://hamou.de/), Founder & Product Builder
+- Published: 2026-11-08 (updated 2026-11-08)
+- Language: English
+- Web page: https://hamou.de/articles/remotedesk/
+- Other languages: [Deutsch](https://hamou.de/de/articles/remotedesk/index.md), [العربية](https://hamou.de/ar/articles/remotedesk/index.md)
+- Tool: [RemoteDesk](https://github.com/Alhamou/RemoteDesk) · macOS 14 or later on both Macs · same local network · MIT license
+- Source code: https://github.com/Alhamou/RemoteDesk (MIT license)
+
+## What is RemoteDesk?
+
+RemoteDesk is an open-source remote desktop for macOS that works between two Macs on the same local network. One Mac shares its screen, the other shows it and sends your mouse, keyboard, scroll and clipboard back. It is written in Swift and uses only Apple's own frameworks, with no third-party libraries.
+
+It is a focused tool: Mac to Mac, over a local network. It is not a cloud service, there is no account, and it is not built for the open internet. Read the security section before you use it.
+
+## How it works
+
+- **The host** is the Mac being controlled. It captures the screen with ScreenCaptureKit, compresses it with VideoToolbox hardware H.264 and sends it through a length-prefixed TCP socket. Remote mouse and keyboard input is injected with `CGEvent`.
+- **The client** is the Mac you sit at. It decodes the H.264 stream in hardware, draws it through a `CALayer`, and captures your mouse, keyboard, scroll and clipboard events.
+
+The README describes a custom binary protocol with no B-frames and adaptive congestion control, aimed at low latency. The architecture notes in the repository explain the wire protocol and the concurrency model.
+
+## What it can do
+
+- **Full input forwarding:** precise pointer movement, left, right and middle clicks, pixel-accurate scrolling in both directions, and keyboard input.
+- **Full-screen Capture All Input mode:** in full screen, system shortcuts such as Cmd+Tab, Cmd+Space and Mission Control go to the remote Mac instead of your own.
+- **Trackpad gestures and Spaces:** in full screen, Spaces swipes, Mission Control, App Exposé and pinches act on the remote Mac, following your trackpad settings.
+- **Match Remote Resolution to This Screen:** the host switches to the resolution that best fits the client's display so full screen fills it, and restores it when you disconnect.
+- **Clean full-screen edges:** the local Dock stays hidden, and only the top edge reveals your local menu bar and window buttons.
+- **Text clipboard sync in both directions,** with loop suppression.
+- **Zero-configuration discovery:** hosts announce themselves over Bonjour (`_remotedesk._tcp`) on your Wi-Fi or Ethernet network, or you connect directly by IP address.
+
+## Security: read this first
+
+RemoteDesk is designed only for trusted private local networks, and its README is direct about the limits:
+
+- **No encryption.** Traffic goes over plain TCP without TLS, so screen frames and typed keystrokes cross your network in plaintext.
+- **No authentication.** Any device on the same network that reaches the host's port gets full control.
+- **Clipboard broadcast.** Text you copy is sent automatically to the connected Mac.
+
+Never run it on untrusted public Wi-Fi such as airports, hotels or cafes. To reach a Mac across the internet, tunnel the traffic through an encrypted channel such as Tailscale, WireGuard or SSH port forwarding. TLS with a pre-shared key and a PIN or one-time password prompt on the host are on the roadmap, not in the app yet.
+
+## Permissions
+
+- **Host:** Screen Recording and Accessibility, both in System Settings under Privacy & Security. Relaunch RemoteDesk after granting Screen Recording.
+- **Client:** Accessibility, and only for full-screen Capture All Input mode.
+
+## Install
+
+RemoteDesk needs macOS 14 Sonoma or later on both Macs. The app is a universal binary, so it runs on Apple silicon and Intel. Download the DMG from the latest release on GitHub and drag RemoteDesk to Applications. The release is distributed without a paid Apple Developer ID, so macOS may refuse the first launch: Control-click the app, choose Open, then confirm. The README also gives a Terminal alternative that removes the quarantine attribute with `xattr -cr`.
+
+To build it yourself you need the Swift toolchain (Xcode or the Command Line Tools). Clone the repository and run `./scripts/make-app.sh`.
+
+## Using it
+
+Open RemoteDesk on both Macs. On the host Mac choose **Share This Mac** and grant the permission prompts. On the client Mac choose **Connect to a Mac**, pick the host from the Bonjour list or type its local IP address (the default port is 8790), and choose **Connect**. The host window hides itself while a client is connected; click the Dock icon to see the status or disconnect.
+
+Shortcuts on the client: Ctrl+Cmd+F toggles full screen, Ctrl+Opt+Cmd+G turns input capture on or off, and Ctrl+Opt+Cmd+Q disconnects at once and is never forwarded to the host.
+
+RemoteDesk can also run from the command line, including a headless host with `--host --no-ui`.
+
+## Open source
+
+RemoteDesk is released under the MIT license. Emad Alhamou, the author of this site, publishes it on [GitHub](https://github.com/Alhamou/RemoteDesk). The roadmap lists TLS encryption, a PIN or one-time-password prompt, audio streaming and multi-monitor selection. Bug reports and pull requests are welcome.
+
+## Frequently asked questions
+
+### What is RemoteDesk?
+
+RemoteDesk is an open-source remote desktop for macOS. It shares one Mac's screen and lets you control it from another Mac on the same local network, using hardware H.264 streaming and full input forwarding.
+
+### Is RemoteDesk safe to use?
+
+Only on a trusted private network. It sends traffic over plain TCP without encryption, and it has no login: any device on the network that reaches the host's port gets full control. Do not use it on public Wi-Fi.
+
+### Can I use RemoteDesk over the internet?
+
+Not directly. The README says to tunnel the traffic through an encrypted channel such as Tailscale, WireGuard or SSH port forwarding, and to never expose it on untrusted networks.
+
+### Which Macs and macOS versions does it support?
+
+macOS 14 Sonoma or later on both the host and the client. The app is a universal binary for Apple silicon and Intel.
+
+### Which permissions does RemoteDesk need?
+
+The host needs Screen Recording and Accessibility. The client needs Accessibility only for full-screen Capture All Input mode.
+
+### How do I connect two Macs?
+
+Open RemoteDesk on both. On the host choose Share This Mac. On the client choose Connect to a Mac, pick the host from the Bonjour list or enter its local IP address, and choose Connect.
+
+### What does RemoteDesk not do yet?
+
+It does not encrypt traffic or ask for a PIN. Audio streaming and multi-monitor selection are on the roadmap too. Clipboard sync covers text only.
+
+### Why does macOS warn me when I open RemoteDesk?
+
+The release is distributed without a paid Apple Developer ID certificate. Control-click the app and choose Open, or remove the quarantine attribute with `xattr -cr`.
+
+---
+
+# pinFiy: colored sticky notes for the Mac, with a small pin in the menu bar
+
+> pinFiy gives your Mac colored sticky notes that live behind a small pin in the menu bar. Each note is its own window, Arabic text runs right to left and English left to right, and a pinned note stays above your other windows. There is no account, no cloud sync and no network access. The code is open under the MIT license.
+
+- Author: [Emad Alhamou](https://hamou.de/), Founder & Product Builder
+- Published: 2026-11-08 (updated 2026-11-08)
+- Language: English
+- Web page: https://hamou.de/articles/pinfiy/
+- Other languages: [Deutsch](https://hamou.de/de/articles/pinfiy/index.md), [العربية](https://hamou.de/ar/articles/pinfiy/index.md)
+- Tool: [pinFiy](https://github.com/Alhamou/pinFiy) · macOS 13 or later · Swift 5.9 or later to build · MIT license
+- Source code: https://github.com/Alhamou/pinFiy (MIT license)
+
+## What is pinFiy?
+
+pinFiy is an open-source sticky notes app for macOS. Each note is its own colored window. The app itself is a small pin in the menu bar and does not appear in the Dock, so it stays out of the way until you need a note.
+
+It handles Arabic and English side by side. Text direction follows the first strong character of what you type: Arabic runs right to left and English runs left to right, in the same app and even on neighboring notes.
+
+## What it does
+
+- **One window per note,** so you can place each note where you need it.
+- **Pin keeps a note on top.** A pinned note stays above normal windows and does not cover the menu bar. The pin corner follows the text direction: right for Arabic, left for English.
+- **Twenty colors:** ten light and ten dark. The default is a warm amber (`#F3C15B`). Dark text sits on light colors and light text on dark ones.
+- **Font size from 12 to 36** for each note, and from Settings for new notes or for every note.
+- **Lock a note** to block changes to its text, color, size and position, and to stop it from being closed.
+- **A safety net:** closing a note that has text asks for confirmation first.
+- **Open at login,** from Settings or from the pin menu.
+
+## Where your notes live
+
+Notes are stored on your Mac, in `~/Library/Application Support/pinFiy/notes.json`, with a backup file. According to the README there is no account, no cloud sync and no network access. The repository includes a privacy policy and a security policy.
+
+## Shortcuts
+
+- **New note:** the plus button, `⌘N`, or the pin menu.
+- **Close a note:** the close button or `⌘W`.
+- **Keep above windows:** the pin button or `⌘P`.
+- **Settings:** `⌘,` or the pin menu.
+- **Quit:** `⌘Q` or the pin menu.
+
+## Install
+
+pinFiy needs macOS 13 or later and Swift 5.9 or later, which the toolchain that ships with Xcode includes. Clone the repository from GitHub, run `swift test`, then `./scripts/build-app.sh`, and open `PinFiy.app`. The script signs the app ad hoc. That is not an Apple Developer signature and not an App Store release.
+
+## Open source
+
+pinFiy is released under the MIT license. The code is split into a core library for the model and storage, with no AppKit in it, and an app target for the note windows and the menu bar. The core has XCTest tests.
+
+Emad Alhamou, the author of this site, publishes pinFiy on [GitHub](https://github.com/Alhamou/pinFiy). The repository has contribution guidelines and a code of conduct, and security issues are reported privately as its security policy describes.
+
+## Frequently asked questions
+
+### What is pinFiy?
+
+pinFiy is an open-source sticky notes app for macOS. It gives you colored notes, each in its own window, controlled from a small pin in the menu bar.
+
+### Does pinFiy support Arabic and right-to-left text?
+
+Yes. Text direction follows the first strong character: Arabic runs right to left and English runs left to right. The pin corner of a note follows the direction too.
+
+### What does Pin do?
+
+Pin keeps a note above normal windows without covering the menu bar. Use the pin button on the note or press `⌘P`.
+
+### Where are my notes stored, and does pinFiy use the network?
+
+Notes are stored locally in `~/Library/Application Support/pinFiy/notes.json`, with a backup. According to the README there is no account, no cloud sync and no network access.
+
+### What does locking a note do?
+
+A locked note cannot be edited, recolored, resized or moved, and it cannot be closed, until you unlock it.
+
+### Which macOS version does pinFiy need?
+
+macOS 13 or later. Building it needs Swift 5.9 or later.
+
+### How do I install pinFiy?
+
+Clone the repository, run `swift test` and `./scripts/build-app.sh`, then open `PinFiy.app`. The build is signed ad hoc, not with an Apple Developer certificate.
+
+### Can I change the font size and colors?
+
+Yes. Each note has color swatches and font size buttons, from 12 to 36. Settings sets the size for new notes or for every note.
+
+---
+
+# closeAll: force-quit every Dock app from one menu-bar button on Mac
+
+> closeAll force-quits every normal Dock app from one button in the menu bar. You review the list first, uncheck what should stay open and press Force Quit. Force Quit does not ask apps to save, so unsaved work is lost. The code is open under the MIT license.
+
+- Author: [Emad Alhamou](https://hamou.de/), Founder & Product Builder
+- Published: 2026-11-08 (updated 2026-11-08)
+- Language: English
+- Web page: https://hamou.de/articles/closeall/
+- Other languages: [Deutsch](https://hamou.de/de/articles/closeall/index.md), [العربية](https://hamou.de/ar/articles/closeall/index.md)
+- Tool: [closeAll](https://github.com/Alhamou/closeAll) · macOS 14 or later · Apple silicon build · MIT license
+- Source code: https://github.com/Alhamou/closeAll (MIT license)
+
+## What is closeAll?
+
+closeAll is a small open-source macOS menu-bar app with one job: close every normal app that is running, in one go. Its icon in the menu bar is a small stack of windows. Click it, review the list, then press **Force Quit**. The checked apps are closed with Force Quit.
+
+Read this once before you use it: Force Quit does not ask an app to save. Unsaved work in the apps you close is lost.
+
+## How you use it
+
+1. Click the stack-of-windows icon at the top of the screen.
+2. Leave a check on every app that should close. Remove the check to keep an app open; closeAll remembers that choice.
+3. Under **Background apps**, check any menu-bar app that should close too.
+4. Press **Force Quit**.
+
+Each row shows the app's own icon, so you can recognize it before it closes. Close or uncheck anything that has unsaved work first.
+
+## What closes
+
+- **Every normal application,** the kind you would otherwise right-click in the Dock and quit. Editors, browsers and chat apps are included, so uncheck any you want to keep.
+- **Background apps you check.** The Background apps section lists menu-bar apps that you installed in `/Applications` or `~/Applications`, such as a clipboard manager or a VPN client. They start unchecked, so nothing there closes unless you check it.
+
+closeAll verifies that each app really exited. If an app survives Force Quit or comes straight back, it sends a hard kill (SIGKILL), up to three times. Any app it still could not close is named in red.
+
+## What stays open
+
+- **Finder,** so the desktop stays up, and **closeAll** itself, so the button is still there.
+- The Dock, Control Center, WindowServer and the other processes that keep your login session alive.
+- Any app you uncheck, and background apps you did not check.
+- Apple's own menu-bar agents, helpers packed inside another app, updaters kept in Library folders, and processes with no window or menu are not listed at all. They usually close together with their parent app.
+
+## Privacy and permissions
+
+closeAll is not sandboxed, because the App Sandbox would block it from quitting other applications. According to the README it does not use the network and does not collect analytics. Your keep-list is stored only in your local preferences.
+
+## Install
+
+closeAll needs macOS 14 or later. The app that `make app` builds on an Apple silicon Mac is an Apple silicon app. Clone the repository from GitHub, run `make app`, and open `build/closeAll.app`. Copy it to `/Applications` if you want to keep it installed. It shows no Dock icon.
+
+The build is signed ad hoc so it can launch on your Mac, and it is not notarized. If macOS blocks the first launch, Control-click `closeAll.app`, choose Open and confirm. To open it at login, add it under General in System Settings, then Login Items. To quit it, open the panel and choose Quit closeAll.
+
+## Check the plan without closing anything
+
+`swift run closeAll -- --dry-run` prints the quit plan as JSON and exits without closing any app. `make check` runs the unit tests and then prints the live plan, and it fails if that plan includes Finder, closeAll itself or another session process.
+
+## Open source
+
+closeAll is released under the MIT license. The quit rules live in a separate core module with no AppKit, covered by unit tests, and the menu-bar app is built on top of it. The repository also has an Arabic README.
+
+Emad Alhamou, the author of this site, publishes closeAll on [GitHub](https://github.com/Alhamou/closeAll). Contribution guidelines, a code of conduct and a security policy are in the repository.
+
+## Frequently asked questions
+
+### What is closeAll?
+
+closeAll is an open-source macOS menu-bar app that force-quits every normal Dock app from one button, after you review the list and uncheck anything that should stay open.
+
+### Will I lose unsaved work?
+
+Yes. Force Quit does not ask apps to save. Close or uncheck anything with unsaved work before you press the button.
+
+### Which apps does closeAll close, and which stay open?
+
+It closes every normal application that macOS shows in the Dock, plus any background menu-bar apps you check. Finder, closeAll itself, the Dock, Control Center, WindowServer and other session processes always stay open, and so does any app you uncheck.
+
+### Can I keep some apps open?
+
+Yes. Uncheck an app in the list and closeAll keeps it open and remembers that choice.
+
+### Does it close menu-bar apps such as a VPN client?
+
+Only if you check them. The Background apps section lists menu-bar apps from `/Applications` and `~/Applications`, and they start unchecked.
+
+### What if an app will not quit?
+
+closeAll checks that each app really exited. If one survives or comes straight back, it sends a hard kill (SIGKILL), up to three times, and names any app it still could not close in red.
+
+### Does closeAll use the network or collect data?
+
+According to the README, no. It is not sandboxed, it does not use the network and it does not collect analytics. Your keep-list stays in local preferences.
+
+### Which Macs and macOS versions are supported?
+
+macOS 14 or later. The app that `make app` builds on an Apple silicon Mac is an Apple silicon app.
+
+---
+
+# SafeShare: hide private apps while you share your Mac screen in Teams, Zoom or Meet
+
+> SafeShare solves a screen-sharing dilemma: share the whole screen and risk leaking private chats and notifications, or share one window and lose multitasking. It builds a filtered Safe View window that leaves out the apps you protect. You share that window in Teams, Zoom or Meet and keep working on your real desktop. The code is open under the MIT license.
+
+- Author: [Emad Alhamou](https://hamou.de/), Founder & Product Builder
+- Published: 2026-11-08 (updated 2026-11-08)
+- Language: English
+- Web page: https://hamou.de/articles/safeshare/
+- Other languages: [Deutsch](https://hamou.de/de/articles/safeshare/index.md), [العربية](https://hamou.de/ar/articles/safeshare/index.md)
+- Tool: [SafeShare](https://github.com/Alhamou/SafeShare) · macOS 14 or later · Screen & System Audio Recording permission · MIT license
+- Source code: https://github.com/Alhamou/SafeShare (MIT license)
+
+## What is SafeShare?
+
+SafeShare (also called ScreenGuard) is an open-source macOS utility for people who present their desktop in remote meetings. It hides the apps and windows you mark as private from what the meeting sees, while you keep working normally on your real screen.
+
+## The problem it solves
+
+When you present from a Mac, both built-in options have a cost. Share the entire screen and a private chat, a password manager, an inbox or a notification can leak into the meeting. Share a single application window and you lose the ability to multitask or to show a workflow that crosses apps.
+
+## How it works
+
+SafeShare adds a third option, a filtered preview called **Safe View**:
+
+1. It captures your screen with Apple's ScreenCaptureKit.
+2. It removes the apps and windows you protect from that capture, using a content filter.
+3. It shows the cleaned-up desktop in its own window, Safe View.
+4. In Teams, Zoom or Google Meet you share the Safe View window instead of your screen.
+
+You see everything on your real desktop. Attendees see only what you allow.
+
+## Use it with Teams, Zoom or Meet
+
+First open SafeShare from the shield icon in the menu bar, mark the sensitive apps as protected and choose Start Safe View (while the SafeShare panel is open, `⌘⇧S` toggles it). Then, in your meeting app:
+
+- **Microsoft Teams:** choose Share, then under Window select SafeShare — Safe View.
+- **Zoom:** choose Share Screen, pick the SafeShare — Safe View window in the list and choose Share.
+- **Google Meet:** choose Present now, then A window, and pick SafeShare — Safe View.
+
+If you share your entire screen instead of the Safe View window, nothing is filtered, so always pick the window.
+
+## Keep the Safe View window large
+
+Meeting apps share a window at its on-screen size, so a Safe View window shrunk into a corner is unreadable for attendees. According to the README, SafeShare locks the window to the display's aspect ratio, refuses to go below half of the display size and shows a banner, with the exact resolution viewers receive, when it is downscaled. A Send to Back button in the menu parks the window behind your work at full size, and the stream keeps running while the window is covered.
+
+## What it can do
+
+- **One-click protection:** toggle any running app to protected from the menu bar.
+- **Per-window and multi-instance control:** group apps with several windows, such as a browser or a terminal, and set each window to Visible, Protected or Inherit.
+- **Fail-closed blanking:** the stream goes blank during a screen lock, sleep or a permission change, so no frame leaks through.
+- **Multi-display support:** choose which physical display to capture.
+- **Stream quality:** switch between 15, 30 and 60 frames per second without restarting the stream.
+- **Notification auto-hiding:** Notification Center banners are kept out of the stream.
+- **Launch at login, VoiceOver labels and keyboard shortcuts.**
+
+## Privacy and permissions
+
+SafeShare needs one permission, the standard Screen & System Audio Recording access, with no root privileges and no kernel extensions. According to the README it stores no video frames or window titles on disk, has no telemetry and makes no network calls. The repository includes a security policy with the details.
+
+## Install
+
+SafeShare needs macOS 14 Sonoma or later. Download the DMG from the latest release on GitHub, open it and drag SafeShare to Applications. To build it yourself you need Xcode 15 or later: clone the repository, run `swift test`, then `./scripts/build_app.sh`, and `./scripts/package_dmg.sh` if you want a DMG.
+
+## Open source
+
+SafeShare is released under the MIT license. Emad Alhamou, the author of this site, publishes it on [GitHub](https://github.com/Alhamou/SafeShare). The repository has a continuous integration workflow. Bug reports and pull requests are welcome.
+
+## Frequently asked questions
+
+### What is SafeShare?
+
+SafeShare is an open-source macOS utility that hides private apps and windows while you share your screen in Teams, Zoom or Google Meet. It does this through a filtered preview window called Safe View.
+
+### How does SafeShare hide apps during screen sharing?
+
+It captures your screen with ScreenCaptureKit, filters out the apps and windows you marked as protected and shows the result in the Safe View window. You share that window in your meeting app instead of your whole screen.
+
+### Does it work with Teams, Zoom and Google Meet?
+
+Yes. In each of them you share the SafeShare — Safe View window: through Share and Window in Teams, Share Screen in Zoom, and Present now then A window in Google Meet.
+
+### What if I share my entire screen instead of the Safe View window?
+
+Then nothing is filtered and attendees see everything. The protection applies only to what appears in the Safe View window, so always choose that window in your meeting app.
+
+### Why should the Safe View window stay large?
+
+Meeting apps share a window at its on-screen size, so a tiny window is hard to read. SafeShare keeps the display's aspect ratio, will not go below half of the display size and has a Send to Back button that keeps the window out of your way at full size.
+
+### Which permission does SafeShare need, and does it send data anywhere?
+
+It needs Screen & System Audio Recording access. According to the README it has no telemetry, makes no network calls and stores no video frames or window titles on disk.
+
+### What happens when the screen locks or the Mac sleeps?
+
+The stream is blanked during screen lock, sleep and permission changes, which the README calls fail-closed blanking. Notification Center banners are also kept out of the stream.
+
+### Which macOS version does SafeShare need?
+
+macOS 14 Sonoma or later.
+
+---
+
+# TopMovies: a native Mac app to discover movies and TV series, with a local library
+
+> TopMovies helps you decide what to watch on your Mac. It has curated discovery feeds such as For You, Tonight and Hidden Gems, filters across type, country, year, score and runtime, and a local library for favorites, a watchlist and your own ratings. It works offline in a demo mode and connects to TMDB for real data. It is built with SwiftUI and open under the MIT license.
+
+- Author: [Emad Alhamou](https://hamou.de/), Founder & Product Builder
+- Published: 2026-11-08 (updated 2026-11-08)
+- Language: English
+- Web page: https://hamou.de/articles/topmovies/
+- Other languages: [Deutsch](https://hamou.de/de/articles/topmovies/index.md), [العربية](https://hamou.de/ar/articles/topmovies/index.md)
+- Tool: [TopMovies](https://github.com/Alhamou/topMoves) · macOS 14 or later · Apple silicon or Intel · TMDB token for live data · MIT license
+- Source code: https://github.com/Alhamou/topMoves (MIT license)
+
+## What is TopMovies?
+
+TopMovies is a native macOS app for discovering movies and TV series, built with SwiftUI and Swift 6. Its README describes it as privacy-first: your library stays on your Mac, it has no third-party dependencies, and it runs sandboxed. It has curated feeds, deep filters, a local library and a complete offline demo mode.
+
+## Discovery feeds
+
+- **Discover:** browse worldwide catalogs across the major film and television genres.
+- **For You:** deterministic recommendations based on your favorite genres and ratings, with no AI or machine-learning tracking.
+- **Tonight:** a time-bounded picker, 120 minutes by default, that leaves out titles you have already watched.
+- **Hidden Gems:** highly rated titles with a moderate number of votes.
+- **Trending and Best New Releases:** what is getting attention daily and weekly, with verified audience participation.
+
+## Filters
+
+Filter by media type (All, Movies or TV Shows), by origin language and regional groupings, by release date range, year or decade, and by minimum audience score, vote threshold and runtime cap. Content filtering is conservative: explicit and adult titles are blocked by default.
+
+## Your library stays on your Mac
+
+Favorites, the Watchlist, Watched items and your personal 1 to 10 star ratings are stored locally. The app runs in the macOS App Sandbox, and your TMDB token is kept in the macOS Keychain, not in a file.
+
+## Demo mode and connecting TMDB
+
+TopMovies works right away with an illustrative offline catalog: generated poster artwork, fictional plots, casts and scores. To see real movies and series, connect it to TMDB, The Movie Database:
+
+1. Create a TMDB account and request an API key for noncommercial use in your account settings.
+2. Copy the API Read Access Token (the long v4 token, not the short API key).
+3. In TopMovies open Settings & Sources with `⌘,`, paste the token and choose Save & Connect.
+
+Removing the token returns the app to Demo Mode without wiping your local library or preferences. TopMovies uses the TMDB API but is not endorsed or certified by TMDB.
+
+## Content filtering
+
+According to the README, explicit and adult titles, NC-17 and TV-MA are excluded by default, and R-rated titles stay hidden unless you enable them in the content preferences.
+
+## Shortcuts
+
+- `⌘F` focuses the search bar and `⌘R` refreshes the catalog and feeds.
+- `⇧⌘F` toggles the filter panel and `⇧⌘0` resets all filters.
+- `⌘,` opens Settings & Sources and Escape dismisses a detail or settings sheet.
+
+## Install
+
+TopMovies needs macOS 14 Sonoma or later, on Apple silicon or Intel. The README points to a prebuilt review build in the repository, or you can build it from source: clone the repository, run `swift test`, then `./scripts/run-mac.sh`, which builds a release, signs it locally and launches it.
+
+## Open source
+
+The application code and the original demo artwork are released under the MIT license. TMDB branding, provider data and Apple frameworks keep their own terms. Emad Alhamou, the author of this site, publishes TopMovies on [GitHub](https://github.com/Alhamou/topMoves). The repository has contribution guidelines, a code of conduct and a security policy.
+
+## Frequently asked questions
+
+### What is TopMovies?
+
+TopMovies is an open-source native macOS app for discovering movies and TV series. It has curated feeds, filters, a local library and an offline demo mode, and it is built with SwiftUI.
+
+### What discovery feeds does it have?
+
+Discover, For You, Tonight, Hidden Gems, and Trending and Best New Releases. For You is deterministic and uses no AI or machine learning, and Tonight lets you pick by how much time you have.
+
+### Do I need an account to use it?
+
+Not to try it. It works immediately in an offline demo mode. To see real movies and series you connect it with a TMDB API Read Access Token.
+
+### How do I connect TMDB?
+
+Create a TMDB account, request an API key for noncommercial use, copy the API Read Access Token, open Settings & Sources with `⌘,`, paste the token and choose Save & Connect.
+
+### Where are my favorites and ratings stored?
+
+On your Mac. Favorites, the Watchlist, Watched items and your 1 to 10 star ratings are stored locally, and your TMDB token is kept in the macOS Keychain.
+
+### Does TopMovies filter adult content?
+
+Yes. Explicit and adult titles, NC-17 and TV-MA are excluded by default, and R-rated titles stay hidden unless you enable them in the content preferences.
+
+### Which Macs and macOS versions are supported?
+
+macOS 14 Sonoma or later, on Apple silicon or Intel.
+
+### Is TopMovies affiliated with TMDB?
+
+No. It uses the TMDB API but is not endorsed or certified by TMDB.
+
+---
+
+# moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping
+
+> moveMouse helps keep a remote desktop (RDP) connection open. It moves the pointer at an interval you choose and stops the Mac from sleeping while it runs, so a quiet session is less likely to be cut off. It lives in the menu bar and its code is open under the MIT license.
+
+- Author: [Emad Alhamou](https://hamou.de/), Founder & Product Builder
+- Published: 2026-11-08 (updated 2026-11-08)
+- Language: English
+- Web page: https://hamou.de/articles/movemouse/
+- Other languages: [Deutsch](https://hamou.de/de/articles/movemouse/index.md), [العربية](https://hamou.de/ar/articles/movemouse/index.md)
+- Tool: [moveMouse](https://github.com/Alhamou/moveMouse) · macOS 11 or later · Apple silicon build · Accessibility permission · MIT license
+- Source code: https://github.com/Alhamou/moveMouse (MIT license)
+
+## What is moveMouse?
+
+moveMouse is a small open-source app for the macOS menu bar. At an interval you choose it moves the mouse pointer by itself, and while it runs it keeps the Mac from going to sleep because of inactivity. It was made for one practical problem: a remote desktop (RDP) connection that drops when you are not touching the Mac. The app's own menu-bar tooltip says so, in Arabic: it is there to prevent RDP connections from being cut.
+
+The README describes it more broadly, as automatic pointer movement on your schedule: useful for desktop demonstrations, for testing mouse interactions, or for keeping a Mac active during a task. It is written in Swift and AppKit and runs without a Dock icon.
+
+## Why an RDP connection drops
+
+Remote desktop sessions usually end for dull reasons. The Mac you connect from goes to sleep and takes the network connection with it, or the remote side treats a session with no input as idle and ends or locks it. moveMouse works from your Mac and tackles both: it prevents idle system sleep while it runs, and it produces pointer activity at the interval you set.
+
+Two honest limits. The app does not know about your RDP client: it moves the pointer on your Mac, so the activity only reaches the remote session while the RDP window is under the pointer. In practice, keep the remote desktop window where the pointer moves, which with the default pattern is the middle of the screen. And moveMouse changes nothing on the remote machine, so a session limit enforced there stays in force.
+
+## What it does
+
+- **Six intervals:** every 15, 30 or 45 seconds, or every 1, 2 or 5 minutes. The first-launch default is 30 seconds.
+- **Two movement patterns:** Screen center moves the pointer to the middle of the screen, then right and left, and ends at the center. Current pointer position moves it a short distance right and left and returns it to where it started.
+- **An optional left click** after each movement, with an optional sound. The click happens at the final pointer position and lands on whatever is underneath it.
+- **Simple menu-bar controls:** Start or Pause, Move Now (it also works while paused), and Quit. A status line shows whether movement is running and when the last operation happened.
+- **Saved preferences:** interval, pattern, click and sound settings are kept between launches.
+- **Sleep prevention:** idle system sleep is blocked while automatic movement runs. Pausing or quitting releases it.
+
+moveMouse starts moving as soon as it launches, using your saved settings. The menu labels are in Arabic, with English labels for several controls: Start, Pause, Move Now, Interval and Left Click.
+
+## Permissions
+
+Simulated mouse input needs the Accessibility permission. On first launch macOS may ask you to allow it: open System Settings, go to Privacy & Security, then Accessibility, and enable moveMouse. The Accessibility item in the app's menu opens that page for you. According to the README, clicking is the part that needs it most. If clicking stops working after you rebuild or move the app, remove its Accessibility entry, add the app again and relaunch it.
+
+## Install
+
+moveMouse needs macOS 11 Big Sur or later. The included app and the build script target Apple silicon (arm64). Clone the repository from GitHub, then run `./build.sh` and `./run.sh`. Building needs the Xcode Command Line Tools, which `xcode-select --install` installs. The script signs the app locally with an ad-hoc signature.
+
+To start moveMouse when you sign in, add `MoveMouse.app` to your Login Items in System Settings, under General. To stop it, choose Quit in the menu or run `./stop.sh` from the project folder.
+
+## Open source
+
+moveMouse is released under the MIT license. It uses only native macOS frameworks and builds directly with `swiftc`, with no third-party dependencies and no Xcode project. The code is a handful of Swift files: the menu-bar interface, the movement timer with pointer input and saved preferences, and the sleep prevention.
+
+Emad Alhamou, the author of this site, publishes moveMouse on [GitHub](https://github.com/Alhamou/moveMouse). Bug reports, ideas and pull requests are welcome; include your macOS version, the steps to reproduce and what you expected.
+
+## Frequently asked questions
+
+### What is moveMouse?
+
+moveMouse is an open-source macOS menu-bar app that moves the pointer automatically at an interval you choose and keeps the Mac from sleeping while it runs. It was made to help keep an RDP connection from dropping.
+
+### How does moveMouse help with an RDP connection?
+
+It works from your Mac. It prevents idle system sleep, which would otherwise take the connection down, and it creates pointer activity at your chosen interval so a session is not left completely quiet. The activity reaches the remote session only while the RDP window is under the pointer, and moveMouse does not change any setting on the remote machine.
+
+### Will the click land on something I did not intend?
+
+It can. The optional left click happens at the final pointer position and interacts with whatever is underneath it. If you only want movement, turn off Left Click in the menu. It is on by default.
+
+### Which intervals and movement patterns are available?
+
+Intervals are 15, 30 and 45 seconds and 1, 2 and 5 minutes, with 30 seconds as the default. The two patterns are Screen center (center, right, left, back to center) and Current pointer position (a small right and left wiggle, then back to the start).
+
+### Which permission does moveMouse need?
+
+Accessibility, for simulated mouse input, especially clicking. Enable moveMouse under Privacy & Security, then Accessibility, in System Settings.
+
+### Which Macs and macOS versions are supported?
+
+macOS 11 Big Sur or later. The included app and the build script target Apple silicon (arm64).
+
+### How do I pause or stop moveMouse?
+
+Choose Pause in the menu-bar menu to stop scheduled movement and release sleep prevention, or Quit to close the app. Move Now performs one movement on demand, even while paused.
+
+### Is moveMouse open source?
+
+Yes. It is released under the MIT license, and the source is on GitHub.
+
+---
+
+# Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic
+
+> Haki turns your voice into text anywhere on your Mac. Hold Option+Space, speak, release, and the transcribed text is pasted at your cursor. It is tuned for natural Arabic, including Levantine and Syrian speech, and also handles English, German and French. Transcription uses OpenAI models with your own API key, so your audio goes to OpenAI. The code is open under the MIT license.
+
+- Author: [Emad Alhamou](https://hamou.de/), Founder & Product Builder
+- Published: 2026-11-08 (updated 2026-11-08)
+- Language: English
+- Web page: https://hamou.de/articles/haki/
+- Other languages: [Deutsch](https://hamou.de/de/articles/haki/index.md), [العربية](https://hamou.de/ar/articles/haki/index.md)
+- Tool: [Haki](https://github.com/Alhamou/Haki) · macOS 13 or later · OpenAI API key · Microphone and Accessibility permissions · MIT license
+- Source code: https://github.com/Alhamou/Haki (MIT license)
+
+## What is Haki?
+
+Haki (حكي, a Levantine Arabic word for talking) is a lightweight native macOS menu-bar app for speech-to-text dictation. Click into any text field in any app, hold the push-to-talk hotkey, speak, and let go. Haki transcribes what you said and pastes it at the cursor. Its tagline in Arabic is "احكي، وحكي بيكتبها", roughly "you talk, Haki writes it".
+
+It is designed especially for natural Arabic and Levantine speech, with support for English, German, French and automatic language detection. It has no local speech model and no Python or Node.js runtime: the app is native Swift, and the transcription is done by OpenAI.
+
+## How dictation works
+
+1. Focus a text field in any application, such as Notes, TextEdit, a browser, a chat app or an editor.
+2. Press and hold `⌥ Option + Space` and speak.
+3. Release the keys. Haki sends the recording to OpenAI, receives the text and pastes it at your cursor.
+
+Haki saves your clipboard before pasting and restores it afterwards, and it does this without stealing focus from the app you are typing in. A small floating indicator shows whether it is recording, transcribing or done. Accidental taps shorter than about a third of a second are discarded locally.
+
+## Languages and models
+
+- **Languages:** Arabic (with optimization for Levantine and Syrian speech), English, German, French, or automatic detection.
+- **Models:** `gpt-transcribe` is the default and is aimed at fast, low-latency daily voice typing. `gpt-4o-transcribe` is the higher-accuracy option for complex phrases, dialects and technical terms. You can switch from Settings or from the menu bar.
+- **Microphones:** pick the built-in microphone, a USB interface or AirPods. Haki handles reconnection through CoreAudio and can prefer AirPods when they connect. A live level meter lets you test the input.
+
+## Privacy: what stays on your Mac and what goes to OpenAI
+
+Be clear about the trade-off: **your voice recordings are sent to OpenAI.** According to the README they go directly from your Mac to OpenAI's transcription endpoint over TLS, with no intermediary servers, so dictation needs an internet connection and your own OpenAI API key, used under OpenAI's terms and pricing.
+
+On your Mac, the README says Haki embeds no analytics, diagnostics, crash reporters or third-party SDKs. Audio is recorded to temporary files and deleted as soon as transcription finishes or fails, so no audio history is kept. Your API key is stored in the macOS Keychain and not in preferences, configuration files or logs.
+
+## Permissions
+
+- **Microphone:** to capture your voice, and only while you hold the hotkey or start dictation from the menu.
+- **Accessibility:** for the global push-to-talk hotkey and to insert text by simulating `⌘V`. According to the README, Input Monitoring is not required separately.
+
+## Set it up
+
+1. Open Haki. Allow Microphone access when macOS asks, and enable Haki under System Settings, Privacy & Security, Accessibility.
+2. Open Settings from the menu-bar icon or with `⌘,`. In the Transcription tab paste your OpenAI API key, choose Save, then Test API Key.
+3. Choose a model, and in the Audio tab choose your microphone.
+
+## Dictate from your iPhone with AirMouse
+
+[AirMouse](https://github.com/Alhamou/AirMouse) is a separate open-source app that turns an iPhone into a trackpad for your Mac over your local Wi-Fi. Its voice tab records on the phone and hands the audio to Haki, which types the text on your Mac. Haki has to be installed and running, and it uses your normal API key, model and language settings.
+
+The handoff is simple and open to other senders too. A recording (`m4a`, `mp4`, `webm`, `wav`, `mp3` or `ogg`, up to 25 MB) is written to `~/Library/Caches/Haki/Inbox/`, then the URL `haki://transcribe?file=<file name>` is opened. Haki transcribes the file, pastes the text and deletes the file. Only plain file names inside the inbox are accepted, so paths, hidden files and symlinks are rejected.
+
+## Build it
+
+Haki needs macOS 13 Ventura or later, on Apple silicon or Intel, and the Xcode Command Line Tools with Swift 6.0 or newer. Clone the repository from GitHub, run `swift test`, then `./scripts/build_app.sh`. The script builds the release binary, assembles `Haki.app`, signs it with your local Apple Development certificate or an ad-hoc signature, and installs it in `/Applications`.
+
+## Open source
+
+Haki is released under the MIT license. The contribution guide asks for no local models, no Python, no Node.js and no Electron, and for API keys never to be committed. Emad Alhamou, the author of this site, publishes Haki on [GitHub](https://github.com/Alhamou/Haki). Bug reports and pull requests are welcome, and security concerns go through the repository's security policy.
+
+## Frequently asked questions
+
+### What is Haki?
+
+Haki is an open-source macOS menu-bar app for push-to-talk dictation. Hold `⌥ Option + Space`, speak and release, and the transcribed text is pasted at your cursor in any app. It is tuned for Arabic and also supports English, German and French.
+
+### How do I dictate with Haki?
+
+Click into a text field, press and hold `⌥ Option + Space`, speak, then release. Haki sends the recording to OpenAI and pastes the text at your cursor.
+
+### Which languages and models does Haki support?
+
+Arabic (with Levantine and Syrian optimization), English, German, French and automatic detection. The models are `gpt-transcribe`, the default, and `gpt-4o-transcribe` for higher accuracy.
+
+### Does Haki send my voice to OpenAI?
+
+Yes. Transcription is done by OpenAI, so each recording is sent from your Mac directly to OpenAI over TLS. Haki deletes the temporary audio file as soon as transcription finishes or fails, and keeps no audio history.
+
+### Do I need an OpenAI API key?
+
+Yes. Haki uses your own OpenAI API key, which it stores in the macOS Keychain. Usage is under OpenAI's terms and pricing.
+
+### Which permissions does Haki need?
+
+Microphone, to capture your voice while you hold the hotkey, and Accessibility, for the global hotkey and for pasting with a simulated `⌘V`.
+
+### Which Macs and macOS versions are supported?
+
+macOS 13 Ventura or later, on Apple silicon or Intel. Building needs Swift 6.0 or newer.
+
+### Can I dictate from my iPhone?
+
+Yes, with AirMouse, a companion open-source app. Its voice tab records on the phone and Haki types the text on your Mac. Haki must be installed and running.

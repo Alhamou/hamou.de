@@ -1,0 +1,22 @@
+{
+  "slug": "openblock",
+  "group": "tool",
+  "order": 1,
+  "date_published": "2026-11-08",
+  "date_modified": "2026-11-08",
+  "theme": { "bg": "#0c1a36", "accent": "#7db7ff", "fg": "#f1f5ff" },
+  "mark": "BLOCK",
+  "icon": "oss/openblock.png",
+  "product": {
+    "name": "OpenBlock",
+    "category": "BrowserApplication",
+    "publisher": "person",
+    "operating_system": "macOS 15 or later",
+    "requirements": "Safari on macOS 15 Sequoia or later",
+    "since": "2026-10",
+    "url": { "en": "https://github.com/Alhamou/OpenBlock" },
+    "repo": "https://github.com/Alhamou/OpenBlock",
+    "license": { "name": "GPL-3.0", "url": "https://www.gnu.org/licenses/gpl-3.0.html" },
+    "language": ["Swift", "JavaScript"]
+  }
+}

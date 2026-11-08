@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>TopMovies: native Mac app to discover movies and TV series</title>
+  <meta name="description" content="TopMovies is an open-source native macOS app for discovering movies and TV series, with curated feeds, filters, a local library and an offline demo mode.">
+  <meta name="author" content="Emad Alhamou">
+  <meta name="keywords" content="TopMovies, movie discovery app Mac, TV series tracker macOS, what to watch tonight, hidden gems movies, TMDB API, watchlist app Mac, SwiftUI, native macOS app, Swift, MIT license">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/articles/topmovies/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/topmovies/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/topmovies/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/topmovies/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/topmovies/">
+  <link rel="alternate" type="text/markdown" href="/articles/topmovies/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/articles/feed.xml" title="Atom feed">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:url" content="https://hamou.de/articles/topmovies/">
+  <meta property="og:title" content="TopMovies: a native Mac app to discover movies and TV series, with a local library">
+  <meta property="og:description" content="TopMovies is an open-source native macOS app for discovering movies and TV series, with curated feeds, filters, a local library and an offline demo mode.">
+  <meta property="og:image" content="https://hamou.de/articles/topmovies/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TopMovies: a native Mac app to discover movies and TV series, with a local library">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="Open source tool">
+  <meta property="article:tag" content="TopMovies">
+  <meta property="article:tag" content="movie discovery app Mac">
+  <meta property="article:tag" content="TV series tracker macOS">
+  <meta property="article:tag" content="what to watch tonight">
+  <meta property="article:tag" content="hidden gems movies">
+  <meta property="article:tag" content="TMDB API">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TopMovies: a native Mac app to discover movies and TV series, with a local library">
+  <meta name="twitter:description" content="TopMovies is an open-source native macOS app for discovering movies and TV series, with curated feeds, filters, a local library and an offline demo mode.">
+  <meta name="twitter:image" content="https://hamou.de/articles/topmovies/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/articles/topmovies/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://hamou.de/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "TopMovies",
+          "item": "https://hamou.de/articles/topmovies/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/articles/topmovies/#webpage",
+      "url": "https://hamou.de/articles/topmovies/",
+      "name": "TopMovies: native Mac app to discover movies and TV series",
+      "description": "TopMovies is an open-source native macOS app for discovering movies and TV series, with curated feeds, filters, a local library and an offline demo mode.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/articles/topmovies/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/articles/topmovies/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/articles/topmovies/#primaryimage",
+      "url": "https://hamou.de/articles/topmovies/og.jpg",
+      "contentUrl": "https://hamou.de/articles/topmovies/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "TopMovies: a native Mac app to discover movies and TV series, with a local library"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/articles/topmovies/#article",
+      "headline": "TopMovies: a native Mac app to discover movies and TV series, with a local library",
+      "description": "TopMovies is an open-source native macOS app for discovering movies and TV series, with curated feeds, filters, a local library and an offline demo mode.",
+      "abstract": "TopMovies helps you decide what to watch on your Mac. It has curated discovery feeds such as For You, Tonight and Hidden Gems, filters across type, country, year, score and runtime, and a local library for favorites, a watchlist and your own ratings. It works offline in a demo mode and connects to TMDB for real data. It is built with SwiftUI and open under the MIT license.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/articles/topmovies/#webpage"
+      },
+      "image": [
+        "https://hamou.de/articles/topmovies/og.jpg"
+      ],
+      "articleSection": "Open source tool",
+      "wordCount": 777,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "TopMovies",
+        "movie discovery app Mac",
+        "TV series tracker macOS",
+        "what to watch tonight",
+        "hidden gems movies",
+        "TMDB API",
+        "watchlist app Mac",
+        "SwiftUI",
+        "native macOS app",
+        "Swift",
+        "MIT license"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/topmovies/#software"
+      },
+      "workTranslation": [
+        {
+          "@id": "https://hamou.de/de/articles/topmovies/#article"
+        },
+        {
+          "@id": "https://hamou.de/ar/articles/topmovies/#article"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/topmovies/#software",
+      "name": "TopMovies",
+      "url": "https://github.com/Alhamou/topMoves",
+      "applicationCategory": "EntertainmentApplication",
+      "image": "https://hamou.de/oss/topmoves.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "operatingSystem": "macOS 14 or later",
+      "softwareRequirements": "macOS 14 or later, a TMDB account for live data",
+      "description": "Open-source native macOS app for discovering movies and TV series: curated feeds, filters, a local library and an offline demo mode. Uses the TMDB API.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/topMoves"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/topmovies/#source",
+      "name": "TopMovies source code",
+      "codeRepository": "https://github.com/Alhamou/topMoves",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/topmovies/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/articles/topmovies/#faq",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/articles/topmovies/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is TopMovies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TopMovies is an open-source native macOS app for discovering movies and TV series. It has curated feeds, filters, a local library and an offline demo mode, and it is built with SwiftUI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What discovery feeds does it have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Discover, For You, Tonight, Hidden Gems, and Trending and Best New Releases. For You is deterministic and uses no AI or machine learning, and Tonight lets you pick by how much time you have."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an account to use it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not to try it. It works immediately in an offline demo mode. To see real movies and series you connect it with a TMDB API Read Access Token."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I connect TMDB?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a TMDB account, request an API key for noncommercial use, copy the API Read Access Token, open Settings & Sources with ⌘,, paste the token and choose Save & Connect."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are my favorites and ratings stored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On your Mac. Favorites, the Watchlist, Watched items and your 1 to 10 star ratings are stored locally, and your TMDB token is kept in the macOS Keychain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does TopMovies filter adult content?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Explicit and adult titles, NC-17 and TV-MA are excluded by default, and R-rated titles stay hidden unless you enable them in the content preferences."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Macs and macOS versions are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 14 Sonoma or later, on Apple silicon or Intel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is TopMovies affiliated with TMDB?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It uses the TMDB API but is not endorsed or certified by TMDB."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">Skip to content</a>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="/?lang=en" aria-label="Home"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=en">Home</a>
+        <a href="/articles/">Articles</a>
+      </div>
+      <a class="navCta" href="/?lang=en#contact">Let&#x27;s talk</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#16130f;--art-accent:#e8b64e;--art-fg:#f8f2e4">
+    <header class="artHero noVideo" data-mark="MOVIES">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/?lang=en">Home</a></li><li><a href="/articles/">Articles</a></li><li aria-current="page">TopMovies</li></ol></nav>
+        <p class="artKicker"><img src="/oss/topmoves.png" width="40" height="40" alt="">Open source tool</p>
+        <h1>TopMovies: a native Mac app to discover movies and TV series, with a local library</h1>
+        <p class="artDek">TopMovies helps you decide what to watch on your Mac. It has curated discovery feeds such as For You, Tonight and Hidden Gems, filters across type, country, year, score and runtime, and a local library for favorites, a watchlist and your own ratings. It works offline in a demo mode and connects to TMDB for real data. It is built with SwiftUI and open under the MIT license.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Founder &amp; Product Builder</small></span></span><span>Published <time datetime="2026-11-08">8 November 2026</time></span><span>4 min read</span><span class="artLangs">Also in: <a href="/de/articles/topmovies/" hreflang="de" lang="de">Deutsch</a> · <a href="/ar/articles/topmovies/" hreflang="ar" lang="ar">العربية</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">On this page</p><ol><li><a href="#what-is-topmovies">What is TopMovies?</a></li><li><a href="#discovery-feeds">Discovery feeds</a></li><li><a href="#filters">Filters</a></li><li><a href="#your-library-stays-on-your-mac">Your library stays on your Mac</a></li><li><a href="#demo-mode-and-connecting-tmdb">Demo mode and connecting TMDB</a></li><li><a href="#content-filtering">Content filtering</a></li><li><a href="#shortcuts">Shortcuts</a></li><li><a href="#install">Install</a></li><li><a href="#open-source">Open source</a></li><li><a href="#frequently-asked-questions">Frequently asked questions</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="what-is-topmovies">What is TopMovies?</h2>
+<p>TopMovies is a native macOS app for discovering movies and TV series, built with SwiftUI and Swift 6. Its README describes it as privacy-first: your library stays on your Mac, it has no third-party dependencies, and it runs sandboxed. It has curated feeds, deep filters, a local library and a complete offline demo mode.</p>
+<h2 id="discovery-feeds">Discovery feeds</h2>
+<ul>
+<li><strong>Discover:</strong> browse worldwide catalogs across the major film and television genres.</li>
+<li><strong>For You:</strong> deterministic recommendations based on your favorite genres and ratings, with no AI or machine-learning tracking.</li>
+<li><strong>Tonight:</strong> a time-bounded picker, 120 minutes by default, that leaves out titles you have already watched.</li>
+<li><strong>Hidden Gems:</strong> highly rated titles with a moderate number of votes.</li>
+<li><strong>Trending and Best New Releases:</strong> what is getting attention daily and weekly, with verified audience participation.</li>
+</ul>
+<h2 id="filters">Filters</h2>
+<p>Filter by media type (All, Movies or TV Shows), by origin language and regional groupings, by release date range, year or decade, and by minimum audience score, vote threshold and runtime cap. Content filtering is conservative: explicit and adult titles are blocked by default.</p>
+<h2 id="your-library-stays-on-your-mac">Your library stays on your Mac</h2>
+<p>Favorites, the Watchlist, Watched items and your personal 1 to 10 star ratings are stored locally. The app runs in the macOS App Sandbox, and your TMDB token is kept in the macOS Keychain, not in a file.</p>
+<h2 id="demo-mode-and-connecting-tmdb">Demo mode and connecting TMDB</h2>
+<p>TopMovies works right away with an illustrative offline catalog: generated poster artwork, fictional plots, casts and scores. To see real movies and series, connect it to TMDB, The Movie Database:</p>
+<p>1. Create a TMDB account and request an API key for noncommercial use in your account settings. 2. Copy the API Read Access Token (the long v4 token, not the short API key). 3. In TopMovies open Settings &amp; Sources with <code>⌘,</code>, paste the token and choose Save &amp; Connect.</p>
+<p>Removing the token returns the app to Demo Mode without wiping your local library or preferences. TopMovies uses the TMDB API but is not endorsed or certified by TMDB.</p>
+<h2 id="content-filtering">Content filtering</h2>
+<p>According to the README, explicit and adult titles, <span class="nb">NC-17</span> and TV-MA are excluded by default, and R-rated titles stay hidden unless you enable them in the content preferences.</p>
+<h2 id="shortcuts">Shortcuts</h2>
+<ul>
+<li><code>⌘F</code> focuses the search bar and <code>⌘R</code> refreshes the catalog and feeds.</li>
+<li><code>⇧⌘F</code> toggles the filter panel and <code>⇧⌘0</code> resets all filters.</li>
+<li><code>⌘,</code> opens Settings &amp; Sources and Escape dismisses a detail or settings sheet.</li>
+</ul>
+<h2 id="install">Install</h2>
+<p>TopMovies needs macOS 14 Sonoma or later, on Apple silicon or Intel. The README points to a prebuilt review build in the repository, or you can build it from source: clone the repository, run <code>swift test</code>, then <code>./scripts/run-mac.sh</code>, which builds a release, signs it locally and launches it.</p>
+<h2 id="open-source">Open source</h2>
+<p>The application code and the original demo artwork are released under the MIT license. TMDB branding, provider data and Apple frameworks keep their own terms. Emad Alhamou, the author of this site, publishes TopMovies on <a href="https://github.com/Alhamou/topMoves">GitHub</a>. The repository has contribution guidelines, a code of conduct and a security policy.</p>
+<section class="artFaq" aria-labelledby="frequently-asked-questions">
+<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+<div class="artQ">
+<h3>What is TopMovies?</h3>
+<p>TopMovies is an open-source native macOS app for discovering movies and TV series. It has curated feeds, filters, a local library and an offline demo mode, and it is built with SwiftUI.</p>
+</div>
+<div class="artQ">
+<h3>What discovery feeds does it have?</h3>
+<p>Discover, For You, Tonight, Hidden Gems, and Trending and Best New Releases. For You is deterministic and uses no AI or machine learning, and Tonight lets you pick by how much time you have.</p>
+</div>
+<div class="artQ">
+<h3>Do I need an account to use it?</h3>
+<p>Not to try it. It works immediately in an offline demo mode. To see real movies and series you connect it with a TMDB API Read Access Token.</p>
+</div>
+<div class="artQ">
+<h3>How do I connect TMDB?</h3>
+<p>Create a TMDB account, request an API key for noncommercial use, copy the API Read Access Token, open Settings &amp; Sources with <code>⌘,</code>, paste the token and choose Save &amp; Connect.</p>
+</div>
+<div class="artQ">
+<h3>Where are my favorites and ratings stored?</h3>
+<p>On your Mac. Favorites, the Watchlist, Watched items and your 1 to 10 star ratings are stored locally, and your TMDB token is kept in the macOS Keychain.</p>
+</div>
+<div class="artQ">
+<h3>Does TopMovies filter adult content?</h3>
+<p>Yes. Explicit and adult titles, <span class="nb">NC-17</span> and TV-MA are excluded by default, and R-rated titles stay hidden unless you enable them in the content preferences.</p>
+</div>
+<div class="artQ">
+<h3>Which Macs and macOS versions are supported?</h3>
+<p>macOS 14 Sonoma or later, on Apple silicon or Intel.</p>
+</div>
+<div class="artQ">
+<h3>Is TopMovies affiliated with TMDB?</h3>
+<p>No. It uses the TMDB API but is not endorsed or certified by TMDB.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/topmoves.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">About the tool</p>
+          <p class="artProductName" id="product-title">TopMovies</p>
+          <p>Open-source native macOS app for discovering movies and TV series: curated feeds, filters, a local library and an offline demo mode. Uses the TMDB API.</p>
+          <ul class="artFacts"><li>Since October 2026</li><li>macOS 14 or later · Apple silicon or Intel · TMDB token for live data · MIT license</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/topMoves">View on GitHub <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">More articles</p>
+    <div class="artList">
+<a class="artCard" href="/articles/movemouse/" style="--art-bg:#151a2c;--art-accent:#4cc2ff;--art-fg:#eef3ff">
+  <span class="artCardTop"><img src="/oss/movemouse.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping</h3>
+    <span class="artCardDek">moveMouse helps keep a remote desktop (RDP) connection open. It moves the pointer at an interval you choose and stops the Mac from sleeping while it runs, so a quiet session is less likely to be cut off. It lives in the menu bar and its code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/haki/" style="--art-bg:#0d1e2c;--art-accent:#4fd8c7;--art-fg:#eefbf8">
+  <span class="artCardTop"><img src="/oss/haki.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic</h3>
+    <span class="artCardDek">Haki turns your voice into text anywhere on your Mac. Hold Option+Space, speak, release, and the transcribed text is pasted at your cursor. It is tuned for natural Arabic, including Levantine and Syrian speech, and also handles English, German and French. Transcription uses OpenAI models with your own API key, so your audio goes to OpenAI. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/openblock/" style="--art-bg:#0c1a36;--art-accent:#7db7ff;--art-fg:#f1f5ff">
+  <span class="artCardTop"><img src="/oss/openblock.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking</h3>
+    <span class="artCardDek">OpenBlock blocks ads and trackers in Safari on your Mac. It downloads real filter lists, converts them into Safari&#x27;s own rule format and lets Safari enforce them, so nothing sits between you and the web. The code is open under the <span class="nb">GPL-3.0</span> license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 4 min read</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=en"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Language" data-nav><option value="/articles/topmovies/" lang="en" selected>English</option><option value="/de/articles/topmovies/" lang="de">Deutsch</option><option value="/ar/articles/topmovies/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

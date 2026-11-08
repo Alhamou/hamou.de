@@ -41,8 +41,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=369672db">
-  <link rel="stylesheet" href="/articles/article.css?v=0ac81189">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -148,6 +148,54 @@
             "position": 4,
             "url": "https://hamou.de/articles/nadhif/",
             "name": "Nadhif: clean your Mac with developer tools and protect your website and server from hackers"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "url": "https://hamou.de/articles/openblock/",
+            "name": "OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "url": "https://hamou.de/articles/remotedesk/",
+            "name": "RemoteDesk: an open-source Mac-to-Mac remote desktop for your local network"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "url": "https://hamou.de/articles/pinfiy/",
+            "name": "pinFiy: colored sticky notes for the Mac, with a small pin in the menu bar"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "url": "https://hamou.de/articles/closeall/",
+            "name": "closeAll: force-quit every Dock app from one menu-bar button on Mac"
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "url": "https://hamou.de/articles/safeshare/",
+            "name": "SafeShare: hide private apps while you share your Mac screen in Teams, Zoom or Meet"
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "url": "https://hamou.de/articles/topmovies/",
+            "name": "TopMovies: a native Mac app to discover movies and TV series, with a local library"
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "url": "https://hamou.de/articles/movemouse/",
+            "name": "moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping"
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
+            "url": "https://hamou.de/articles/haki/",
+            "name": "Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic"
           }
         ]
       }
@@ -177,11 +225,12 @@
         <p class="artFeed"><a href="/articles/feed.xml">Atom feed</a></p>
       </div>
     </header>
-    <section class="container artList artListMain" aria-label="Articles">
+    <h2 class="container artGroupTitle" id="group-product">Products</h2>
+    <section class="container artList artListMain" aria-labelledby="group-product">
 <a class="artCard" href="/articles/shfli/" style="--art-bg:#142129;--art-accent:#34d399;--art-fg:#f1f5f9">
   <span class="artCardTop"><img src="/oss/shfli-logo.png" width="56" height="56" alt="" loading="lazy"><span>Product story</span></span>
   <span class="artCardBody">
-    <h2 class="artCardTitle">Shfli: a Syrian online marketplace for cars, real estate, auctions, bazaars and jobs</h2>
+    <h3 class="artCardTitle">Shfli: a Syrian online marketplace for cars, real estate, auctions, bazaars and jobs</h3>
     <span class="artCardDek">Shfli is an online marketplace for Syria that brings buyers and sellers together in one place: cars, real estate, live auctions, bazaars, jobs and more. Emad Alhamou was its technical lead and co-founder, and built the backend systems behind the platform and the app.</span>
     <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 2 min read</span>
   </span>
@@ -189,7 +238,7 @@
 <a class="artCard" href="/articles/arab-solutions/" style="--art-bg:#0f3f3c;--art-accent:#7fe1c8;--art-fg:#f4f0e5">
   <span class="artCardTop"><img src="/oss/arab-solutions-logo.png" width="56" height="56" alt="" loading="lazy"><span>Product story</span></span>
   <span class="artCardBody">
-    <h2 class="artCardTitle">Arab Solutions: Arabic-first AI customer support that answers from your own knowledge</h2>
+    <h3 class="artCardTitle">Arab Solutions: Arabic-first AI customer support that answers from your own knowledge</h3>
     <span class="artCardDek">Arab Solutions is the AI customer support platform our team at Alhamou builds for businesses in the Arab world. It turns a company&#x27;s documents into an assistant that answers customers in Arabic, shows where each answer comes from, and hands the conversation to a person when it should.</span>
     <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 4 min read</span>
   </span>
@@ -197,7 +246,7 @@
 <a class="artCard" href="/articles/takecar/" style="--art-bg:#191a16;--art-accent:#c7ff34;--art-fg:#f4f2ea">
   <span class="artCardTop"><img src="/oss/takecar-logo.png" width="56" height="56" alt="" loading="lazy"><span>Product story</span></span>
   <span class="artCardBody">
-    <h2 class="artCardTitle">TakeCar: a Syrian app for ride sharing between cities, city rides and delivery</h2>
+    <h3 class="artCardTitle">TakeCar: a Syrian app for ride sharing between cities, city rides and delivery</h3>
     <span class="artCardDek">TakeCar is the Syrian mobility app our team builds at Alhamou. Drivers fill the empty seats on trips they already make, passengers travel between governorates for less, and the same app covers rides inside the city and delivery.</span>
     <span class="artCardMeta"><time datetime="2026-11-07">7 November 2026</time> · 3 min read</span>
   </span>
@@ -205,9 +254,76 @@
 <a class="artCard" href="/articles/nadhif/" style="--art-bg:#10233f;--art-accent:#6fd3f5;--art-fg:#eef4fb">
   <span class="artCardTop"><img src="/oss/nadhif.png" width="56" height="56" alt="" loading="lazy"><span>Product story</span></span>
   <span class="artCardBody">
-    <h2 class="artCardTitle">Nadhif: clean your Mac with developer tools and protect your website and server from hackers</h2>
+    <h3 class="artCardTitle">Nadhif: clean your Mac with developer tools and protect your website and server from hackers</h3>
     <span class="artCardDek">Nadhif is the Mac app our team is building at Alhamou. It cleans your Mac and explains every file before it touches it, gives developers tools for the gigabytes Xcode, Node and Docker leave behind, and tests your websites and servers for vulnerabilities, so you can close them before anyone uses them.</span>
     <span class="artCardMeta"><time datetime="2026-11-07">7 November 2026</time> · 3 min read</span>
+  </span>
+</a>
+    </section>
+    <h2 class="container artGroupTitle" id="group-tool">Open source tools</h2>
+    <section class="container artList artListMain" aria-labelledby="group-tool">
+<a class="artCard" href="/articles/openblock/" style="--art-bg:#0c1a36;--art-accent:#7db7ff;--art-fg:#f1f5ff">
+  <span class="artCardTop"><img src="/oss/openblock.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking</h3>
+    <span class="artCardDek">OpenBlock blocks ads and trackers in Safari on your Mac. It downloads real filter lists, converts them into Safari&#x27;s own rule format and lets Safari enforce them, so nothing sits between you and the web. The code is open under the <span class="nb">GPL-3.0</span> license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 4 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/remotedesk/" style="--art-bg:#12143a;--art-accent:#5ccfff;--art-fg:#eef1ff">
+  <span class="artCardTop"><img src="/oss/remotedesk.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">RemoteDesk: an open-source Mac-to-Mac remote desktop for your local network</h3>
+    <span class="artCardDek">RemoteDesk shares one Mac&#x27;s screen and lets you control it from another Mac over your local network. It captures the screen with ScreenCaptureKit, compresses it with hardware H.264 and sends it over TCP. It has no encryption or login, so it is meant for trusted private networks only. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/pinfiy/" style="--art-bg:#2a1f0a;--art-accent:#f3c15b;--art-fg:#fff6e0">
+  <span class="artCardTop"><img src="/oss/pinfiy.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">pinFiy: colored sticky notes for the Mac, with a small pin in the menu bar</h3>
+    <span class="artCardDek">pinFiy gives your Mac colored sticky notes that live behind a small pin in the menu bar. Each note is its own window, Arabic text runs right to left and English left to right, and a pinned note stays above your other windows. There is no account, no cloud sync and no network access. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 4 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/closeall/" style="--art-bg:#151512;--art-accent:#ff7a6b;--art-fg:#f6f3ec">
+  <span class="artCardTop"><img src="/oss/closeall.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">closeAll: force-quit every Dock app from one menu-bar button on Mac</h3>
+    <span class="artCardDek">closeAll force-quits every normal Dock app from one button in the menu bar. You review the list first, uncheck what should stay open and press Force Quit. Force Quit does not ask apps to save, so unsaved work is lost. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/safeshare/" style="--art-bg:#100d24;--art-accent:#a78bfa;--art-fg:#f3f0ff">
+  <span class="artCardTop"><img src="/oss/safeshare.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">SafeShare: hide private apps while you share your Mac screen in Teams, Zoom or Meet</h3>
+    <span class="artCardDek">SafeShare solves a screen-sharing dilemma: share the whole screen and risk leaking private chats and notifications, or share one window and lose multitasking. It builds a filtered Safe View window that leaves out the apps you protect. You share that window in Teams, Zoom or Meet and keep working on your real desktop. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/topmovies/" style="--art-bg:#16130f;--art-accent:#e8b64e;--art-fg:#f8f2e4">
+  <span class="artCardTop"><img src="/oss/topmoves.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">TopMovies: a native Mac app to discover movies and TV series, with a local library</h3>
+    <span class="artCardDek">TopMovies helps you decide what to watch on your Mac. It has curated discovery feeds such as For You, Tonight and Hidden Gems, filters across type, country, year, score and runtime, and a local library for favorites, a watchlist and your own ratings. It works offline in a demo mode and connects to TMDB for real data. It is built with SwiftUI and open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 4 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/movemouse/" style="--art-bg:#151a2c;--art-accent:#4cc2ff;--art-fg:#eef3ff">
+  <span class="artCardTop"><img src="/oss/movemouse.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping</h3>
+    <span class="artCardDek">moveMouse helps keep a remote desktop (RDP) connection open. It moves the pointer at an interval you choose and stops the Mac from sleeping while it runs, so a quiet session is less likely to be cut off. It lives in the menu bar and its code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/haki/" style="--art-bg:#0d1e2c;--art-accent:#4fd8c7;--art-fg:#eefbf8">
+  <span class="artCardTop"><img src="/oss/haki.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic</h3>
+    <span class="artCardDek">Haki turns your voice into text anywhere on your Mac. Hold Option+Space, speak, release, and the transcribed text is pasted at your cursor. It is tuned for natural Arabic, including Levantine and Syrian speech, and also handles English, German and French. Transcription uses OpenAI models with your own API key, so your audio goes to OpenAI. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
   </span>
 </a>
     </section>

@@ -1,0 +1,22 @@
+{
+  "slug": "remotedesk",
+  "group": "tool",
+  "order": 2,
+  "date_published": "2026-11-08",
+  "date_modified": "2026-11-08",
+  "theme": { "bg": "#12143a", "accent": "#5ccfff", "fg": "#eef1ff" },
+  "mark": "DESK",
+  "icon": "oss/remotedesk.png",
+  "product": {
+    "name": "RemoteDesk",
+    "category": "UtilitiesApplication",
+    "publisher": "person",
+    "operating_system": "macOS 14 or later",
+    "requirements": "macOS 14 or later on both Macs, same local network",
+    "since": "2026-10",
+    "url": { "en": "https://github.com/Alhamou/RemoteDesk" },
+    "repo": "https://github.com/Alhamou/RemoteDesk",
+    "license": { "name": "MIT", "url": "https://opensource.org/license/mit" },
+    "language": ["Swift"]
+  }
+}

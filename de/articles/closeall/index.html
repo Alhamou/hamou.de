@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>closeAll: alle Mac-Apps per Menüleiste sofort beenden</title>
+  <meta name="description" content="closeAll ist eine Open-Source-Menüleisten-App für macOS, die jede normale Dock-App auf einmal sofort beendet, nachdem du die Liste geprüft hast. Nicht gesicherte Arbeit geht verloren.">
+  <meta name="author" content="Emad Alhamou">
+  <meta name="keywords" content="closeAll, alle Apps sofort beenden Mac, alle Apps beenden macOS, alle Dock-Apps schließen, Menüleisten-App, Force Quit, Apple Silicon, Swift, MIT-Lizenz">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/de/articles/closeall/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/closeall/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/closeall/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/closeall/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/closeall/">
+  <link rel="alternate" type="text/markdown" href="/de/articles/closeall/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/de/articles/feed.xml" title="Atom-Feed">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:url" content="https://hamou.de/de/articles/closeall/">
+  <meta property="og:title" content="closeAll: jede Dock-App mit einer Schaltfläche in der Menüleiste auf dem Mac sofort beenden">
+  <meta property="og:description" content="closeAll ist eine Open-Source-Menüleisten-App für macOS, die jede normale Dock-App auf einmal sofort beendet, nachdem du die Liste geprüft hast. Nicht gesicherte Arbeit geht verloren.">
+  <meta property="og:image" content="https://hamou.de/de/articles/closeall/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="closeAll: jede Dock-App mit einer Schaltfläche in der Menüleiste auf dem Mac sofort beenden">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="Open-Source-Tool">
+  <meta property="article:tag" content="closeAll">
+  <meta property="article:tag" content="alle Apps sofort beenden Mac">
+  <meta property="article:tag" content="alle Apps beenden macOS">
+  <meta property="article:tag" content="alle Dock-Apps schließen">
+  <meta property="article:tag" content="Menüleisten-App">
+  <meta property="article:tag" content="Force Quit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="closeAll: jede Dock-App mit einer Schaltfläche in der Menüleiste auf dem Mac sofort beenden">
+  <meta name="twitter:description" content="closeAll ist eine Open-Source-Menüleisten-App für macOS, die jede normale Dock-App auf einmal sofort beendet, nachdem du die Liste geprüft hast. Nicht gesicherte Arbeit geht verloren.">
+  <meta name="twitter:image" content="https://hamou.de/de/articles/closeall/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/de/articles/closeall/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Artikel",
+          "item": "https://hamou.de/de/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "closeAll",
+          "item": "https://hamou.de/de/articles/closeall/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/de/articles/closeall/#webpage",
+      "url": "https://hamou.de/de/articles/closeall/",
+      "name": "closeAll: alle Mac-Apps per Menüleiste sofort beenden",
+      "description": "closeAll ist eine Open-Source-Menüleisten-App für macOS, die jede normale Dock-App auf einmal sofort beendet, nachdem du die Liste geprüft hast. Nicht gesicherte Arbeit geht verloren.",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/de/articles/closeall/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/de/articles/closeall/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/de/articles/closeall/#primaryimage",
+      "url": "https://hamou.de/de/articles/closeall/og.jpg",
+      "contentUrl": "https://hamou.de/de/articles/closeall/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "closeAll: jede Dock-App mit einer Schaltfläche in der Menüleiste auf dem Mac sofort beenden"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/de/articles/closeall/#article",
+      "headline": "closeAll: jede Dock-App mit einer Schaltfläche in der Menüleiste auf dem Mac sofort beenden",
+      "description": "closeAll ist eine Open-Source-Menüleisten-App für macOS, die jede normale Dock-App auf einmal sofort beendet, nachdem du die Liste geprüft hast. Nicht gesicherte Arbeit geht verloren.",
+      "abstract": "closeAll beendet jede normale Dock-App mit einer Schaltfläche in der Menüleiste sofort. Du prüfst zuerst die Liste, entfernst das Häkchen bei allem, was offen bleiben soll, und drückst „Force Quit“. Das sofortige Beenden fordert Apps nicht zum Sichern auf, nicht gesicherte Arbeit geht also verloren. Der Code ist offen unter der MIT-Lizenz.",
+      "inLanguage": "de",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/de/articles/closeall/#webpage"
+      },
+      "image": [
+        "https://hamou.de/de/articles/closeall/og.jpg"
+      ],
+      "articleSection": "Open-Source-Tool",
+      "wordCount": 892,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "closeAll",
+        "alle Apps sofort beenden Mac",
+        "alle Apps beenden macOS",
+        "alle Dock-Apps schließen",
+        "Menüleisten-App",
+        "Force Quit",
+        "Apple Silicon",
+        "Swift",
+        "MIT-Lizenz"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/closeall/#software"
+      },
+      "translationOfWork": {
+        "@id": "https://hamou.de/articles/closeall/#article"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/closeall/#software",
+      "name": "closeAll",
+      "url": "https://github.com/Alhamou/closeAll",
+      "applicationCategory": "UtilitiesApplication",
+      "image": "https://hamou.de/oss/closeall.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "operatingSystem": "macOS 14 or later",
+      "softwareRequirements": "macOS 14 or later, Apple silicon build",
+      "description": "Open-Source-Menüleisten-App für macOS, die jede normale Dock-App auf einmal sofort beendet, mit Prüfliste und Behalten-Liste. Nicht gesicherte Arbeit geht verloren.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/closeAll"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/closeall/#source",
+      "name": "closeAll source code",
+      "codeRepository": "https://github.com/Alhamou/closeAll",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/closeall/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/de/articles/closeall/#faq",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://hamou.de/de/articles/closeall/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist closeAll?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "closeAll ist eine Open-Source-Menüleisten-App für macOS, die jede normale Dock-App mit einer Schaltfläche sofort beendet, nachdem du die Liste geprüft und bei allem, was offen bleiben soll, das Häkchen entfernt hast."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Verliere ich nicht gesicherte Arbeit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. „Sofort beenden“ fordert Apps nicht zum Sichern auf. Schließe oder entferne das Häkchen bei allem mit nicht gesicherter Arbeit, bevor du die Schaltfläche drückst."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Apps schließt closeAll, und welche bleiben offen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es schließt jede normale Anwendung, die macOS im Dock zeigt, dazu die Hintergrund-Menüleisten-Apps, die du anhakst. Finder, closeAll selbst, das Dock, das Kontrollzentrum, WindowServer und andere Sitzungsprozesse bleiben immer offen, ebenso jede App, bei der du das Häkchen entfernst."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich einzelne Apps offen lassen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Entferne in der Liste das Häkchen bei einer App, dann lässt closeAll sie offen und merkt sich die Wahl."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Schließt es Menüleisten-Apps wie einen VPN-Client?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nur wenn du sie anhakst. Der Bereich „Background apps“ listet Menüleisten-Apps aus /Applications und ~/Applications, und sie sind zunächst nicht angehakt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was, wenn eine App sich nicht beenden lässt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "closeAll prüft, ob jede App wirklich beendet wurde. Überlebt eine App oder kommt sie sofort zurück, sendet es ein hartes Kill (SIGKILL), bis zu dreimal, und nennt jede App, die sich trotzdem nicht schließen ließ, in Rot."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Nutzt closeAll das Netzwerk oder sammelt es Daten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Laut README nein. Es läuft nicht in der Sandbox, nutzt das Netzwerk nicht und sammelt keine Analysedaten. Deine Behalten-Liste bleibt in den lokalen Einstellungen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Macs und macOS-Versionen werden unterstützt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 14 oder neuer. Die App, die make app auf einem Apple-Silicon-Mac baut, ist eine Apple-Silicon-App."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">Zum Inhalt springen</a>
+  <header>
+    <nav class="nav container" aria-label="Hauptnavigation">
+      <a class="brand" href="/?lang=de" aria-label="Startseite"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=de">Startseite</a>
+        <a href="/de/articles/">Artikel</a>
+      </div>
+      <a class="navCta" href="/?lang=de#contact">Kontakt</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#151512;--art-accent:#ff7a6b;--art-fg:#f6f3ec">
+    <header class="artHero noVideo" data-mark="CLOSE">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="Brotkrümelnavigation"><ol><li><a href="/?lang=de">Startseite</a></li><li><a href="/de/articles/">Artikel</a></li><li aria-current="page">closeAll</li></ol></nav>
+        <p class="artKicker"><img src="/oss/closeall.png" width="40" height="40" alt="">Open-Source-Tool</p>
+        <h1>closeAll: jede Dock-App mit einer Schaltfläche in der Menüleiste auf dem Mac sofort beenden</h1>
+        <p class="artDek">closeAll beendet jede normale Dock-App mit einer Schaltfläche in der Menüleiste sofort. Du prüfst zuerst die Liste, entfernst das Häkchen bei allem, was offen bleiben soll, und drückst „Force Quit“. Das sofortige Beenden fordert Apps nicht zum Sichern auf, nicht gesicherte Arbeit geht also verloren. Der Code ist offen unter der MIT-Lizenz.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Gründer &amp; Produktentwickler</small></span></span><span>Veröffentlicht am <time datetime="2026-11-08">8. November 2026</time></span><span>5 Min. Lesezeit</span><span class="artLangs">Auch auf: <a href="/articles/closeall/" hreflang="en" lang="en">English</a> · <a href="/ar/articles/closeall/" hreflang="ar" lang="ar">العربية</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">Auf dieser Seite</p><ol><li><a href="#was-ist-closeall">Was ist closeAll?</a></li><li><a href="#so-benutzt-du-es">So benutzt du es</a></li><li><a href="#was-geschlossen-wird">Was geschlossen wird</a></li><li><a href="#was-offen-bleibt">Was offen bleibt</a></li><li><a href="#datenschutz-und-berechtigungen">Datenschutz und Berechtigungen</a></li><li><a href="#installation">Installation</a></li><li><a href="#den-plan-pruefen-ohne-etwas-zu-schliessen">Den Plan prüfen, ohne etwas zu schließen</a></li><li><a href="#open-source">Open Source</a></li><li><a href="#haeufige-fragen">Häufige Fragen</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="was-ist-closeall">Was ist closeAll?</h2>
+<p>closeAll ist eine kleine Open-Source-Menüleisten-App für macOS mit einer einzigen Aufgabe: alle laufenden normalen Apps auf einen Schlag zu schließen. Ihr Symbol in der Menüleiste ist ein kleiner Stapel von Fenstern. Klicke darauf, prüfe die Liste und drücke dann <strong>Force Quit</strong>. Die angehakten Apps werden per „Sofort beenden“ geschlossen.</p>
+<p>Lies das einmal, bevor du es benutzt: „Sofort beenden“ fordert eine App nicht zum Sichern auf. Nicht gesicherte Arbeit in den geschlossenen Apps geht verloren.</p>
+<h2 id="so-benutzt-du-es">So benutzt du es</h2>
+<p>1. Klicke oben am Bildschirm auf das Symbol mit dem Fensterstapel. 2. Lass bei jeder App, die geschlossen werden soll, das Häkchen stehen. Entferne es, damit eine App offen bleibt; closeAll merkt sich diese Wahl. 3. Hake unter <strong>Background apps</strong> jede Menüleisten-App an, die ebenfalls geschlossen werden soll. 4. Drücke <strong>Force Quit</strong>.</p>
+<p>Jede Zeile zeigt das eigene Symbol der App, sodass du sie erkennst, bevor sie sich schließt. Schließe oder entferne zuerst das Häkchen bei allem, was nicht gesicherte Arbeit enthält.</p>
+<h2 id="was-geschlossen-wird">Was geschlossen wird</h2>
+<ul>
+<li><strong>Jede normale Anwendung,</strong> also die Art, die du sonst im Dock mit der rechten Maustaste anklickst und beendest. Editoren, Browser und Chat-Apps gehören dazu, entferne also das Häkchen bei denen, die du behalten willst.</li>
+<li><strong>Hintergrund-Apps, die du anhakst.</strong> Der Bereich „Background apps“ listet Menüleisten-Apps, die du in <code>/Applications</code> oder <code>~/Applications</code> installiert hast, etwa einen Zwischenablage-Manager oder einen VPN-Client. Sie sind zunächst nicht angehakt, dort wird also nichts geschlossen, solange du es nicht anhakst.</li>
+</ul>
+<p>closeAll prüft, ob jede App wirklich beendet wurde. Überlebt eine App das sofortige Beenden oder kommt sie gleich zurück, sendet closeAll ein hartes Kill (SIGKILL), bis zu dreimal. Jede App, die sich trotzdem nicht schließen ließ, wird in Rot genannt.</p>
+<h2 id="was-offen-bleibt">Was offen bleibt</h2>
+<ul>
+<li><strong>Finder,</strong> damit der Schreibtisch stehen bleibt, und <strong>closeAll</strong> selbst, damit die Schaltfläche noch da ist.</li>
+<li>Das Dock, das Kontrollzentrum, WindowServer und die anderen Prozesse, die deine Anmeldesitzung am Leben halten.</li>
+<li>Jede App, bei der du das Häkchen entfernst, und Hintergrund-Apps, die du nicht angehakt hast.</li>
+<li>Apples eigene Menüleisten-Agenten, Helfer innerhalb einer anderen App, Updater in Library-Ordnern und Prozesse ohne Fenster oder Menü werden gar nicht aufgelistet. Sie schließen sich meist zusammen mit ihrer Eltern-App.</li>
+</ul>
+<h2 id="datenschutz-und-berechtigungen">Datenschutz und Berechtigungen</h2>
+<p>closeAll läuft nicht in der Sandbox, weil die App Sandbox es daran hindern würde, andere Anwendungen zu beenden. Laut README nutzt es das Netzwerk nicht und sammelt keine Analysedaten. Deine Behalten-Liste liegt nur in deinen lokalen Einstellungen.</p>
+<h2 id="installation">Installation</h2>
+<p>closeAll braucht macOS 14 oder neuer. Die App, die <code>make app</code> auf einem Apple-Silicon-Mac baut, ist eine Apple-Silicon-App. Klone das Repository von GitHub, führe <code>make app</code> aus und öffne <code>build/closeAll.app</code>. Kopiere sie nach <code>/Applications</code>, wenn sie installiert bleiben soll. Sie zeigt kein Dock-Symbol.</p>
+<p>Der Build ist ad hoc signiert, damit er auf deinem Mac starten kann, und nicht notarisiert. Blockiert macOS den ersten Start, klicke <code>closeAll.app</code> bei gedrückter Control-Taste an, wähle „Öffnen“ und bestätige. Damit sie beim Anmelden startet, füge sie in den Systemeinstellungen unter „Allgemein“ zu den Anmeldeobjekten hinzu. Zum Beenden öffnest du das Fenster und wählst „Quit closeAll“.</p>
+<h2 id="den-plan-pruefen-ohne-etwas-zu-schliessen">Den Plan prüfen, ohne etwas zu schließen</h2>
+<p><code>swift run closeAll -- --dry-run</code> gibt den Beenden-Plan als JSON aus und endet, ohne eine App zu schließen. <code>make check</code> führt die Unit-Tests aus und gibt dann den aktuellen Plan aus, und es schlägt fehl, wenn der Plan den Finder, closeAll selbst oder einen anderen Sitzungsprozess enthält.</p>
+<h2 id="open-source">Open Source</h2>
+<p>closeAll steht unter der MIT-Lizenz. Die Beenden-Regeln liegen in einem eigenen Kernmodul ohne AppKit, abgedeckt durch Unit-Tests, und die Menüleisten-App ist darauf aufgebaut. Das Repository hat außerdem ein arabisches README.</p>
+<p>Emad Alhamou, der Autor dieser Website, veröffentlicht closeAll auf <a href="https://github.com/Alhamou/closeAll">GitHub</a>. Hinweise zum Mitwirken, ein Verhaltenskodex und eine Sicherheitsrichtlinie liegen im Repository.</p>
+<section class="artFaq" aria-labelledby="haeufige-fragen">
+<h2 id="haeufige-fragen">Häufige Fragen</h2>
+<div class="artQ">
+<h3>Was ist closeAll?</h3>
+<p>closeAll ist eine Open-Source-Menüleisten-App für macOS, die jede normale Dock-App mit einer Schaltfläche sofort beendet, nachdem du die Liste geprüft und bei allem, was offen bleiben soll, das Häkchen entfernt hast.</p>
+</div>
+<div class="artQ">
+<h3>Verliere ich nicht gesicherte Arbeit?</h3>
+<p>Ja. „Sofort beenden“ fordert Apps nicht zum Sichern auf. Schließe oder entferne das Häkchen bei allem mit nicht gesicherter Arbeit, bevor du die Schaltfläche drückst.</p>
+</div>
+<div class="artQ">
+<h3>Welche Apps schließt closeAll, und welche bleiben offen?</h3>
+<p>Es schließt jede normale Anwendung, die macOS im Dock zeigt, dazu die Hintergrund-Menüleisten-Apps, die du anhakst. Finder, closeAll selbst, das Dock, das Kontrollzentrum, WindowServer und andere Sitzungsprozesse bleiben immer offen, ebenso jede App, bei der du das Häkchen entfernst.</p>
+</div>
+<div class="artQ">
+<h3>Kann ich einzelne Apps offen lassen?</h3>
+<p>Ja. Entferne in der Liste das Häkchen bei einer App, dann lässt closeAll sie offen und merkt sich die Wahl.</p>
+</div>
+<div class="artQ">
+<h3>Schließt es Menüleisten-Apps wie einen VPN-Client?</h3>
+<p>Nur wenn du sie anhakst. Der Bereich „Background apps“ listet Menüleisten-Apps aus <code>/Applications</code> und <code>~/Applications</code>, und sie sind zunächst nicht angehakt.</p>
+</div>
+<div class="artQ">
+<h3>Was, wenn eine App sich nicht beenden lässt?</h3>
+<p>closeAll prüft, ob jede App wirklich beendet wurde. Überlebt eine App oder kommt sie sofort zurück, sendet es ein hartes Kill (SIGKILL), bis zu dreimal, und nennt jede App, die sich trotzdem nicht schließen ließ, in Rot.</p>
+</div>
+<div class="artQ">
+<h3>Nutzt closeAll das Netzwerk oder sammelt es Daten?</h3>
+<p>Laut README nein. Es läuft nicht in der Sandbox, nutzt das Netzwerk nicht und sammelt keine Analysedaten. Deine Behalten-Liste bleibt in den lokalen Einstellungen.</p>
+</div>
+<div class="artQ">
+<h3>Welche Macs und macOS-Versionen werden unterstützt?</h3>
+<p>macOS 14 oder neuer. Die App, die <code>make app</code> auf einem Apple-Silicon-Mac baut, ist eine Apple-Silicon-App.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/closeall.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">Zum Tool</p>
+          <p class="artProductName" id="product-title">closeAll</p>
+          <p>Open-Source-Menüleisten-App für macOS, die jede normale Dock-App auf einmal sofort beendet, mit Prüfliste und Behalten-Liste. Nicht gesicherte Arbeit geht verloren.</p>
+          <ul class="artFacts"><li>Seit Oktober 2026</li><li>macOS 14 oder neuer · Build für Apple Silicon · MIT-Lizenz</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/closeAll">Auf GitHub ansehen <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">Weitere Artikel</p>
+    <div class="artList">
+<a class="artCard" href="/de/articles/safeshare/" style="--art-bg:#100d24;--art-accent:#a78bfa;--art-fg:#f3f0ff">
+  <span class="artCardTop"><img src="/oss/safeshare.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">SafeShare: private Apps beim Teilen deines Mac-Bildschirms in Teams, Zoom oder Meet verbergen</h3>
+    <span class="artCardDek">SafeShare löst ein Dilemma beim Bildschirmteilen: den ganzen Bildschirm teilen und private Chats und Benachrichtigungen riskieren, oder ein Fenster teilen und auf Multitasking verzichten. Es baut ein gefiltertes Safe-View-Fenster, das die von dir geschützten Apps auslässt. Dieses Fenster teilst du in Teams, Zoom oder Meet, und auf deinem echten Desktop arbeitest du weiter. Der Code ist offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 5 Min. Lesezeit</span>
+  </span>
+</a>
+<a class="artCard" href="/de/articles/topmovies/" style="--art-bg:#16130f;--art-accent:#e8b64e;--art-fg:#f8f2e4">
+  <span class="artCardTop"><img src="/oss/topmoves.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">TopMovies: eine native Mac-App zum Entdecken von Filmen und Serien, mit lokaler Bibliothek</h3>
+    <span class="artCardDek">TopMovies hilft dir zu entscheiden, was du auf deinem Mac schauen willst. Es bietet kuratierte Entdeckungs-Feeds wie „For You“, „Tonight“ und „Hidden Gems“, Filter nach Typ, Land, Jahr, Bewertung und Laufzeit sowie eine lokale Bibliothek für Favoriten, eine Merkliste und deine eigenen Bewertungen. Es funktioniert offline in einem Demo-Modus und verbindet sich mit TMDB für echte Daten. Es ist mit SwiftUI gebaut und offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 4 Min. Lesezeit</span>
+  </span>
+</a>
+<a class="artCard" href="/de/articles/movemouse/" style="--art-bg:#151a2c;--art-accent:#4cc2ff;--art-fg:#eef3ff">
+  <span class="artCardTop"><img src="/oss/movemouse.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">moveMouse: eine Mac-Menüleisten-App, die hilft, RDP-Verbindungen offen zu halten</h3>
+    <span class="artCardDek">moveMouse hilft, eine Remotedesktop-Verbindung (RDP) offen zu halten. Es bewegt den Mauszeiger in einem Intervall, das du wählst, und hält den Mac wach, solange es läuft, damit eine ruhige Sitzung seltener getrennt wird. Es sitzt in der Menüleiste, und sein Code ist offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 5 Min. Lesezeit</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=de"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Sprache" data-nav><option value="/articles/closeall/" lang="en">English</option><option value="/de/articles/closeall/" lang="de" selected>Deutsch</option><option value="/ar/articles/closeall/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

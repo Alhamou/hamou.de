@@ -1,0 +1,22 @@
+{
+  "slug": "topmovies",
+  "group": "tool",
+  "order": 6,
+  "date_published": "2026-11-08",
+  "date_modified": "2026-11-08",
+  "theme": { "bg": "#16130f", "accent": "#e8b64e", "fg": "#f8f2e4" },
+  "mark": "MOVIES",
+  "icon": "oss/topmoves.png",
+  "product": {
+    "name": "TopMovies",
+    "category": "EntertainmentApplication",
+    "publisher": "person",
+    "operating_system": "macOS 14 or later",
+    "requirements": "macOS 14 or later, a TMDB account for live data",
+    "since": "2026-10",
+    "url": { "en": "https://github.com/Alhamou/topMoves" },
+    "repo": "https://github.com/Alhamou/topMoves",
+    "license": { "name": "MIT", "url": "https://opensource.org/license/mit" },
+    "language": ["Swift"]
+  }
+}

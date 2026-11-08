@@ -126,6 +126,582 @@
 &lt;/section&gt;</content>
   </entry>
   <entry>
+    <title>OpenBlock: مانع إعلانات مفتوح المصدر لمتصفح Safari على ماك، وبلا تتبّع</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/openblock/"/>
+    <id>https://hamou.de/ar/articles/openblock/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>يحجب OpenBlock الإعلانات ومتتبّعات المواقع في Safari على جهاز ماك. ينزّل قوائم تصفية حقيقية، ويحوّلها إلى صيغة القواعد الخاصة بـ Safari، ويترك لـ Safari تطبيقها، فلا يقف شيء بينك وبين الويب. الكود مفتوح بترخيص GPL-3.0.</summary>
+    <content type="html">&lt;h2 id=&quot;ما-هو-openblock&quot;&gt;ما هو OpenBlock؟&lt;/h2&gt;
+&lt;p&gt;OpenBlock مانع إعلانات مفتوح المصدر لمتصفح Safari على macOS. يتبع الوصفة نفسها التي يتبعها AdGuard لـ Safari: قوائم التصفية تمرّ عبر محوّل فتصبح أدوات حظر محتوى في Safari. ينزّل التطبيق القوائم، ويحوّلها إلى صيغة القواعد الأصلية في Safari ويسلّمها له، فيجمّعها Safari داخل محرّكه الخاص. لا يقف شيء بينك وبين الويب، ولا يرسل OpenBlock أي بيانات عن تصفحك إلى أي جهة.&lt;/p&gt;
+&lt;p&gt;يعمل داخل Safari فقط. المتصفحات والتطبيقات الأخرى لا ترى هذه القواعد. وحجب DNS لكل التطبيقات على الجهاز هو الميزة التالية في خارطة طريق المشروع.&lt;/p&gt;
+&lt;h2 id=&quot;بماذا-يحجب&quot;&gt;بماذا يحجب&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;أربع أدوات حظر محتوى في Safari:&lt;/strong&gt; الإعلانات، والخصوصية، والمزعجات، والمخصّصة. لكل منها ميزانيتها الخاصة البالغة 150 ألف قاعدة.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;قوائم تصفية حقيقية:&lt;/strong&gt; AdGuard Base وTracking وSocial وCookie وPopups (نسخ Safari)، وEasyList وEasyPrivacy، وقوائم إقليمية، أو أي رابط قائمة تضيفه، بصيغة AdBlock أو كملف hosts.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;قواعدك الخاصة وقائمة سماح،&lt;/strong&gt; بصيغة AdBlock. المواقع في قائمة السماح تُترك كما هي.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;تحديث تلقائي:&lt;/strong&gt; تتجدد القوائم كل 24 ساعة ما دام OpenBlock يعمل، وفي شريط القوائم أمر «تحديث المرشّحات الآن» إلى جانب إيقاف الحجب مؤقتًا والتشغيل عند تسجيل الدخول.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;openblock-advanced&quot;&gt;OpenBlock Advanced&lt;/h2&gt;
+&lt;p&gt;أدوات حظر المحتوى في Safari لا تستطيع التعبير عن كل القواعد. وللباقي توجد OpenBlock Advanced، وهي إضافة ويب لـ Safari. تشغّل Scriptlets (قواعد &lt;code&gt;#%#//scriptlet(...)&lt;/code&gt; من AdGuard وقواعد &lt;code&gt;##+js(...)&lt;/code&gt; من uBlock Origin)، وتحقن CSS (&lt;code&gt;#$#&lt;/code&gt;)، وتدعم محدِّدات CSS الموسّعة (&lt;code&gt;#?#&lt;/code&gt; و&lt;code&gt;:has-text()&lt;/code&gt; و&lt;code&gt;:remove()&lt;/code&gt;)، وتتعامل مع قواعد النطاقات ذات امتداد المستوى الأعلى المتغيّر مثل &lt;code&gt;example.*&lt;/code&gt;. يذكر المشروع إعلانات يوتيوب وجدران مكافحة حاجب الإعلانات مثالين على ذلك. وزر الإضافة في شريط الأدوات يعرض حالة الموقع الحالي ويتيح إيقاف القواعد المتقدمة لهذا الموقع.&lt;/p&gt;
+&lt;h2 id=&quot;الخصوصية&quot;&gt;الخصوصية&lt;/h2&gt;
+&lt;p&gt;يصف ملف README مشروع OpenBlock بأنه بلا تتبّع، وتنص سياسته الأمنية على أن حركة الشبكة الوحيدة هي تنزيل قوائم التصفية التي فعّلتها. لا توجد قياسات عن بُعد ولا تحليلات ولا تقارير أعطال، ولا يقرأ OpenBlock سجلّ تصفحك. وبما أن Safari هو من يجمّع القواعد، لا يقع التطبيق أبدًا في طريق حركة الويب الخاصة بك.&lt;/p&gt;
+&lt;h2 id=&quot;التثبيت&quot;&gt;التثبيت&lt;/h2&gt;
+&lt;p&gt;يحتاج OpenBlock إلى macOS 15 Sequoia أو أحدث. نزّل ملف DMG من أحدث إصدار على GitHub واسحب OpenBlock إلى مجلد التطبيقات. النسخة موقّعة بشهادة Apple Development وغير موثَّقة لدى Apple (not notarized)، لذلك يطلب macOS تأكيدك أول مرة: افتح إعدادات النظام، ثم الخصوصية والأمان، واختر «فتح على أي حال» (Open Anyway) بجانب OpenBlock.&lt;/p&gt;
+&lt;p&gt;بعد ذلك افتح OpenBlock، واختر قوائم التصفية، وانتظر حتى ينتهي التحويل الأول. وفي Safari افتح الإعدادات ثم الإضافات: فعّل أدوات حظر المحتوى الأربع الخاصة بـ OpenBlock وفعّل OpenBlock Advanced، واسمح لها على كل المواقع. أبقِ نسخة واحدة فقط من التطبيق على القرص، لأن Safari يرتبك عندما تسجّل نسختان الإضافات نفسها.&lt;/p&gt;
+&lt;p&gt;وللبناء بنفسك تحتاج إلى Xcode 16 أو أحدث وإلى XcodeGen. لا يحمّل Safari إلا الإضافات الموقّعة، لذلك لا تحجب النسخة غير الموقّعة شيئًا.&lt;/p&gt;
+&lt;h2 id=&quot;مفتوح-المصدر&quot;&gt;مفتوح المصدر&lt;/h2&gt;
+&lt;p&gt;ترخيص OpenBlock هو &lt;span class=&quot;nb&quot;&gt;GPL-3.0&lt;/span&gt;، لأن OpenBlock Advanced تضمّ مكتبتي Scriptlets وExtendedCss من AdGuard المرخّصتين بـ &lt;span class=&quot;nb&quot;&gt;GPL-3.&lt;/span&gt; وتُنزَّل قوائم التصفية أثناء عمل التطبيق وتحتفظ بتراخيصها الخاصة. لا ارتباط بين OpenBlock وAdGuard. ويضم المستودع أيضًا محوّلًا بسطر الأوامر يمكنك التحقق من ناتجه بمُجمِّع القواعد الأصلي في WebKit.&lt;/p&gt;
+&lt;p&gt;ينشر عماد الحمو، صاحب هذا الموقع، OpenBlock على &lt;a href=&quot;https://github.com/Alhamou/OpenBlock&quot;&gt;GitHub&lt;/a&gt;. تقارير الأخطاء وطلبات الدمج (Pull Requests) مرحّب بها.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;الأسئلة-الشائعة&quot;&gt;
+&lt;h2 id=&quot;الأسئلة-الشائعة&quot;&gt;الأسئلة الشائعة&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما هو OpenBlock؟&lt;/h3&gt;
+&lt;p&gt;OpenBlock مانع إعلانات مفتوح المصدر لمتصفح Safari على macOS. يحوّل قوائم تصفية حقيقية إلى أدوات حظر المحتوى الأصلية في Safari، ويضيف إضافة ويب للقواعد المتقدمة.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل يعمل OpenBlock في Chrome أو Firefox أو التطبيقات الأخرى؟&lt;/h3&gt;
+&lt;p&gt;لا. يحجب OpenBlock داخل Safari فقط، لأن Safari يجمّع القواعد داخل محرّكه الخاص ولا ترى المتصفحات والتطبيقات الأخرى هذه القواعد. وحجب DNS لكل التطبيقات مخطَّط له.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما قوائم التصفية التي يستخدمها OpenBlock؟&lt;/h3&gt;
+&lt;p&gt;AdGuard Base وTracking وSocial وCookie وPopups، وEasyList وEasyPrivacy والقوائم الإقليمية، إضافةً إلى أي رابط قائمة تضيفه. يمكن أن تكون القوائم بصيغة AdBlock أو ملفات hosts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل يجمع OpenBlock بياناتي؟&lt;/h3&gt;
+&lt;p&gt;بحسب ملف README والسياسة الأمنية: لا. لا توجد قياسات عن بُعد ولا تحليلات ولا تقارير أعطال، وحركة الشبكة الوحيدة هي تنزيل قوائم التصفية التي فعّلتها.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما إصدار macOS الذي يحتاجه OpenBlock؟&lt;/h3&gt;
+&lt;p&gt;macOS 15 Sequoia أو أحدث.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;لماذا يحذّرني macOS عند فتح OpenBlock؟&lt;/h3&gt;
+&lt;p&gt;نسخة الإصدار موقّعة بشهادة Apple Development وليس بـ Developer ID، وغير موثَّقة لدى Apple (not notarized). افتحها بخيار «فتح على أي حال» في إعدادات النظام ضمن الخصوصية والأمان. والتوقيع بـ Developer ID والتوثيق لدى Apple ضمن خارطة طريق المشروع.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل OpenBlock تابع لـ AdGuard؟&lt;/h3&gt;
+&lt;p&gt;لا. بُني بالطريقة نفسها (قوائم تصفية، ومحوّل، وأدوات حظر محتوى في Safari)، ويضم مكتبتي Scriptlets وExtendedCss المفتوحتين من AdGuard، ولهذا يُرخَّص بـ &lt;span class=&quot;nb&quot;&gt;GPL-3.0.&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>RemoteDesk: سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك عبر شبكتك المحلية</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/remotedesk/"/>
+    <id>https://hamou.de/ar/articles/remotedesk/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>يشارك RemoteDesk شاشة جهاز ماك ويتيح لك التحكم به من جهاز ماك آخر عبر شبكتك المحلية. يلتقط الشاشة بـ ScreenCaptureKit ويضغطها بترميز H.264 العتادي ويرسلها عبر TCP. لا يوجد فيه تشفير ولا تسجيل دخول، لذلك هو للشبكات الخاصة الموثوقة فقط. الكود مفتوح بترخيص MIT.</summary>
+    <content type="html">&lt;h2 id=&quot;ما-هو-remotedesk&quot;&gt;ما هو RemoteDesk؟&lt;/h2&gt;
+&lt;p&gt;RemoteDesk سطح مكتب بعيد مفتوح المصدر لنظام macOS يعمل بين جهازي ماك على الشبكة المحلية نفسها. جهاز يشارك شاشته، والآخر يعرضها ويعيد إليه حركة الماوس ولوحة المفاتيح والتمرير والحافظة. كُتب بلغة Swift ويعتمد على أطر Apple الأصلية فقط، بلا مكتبات من أطراف أخرى.&lt;/p&gt;
+&lt;p&gt;هو أداة مركّزة: من ماك إلى ماك عبر شبكة محلية. ليس خدمة سحابية، ولا يتطلب حسابًا، وليس مصممًا للإنترنت المفتوح. اقرأ قسم الأمان قبل أن تستخدمه.&lt;/p&gt;
+&lt;h2 id=&quot;كيف-يعمل&quot;&gt;كيف يعمل&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;المضيف (Host)&lt;/strong&gt; هو الجهاز الذي يُتحكَّم به. يلتقط الشاشة بـ ScreenCaptureKit ويضغطها بترميز H.264 العتادي عبر VideoToolbox ويرسلها عبر مقبس TCP بحزم مسبوقة بالطول. ويُحقن إدخال الماوس ولوحة المفاتيح البعيد عبر &lt;code&gt;CGEvent&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;العميل (Client)&lt;/strong&gt; هو الجهاز الذي تجلس أمامه. يفك ترميز بث H.264 عتاديًا، ويرسمه عبر &lt;code&gt;CALayer&lt;/code&gt;، ويلتقط أحداث الماوس ولوحة المفاتيح والتمرير والحافظة.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;يصف ملف README بروتوكولًا ثنائيًا خاصًا بلا إطارات B وبتحكم تكيّفي في الازدحام، هدفه زمن تأخير منخفض. وملاحظات البنية في المستودع تشرح البروتوكول ونموذج التزامن.&lt;/p&gt;
+&lt;h2 id=&quot;ماذا-يستطيع&quot;&gt;ماذا يستطيع&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;تمرير كامل للإدخال:&lt;/strong&gt; حركة دقيقة للمؤشر، ونقرات الأزرار الأيسر والأيمن والأوسط، وتمرير بدقة البكسل في الاتجاهين، ولوحة المفاتيح.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;وضع «Capture All Input» في ملء الشاشة:&lt;/strong&gt; اختصارات النظام مثل Cmd+Tab وCmd+Space وMission Control تذهب إلى الجهاز البعيد بدل جهازك.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;إيماءات لوحة التتبع وSpaces:&lt;/strong&gt; في ملء الشاشة تعمل إيماءات Spaces وMission Control وApp Exposé والقرص على الجهاز البعيد، وفق إعدادات لوحة التتبع لديك.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;«Match Remote Resolution to This Screen»:&lt;/strong&gt; يبدّل المضيف إلى الدقة الأنسب لشاشة العميل ليملأها ملء الشاشة، ويستعيد الدقة عند قطع الاتصال.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;حواف نظيفة في ملء الشاشة:&lt;/strong&gt; يبقى Dock المحلي مخفيًا، ولا تُظهر قائمتك المحلية وأزرار النافذة سوى الحافة العلوية.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;مزامنة حافظة النص في الاتجاهين&lt;/strong&gt; مع منع حلقات التكرار.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;اكتشاف بلا إعداد:&lt;/strong&gt; تعلن المضيفات عن نفسها عبر Bonjour (&lt;code&gt;_remotedesk._tcp&lt;/code&gt;) على شبكة Wi-Fi أو Ethernet، أو تتصل مباشرة بعنوان IP.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;الأمان-اقرأ-هذا-أول-ا&quot;&gt;الأمان: اقرأ هذا أولًا&lt;/h2&gt;
+&lt;p&gt;RemoteDesk مصمم للشبكات المحلية الخاصة الموثوقة فقط، وملف README صريح بشأن حدوده:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;بلا تشفير.&lt;/strong&gt; تمرّ الحركة عبر TCP عادي بلا TLS، فتعبر لقطات الشاشة والمفاتيح التي تكتبها شبكتك كنص صريح.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;بلا مصادقة.&lt;/strong&gt; أي جهاز على الشبكة نفسها يصل إلى منفذ المضيف يحصل على تحكم كامل.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;بث الحافظة.&lt;/strong&gt; النص الذي تنسخه يُرسل تلقائيًا إلى الجهاز المتصل.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;لا تشغّله أبدًا على شبكات Wi-Fi العامة غير الموثوقة مثل المطارات والفنادق والمقاهي. وللوصول إلى جهاز ماك عبر الإنترنت مرّر الحركة عبر قناة مشفّرة مثل Tailscale أو WireGuard أو تمرير منافذ SSH. وتشفير TLS بمفتاح مشترك مسبقًا ومطالبة PIN أو كلمة مرور لمرة واحدة على المضيف ضمن خارطة الطريق، وليست في التطبيق بعد.&lt;/p&gt;
+&lt;h2 id=&quot;الأذونات&quot;&gt;الأذونات&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;المضيف:&lt;/strong&gt; تسجيل الشاشة (Screen Recording) وإمكانية الوصول (Accessibility)، كلاهما في إعدادات النظام ضمن الخصوصية والأمان. أعد تشغيل RemoteDesk بعد منح إذن تسجيل الشاشة.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;العميل:&lt;/strong&gt; إمكانية الوصول، ولوضع «Capture All Input» في ملء الشاشة فقط.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;التثبيت&quot;&gt;التثبيت&lt;/h2&gt;
+&lt;p&gt;يحتاج RemoteDesk إلى macOS 14 Sonoma أو أحدث على الجهازين. التطبيق ملف ثنائي شامل (Universal Binary) فيعمل على Apple silicon وعلى Intel. نزّل ملف DMG من أحدث إصدار على GitHub واسحب RemoteDesk إلى مجلد التطبيقات. يُوزَّع الإصدار بلا شهادة Apple Developer ID مدفوعة، لذلك قد يرفض macOS التشغيل الأول: انقر على التطبيق مع الضغط على Control واختر «فتح» ثم أكّد. ويذكر README بديلًا في الطرفية يزيل سمة الحجر الصحي بالأمر &lt;code&gt;xattr -cr&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;وللبناء بنفسك تحتاج إلى أدوات Swift (Xcode أو Command Line Tools). انسخ المستودع وشغّل &lt;code&gt;./scripts/make-app.sh&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;الاستخدام&quot;&gt;الاستخدام&lt;/h2&gt;
+&lt;p&gt;افتح RemoteDesk على الجهازين. على جهاز المضيف اختر &lt;strong&gt;Share This Mac&lt;/strong&gt; ووافق على طلبات الأذونات. وعلى جهاز العميل اختر &lt;strong&gt;Connect to a Mac&lt;/strong&gt; واختر المضيف من قائمة Bonjour أو اكتب عنوان IP المحلي له (المنفذ الافتراضي 8790) ثم اختر &lt;strong&gt;Connect&lt;/strong&gt;. تختفي نافذة المضيف أثناء اتصال عميل؛ انقر أيقونة Dock لرؤية الحالة أو لقطع الاتصال.&lt;/p&gt;
+&lt;p&gt;اختصارات العميل: Ctrl+Cmd+F يبدّل ملء الشاشة، وCtrl+Opt+Cmd+G يشغّل التقاط الإدخال أو يوقفه، وCtrl+Opt+Cmd+Q يقطع الاتصال فورًا ولا يُمرَّر أبدًا إلى المضيف.&lt;/p&gt;
+&lt;p&gt;ويمكن تشغيل RemoteDesk أيضًا من سطر الأوامر، ومنها مضيف بلا نافذة بالخيارين &lt;code&gt;--host --no-ui&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;مفتوح-المصدر&quot;&gt;مفتوح المصدر&lt;/h2&gt;
+&lt;p&gt;صدر RemoteDesk بترخيص MIT. ينشره عماد الحمو، صاحب هذا الموقع، على &lt;a href=&quot;https://github.com/Alhamou/RemoteDesk&quot;&gt;GitHub&lt;/a&gt;. تضم خارطة الطريق تشفير TLS ومطالبة PIN أو كلمة مرور لمرة واحدة وبث الصوت واختيار شاشات متعددة. تقارير الأخطاء وطلبات الدمج (Pull Requests) مرحّب بها.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;الأسئلة-الشائعة&quot;&gt;
+&lt;h2 id=&quot;الأسئلة-الشائعة&quot;&gt;الأسئلة الشائعة&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما هو RemoteDesk؟&lt;/h3&gt;
+&lt;p&gt;RemoteDesk سطح مكتب بعيد مفتوح المصدر لنظام macOS. يشارك شاشة جهاز ماك ويتيح لك التحكم به من جهاز ماك آخر على الشبكة المحلية نفسها، ببث H.264 عتادي وتمرير كامل للإدخال.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل RemoteDesk آمن للاستخدام؟&lt;/h3&gt;
+&lt;p&gt;على شبكة خاصة موثوقة فقط. يرسل الحركة عبر TCP عادي بلا تشفير، وليس فيه تسجيل دخول: أي جهاز على الشبكة يصل إلى منفذ المضيف يحصل على تحكم كامل. لا تستخدمه على شبكات Wi-Fi العامة.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل أستطيع استخدام RemoteDesk عبر الإنترنت؟&lt;/h3&gt;
+&lt;p&gt;ليس مباشرة. يقول README إن عليك تمرير الحركة عبر قناة مشفّرة مثل Tailscale أو WireGuard أو تمرير منافذ SSH، وألا تعرّضه أبدًا على شبكات غير موثوقة.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما أجهزة ماك وإصدارات macOS المدعومة؟&lt;/h3&gt;
+&lt;p&gt;macOS 14 Sonoma أو أحدث على المضيف والعميل. التطبيق ملف ثنائي شامل لأجهزة Apple silicon وIntel.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما الأذونات التي يحتاجها RemoteDesk؟&lt;/h3&gt;
+&lt;p&gt;يحتاج المضيف إلى تسجيل الشاشة وإمكانية الوصول. ويحتاج العميل إلى إمكانية الوصول لوضع «Capture All Input» في ملء الشاشة فقط.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;كيف أصل بين جهازي ماك؟&lt;/h3&gt;
+&lt;p&gt;افتح RemoteDesk على الجهازين. على المضيف اختر Share This Mac. وعلى العميل اختر Connect to a Mac، ثم اختر المضيف من قائمة Bonjour أو اكتب عنوان IP المحلي له، ثم اختر Connect.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما الذي لا يفعله RemoteDesk بعد؟&lt;/h3&gt;
+&lt;p&gt;لا يشفّر الحركة ولا يطلب PIN. وبث الصوت واختيار الشاشات المتعددة على خارطة الطريق أيضًا. ومزامنة الحافظة تشمل النص فقط.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;لماذا يحذّرني macOS عند فتح RemoteDesk؟&lt;/h3&gt;
+&lt;p&gt;يُوزَّع الإصدار بلا شهادة Apple Developer ID مدفوعة. انقر التطبيق مع الضغط على Control واختر «فتح»، أو أزل سمة الحجر الصحي بالأمر &lt;code&gt;xattr -cr&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>pinFiy: ملاحظات لاصقة ملوّنة لجهاز ماك، بدبّوس صغير في شريط القوائم</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/pinfiy/"/>
+    <id>https://hamou.de/ar/articles/pinfiy/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>يمنح pinFiy جهاز ماك ملاحظات لاصقة ملوّنة تعيش خلف دبّوس صغير في شريط القوائم. كل ملاحظة نافذة مستقلة، والنص العربي يمتد من اليمين إلى اليسار والإنجليزي من اليسار إلى اليمين، والملاحظة المثبّتة تبقى فوق نوافذك الأخرى. لا حساب ولا مزامنة سحابية ولا اتصال بالشبكة. الكود مفتوح بترخيص MIT.</summary>
+    <content type="html">&lt;h2 id=&quot;ما-هو-pinfiy&quot;&gt;ما هو pinFiy؟&lt;/h2&gt;
+&lt;p&gt;pinFiy تطبيق مفتوح المصدر للملاحظات اللاصقة على macOS. كل ملاحظة نافذة ملوّنة مستقلة. والتطبيق نفسه دبّوس صغير في شريط القوائم ولا يظهر في Dock، فيبقى بعيدًا عن طريقك حتى تحتاج إلى ملاحظة.&lt;/p&gt;
+&lt;p&gt;يتعامل مع العربية والإنجليزية جنبًا إلى جنب. اتجاه النص يتبع أول حرف قوي فيما تكتبه: العربية من اليمين إلى اليسار والإنجليزية من اليسار إلى اليمين، في التطبيق نفسه وحتى في ملاحظتين متجاورتين.&lt;/p&gt;
+&lt;h2 id=&quot;ماذا-يفعل&quot;&gt;ماذا يفعل&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;نافذة لكل ملاحظة،&lt;/strong&gt; فتضع كل ملاحظة حيث تحتاج إليها.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;التثبيت (Pin) يُبقي الملاحظة في الأعلى.&lt;/strong&gt; الملاحظة المثبّتة تبقى فوق النوافذ العادية ولا تغطي شريط القوائم. وزاوية الدبّوس تتبع اتجاه النص: يمين للعربية ويسار للإنجليزية.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;عشرون لونًا:&lt;/strong&gt; عشرة فاتحة وعشرة داكنة. الافتراضي كهرماني دافئ (&lt;code&gt;#F3C15B&lt;/code&gt;). يوضع نص داكن على الألوان الفاتحة ونص فاتح على الداكنة.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;حجم الخط من 12 إلى 36&lt;/strong&gt; لكل ملاحظة، ومن الإعدادات للملاحظات الجديدة أو لكل الملاحظات.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;قفل الملاحظة&lt;/strong&gt; يمنع تغيير نصها ولونها وحجمها وموضعها، ويمنع إغلاقها.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;شبكة أمان:&lt;/strong&gt; إغلاق ملاحظة فيها نص يطلب تأكيدًا أولًا.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;الفتح عند تسجيل الدخول،&lt;/strong&gt; من الإعدادات أو من قائمة الدبّوس.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;أين-تعيش-ملاحظاتك&quot;&gt;أين تعيش ملاحظاتك&lt;/h2&gt;
+&lt;p&gt;تُخزَّن الملاحظات على جهازك في &lt;code&gt;~/Library/Application Support/pinFiy/notes.json&lt;/code&gt; مع ملف نسخة احتياطية. وبحسب README لا يوجد حساب ولا مزامنة سحابية ولا اتصال بالشبكة. ويضم المستودع سياسة خصوصية وسياسة أمان.&lt;/p&gt;
+&lt;h2 id=&quot;الاختصارات&quot;&gt;الاختصارات&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ملاحظة جديدة:&lt;/strong&gt; زر الزائد، أو &lt;code&gt;⌘N&lt;/code&gt;، أو قائمة الدبّوس.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;إغلاق ملاحظة:&lt;/strong&gt; زر الإغلاق أو &lt;code&gt;⌘W&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;إبقاؤها فوق النوافذ:&lt;/strong&gt; زر التثبيت أو &lt;code&gt;⌘P&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;الإعدادات:&lt;/strong&gt; &lt;code&gt;⌘,&lt;/code&gt; أو قائمة الدبّوس.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;الخروج:&lt;/strong&gt; &lt;code&gt;⌘Q&lt;/code&gt; أو قائمة الدبّوس.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;التثبيت&quot;&gt;التثبيت&lt;/h2&gt;
+&lt;p&gt;يحتاج pinFiy إلى macOS 13 أو أحدث وSwift 5.9 أو أحدث، وهما متوفران في أدوات Xcode. انسخ المستودع من GitHub، ثم شغّل &lt;code&gt;swift test&lt;/code&gt; ثم &lt;code&gt;./scripts/build-app.sh&lt;/code&gt;، وافتح &lt;code&gt;PinFiy.app&lt;/code&gt;. ويوقّع السكربت التطبيق توقيعًا مؤقتًا (ad hoc)، وهو ليس توقيع Apple Developer وليس إصدارًا على App Store.&lt;/p&gt;
+&lt;h2 id=&quot;مفتوح-المصدر&quot;&gt;مفتوح المصدر&lt;/h2&gt;
+&lt;p&gt;صدر pinFiy بترخيص MIT. ينقسم الكود إلى مكتبة نواة للنموذج والتخزين بلا AppKit، وهدف للتطبيق لنوافذ الملاحظات وشريط القوائم. وللنواة اختبارات XCTest.&lt;/p&gt;
+&lt;p&gt;ينشر عماد الحمو، صاحب هذا الموقع، pinFiy على &lt;a href=&quot;https://github.com/Alhamou/pinFiy&quot;&gt;GitHub&lt;/a&gt;. يضم المستودع إرشادات للمساهمة ومدونة سلوك، وتُبلَّغ المشكلات الأمنية بسرية كما تصف سياسة الأمان.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;الأسئلة-الشائعة&quot;&gt;
+&lt;h2 id=&quot;الأسئلة-الشائعة&quot;&gt;الأسئلة الشائعة&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما هو pinFiy؟&lt;/h3&gt;
+&lt;p&gt;pinFiy تطبيق مفتوح المصدر للملاحظات اللاصقة على macOS. يمنحك ملاحظات ملوّنة، كل واحدة في نافذتها، تتحكم بها من دبّوس صغير في شريط القوائم.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل يدعم pinFiy العربية والنص من اليمين إلى اليسار؟&lt;/h3&gt;
+&lt;p&gt;نعم. اتجاه النص يتبع أول حرف قوي: العربية من اليمين إلى اليسار والإنجليزية من اليسار إلى اليمين. وزاوية الدبّوس في الملاحظة تتبع الاتجاه أيضًا.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ماذا يفعل التثبيت (Pin)؟&lt;/h3&gt;
+&lt;p&gt;يُبقي الملاحظة فوق النوافذ العادية دون أن يغطي شريط القوائم. استخدم زر التثبيت في الملاحظة أو اضغط &lt;code&gt;⌘P&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;أين تُخزَّن ملاحظاتي، وهل يستخدم pinFiy الشبكة؟&lt;/h3&gt;
+&lt;p&gt;تُخزَّن الملاحظات محليًا في &lt;code&gt;~/Library/Application Support/pinFiy/notes.json&lt;/code&gt; مع نسخة احتياطية. وبحسب README لا يوجد حساب ولا مزامنة سحابية ولا اتصال بالشبكة.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ماذا يفعل قفل الملاحظة؟&lt;/h3&gt;
+&lt;p&gt;الملاحظة المقفلة لا يمكن تعديلها ولا تغيير لونها ولا حجمها ولا نقلها ولا إغلاقها حتى تفتح القفل.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما إصدار macOS الذي يحتاجه pinFiy؟&lt;/h3&gt;
+&lt;p&gt;macOS 13 أو أحدث. والبناء يحتاج إلى Swift 5.9 أو أحدث.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;كيف أثبّت pinFiy؟&lt;/h3&gt;
+&lt;p&gt;انسخ المستودع وشغّل &lt;code&gt;swift test&lt;/code&gt; و&lt;code&gt;./scripts/build-app.sh&lt;/code&gt; ثم افتح &lt;code&gt;PinFiy.app&lt;/code&gt;. البناء موقّع توقيعًا مؤقتًا (ad hoc) وليس بشهادة Apple Developer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل أستطيع تغيير حجم الخط والألوان؟&lt;/h3&gt;
+&lt;p&gt;نعم. لكل ملاحظة عيّنات ألوان وأزرار لحجم الخط من 12 إلى 36. ومن الإعدادات تضبط الحجم للملاحظات الجديدة أو لكل الملاحظات.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>closeAll: أغلق كل تطبيقات Dock بإنهاء إجباري من زر واحد في شريط القوائم على ماك</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/closeall/"/>
+    <id>https://hamou.de/ar/articles/closeall/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>ينهي closeAll إجباريًا كل تطبيقات Dock العادية من زر واحد في شريط القوائم. تراجع القائمة أولًا، وتُلغي العلامة عمّا يجب أن يبقى مفتوحًا، ثم تضغط Force Quit. الإنهاء الإجباري لا يطلب من التطبيقات الحفظ، لذلك يضيع العمل غير المحفوظ. الكود مفتوح بترخيص MIT.</summary>
+    <content type="html">&lt;h2 id=&quot;ما-هو-closeall&quot;&gt;ما هو closeAll؟&lt;/h2&gt;
+&lt;p&gt;closeAll تطبيق صغير مفتوح المصدر في شريط قوائم macOS له مهمة واحدة: إغلاق كل التطبيقات العادية العاملة دفعة واحدة. أيقونته في شريط القوائم رزمة صغيرة من النوافذ. انقر عليها وراجع القائمة ثم اضغط &lt;strong&gt;Force Quit&lt;/strong&gt;. وتُغلق التطبيقات المعلَّمة بالإنهاء الإجباري.&lt;/p&gt;
+&lt;p&gt;اقرأ هذا مرة واحدة قبل الاستخدام: الإنهاء الإجباري لا يطلب من التطبيق أن يحفظ. العمل غير المحفوظ في التطبيقات التي تغلقها يضيع.&lt;/p&gt;
+&lt;h2 id=&quot;كيف-تستخدمه&quot;&gt;كيف تستخدمه&lt;/h2&gt;
+&lt;p&gt;1. انقر أيقونة رزمة النوافذ في أعلى الشاشة. 2. اترك العلامة على كل تطبيق يجب أن يُغلق. وأزل العلامة لتُبقي تطبيقًا مفتوحًا؛ يتذكر closeAll هذا الاختيار. 3. تحت &lt;strong&gt;Background apps&lt;/strong&gt; علّم أي تطبيق من شريط القوائم تريد إغلاقه أيضًا. 4. اضغط &lt;strong&gt;Force Quit&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;يعرض كل صف أيقونة التطبيق نفسه كي تتعرف عليه قبل أن يُغلق. أغلق أولًا أو ألغِ علامة كل ما فيه عمل غير محفوظ.&lt;/p&gt;
+&lt;h2 id=&quot;ما-الذي-ي-غلق&quot;&gt;ما الذي يُغلق&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;كل تطبيق عادي،&lt;/strong&gt; من النوع الذي كنت تنقر عليه بزر الفأرة الأيمن في Dock لتنهيه. تدخل فيها المحررات والمتصفحات وتطبيقات المحادثة، فألغِ علامة ما تريد إبقاءه.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;تطبيقات الخلفية التي تعلّمها.&lt;/strong&gt; يعرض قسم Background apps تطبيقات شريط القوائم التي ثبّتها في &lt;code&gt;/Applications&lt;/code&gt; أو &lt;code&gt;~/Applications&lt;/code&gt;، مثل مدير الحافظة أو عميل VPN. تبدأ غير معلَّمة، فلا يُغلق منها شيء ما لم تعلّمه.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;يتحقق closeAll من أن كل تطبيق خرج فعلًا. وإن نجا تطبيق من الإنهاء الإجباري أو عاد فورًا، أرسل إليه قتلًا قاسيًا (SIGKILL) حتى ثلاث مرات. وأي تطبيق تعذّر إغلاقه رغم ذلك يُذكر اسمه باللون الأحمر.&lt;/p&gt;
+&lt;h2 id=&quot;ما-الذي-يبقى-مفتوح-ا&quot;&gt;ما الذي يبقى مفتوحًا&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Finder&lt;/strong&gt; كي يبقى سطح المكتب قائمًا، و&lt;strong&gt;closeAll&lt;/strong&gt; نفسه كي يبقى الزر موجودًا.&lt;/li&gt;
+&lt;li&gt;Dock ومركز التحكم وWindowServer وبقية العمليات التي تُبقي جلسة تسجيل الدخول حيّة.&lt;/li&gt;
+&lt;li&gt;أي تطبيق تُلغي علامته، وتطبيقات الخلفية التي لم تعلّمها.&lt;/li&gt;
+&lt;li&gt;وكلاء شريط القوائم التابعون لـ Apple، والمساعدات المضمّنة داخل تطبيق آخر، ومحدّثات مجلدات Library، والعمليات التي بلا نافذة أو قائمة، لا تظهر في القائمة أصلًا. وهي تُغلق عادةً مع تطبيقها الأم.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;الخصوصية-والأذونات&quot;&gt;الخصوصية والأذونات&lt;/h2&gt;
+&lt;p&gt;closeAll ليس داخل صندوق رمل (sandbox)، لأن App Sandbox كان سيمنعه من إنهاء التطبيقات الأخرى. وبحسب README لا يستخدم الشبكة ولا يجمع تحليلات. وقائمة الإبقاء تُخزَّن في تفضيلاتك المحلية فقط.&lt;/p&gt;
+&lt;h2 id=&quot;التثبيت&quot;&gt;التثبيت&lt;/h2&gt;
+&lt;p&gt;يحتاج closeAll إلى macOS 14 أو أحدث. التطبيق الذي يبنيه &lt;code&gt;make app&lt;/code&gt; على جهاز Apple silicon هو تطبيق لأجهزة Apple silicon. انسخ المستودع من GitHub، وشغّل &lt;code&gt;make app&lt;/code&gt;، وافتح &lt;code&gt;build/closeAll.app&lt;/code&gt;. انسخه إلى &lt;code&gt;/Applications&lt;/code&gt; إن أردت إبقاءه مثبّتًا. ولا تظهر له أيقونة في Dock.&lt;/p&gt;
+&lt;p&gt;البناء موقّع توقيعًا مؤقتًا (ad hoc) ليعمل على جهازك، وليس موثَّقًا لدى Apple (not notarized). إن منع macOS التشغيل الأول فانقر &lt;code&gt;closeAll.app&lt;/code&gt; مع الضغط على Control واختر «فتح» ثم أكّد. ولفتحه عند تسجيل الدخول أضفه في إعدادات النظام ضمن «عام» ثم عناصر تسجيل الدخول. وللخروج منه افتح اللوحة واختر Quit closeAll.&lt;/p&gt;
+&lt;h2 id=&quot;راجع-الخطة-دون-إغلاق-شيء&quot;&gt;راجع الخطة دون إغلاق شيء&lt;/h2&gt;
+&lt;p&gt;الأمر &lt;code&gt;swift run closeAll -- --dry-run&lt;/code&gt; يطبع خطة الإنهاء بصيغة JSON ثم ينتهي دون أن يغلق أي تطبيق. والأمر &lt;code&gt;make check&lt;/code&gt; يشغّل اختبارات الوحدة ثم يطبع الخطة الحية، ويفشل إن تضمنت الخطة Finder أو closeAll نفسه أو عملية أخرى من الجلسة.&lt;/p&gt;
+&lt;h2 id=&quot;مفتوح-المصدر&quot;&gt;مفتوح المصدر&lt;/h2&gt;
+&lt;p&gt;صدر closeAll بترخيص MIT. قواعد الإنهاء في وحدة نواة مستقلة بلا AppKit وتغطيها اختبارات الوحدة، وتطبيق شريط القوائم مبني فوقها. وللمستودع أيضًا ملف README بالعربية.&lt;/p&gt;
+&lt;p&gt;ينشر عماد الحمو، صاحب هذا الموقع، closeAll على &lt;a href=&quot;https://github.com/Alhamou/closeAll&quot;&gt;GitHub&lt;/a&gt;. وفي المستودع إرشادات للمساهمة ومدونة سلوك وسياسة أمان.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;الأسئلة-الشائعة&quot;&gt;
+&lt;h2 id=&quot;الأسئلة-الشائعة&quot;&gt;الأسئلة الشائعة&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما هو closeAll؟&lt;/h3&gt;
+&lt;p&gt;closeAll تطبيق مفتوح المصدر في شريط قوائم macOS ينهي إجباريًا كل تطبيقات Dock العادية من زر واحد، بعد أن تراجع القائمة وتُلغي علامة كل ما يجب أن يبقى مفتوحًا.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل سأخسر عملًا غير محفوظ؟&lt;/h3&gt;
+&lt;p&gt;نعم. الإنهاء الإجباري لا يطلب من التطبيقات الحفظ. أغلق أو ألغِ علامة كل ما فيه عمل غير محفوظ قبل أن تضغط الزر.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما التطبيقات التي يغلقها closeAll وما التي تبقى مفتوحة؟&lt;/h3&gt;
+&lt;p&gt;يغلق كل تطبيق عادي يعرضه macOS في Dock، إضافةً إلى تطبيقات شريط القوائم الخلفية التي تعلّمها. أما Finder وcloseAll نفسه وDock ومركز التحكم وWindowServer وبقية عمليات الجلسة فتبقى مفتوحة دائمًا، وكذلك أي تطبيق تُلغي علامته.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل أستطيع إبقاء بعض التطبيقات مفتوحة؟&lt;/h3&gt;
+&lt;p&gt;نعم. ألغِ علامة التطبيق في القائمة فيُبقيه closeAll مفتوحًا ويتذكر اختيارك.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل يغلق تطبيقات شريط القوائم مثل عميل VPN؟&lt;/h3&gt;
+&lt;p&gt;فقط إن علّمتها. يعرض قسم Background apps تطبيقات شريط القوائم من &lt;code&gt;/Applications&lt;/code&gt; و&lt;code&gt;~/Applications&lt;/code&gt;، وتبدأ غير معلَّمة.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ماذا لو رفض تطبيق أن يخرج؟&lt;/h3&gt;
+&lt;p&gt;يتحقق closeAll من أن كل تطبيق خرج فعلًا. وإن نجا تطبيق أو عاد فورًا أرسل إليه قتلًا قاسيًا (SIGKILL) حتى ثلاث مرات، ويذكر باللون الأحمر أي تطبيق تعذّر إغلاقه رغم ذلك.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل يستخدم closeAll الشبكة أو يجمع بيانات؟&lt;/h3&gt;
+&lt;p&gt;بحسب README: لا. ليس داخل صندوق رمل، ولا يستخدم الشبكة، ولا يجمع تحليلات. وقائمة الإبقاء تبقى في التفضيلات المحلية.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما أجهزة ماك وإصدارات macOS المدعومة؟&lt;/h3&gt;
+&lt;p&gt;macOS 14 أو أحدث. التطبيق الذي يبنيه &lt;code&gt;make app&lt;/code&gt; على جهاز Apple silicon هو تطبيق لأجهزة Apple silicon.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>SafeShare: أخفِ التطبيقات الخاصة أثناء مشاركة شاشة ماك في Teams أو Zoom أو Meet</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/safeshare/"/>
+    <id>https://hamou.de/ar/articles/safeshare/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>يحل SafeShare معضلة مشاركة الشاشة: إما أن تشارك الشاشة كلها فتخاطر بتسريب محادثات خاصة وإشعارات، وإما أن تشارك نافذة واحدة فتفقد القدرة على تعدد المهام. يبني نافذة Safe View مصفّاة تستبعد التطبيقات التي تحميها. تشارك هذه النافذة في Teams أو Zoom أو Meet وتواصل العمل على سطح مكتبك الحقيقي. الكود مفتوح بترخيص MIT.</summary>
+    <content type="html">&lt;h2 id=&quot;ما-هو-safeshare&quot;&gt;ما هو SafeShare؟&lt;/h2&gt;
+&lt;p&gt;SafeShare (ويُسمى أيضًا ScreenGuard) أداة مفتوحة المصدر لنظام macOS لمن يعرضون سطح مكتبهم في الاجتماعات عن بُعد. تُخفي التطبيقات والنوافذ التي تعلّمها خاصة عمّا يراه الاجتماع، بينما تواصل العمل بشكل طبيعي على شاشتك الحقيقية.&lt;/p&gt;
+&lt;h2 id=&quot;المشكلة-التي-يحلها&quot;&gt;المشكلة التي يحلها&lt;/h2&gt;
+&lt;p&gt;عندما تعرض من جهاز ماك، لكل خيار من الخيارين المدمجين كلفته. إن شاركت الشاشة كاملة فقد تتسرب إلى الاجتماع محادثة خاصة أو مدير كلمات مرور أو بريد وارد أو إشعار. وإن شاركت نافذة تطبيق واحدة فقدت القدرة على تعدد المهام أو على عرض سير عمل يمر عبر عدة تطبيقات.&lt;/p&gt;
+&lt;h2 id=&quot;كيف-يعمل&quot;&gt;كيف يعمل&lt;/h2&gt;
+&lt;p&gt;يضيف SafeShare خيارًا ثالثًا، معاينة مصفّاة اسمها &lt;strong&gt;Safe View&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;1. يلتقط شاشتك بإطار ScreenCaptureKit من Apple. 2. يزيل من هذا الالتقاط التطبيقات والنوافذ التي تحميها، بمرشّح محتوى. 3. يعرض سطح المكتب بعد التنظيف في نافذة خاصة به، هي Safe View. 4. في Teams أو Zoom أو Google Meet تشارك نافذة Safe View بدل شاشتك.&lt;/p&gt;
+&lt;p&gt;ترى كل شيء على سطح مكتبك الحقيقي. ولا يرى الحضور إلا ما تسمح به.&lt;/p&gt;
+&lt;h2 id=&quot;استخدمه-مع-teams-أو-zoom-أو-meet&quot;&gt;استخدمه مع Teams أو Zoom أو Meet&lt;/h2&gt;
+&lt;p&gt;افتح SafeShare أولًا من أيقونة الدرع في شريط القوائم، وعلّم التطبيقات الحساسة محميةً، واختر Start Safe View (وما دامت لوحة SafeShare مفتوحة فإن &lt;code&gt;⌘⇧S&lt;/code&gt; يبدّل التشغيل). ثم في تطبيق الاجتماع:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Microsoft Teams:&lt;/strong&gt; اختر Share، ثم من Window اختر SafeShare — Safe View.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zoom:&lt;/strong&gt; اختر Share Screen، ثم اختر نافذة SafeShare — Safe View من القائمة واضغط Share.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Google Meet:&lt;/strong&gt; اختر Present now ثم A window، ثم اختر SafeShare — Safe View.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;إن شاركت شاشتك كاملة بدل نافذة Safe View فلن يُصفّى شيء، لذلك اختر النافذة دائمًا.&lt;/p&gt;
+&lt;h2 id=&quot;أبق-نافذة-safe-view-كبيرة&quot;&gt;أبقِ نافذة Safe View كبيرة&lt;/h2&gt;
+&lt;p&gt;تشارك تطبيقات الاجتماعات النافذة بحجمها على الشاشة، فنافذة Safe View المصغّرة في زاوية لا يمكن للحضور قراءتها. وبحسب README يقفل SafeShare النافذة على نسبة أبعاد الشاشة، ويرفض النزول عن نصف حجم الشاشة، ويعرض شريط تنبيه مع الدقة الدقيقة التي يستقبلها المشاهدون عند تصغيرها. وزر Send to Back في القائمة يضع النافذة خلف عملك بحجمها الكامل، ويستمر البث وهي مغطاة.&lt;/p&gt;
+&lt;h2 id=&quot;ماذا-يستطيع&quot;&gt;ماذا يستطيع&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;حماية بنقرة واحدة:&lt;/strong&gt; بدّل أي تطبيق يعمل إلى «محمي» من شريط القوائم.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;تحكم لكل نافذة ولكل نسخة:&lt;/strong&gt; اجمع التطبيقات متعددة النوافذ، مثل المتصفح أو الطرفية، واضبط كل نافذة على Visible أو Protected أو Inherit.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;تعتيم عند الفشل (Fail-closed):&lt;/strong&gt; يصير البث فارغًا عند قفل الشاشة أو السكون أو تغيّر الأذونات، فلا يتسرب أي إطار.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;دعم تعدد الشاشات:&lt;/strong&gt; اختر أي شاشة فعلية تُلتقط.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;جودة البث:&lt;/strong&gt; بدّل بين 15 و30 و60 إطارًا في الثانية دون إعادة تشغيل البث.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;إخفاء الإشعارات تلقائيًا:&lt;/strong&gt; تبقى لافتات مركز الإشعارات خارج البث.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;التشغيل عند تسجيل الدخول، وتسميات VoiceOver، واختصارات لوحة المفاتيح.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;الخصوصية-والأذونات&quot;&gt;الخصوصية والأذونات&lt;/h2&gt;
+&lt;p&gt;يحتاج SafeShare إذنًا واحدًا هو الوصول المعتاد إلى تسجيل الشاشة وصوت النظام، بلا صلاحيات root وبلا امتدادات نواة. وبحسب README لا يخزّن إطارات فيديو ولا عناوين نوافذ على القرص، ولا يرسل قياسات عن بُعد، ولا يجري اتصالات شبكة. ويضم المستودع سياسة أمان فيها التفاصيل.&lt;/p&gt;
+&lt;h2 id=&quot;التثبيت&quot;&gt;التثبيت&lt;/h2&gt;
+&lt;p&gt;يحتاج SafeShare إلى macOS 14 Sonoma أو أحدث. نزّل ملف DMG من أحدث إصدار على GitHub وافتحه واسحب SafeShare إلى مجلد التطبيقات. وللبناء بنفسك تحتاج إلى Xcode 15 أو أحدث: انسخ المستودع وشغّل &lt;code&gt;swift test&lt;/code&gt; ثم &lt;code&gt;./scripts/build_app.sh&lt;/code&gt;، ثم &lt;code&gt;./scripts/package_dmg.sh&lt;/code&gt; إن أردت ملف DMG.&lt;/p&gt;
+&lt;h2 id=&quot;مفتوح-المصدر&quot;&gt;مفتوح المصدر&lt;/h2&gt;
+&lt;p&gt;صدر SafeShare بترخيص MIT. ينشره عماد الحمو، صاحب هذا الموقع، على &lt;a href=&quot;https://github.com/Alhamou/SafeShare&quot;&gt;GitHub&lt;/a&gt;. وفي المستودع مسار تكامل مستمر (CI). تقارير الأخطاء وطلبات الدمج (Pull Requests) مرحّب بها.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;الأسئلة-الشائعة&quot;&gt;
+&lt;h2 id=&quot;الأسئلة-الشائعة&quot;&gt;الأسئلة الشائعة&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما هو SafeShare؟&lt;/h3&gt;
+&lt;p&gt;SafeShare أداة مفتوحة المصدر لنظام macOS تخفي التطبيقات والنوافذ الخاصة أثناء مشاركة شاشتك في Teams أو Zoom أو Google Meet. وتفعل ذلك عبر نافذة معاينة مصفّاة اسمها Safe View.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;كيف يخفي SafeShare التطبيقات أثناء مشاركة الشاشة؟&lt;/h3&gt;
+&lt;p&gt;يلتقط شاشتك بـ ScreenCaptureKit، ويصفّي التطبيقات والنوافذ التي علّمتها محميةً، ويعرض الناتج في نافذة Safe View. وتشارك هذه النافذة في تطبيق الاجتماع بدل شاشتك كاملة.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل يعمل مع Teams وZoom وGoogle Meet؟&lt;/h3&gt;
+&lt;p&gt;نعم. في كل منها تشارك نافذة SafeShare — Safe View: عبر Share ثم Window في Teams، وShare Screen في Zoom، وPresent now ثم A window في Google Meet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ماذا لو شاركت شاشتي كاملة بدل نافذة Safe View؟&lt;/h3&gt;
+&lt;p&gt;عندها لا يُصفّى شيء ويرى الحضور كل شيء. الحماية تنطبق فقط على ما يظهر في نافذة Safe View، لذلك اختر هذه النافذة دائمًا في تطبيق الاجتماع.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;لماذا ينبغي أن تبقى نافذة Safe View كبيرة؟&lt;/h3&gt;
+&lt;p&gt;تشارك تطبيقات الاجتماعات النافذة بحجمها على الشاشة، فالنافذة الصغيرة يصعب قراءتها. يحافظ SafeShare على نسبة أبعاد الشاشة ولا ينزل عن نصف حجمها، وفيه زر Send to Back يُبعد النافذة عن طريقك بحجمها الكامل.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما الإذن الذي يحتاجه SafeShare، وهل يرسل بيانات إلى أي مكان؟&lt;/h3&gt;
+&lt;p&gt;يحتاج إلى إذن تسجيل الشاشة وصوت النظام. وبحسب README لا يرسل قياسات عن بُعد، ولا يجري اتصالات شبكة، ولا يخزّن إطارات فيديو ولا عناوين نوافذ على القرص.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ماذا يحدث عند قفل الشاشة أو نوم الجهاز؟&lt;/h3&gt;
+&lt;p&gt;يصير البث فارغًا عند قفل الشاشة والسكون وتغيّر الأذونات، وهو ما يسميه README التعتيم عند الفشل (fail-closed). وتبقى لافتات مركز الإشعارات خارج البث أيضًا.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما إصدار macOS الذي يحتاجه SafeShare؟&lt;/h3&gt;
+&lt;p&gt;macOS 14 Sonoma أو أحدث.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>TopMovies: تطبيق ماك أصلي لاكتشاف الأفلام والمسلسلات، بمكتبة محلية</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/topmovies/"/>
+    <id>https://hamou.de/ar/articles/topmovies/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>يساعدك TopMovies على أن تقرر ماذا تشاهد على جهاز ماك. فيه خلاصات اكتشاف منتقاة مثل For You وTonight وHidden Gems، ومرشّحات حسب النوع والبلد والسنة والتقييم والمدة، ومكتبة محلية للمفضلة وقائمة المشاهدة وتقييماتك الخاصة. يعمل دون اتصال في وضع تجريبي ويتصل بـ TMDB للحصول على بيانات حقيقية. بُني بـ SwiftUI وهو مفتوح بترخيص MIT.</summary>
+    <content type="html">&lt;h2 id=&quot;ما-هو-topmovies&quot;&gt;ما هو TopMovies؟&lt;/h2&gt;
+&lt;p&gt;TopMovies تطبيق macOS أصلي لاكتشاف الأفلام والمسلسلات، بُني بـ SwiftUI وSwift 6. يصفه README بأنه يضع الخصوصية أولًا: مكتبتك تبقى على جهازك، وبلا اعتماديات من أطراف أخرى، ويعمل داخل صندوق رمل (sandbox). فيه خلاصات منتقاة ومرشّحات عميقة ومكتبة محلية ووضع تجريبي كامل دون اتصال.&lt;/p&gt;
+&lt;h2 id=&quot;خلاصات-الاكتشاف&quot;&gt;خلاصات الاكتشاف&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Discover:&lt;/strong&gt; تصفح كتالوجات عالمية عبر أنواع الأفلام والتلفزيون الرئيسية.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For You:&lt;/strong&gt; توصيات حتمية (deterministic) مبنية على أنواعك المفضلة وتقييماتك، بلا تتبّع بالذكاء الاصطناعي أو تعلّم الآلة.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tonight:&lt;/strong&gt; منتقٍ محدود بوقت، 120 دقيقة افتراضيًا، يستبعد ما شاهدته من قبل.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hidden Gems:&lt;/strong&gt; عناوين عالية التقييم بعدد أصوات معتدل.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trending وBest New Releases:&lt;/strong&gt; ما يحظى بالاهتمام يوميًا وأسبوعيًا، بمشاركة جمهور موثَّقة.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;المرش-حات&quot;&gt;المرشّحات&lt;/h2&gt;
+&lt;p&gt;رشّح حسب نوع الوسيط (All أو Movies أو TV Shows)، وحسب لغة الأصل والتجمعات الإقليمية، وحسب نطاق تاريخ الإصدار أو السنة أو العقد، وحسب الحد الأدنى لتقييم الجمهور وعتبة الأصوات وسقف المدة. تصفية المحتوى متحفظة: العناوين الصريحة وعناوين البالغين محجوبة افتراضيًا.&lt;/p&gt;
+&lt;h2 id=&quot;مكتبتك-تبقى-على-جهازك&quot;&gt;مكتبتك تبقى على جهازك&lt;/h2&gt;
+&lt;p&gt;المفضلة وقائمة المشاهدة (Watchlist) والعناوين التي شاهدتها وتقييماتك الشخصية من 1 إلى 10 نجوم تُخزَّن محليًا. ويعمل التطبيق داخل App Sandbox في macOS، ويُحفظ رمز TMDB الخاص بك في سلسلة مفاتيح macOS (Keychain) وليس في ملف.&lt;/p&gt;
+&lt;h2 id=&quot;الوضع-التجريبي-والاتصال-بـ-tmdb&quot;&gt;الوضع التجريبي والاتصال بـ TMDB&lt;/h2&gt;
+&lt;p&gt;يعمل TopMovies فورًا بكتالوج توضيحي دون اتصال: ملصقات مولَّدة وحبكات وأسماء ممثلين وتقييمات خيالية. ولرؤية أفلام ومسلسلات حقيقية صِله بـ TMDB (The Movie Database):&lt;/p&gt;
+&lt;p&gt;1. أنشئ حسابًا في TMDB واطلب مفتاح API للاستخدام غير التجاري من إعدادات حسابك. 2. انسخ API Read Access Token (الرمز الطويل من الإصدار v4 وليس مفتاح API القصير). 3. في TopMovies افتح Settings &amp;amp; Sources بـ &lt;code&gt;⌘,&lt;/code&gt; والصق الرمز واختر Save &amp;amp; Connect.&lt;/p&gt;
+&lt;p&gt;وإزالة الرمز تعيد التطبيق إلى الوضع التجريبي دون مسح مكتبتك المحلية أو تفضيلاتك. يستخدم TopMovies واجهة TMDB لكن TMDB لا تدعمه ولا تصادق عليه.&lt;/p&gt;
+&lt;h2 id=&quot;تصفية-المحتوى&quot;&gt;تصفية المحتوى&lt;/h2&gt;
+&lt;p&gt;بحسب README تُستبعد افتراضيًا العناوين الصريحة وعناوين البالغين وتصنيفات &lt;span class=&quot;nb&quot;&gt;NC-17&lt;/span&gt; وTV-MA، وتبقى العناوين المصنَّفة R مخفية حتى تفعّلها في تفضيلات المحتوى.&lt;/p&gt;
+&lt;h2 id=&quot;الاختصارات&quot;&gt;الاختصارات&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;⌘F&lt;/code&gt; ينقل التركيز إلى شريط البحث، و&lt;code&gt;⌘R&lt;/code&gt; يحدّث الكتالوج والخلاصات.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;⇧⌘F&lt;/code&gt; يبدّل لوحة المرشّحات، و&lt;code&gt;⇧⌘0&lt;/code&gt; يعيد كل المرشّحات إلى وضعها الافتراضي.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;⌘,&lt;/code&gt; يفتح Settings &amp;amp; Sources، وEscape يغلق ورقة التفاصيل أو الإعدادات.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;التثبيت&quot;&gt;التثبيت&lt;/h2&gt;
+&lt;p&gt;يحتاج TopMovies إلى macOS 14 Sonoma أو أحدث، على Apple silicon أو Intel. يشير README إلى نسخة مراجعة مبنية مسبقًا في المستودع، أو يمكنك بناؤه من المصدر: انسخ المستودع وشغّل &lt;code&gt;swift test&lt;/code&gt; ثم &lt;code&gt;./scripts/run-mac.sh&lt;/code&gt; الذي يبني إصدارًا ويوقّعه محليًا ويشغّله.&lt;/p&gt;
+&lt;h2 id=&quot;مفتوح-المصدر&quot;&gt;مفتوح المصدر&lt;/h2&gt;
+&lt;p&gt;كود التطبيق والرسوم التوضيحية الأصلية للوضع التجريبي صادرة بترخيص MIT. وعلامات TMDB التجارية وبيانات الجهات المزوّدة وأطر Apple تحتفظ بشروطها الخاصة. ينشر عماد الحمو، صاحب هذا الموقع، TopMovies على &lt;a href=&quot;https://github.com/Alhamou/topMoves&quot;&gt;GitHub&lt;/a&gt;. وفي المستودع إرشادات للمساهمة ومدونة سلوك وسياسة أمان.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;الأسئلة-الشائعة&quot;&gt;
+&lt;h2 id=&quot;الأسئلة-الشائعة&quot;&gt;الأسئلة الشائعة&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما هو TopMovies؟&lt;/h3&gt;
+&lt;p&gt;TopMovies تطبيق macOS أصلي مفتوح المصدر لاكتشاف الأفلام والمسلسلات. فيه خلاصات منتقاة ومرشّحات ومكتبة محلية ووضع تجريبي دون اتصال، وهو مبني بـ SwiftUI.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما خلاصات الاكتشاف فيه؟&lt;/h3&gt;
+&lt;p&gt;Discover وFor You وTonight وHidden Gems وTrending وBest New Releases. وخلاصة For You حتمية ولا تستخدم الذكاء الاصطناعي ولا تعلّم الآلة، وTonight تتيح لك الاختيار بحسب الوقت المتاح لديك.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل أحتاج إلى حساب لاستخدامه؟&lt;/h3&gt;
+&lt;p&gt;ليس للتجربة. يعمل فورًا في وضع تجريبي دون اتصال. ولرؤية أفلام ومسلسلات حقيقية تصله برمز TMDB API Read Access Token.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;كيف أصل TMDB؟&lt;/h3&gt;
+&lt;p&gt;أنشئ حسابًا في TMDB واطلب مفتاح API للاستخدام غير التجاري، وانسخ API Read Access Token، وافتح Settings &amp;amp; Sources بـ &lt;code&gt;⌘,&lt;/code&gt;، والصق الرمز، واختر Save &amp;amp; Connect.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;أين تُخزَّن مفضلتي وتقييماتي؟&lt;/h3&gt;
+&lt;p&gt;على جهازك. المفضلة وقائمة المشاهدة والعناوين التي شاهدتها وتقييماتك من 1 إلى 10 نجوم تُخزَّن محليًا، ورمز TMDB يُحفظ في سلسلة مفاتيح macOS.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل يصفّي TopMovies محتوى البالغين؟&lt;/h3&gt;
+&lt;p&gt;نعم. تُستبعد افتراضيًا العناوين الصريحة وعناوين البالغين وتصنيفات &lt;span class=&quot;nb&quot;&gt;NC-17&lt;/span&gt; وTV-MA، وتبقى العناوين المصنَّفة R مخفية حتى تفعّلها في تفضيلات المحتوى.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما أجهزة ماك وإصدارات macOS المدعومة؟&lt;/h3&gt;
+&lt;p&gt;macOS 14 Sonoma أو أحدث، على Apple silicon أو Intel.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل TopMovies تابع لـ TMDB؟&lt;/h3&gt;
+&lt;p&gt;لا. يستخدم واجهة TMDB لكن TMDB لا تدعمه ولا تصادق عليه.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>moveMouse: أداة في شريط القوائم على ماك تساعد على إبقاء اتصال RDP مفتوحًا</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/movemouse/"/>
+    <id>https://hamou.de/ar/articles/movemouse/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>يساعد moveMouse على إبقاء اتصال سطح المكتب البعيد (RDP) مفتوحًا. يحرّك المؤشر بفاصل زمني تحدده ويمنع الجهاز من النوم أثناء تشغيله، فيقل احتمال أن تُقطع جلسة هادئة. يعيش في شريط القوائم، وكوده مفتوح بترخيص MIT.</summary>
+    <content type="html">&lt;h2 id=&quot;ما-هو-movemouse&quot;&gt;ما هو moveMouse؟&lt;/h2&gt;
+&lt;p&gt;moveMouse تطبيق صغير مفتوح المصدر يعيش في شريط قوائم macOS. يحرّك مؤشر الماوس من تلقاء نفسه بفاصل زمني تحدده، وما دام يعمل يمنع الجهاز من النوم بسبب الخمول. صُنع لمشكلة عملية واحدة: اتصال سطح المكتب البعيد (RDP) الذي ينقطع حين لا تلمس الجهاز. والتلميح الذي يظهر على أيقونة التطبيق في شريط القوائم يقول ذلك بنفسه: «لمنع انقطاع اتصال RDP».&lt;/p&gt;
+&lt;p&gt;يصفه ملف README وصفًا أعم: تحريك تلقائي للمؤشر وفق جدولك، يفيد في عروض سطح المكتب، أو اختبار تفاعلات الماوس، أو إبقاء الجهاز نشطًا أثناء مهمة ما. كُتب بلغة Swift وإطار AppKit، ويعمل بلا أيقونة في Dock.&lt;/p&gt;
+&lt;h2 id=&quot;لماذا-ينقطع-اتصال-rdp&quot;&gt;لماذا ينقطع اتصال RDP&lt;/h2&gt;
+&lt;p&gt;جلسات سطح المكتب البعيد تنتهي عادةً لأسباب مملة. الجهاز الذي تتصل منه ينام ويأخذ معه اتصال الشبكة، أو يعتبر الطرف البعيد الجلسة التي بلا إدخال جلسةً خاملة فيُنهيها أو يقفلها. يعمل moveMouse من جهاز ماك الخاص بك ويعالج الأمرين: يمنع السكون الناتج عن الخمول ما دام يعمل، ويولّد نشاطًا للمؤشر بالفاصل الذي تضبطه.&lt;/p&gt;
+&lt;p&gt;وهناك حدّان يجب ذكرهما بصراحة. التطبيق لا يعرف شيئًا عن برنامج RDP عندك: هو يحرّك المؤشر على جهازك، فلا يصل النشاط إلى الجلسة البعيدة إلا ما دامت نافذة RDP تحت المؤشر. عمليًا، أبقِ نافذة سطح المكتب البعيد حيث يتحرك المؤشر، وهو منتصف الشاشة مع النمط الافتراضي. كما أن moveMouse لا يغيّر شيئًا على الجهاز البعيد، فأي حد للجلسة مفروض هناك يبقى كما هو.&lt;/p&gt;
+&lt;h2 id=&quot;ماذا-يفعل&quot;&gt;ماذا يفعل&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ستة فواصل زمنية:&lt;/strong&gt; كل 15 أو 30 أو 45 ثانية، أو كل دقيقة أو دقيقتين أو 5 دقائق. الافتراضي عند أول تشغيل هو 30 ثانية.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;نمطان للتحريك:&lt;/strong&gt; «منتصف الشاشة (يمين ثم يسار)» ينقل المؤشر إلى وسط الشاشة، ثم يمينًا ويسارًا، وينتهي في الوسط. و«الموضع الحالي للماوس (هزة خفيفة)» يحرّكه مسافة قصيرة يمينًا ويسارًا ثم يعيده إلى مكانه.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;نقرة اختيارية بالزر الأيسر&lt;/strong&gt; بعد كل حركة، مع صوت اختياري. تقع النقرة عند الموضع الأخير للمؤشر وتصيب أي شيء تحته.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;تحكم بسيط من شريط القوائم:&lt;/strong&gt; تشغيل أو إيقاف مؤقت (Pause)، وتحريك الماوس الآن (Move Now) ويعمل حتى أثناء الإيقاف المؤقت، وخروج. وسطر للحالة يبيّن هل التحريك يعمل ومتى كانت آخر عملية.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;إعدادات محفوظة:&lt;/strong&gt; الفاصل والنمط والنقرة والصوت تبقى بين مرات التشغيل.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;منع السكون:&lt;/strong&gt; يُمنع سكون النظام بسبب الخمول ما دام التحريك التلقائي يعمل. والإيقاف المؤقت أو الخروج يحرّره.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;يبدأ moveMouse التحريك بمجرد تشغيله، بإعداداتك المحفوظة. وقوائمه بالعربية مع كلمات إنجليزية بين قوسين لعدة عناصر: Pause وMove Now وInterval وLeft Click وClick Sound.&lt;/p&gt;
+&lt;h2 id=&quot;الأذونات&quot;&gt;الأذونات&lt;/h2&gt;
+&lt;p&gt;الإدخال المحاكى للماوس يحتاج إذن «إمكانية الوصول» (Accessibility). عند أول تشغيل قد يطلبه macOS: افتح إعدادات النظام، ثم الخصوصية والأمان، ثم «إمكانية الوصول»، وفعّل moveMouse. وعنصر إمكانية الوصول في قائمة التطبيق يفتح لك تلك الصفحة. وبحسب ملف README فالنقر هو الجزء الذي يحتاج الإذن أكثر من غيره. إن توقفت النقرة عن العمل بعد إعادة بناء التطبيق أو نقله، فاحذف سطره من إمكانية الوصول وأضفه من جديد وأعد تشغيله.&lt;/p&gt;
+&lt;h2 id=&quot;التثبيت&quot;&gt;التثبيت&lt;/h2&gt;
+&lt;p&gt;يحتاج moveMouse إلى macOS 11 Big Sur أو أحدث. التطبيق المرفق وسكربت البناء يستهدفان أجهزة Apple silicon (معمارية arm64). انسخ المستودع من GitHub ثم شغّل &lt;code&gt;./build.sh&lt;/code&gt; و&lt;code&gt;./run.sh&lt;/code&gt;. يحتاج البناء إلى أدوات سطر الأوامر لـ Xcode (Command Line Tools) وتثبّتها &lt;code&gt;xcode-select --install&lt;/code&gt;. ويوقّع السكربت التطبيق محليًا بتوقيع مؤقت (ad-hoc).&lt;/p&gt;
+&lt;p&gt;ولتشغيل moveMouse عند تسجيل الدخول أضف &lt;code&gt;MoveMouse.app&lt;/code&gt; إلى عناصر تسجيل الدخول في إعدادات النظام ضمن «عام». وللإيقاف اختر «خروج» من القائمة أو شغّل &lt;code&gt;./stop.sh&lt;/code&gt; من مجلد المشروع.&lt;/p&gt;
+&lt;h2 id=&quot;مفتوح-المصدر&quot;&gt;مفتوح المصدر&lt;/h2&gt;
+&lt;p&gt;صدر moveMouse بترخيص MIT. يعتمد على أطر macOS الأصلية فقط ويُبنى مباشرة بـ &lt;code&gt;swiftc&lt;/code&gt;، بلا اعتماديات خارجية وبلا مشروع Xcode. والكود بضعة ملفات Swift: واجهة شريط القوائم، ومؤقت الحركة مع إدخال المؤشر والإعدادات المحفوظة، ومنع السكون.&lt;/p&gt;
+&lt;p&gt;ينشر عماد الحمو، صاحب هذا الموقع، moveMouse على &lt;a href=&quot;https://github.com/Alhamou/moveMouse&quot;&gt;GitHub&lt;/a&gt;. تقارير الأخطاء والأفكار وطلبات الدمج (Pull Requests) مرحّب بها؛ اذكر إصدار macOS وخطوات إعادة المشكلة وما كنت تتوقعه.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;الأسئلة-الشائعة&quot;&gt;
+&lt;h2 id=&quot;الأسئلة-الشائعة&quot;&gt;الأسئلة الشائعة&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما هو moveMouse؟&lt;/h3&gt;
+&lt;p&gt;moveMouse تطبيق مفتوح المصدر في شريط قوائم macOS يحرّك المؤشر تلقائيًا بفاصل زمني تحدده ويمنع الجهاز من النوم أثناء تشغيله. صُنع للمساعدة على منع انقطاع اتصال RDP.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;كيف يساعد moveMouse في اتصال RDP؟&lt;/h3&gt;
+&lt;p&gt;يعمل من جهاز ماك الخاص بك. يمنع السكون الناتج عن الخمول الذي كان سيقطع الاتصال، ويولّد نشاطًا للمؤشر بالفاصل الذي تختاره كي لا تبقى الجلسة ساكنة تمامًا. لا يصل النشاط إلى الجلسة البعيدة إلا ما دامت نافذة RDP تحت المؤشر، ولا يغيّر moveMouse أي إعداد على الجهاز البعيد.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل قد تصيب النقرة شيئًا لم أقصده؟&lt;/h3&gt;
+&lt;p&gt;نعم، ممكن. النقرة الاختيارية بالزر الأيسر تقع عند الموضع الأخير للمؤشر وتتفاعل مع أي شيء تحته. إن أردت الحركة فقط فأوقف خيار «نقرة بالزر الأيسر بعد الحركة (Left Click)» من القائمة. وهو مفعّل افتراضيًا.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما الفواصل الزمنية وأنماط التحريك المتاحة؟&lt;/h3&gt;
+&lt;p&gt;الفواصل هي 15 و30 و45 ثانية ودقيقة ودقيقتان و5 دقائق، والافتراضي 30 ثانية. والنمطان هما «منتصف الشاشة» (الوسط ثم يمين ثم يسار ثم العودة إلى الوسط) و«الموضع الحالي للماوس» (هزة خفيفة يمينًا ويسارًا ثم العودة إلى نقطة البداية).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما الإذن الذي يحتاجه moveMouse؟&lt;/h3&gt;
+&lt;p&gt;إذن «إمكانية الوصول» (Accessibility) للإدخال المحاكى للماوس، خصوصًا النقر. فعّل moveMouse من إعدادات النظام ضمن الخصوصية والأمان ثم «إمكانية الوصول».&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما أجهزة ماك وإصدارات macOS المدعومة؟&lt;/h3&gt;
+&lt;p&gt;macOS 11 Big Sur أو أحدث. التطبيق المرفق وسكربت البناء يستهدفان أجهزة Apple silicon (معمارية arm64).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;كيف أوقف moveMouse مؤقتًا أو أغلقه؟&lt;/h3&gt;
+&lt;p&gt;اختر «إيقاف مؤقت (Pause)» من قائمة شريط القوائم لإيقاف التحريك المجدول وتحرير منع السكون، أو «خروج» لإغلاق التطبيق. وخيار «تحريك الماوس الآن (Move Now)» ينفّذ حركة واحدة عند الطلب حتى أثناء الإيقاف المؤقت.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل moveMouse مفتوح المصدر؟&lt;/h3&gt;
+&lt;p&gt;نعم. صدر بترخيص MIT، والكود المصدري على GitHub.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>Haki (حكي): إملاء صوتي بالضغط والتحدث في شريط قوائم ماك، مضبوط للعربية</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/haki/"/>
+    <id>https://hamou.de/ar/articles/haki/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>يحوّل Haki صوتك إلى نص في أي مكان على جهاز ماك. اضغط Option+Space مطوّلًا وتحدث ثم اترك، فيُلصق النص المحوَّل عند المؤشر. هو مضبوط للعربية الطبيعية، ومنها اللهجتان الشامية والسورية، ويتعامل أيضًا مع الإنجليزية والألمانية والفرنسية. يستخدم التحويل نماذج OpenAI بمفتاح API الخاص بك، لذلك يذهب صوتك إلى OpenAI. الكود مفتوح بترخيص MIT.</summary>
+    <content type="html">&lt;h2 id=&quot;ما-هو-haki&quot;&gt;ما هو Haki؟&lt;/h2&gt;
+&lt;p&gt;Haki (حكي) تطبيق أصلي خفيف في شريط قوائم macOS لتحويل الكلام إلى نص. انقر في أي حقل نصي في أي تطبيق، واضغط اختصار الضغط والتحدث مطوّلًا، وتحدث ثم اترك. ينسخ Haki ما قلته نصًّا ويلصقه عند المؤشر. وشعاره: «احكي، وحكي بيكتبها».&lt;/p&gt;
+&lt;p&gt;صُمم خصوصًا للعربية الطبيعية واللهجة الشامية، مع دعم الإنجليزية والألمانية والفرنسية والتعرف التلقائي على اللغة. ليس فيه نموذج كلام محلي ولا بيئة Python أو Node.js: التطبيق Swift أصلي، والتحويل تقوم به OpenAI.&lt;/p&gt;
+&lt;h2 id=&quot;كيف-يعمل-الإملاء&quot;&gt;كيف يعمل الإملاء&lt;/h2&gt;
+&lt;p&gt;1. ركّز على حقل نصي في أي تطبيق، مثل الملاحظات أو TextEdit أو متصفح أو تطبيق محادثة أو محرر. 2. اضغط &lt;code&gt;⌥ Option + Space&lt;/code&gt; مطوّلًا وتحدث. 3. اترك المفتاحين. يرسل Haki التسجيل إلى OpenAI ويستلم النص ويلصقه عند المؤشر.&lt;/p&gt;
+&lt;p&gt;يحفظ Haki حافظتك قبل اللصق ويستعيدها بعده، ويفعل ذلك دون أن ينتزع التركيز من التطبيق الذي تكتب فيه. ومؤشر عائم صغير يبيّن هل يسجّل الآن أم يحوّل أم انتهى. أما النقرات العرضية التي تقل عن ثلث ثانية تقريبًا فتُهمل محليًا.&lt;/p&gt;
+&lt;h2 id=&quot;اللغات-والنماذج&quot;&gt;اللغات والنماذج&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;اللغات:&lt;/strong&gt; العربية (مع تحسين للهجتين الشامية والسورية)، والإنجليزية، والألمانية، والفرنسية، أو التعرف التلقائي.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;النماذج:&lt;/strong&gt; &lt;code&gt;gpt-transcribe&lt;/code&gt; هو الافتراضي وموجّه للكتابة الصوتية اليومية السريعة منخفضة التأخير. و&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;gpt-4o-transcribe&lt;/span&gt;&lt;/code&gt; خيار أعلى دقة للعبارات المعقدة واللهجات والمصطلحات التقنية. تبدّل من الإعدادات أو من شريط القوائم.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;الميكروفونات:&lt;/strong&gt; اختر الميكروفون المدمج أو واجهة USB أو AirPods. يتولى Haki إعادة الاتصال عبر CoreAudio ويمكنه تفضيل AirPods عند اتصالها. ومقياس مستوى حي يتيح لك اختبار الإدخال.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;الخصوصية-ما-يبقى-على-جهازك-وما-يذهب-إلى-openai&quot;&gt;الخصوصية: ما يبقى على جهازك وما يذهب إلى OpenAI&lt;/h2&gt;
+&lt;p&gt;كن واضحًا بشأن المقايضة: &lt;strong&gt;تسجيلاتك الصوتية تُرسل إلى OpenAI.&lt;/strong&gt; وبحسب README تذهب مباشرة من جهازك إلى نقطة التفريغ الصوتي لدى OpenAI عبر TLS بلا خوادم وسيطة، لذلك يحتاج الإملاء إلى اتصال بالإنترنت وإلى مفتاح OpenAI API الخاص بك، ويُستخدم وفق شروط OpenAI وأسعارها.&lt;/p&gt;
+&lt;p&gt;وعلى جهازك يقول README إن Haki لا يضمّن أي تحليلات أو تشخيصات أو تقارير أعطال أو حزم SDK من أطراف أخرى. يُسجَّل الصوت في ملفات مؤقتة ويُحذف فور انتهاء التحويل أو فشله، فلا يُحتفظ بسجل صوتي. ويُخزَّن مفتاح API في سلسلة مفاتيح macOS (Keychain) وليس في التفضيلات أو ملفات الإعداد أو السجلات.&lt;/p&gt;
+&lt;h2 id=&quot;الأذونات&quot;&gt;الأذونات&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;الميكروفون:&lt;/strong&gt; لالتقاط صوتك، وفقط ما دمت تضغط الاختصار أو تبدأ الإملاء من القائمة.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;إمكانية الوصول (Accessibility):&lt;/strong&gt; للاختصار العام للضغط والتحدث ولإدراج النص بمحاكاة &lt;code&gt;⌘V&lt;/code&gt;. وبحسب README لا يلزم إذن «مراقبة الإدخال» (Input Monitoring) بشكل منفصل.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;الإعداد&quot;&gt;الإعداد&lt;/h2&gt;
+&lt;p&gt;1. افتح Haki. اسمح بالوصول إلى الميكروفون حين يسأل macOS، وفعّل Haki ضمن إعدادات النظام، ثم الخصوصية والأمان، ثم «إمكانية الوصول». 2. افتح الإعدادات من أيقونة شريط القوائم أو بـ &lt;code&gt;⌘,&lt;/code&gt;. في تبويب Transcription الصق مفتاح OpenAI API واختر Save ثم Test API Key. 3. اختر نموذجًا، وفي تبويب Audio اختر الميكروفون.&lt;/p&gt;
+&lt;h2 id=&quot;الإملاء-من-آيفون-عبر-airmouse&quot;&gt;الإملاء من آيفون عبر AirMouse&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/Alhamou/AirMouse&quot;&gt;AirMouse&lt;/a&gt; تطبيق مفتوح المصدر مستقل يحوّل آيفون إلى لوحة تتبّع لجهاز ماك عبر شبكة Wi-Fi المحلية. يسجّل تبويبه الصوتي على الهاتف ويسلّم الصوت إلى Haki الذي يكتب النص على جهاز ماك. يجب أن يكون Haki مثبّتًا وقيد التشغيل، ويستخدم مفتاح API المعتاد وإعدادات النموذج واللغة لديك.&lt;/p&gt;
+&lt;p&gt;التسليم بسيط ومفتوح لمرسِلين آخرين أيضًا. يُكتب تسجيل (&lt;code&gt;m4a&lt;/code&gt; أو &lt;code&gt;mp4&lt;/code&gt; أو &lt;code&gt;webm&lt;/code&gt; أو &lt;code&gt;wav&lt;/code&gt; أو &lt;code&gt;mp3&lt;/code&gt; أو &lt;code&gt;ogg&lt;/code&gt;، حتى 25 ميغابايت) في &lt;code&gt;~/Library/Caches/Haki/Inbox/&lt;/code&gt;، ثم يُفتح الرابط &lt;code&gt;haki://transcribe?file=&amp;lt;اسم الملف&amp;gt;&lt;/code&gt;. يحوّل Haki الملف إلى نص ويلصقه ويحذف الملف. ولا تُقبل إلا أسماء الملفات البسيطة داخل صندوق الوارد، فتُرفض المسارات والملفات المخفية والروابط الرمزية.&lt;/p&gt;
+&lt;h2 id=&quot;ابن-ه-بنفسك&quot;&gt;ابنِه بنفسك&lt;/h2&gt;
+&lt;p&gt;يحتاج Haki إلى macOS 13 Ventura أو أحدث، على Apple silicon أو Intel، وإلى أدوات سطر الأوامر لـ Xcode مع Swift 6.0 أو أحدث. انسخ المستودع من GitHub وشغّل &lt;code&gt;swift test&lt;/code&gt; ثم &lt;code&gt;./scripts/build_app.sh&lt;/code&gt;. يبني السكربت الملف التنفيذي للإصدار، ويجمّع &lt;code&gt;Haki.app&lt;/code&gt;، ويوقّعه بشهادة Apple Development المحلية لديك أو بتوقيع مؤقت (ad hoc)، ويثبّته في &lt;code&gt;/Applications&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;مفتوح-المصدر&quot;&gt;مفتوح المصدر&lt;/h2&gt;
+&lt;p&gt;صدر Haki بترخيص MIT. يشترط دليل المساهمة ألا تُضاف نماذج محلية ولا Python ولا Node.js ولا Electron، وألا تُرفع مفاتيح API أبدًا. ينشر عماد الحمو، صاحب هذا الموقع، Haki على &lt;a href=&quot;https://github.com/Alhamou/Haki&quot;&gt;GitHub&lt;/a&gt;. تقارير الأخطاء وطلبات الدمج (Pull Requests) مرحّب بها، والمخاوف الأمنية تُبلَّغ وفق سياسة الأمان في المستودع.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;الأسئلة-الشائعة&quot;&gt;
+&lt;h2 id=&quot;الأسئلة-الشائعة&quot;&gt;الأسئلة الشائعة&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما هو Haki؟&lt;/h3&gt;
+&lt;p&gt;Haki تطبيق مفتوح المصدر في شريط قوائم macOS للإملاء الصوتي بالضغط والتحدث. اضغط &lt;code&gt;⌥ Option + Space&lt;/code&gt; مطوّلًا وتحدث ثم اترك، فيُلصق النص المحوَّل عند المؤشر في أي تطبيق. هو مضبوط للعربية ويدعم أيضًا الإنجليزية والألمانية والفرنسية.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;كيف أُملي بـ Haki؟&lt;/h3&gt;
+&lt;p&gt;انقر في حقل نصي، واضغط &lt;code&gt;⌥ Option + Space&lt;/code&gt; مطوّلًا، وتحدث، ثم اترك. يرسل Haki التسجيل إلى OpenAI ويلصق النص عند المؤشر.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما اللغات والنماذج التي يدعمها Haki؟&lt;/h3&gt;
+&lt;p&gt;العربية (مع تحسين للهجتين الشامية والسورية)، والإنجليزية، والألمانية، والفرنسية، والتعرف التلقائي. والنماذج هي &lt;code&gt;gpt-transcribe&lt;/code&gt; وهو الافتراضي، و&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;gpt-4o-transcribe&lt;/span&gt;&lt;/code&gt; لدقة أعلى.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل يرسل Haki صوتي إلى OpenAI؟&lt;/h3&gt;
+&lt;p&gt;نعم. التحويل تقوم به OpenAI، لذلك يُرسل كل تسجيل من جهازك مباشرة إلى OpenAI عبر TLS. ويحذف Haki ملف الصوت المؤقت فور انتهاء التحويل أو فشله، ولا يحتفظ بسجل صوتي.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل أحتاج إلى مفتاح OpenAI API؟&lt;/h3&gt;
+&lt;p&gt;نعم. يستخدم Haki مفتاح OpenAI API الخاص بك، ويخزّنه في سلسلة مفاتيح macOS. والاستخدام وفق شروط OpenAI وأسعارها.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما الأذونات التي يحتاجها Haki؟&lt;/h3&gt;
+&lt;p&gt;الميكروفون لالتقاط صوتك ما دمت تضغط الاختصار، وإمكانية الوصول للاختصار العام وللصق بمحاكاة &lt;code&gt;⌘V&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;ما أجهزة ماك وإصدارات macOS المدعومة؟&lt;/h3&gt;
+&lt;p&gt;macOS 13 Ventura أو أحدث، على Apple silicon أو Intel. والبناء يحتاج إلى Swift 6.0 أو أحدث.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;هل أستطيع الإملاء من آيفون؟&lt;/h3&gt;
+&lt;p&gt;نعم، عبر AirMouse، وهو تطبيق مرافق مفتوح المصدر. يسجّل تبويبه الصوتي على الهاتف ويكتب Haki النص على جهاز ماك. يجب أن يكون Haki مثبّتًا وقيد التشغيل.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
     <title>تيك كار: تطبيق سوري للسفر بين المحافظات وتشارك الرحلات والتوصيل</title>
     <link rel="alternate" type="text/html" href="https://hamou.de/ar/articles/takecar/"/>
     <id>https://hamou.de/ar/articles/takecar/</id>

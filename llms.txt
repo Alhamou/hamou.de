@@ -16,7 +16,7 @@
 <!-- articles:start -->
 ## Articles
 
-Articles are static pages in English, German and Arabic (where a translation exists). Add index.md to an article URL for a plain Markdown copy. All English articles in one file: [llms-full.txt](https://hamou.de/llms-full.txt).
+Articles are static pages in English, German and Arabic (where a translation exists). Add index.md to an article URL for a plain Markdown copy. All English articles in one file: [llms-full.txt](https://hamou.de/llms-full.txt). The articles about the open-source tools are listed under Open source below.
 
 - [Shfli: a Syrian online marketplace for cars, real estate, auctions, bazaars and jobs](https://hamou.de/articles/shfli/index.md): Shfli is a Syrian online marketplace and app for buying and selling cars, real estate and more, with live auctions, bazaars and jobs. Also in [Deutsch](https://hamou.de/de/articles/shfli/index.md) and [العربية](https://hamou.de/ar/articles/shfli/index.md).
 - [Arab Solutions: Arabic-first AI customer support that answers from your own knowledge](https://hamou.de/articles/arab-solutions/index.md): Arab Solutions (O My Syria) is an Arabic-first AI customer support platform: an assistant that answers from your own documents, on your website and WhatsApp. Also in [Deutsch](https://hamou.de/de/articles/arab-solutions/index.md) and [العربية](https://hamou.de/ar/articles/arab-solutions/index.md).
@@ -27,6 +27,16 @@ Articles are static pages in English, German and Arabic (where a translation exi
 ## Open source
 
 - [GitHub profile](https://github.com/Alhamou): OpenBlock, RemoteDesk, pinFiy, closeAll, SafeShare, TopMovies, moveMouse, Haki.
+<!-- tools:start -->
+- [OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking](https://hamou.de/articles/openblock/index.md): OpenBlock is an open-source ad blocker for Safari on macOS. It turns real filter lists into Safari's native content blockers and has no tracking. Also in [Deutsch](https://hamou.de/de/articles/openblock/index.md) and [العربية](https://hamou.de/ar/articles/openblock/index.md).
+- [RemoteDesk: an open-source Mac-to-Mac remote desktop for your local network](https://hamou.de/articles/remotedesk/index.md): RemoteDesk is an open-source Mac-to-Mac remote desktop for local networks. It streams the screen with hardware H.264 and forwards input. For trusted networks only. Also in [Deutsch](https://hamou.de/de/articles/remotedesk/index.md) and [العربية](https://hamou.de/ar/articles/remotedesk/index.md).
+- [pinFiy: colored sticky notes for the Mac, with a small pin in the menu bar](https://hamou.de/articles/pinfiy/index.md): pinFiy is an open-source macOS sticky notes app. Each note is its own window, Arabic runs right to left, and there is no account, cloud sync or network access. Also in [Deutsch](https://hamou.de/de/articles/pinfiy/index.md) and [العربية](https://hamou.de/ar/articles/pinfiy/index.md).
+- [closeAll: force-quit every Dock app from one menu-bar button on Mac](https://hamou.de/articles/closeall/index.md): closeAll is an open-source macOS menu-bar app that force-quits every normal Dock app at once, after you review the list. Unsaved work in those apps is lost. Also in [Deutsch](https://hamou.de/de/articles/closeall/index.md) and [العربية](https://hamou.de/ar/articles/closeall/index.md).
+- [SafeShare: hide private apps while you share your Mac screen in Teams, Zoom or Meet](https://hamou.de/articles/safeshare/index.md): SafeShare is an open-source macOS app that hides private apps and windows when you share your screen in Teams, Zoom or Google Meet, using a Safe View window. Also in [Deutsch](https://hamou.de/de/articles/safeshare/index.md) and [العربية](https://hamou.de/ar/articles/safeshare/index.md).
+- [TopMovies: a native Mac app to discover movies and TV series, with a local library](https://hamou.de/articles/topmovies/index.md): TopMovies is an open-source native macOS app for discovering movies and TV series, with curated feeds, filters, a local library and an offline demo mode. Also in [Deutsch](https://hamou.de/de/articles/topmovies/index.md) and [العربية](https://hamou.de/ar/articles/topmovies/index.md).
+- [moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping](https://hamou.de/articles/movemouse/index.md): moveMouse is an open-source macOS menu-bar app that moves the pointer on a schedule and prevents idle sleep, so a remote desktop (RDP) connection is less likely to drop. Also in [Deutsch](https://hamou.de/de/articles/movemouse/index.md) and [العربية](https://hamou.de/ar/articles/movemouse/index.md).
+- [Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic](https://hamou.de/articles/haki/index.md): Haki is an open-source macOS menu-bar dictation app. Hold Option+Space, speak Arabic, English, German or French, release, and the text is pasted at your cursor. Also in [Deutsch](https://hamou.de/de/articles/haki/index.md) and [العربية](https://hamou.de/ar/articles/haki/index.md).
+<!-- tools:end -->
 
 ## Contact
 

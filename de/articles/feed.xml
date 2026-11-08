@@ -126,6 +126,582 @@
 &lt;/section&gt;</content>
   </entry>
   <entry>
+    <title>OpenBlock: ein Open-Source-Werbeblocker für Safari auf dem Mac, ohne Tracking</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/openblock/"/>
+    <id>https://hamou.de/de/articles/openblock/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>OpenBlock blockiert Werbung und Tracker in Safari auf deinem Mac. Der Blocker lädt echte Filterlisten, wandelt sie in Safaris eigenes Regelformat um und überlässt Safari die Durchsetzung, sodass nichts zwischen dir und dem Web steht. Der Code ist offen unter der GPL-3.0-Lizenz.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-openblock&quot;&gt;Was ist OpenBlock?&lt;/h2&gt;
+&lt;p&gt;OpenBlock ist ein Open-Source-Werbeblocker für Safari auf macOS. Er folgt demselben Rezept wie AdGuard für Safari: Filterlisten laufen durch einen Konverter und werden zu Safari-Inhaltsblockern. Die App lädt die Listen herunter, wandelt sie in Safaris natives Regelformat um und übergibt sie an Safari, das sie in seine eigene Engine kompiliert. Nichts steht zwischen dir und dem Web, und OpenBlock sendet keine Daten über dein Surfen irgendwohin.&lt;/p&gt;
+&lt;p&gt;Er blockiert nur innerhalb von Safari. Andere Browser und Apps sehen die Regeln nie. DNS-basiertes Blockieren für alle Apps auf dem Mac ist die nächste geplante Funktion.&lt;/p&gt;
+&lt;h2 id=&quot;womit-er-blockiert&quot;&gt;Womit er blockiert&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Vier Safari-Inhaltsblocker:&lt;/strong&gt; Werbung, Datenschutz, Störendes und Eigene Regeln. Jeder hat sein eigenes Budget von 150.000 Regeln.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Echte Filterlisten:&lt;/strong&gt; AdGuard Base, Tracking, Social, Cookie und Popups (die Safari-Versionen), EasyList, EasyPrivacy, regionale Listen oder jede Listen-URL, die du hinzufügst, in AdBlock-Syntax oder als Hosts-Datei.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Eigene Regeln und eine Zulassungsliste&lt;/strong&gt; in AdBlock-Syntax. Seiten auf der Zulassungsliste bleiben unberührt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automatische Updates:&lt;/strong&gt; Die Listen werden alle 24 Stunden aktualisiert, solange OpenBlock läuft. In der Menüleiste gibt es außerdem „Filter jetzt aktualisieren“ neben „Blockieren pausieren“ und „Beim Anmelden starten“.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;openblock-advanced&quot;&gt;OpenBlock Advanced&lt;/h2&gt;
+&lt;p&gt;Safaris Inhaltsblocker können nicht jede Regel ausdrücken. Für den Rest gibt es OpenBlock Advanced, eine Safari-Web-Erweiterung. Sie führt Scriptlets aus (AdGuards &lt;code&gt;#%#//scriptlet(...)&lt;/code&gt;-Regeln und die &lt;code&gt;##+js(...)&lt;/code&gt;-Regeln von uBlock Origin), fügt CSS ein (&lt;code&gt;#$#&lt;/code&gt;), unterstützt erweiterte CSS-Selektoren (&lt;code&gt;#?#&lt;/code&gt;, &lt;code&gt;:has-text()&lt;/code&gt;, &lt;code&gt;:remove()&lt;/code&gt;) und verarbeitet Regeln für Domains mit Platzhalter-Top-Level-Domain wie &lt;code&gt;example.*&lt;/code&gt;. Das Projekt nennt YouTube-Werbung und Anti-Adblock-Sperren als Beispiele. Die Symbolleisten-Schaltfläche zeigt den Status der aktuellen Seite und pausiert die erweiterten Regeln für diese Seite.&lt;/p&gt;
+&lt;h2 id=&quot;datenschutz&quot;&gt;Datenschutz&lt;/h2&gt;
+&lt;p&gt;Das README beschreibt OpenBlock als frei von Tracking, und die Sicherheitsrichtlinie nennt als einzigen Netzwerkverkehr den Download der Filterlisten, die du eingeschaltet hast. Es gibt keine Telemetrie, keine Analytik und keine Absturzberichte, und OpenBlock liest deinen Browserverlauf nicht. Weil Safari die Regeln selbst kompiliert, steht die App nie im Weg deines Webverkehrs.&lt;/p&gt;
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;OpenBlock braucht macOS 15 Sequoia oder neuer. Lade das DMG vom neuesten Release auf GitHub herunter und ziehe OpenBlock in den Ordner „Programme“. Der Build ist mit einem Apple-Development-Zertifikat signiert und nicht notarisiert, deshalb fragt macOS beim ersten Start nach: Öffne die Systemeinstellungen, gehe zu „Datenschutz &amp;amp; Sicherheit“ und wähle neben OpenBlock „Dennoch öffnen“.&lt;/p&gt;
+&lt;p&gt;Öffne dann OpenBlock, wähle deine Filterlisten und warte, bis die erste Umwandlung fertig ist. In Safari öffnest du die Einstellungen, dann „Erweiterungen“: Aktiviere die vier OpenBlock-Inhaltsblocker und OpenBlock Advanced und erlaube Letzteres auf allen Websites. Halte nur eine Kopie der App auf dem Datenträger, denn Safari kommt durcheinander, wenn zwei Builds dieselben Erweiterungen registrieren.&lt;/p&gt;
+&lt;p&gt;Zum Selbstbauen brauchst du Xcode 16 oder neuer und XcodeGen. Safari lädt nur signierte Erweiterungen, ein unsignierter Build blockiert daher nichts.&lt;/p&gt;
+&lt;h2 id=&quot;open-source&quot;&gt;Open Source&lt;/h2&gt;
+&lt;p&gt;OpenBlock steht unter der &lt;span class=&quot;nb&quot;&gt;GPL-3.0&lt;/span&gt;, weil OpenBlock Advanced die &lt;span class=&quot;nb&quot;&gt;GPL-3-Bibliotheken&lt;/span&gt; Scriptlets und ExtendedCss von AdGuard enthält. Die Filterlisten werden beim Ausführen der App heruntergeladen und behalten ihre eigenen Lizenzen. OpenBlock ist nicht mit AdGuard verbunden. Im Repository gibt es außerdem einen Kommandozeilen-Konverter, den du gegen Apples eigenen Regel-Compiler von WebKit prüfen kannst.&lt;/p&gt;
+&lt;p&gt;Emad Alhamou, der Autor dieser Website, veröffentlicht OpenBlock auf &lt;a href=&quot;https://github.com/Alhamou/OpenBlock&quot;&gt;GitHub&lt;/a&gt;. Fehlerberichte und Pull Requests sind willkommen.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist OpenBlock?&lt;/h3&gt;
+&lt;p&gt;OpenBlock ist ein Open-Source-Werbeblocker für Safari auf macOS. Er wandelt echte Filterlisten in Safaris native Inhaltsblocker um und ergänzt eine Web-Erweiterung für erweiterte Regeln.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Funktioniert OpenBlock in Chrome, Firefox oder anderen Apps?&lt;/h3&gt;
+&lt;p&gt;Nein. OpenBlock blockiert nur innerhalb von Safari, weil Safari die Regeln in seine eigene Engine kompiliert und andere Browser und Apps sie nie sehen. DNS-basiertes Blockieren für alle Apps ist geplant.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Filterlisten nutzt OpenBlock?&lt;/h3&gt;
+&lt;p&gt;AdGuard Base, Tracking, Social, Cookie und Popups, EasyList, EasyPrivacy und regionale Listen, dazu jede Listen-URL, die du hinzufügst. Die Listen können AdBlock-Syntax nutzen oder Hosts-Dateien sein.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Sammelt OpenBlock meine Daten?&lt;/h3&gt;
+&lt;p&gt;Laut README und Sicherheitsrichtlinie nein. Es gibt keine Telemetrie, Analytik oder Absturzberichte, und der einzige Netzwerkverkehr ist der Download der Filterlisten, die du eingeschaltet hast.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche macOS-Version braucht OpenBlock?&lt;/h3&gt;
+&lt;p&gt;macOS 15 Sequoia oder neuer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Warum warnt macOS mich beim Öffnen von OpenBlock?&lt;/h3&gt;
+&lt;p&gt;Der Release-Build ist mit einem Apple-Development-Zertifikat statt einer Developer ID signiert und nicht notarisiert. Öffne ihn mit „Dennoch öffnen“ in den Systemeinstellungen unter „Datenschutz &amp;amp; Sicherheit“. Signieren mit Developer ID und Notarisierung stehen auf der Roadmap des Projekts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Ist OpenBlock mit AdGuard verbunden?&lt;/h3&gt;
+&lt;p&gt;Nein. Es ist auf dieselbe Weise gebaut (Filterlisten, ein Konverter, Safari-Inhaltsblocker) und enthält die Open-Source-Bibliotheken Scriptlets und ExtendedCss von AdGuard, weshalb es unter der &lt;span class=&quot;nb&quot;&gt;GPL-3.0&lt;/span&gt; steht.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>RemoteDesk: ein Open-Source-Remotedesktop von Mac zu Mac für dein lokales Netzwerk</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/remotedesk/"/>
+    <id>https://hamou.de/de/articles/remotedesk/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>RemoteDesk teilt den Bildschirm eines Macs und lässt dich ihn von einem anderen Mac über dein lokales Netzwerk steuern. Es nimmt den Bildschirm mit ScreenCaptureKit auf, komprimiert ihn mit Hardware-H.264 und sendet ihn über TCP. Es hat weder Verschlüsselung noch Anmeldung und ist deshalb nur für vertrauenswürdige private Netze gedacht. Der Code ist offen unter der MIT-Lizenz.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-remotedesk&quot;&gt;Was ist RemoteDesk?&lt;/h2&gt;
+&lt;p&gt;RemoteDesk ist ein Open-Source-Remotedesktop für macOS, der zwischen zwei Macs im selben lokalen Netzwerk funktioniert. Ein Mac teilt seinen Bildschirm, der andere zeigt ihn an und schickt Maus, Tastatur, Scrollen und Zwischenablage zurück. Es ist in Swift geschrieben und nutzt nur Apples eigene Frameworks, keine Bibliotheken von Dritten.&lt;/p&gt;
+&lt;p&gt;Es ist ein fokussiertes Werkzeug: von Mac zu Mac, über ein lokales Netzwerk. Es ist kein Cloud-Dienst, es gibt kein Konto, und es ist nicht für das offene Internet gebaut. Lies den Abschnitt zur Sicherheit, bevor du es benutzt.&lt;/p&gt;
+&lt;h2 id=&quot;so-funktioniert-es&quot;&gt;So funktioniert es&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Der Host&lt;/strong&gt; ist der gesteuerte Mac. Er nimmt den Bildschirm mit ScreenCaptureKit auf, komprimiert ihn mit Hardware-H.264 über VideoToolbox und sendet ihn über einen TCP-Socket mit Längenpräfix. Maus- und Tastatureingaben aus der Ferne werden mit &lt;code&gt;CGEvent&lt;/code&gt; eingespielt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Der Client&lt;/strong&gt; ist der Mac, an dem du sitzt. Er dekodiert den H.264-Strom in Hardware, zeichnet ihn über einen &lt;code&gt;CALayer&lt;/code&gt; und erfasst Maus-, Tastatur-, Scroll- und Zwischenablage-Ereignisse.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Das README beschreibt ein eigenes binäres Protokoll ohne B-Frames und mit adaptiver Staukontrolle, ausgelegt auf niedrige Latenz. Die Architekturhinweise im Repository erklären das Protokoll und das Nebenläufigkeitsmodell.&lt;/p&gt;
+&lt;h2 id=&quot;was-es-kann&quot;&gt;Was es kann&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Vollständige Eingabeweiterleitung:&lt;/strong&gt; präzise Zeigerbewegung, Klicks mit der linken, rechten und mittleren Taste, pixelgenaues Scrollen in beiden Richtungen und Tastatureingaben.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vollbildmodus „Capture All Input“:&lt;/strong&gt; Im Vollbild gehen Systemkürzel wie Cmd+Tab, Cmd+Leertaste und Mission Control an den entfernten Mac statt an deinen eigenen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trackpad-Gesten und Spaces:&lt;/strong&gt; Im Vollbild wirken Spaces-Wischgesten, Mission Control, App Exposé und Zoomgesten auf den entfernten Mac, entsprechend deinen Trackpad-Einstellungen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;„Match Remote Resolution to This Screen“:&lt;/strong&gt; Der Host wechselt zu der Auflösung, die am besten zum Display des Clients passt, damit das Vollbild es ausfüllt, und stellt sie beim Trennen wieder her.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Saubere Ränder im Vollbild:&lt;/strong&gt; Das lokale Dock bleibt verborgen, und nur der obere Rand zeigt deine lokale Menüleiste und die Fensterknöpfe.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Text-Zwischenablage in beide Richtungen&lt;/strong&gt; mit Schleifenunterdrückung.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Erkennung ohne Konfiguration:&lt;/strong&gt; Hosts melden sich über Bonjour (&lt;code&gt;_remotedesk._tcp&lt;/code&gt;) in deinem WLAN oder Ethernet, oder du verbindest dich direkt per IP-Adresse.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;sicherheit-bitte-zuerst-lesen&quot;&gt;Sicherheit: bitte zuerst lesen&lt;/h2&gt;
+&lt;p&gt;RemoteDesk ist nur für vertrauenswürdige private lokale Netze gedacht, und sein README nennt die Grenzen klar:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Keine Verschlüsselung.&lt;/strong&gt; Der Verkehr läuft über einfaches TCP ohne TLS, Bildschirmbilder und eingetippte Tasten gehen also im Klartext durch dein Netzwerk.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Keine Authentifizierung.&lt;/strong&gt; Jedes Gerät im selben Netzwerk, das den Port des Hosts erreicht, bekommt volle Kontrolle.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zwischenablage wird verteilt.&lt;/strong&gt; Text, den du kopierst, wird automatisch an den verbundenen Mac gesendet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Betreibe es nie in unsicheren öffentlichen WLANs wie an Flughäfen, in Hotels oder Cafés. Um einen Mac über das Internet zu erreichen, leite den Verkehr durch einen verschlüsselten Kanal wie Tailscale, WireGuard oder SSH-Portweiterleitung. TLS mit einem vorab geteilten Schlüssel und eine PIN- oder Einmalpasswort-Abfrage am Host stehen auf der Roadmap, sind aber noch nicht in der App.&lt;/p&gt;
+&lt;h2 id=&quot;berechtigungen&quot;&gt;Berechtigungen&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Host:&lt;/strong&gt; Bildschirmaufnahme und Bedienungshilfen, beides in den Systemeinstellungen unter „Datenschutz &amp;amp; Sicherheit“. Starte RemoteDesk nach dem Erteilen der Bildschirmaufnahme neu.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Client:&lt;/strong&gt; Bedienungshilfen, und zwar nur für den Vollbildmodus „Capture All Input“.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;RemoteDesk braucht auf beiden Macs macOS 14 Sonoma oder neuer. Die App ist ein Universal Binary und läuft daher auf Apple Silicon und auf Intel. Lade das DMG vom neuesten Release auf GitHub herunter und ziehe RemoteDesk in den Ordner „Programme“. Das Release wird ohne bezahlte Apple Developer ID verteilt, deshalb kann macOS den ersten Start verweigern: Klicke die App bei gedrückter Control-Taste an, wähle „Öffnen“ und bestätige. Das README nennt außerdem eine Alternative im Terminal, die das Quarantäne-Attribut mit &lt;code&gt;xattr -cr&lt;/code&gt; entfernt.&lt;/p&gt;
+&lt;p&gt;Zum Selbstbauen brauchst du die Swift-Toolchain (Xcode oder die Command Line Tools). Klone das Repository und führe &lt;code&gt;./scripts/make-app.sh&lt;/code&gt; aus.&lt;/p&gt;
+&lt;h2 id=&quot;benutzung&quot;&gt;Benutzung&lt;/h2&gt;
+&lt;p&gt;Öffne RemoteDesk auf beiden Macs. Wähle auf dem Host-Mac &lt;strong&gt;Share This Mac&lt;/strong&gt; und erteile die Berechtigungsabfragen. Wähle auf dem Client-Mac &lt;strong&gt;Connect to a Mac&lt;/strong&gt;, nimm den Host aus der Bonjour-Liste oder gib seine lokale IP-Adresse ein (der Standardport ist 8790) und wähle &lt;strong&gt;Connect&lt;/strong&gt;. Das Host-Fenster blendet sich aus, solange ein Client verbunden ist; über das Dock-Symbol siehst du den Status oder trennst die Verbindung.&lt;/p&gt;
+&lt;p&gt;Kürzel am Client: Ctrl+Cmd+F schaltet den Vollbildmodus um, Ctrl+Opt+Cmd+G schaltet die Eingabeerfassung ein oder aus, und Ctrl+Opt+Cmd+Q trennt sofort und wird nie an den Host weitergeleitet.&lt;/p&gt;
+&lt;p&gt;RemoteDesk lässt sich auch über die Kommandozeile starten, einschließlich eines Hosts ohne Fenster mit &lt;code&gt;--host --no-ui&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;open-source&quot;&gt;Open Source&lt;/h2&gt;
+&lt;p&gt;RemoteDesk steht unter der MIT-Lizenz. Emad Alhamou, der Autor dieser Website, veröffentlicht es auf &lt;a href=&quot;https://github.com/Alhamou/RemoteDesk&quot;&gt;GitHub&lt;/a&gt;. Die Roadmap nennt TLS-Verschlüsselung, eine PIN- oder Einmalpasswort-Abfrage, Audio-Streaming und die Auswahl mehrerer Monitore. Fehlerberichte und Pull Requests sind willkommen.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist RemoteDesk?&lt;/h3&gt;
+&lt;p&gt;RemoteDesk ist ein Open-Source-Remotedesktop für macOS. Er teilt den Bildschirm eines Macs und lässt dich ihn von einem anderen Mac im selben lokalen Netzwerk steuern, mit Hardware-H.264-Streaming und vollständiger Eingabeweiterleitung.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Ist RemoteDesk sicher?&lt;/h3&gt;
+&lt;p&gt;Nur in einem vertrauenswürdigen privaten Netzwerk. Es sendet den Verkehr über einfaches TCP ohne Verschlüsselung und hat keine Anmeldung: Jedes Gerät im Netzwerk, das den Port des Hosts erreicht, bekommt volle Kontrolle. Nutze es nicht in öffentlichen WLANs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Kann ich RemoteDesk über das Internet nutzen?&lt;/h3&gt;
+&lt;p&gt;Nicht direkt. Laut README leitest du den Verkehr durch einen verschlüsselten Kanal wie Tailscale, WireGuard oder SSH-Portweiterleitung und setzt es nie in unsicheren Netzen aus.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Macs und macOS-Versionen werden unterstützt?&lt;/h3&gt;
+&lt;p&gt;macOS 14 Sonoma oder neuer auf Host und Client. Die App ist ein Universal Binary für Apple Silicon und Intel.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Berechtigungen braucht RemoteDesk?&lt;/h3&gt;
+&lt;p&gt;Der Host braucht Bildschirmaufnahme und Bedienungshilfen. Der Client braucht Bedienungshilfen nur für den Vollbildmodus „Capture All Input“.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wie verbinde ich zwei Macs?&lt;/h3&gt;
+&lt;p&gt;Öffne RemoteDesk auf beiden. Wähle am Host „Share This Mac“. Wähle am Client „Connect to a Mac“, nimm den Host aus der Bonjour-Liste oder gib seine lokale IP-Adresse ein und wähle „Connect“.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was kann RemoteDesk noch nicht?&lt;/h3&gt;
+&lt;p&gt;Es verschlüsselt den Verkehr nicht und fragt keine PIN ab. Audio-Streaming und die Auswahl mehrerer Monitore stehen ebenfalls auf der Roadmap. Der Zwischenablage-Abgleich umfasst nur Text.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Warum warnt macOS mich beim Öffnen von RemoteDesk?&lt;/h3&gt;
+&lt;p&gt;Das Release wird ohne bezahltes Apple-Developer-ID-Zertifikat verteilt. Klicke die App bei gedrückter Control-Taste an und wähle „Öffnen“, oder entferne das Quarantäne-Attribut mit &lt;code&gt;xattr -cr&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>pinFiy: farbige Haftnotizen für den Mac, mit einer kleinen Pinnnadel in der Menüleiste</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/pinfiy/"/>
+    <id>https://hamou.de/de/articles/pinfiy/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>pinFiy gibt deinem Mac farbige Haftnotizen, die hinter einer kleinen Pinnnadel in der Menüleiste wohnen. Jede Notiz ist ein eigenes Fenster, arabischer Text läuft von rechts nach links und englischer von links nach rechts, und eine angeheftete Notiz bleibt über deinen anderen Fenstern. Es gibt kein Konto, keine Cloud-Synchronisation und keinen Netzwerkzugriff. Der Code ist offen unter der MIT-Lizenz.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-pinfiy&quot;&gt;Was ist pinFiy?&lt;/h2&gt;
+&lt;p&gt;pinFiy ist eine Open-Source-Haftnotizen-App für macOS. Jede Notiz ist ein eigenes farbiges Fenster. Die App selbst ist eine kleine Pinnnadel in der Menüleiste und erscheint nicht im Dock, sie bleibt also aus dem Weg, bis du eine Notiz brauchst.&lt;/p&gt;
+&lt;p&gt;Sie behandelt Arabisch und Englisch gleichberechtigt nebeneinander. Die Schreibrichtung folgt dem ersten starken Zeichen deines Textes: Arabisch läuft von rechts nach links und Englisch von links nach rechts, in derselben App und sogar auf benachbarten Notizen.&lt;/p&gt;
+&lt;h2 id=&quot;was-es-kann&quot;&gt;Was es kann&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ein Fenster pro Notiz,&lt;/strong&gt; sodass du jede Notiz dorthin legen kannst, wo du sie brauchst.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;„Pin“ hält eine Notiz im Vordergrund.&lt;/strong&gt; Eine angeheftete Notiz bleibt über normalen Fenstern und verdeckt die Menüleiste nicht. Die Ecke der Nadel folgt der Textrichtung: rechts für Arabisch, links für Englisch.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zwanzig Farben:&lt;/strong&gt; zehn helle und zehn dunkle. Standard ist ein warmes Bernstein (&lt;code&gt;#F3C15B&lt;/code&gt;). Dunkler Text steht auf hellen Farben und heller Text auf dunklen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Schriftgröße von 12 bis 36&lt;/strong&gt; für jede Notiz, und in den Einstellungen für neue Notizen oder für alle Notizen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Eine Notiz sperren,&lt;/strong&gt; um Änderungen an Text, Farbe, Größe und Position zu blockieren und das Schließen zu verhindern.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ein Sicherheitsnetz:&lt;/strong&gt; Beim Schließen einer Notiz mit Text wird zuerst nachgefragt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Beim Anmelden öffnen,&lt;/strong&gt; über die Einstellungen oder das Nadelmenü.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;wo-deine-notizen-liegen&quot;&gt;Wo deine Notizen liegen&lt;/h2&gt;
+&lt;p&gt;Die Notizen liegen auf deinem Mac, in &lt;code&gt;~/Library/Application Support/pinFiy/notes.json&lt;/code&gt;, mit einer Sicherungsdatei. Laut README gibt es kein Konto, keine Cloud-Synchronisation und keinen Netzwerkzugriff. Das Repository enthält eine Datenschutzerklärung und eine Sicherheitsrichtlinie.&lt;/p&gt;
+&lt;h2 id=&quot;kuerzel&quot;&gt;Kürzel&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Neue Notiz:&lt;/strong&gt; die Plus-Schaltfläche, &lt;code&gt;⌘N&lt;/code&gt; oder das Nadelmenü.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Notiz schließen:&lt;/strong&gt; die Schließen-Schaltfläche oder &lt;code&gt;⌘W&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Über Fenstern halten:&lt;/strong&gt; die Pin-Schaltfläche oder &lt;code&gt;⌘P&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Einstellungen:&lt;/strong&gt; &lt;code&gt;⌘,&lt;/code&gt; oder das Nadelmenü.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Beenden:&lt;/strong&gt; &lt;code&gt;⌘Q&lt;/code&gt; oder das Nadelmenü.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;pinFiy braucht macOS 13 oder neuer und Swift 5.9 oder neuer, das die mit Xcode gelieferte Toolchain enthält. Klone das Repository von GitHub, führe &lt;code&gt;swift test&lt;/code&gt; und dann &lt;code&gt;./scripts/build-app.sh&lt;/code&gt; aus und öffne &lt;code&gt;PinFiy.app&lt;/code&gt;. Das Skript signiert die App ad hoc. Das ist keine Apple-Developer-Signatur und kein App-Store-Release.&lt;/p&gt;
+&lt;h2 id=&quot;open-source&quot;&gt;Open Source&lt;/h2&gt;
+&lt;p&gt;pinFiy steht unter der MIT-Lizenz. Der Code ist aufgeteilt in eine Kernbibliothek für Modell und Speicherung, ohne AppKit, und ein App-Target für die Notizfenster und die Menüleiste. Der Kern hat XCTest-Tests.&lt;/p&gt;
+&lt;p&gt;Emad Alhamou, der Autor dieser Website, veröffentlicht pinFiy auf &lt;a href=&quot;https://github.com/Alhamou/pinFiy&quot;&gt;GitHub&lt;/a&gt;. Das Repository enthält Hinweise zum Mitwirken und einen Verhaltenskodex, und Sicherheitsprobleme werden vertraulich gemeldet, wie es die Sicherheitsrichtlinie beschreibt.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist pinFiy?&lt;/h3&gt;
+&lt;p&gt;pinFiy ist eine Open-Source-Haftnotizen-App für macOS. Sie gibt dir farbige Notizen, jede in einem eigenen Fenster, gesteuert über eine kleine Pinnnadel in der Menüleiste.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Unterstützt pinFiy Arabisch und Text von rechts nach links?&lt;/h3&gt;
+&lt;p&gt;Ja. Die Schreibrichtung folgt dem ersten starken Zeichen: Arabisch läuft von rechts nach links und Englisch von links nach rechts. Die Nadelecke einer Notiz folgt der Richtung ebenfalls.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was macht „Pin“?&lt;/h3&gt;
+&lt;p&gt;„Pin“ hält eine Notiz über normalen Fenstern, ohne die Menüleiste zu verdecken. Nutze die Pin-Schaltfläche der Notiz oder drücke &lt;code&gt;⌘P&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wo werden meine Notizen gespeichert, und nutzt pinFiy das Netzwerk?&lt;/h3&gt;
+&lt;p&gt;Die Notizen liegen lokal in &lt;code&gt;~/Library/Application Support/pinFiy/notes.json&lt;/code&gt;, mit einer Sicherung. Laut README gibt es kein Konto, keine Cloud-Synchronisation und keinen Netzwerkzugriff.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was bewirkt das Sperren einer Notiz?&lt;/h3&gt;
+&lt;p&gt;Eine gesperrte Notiz lässt sich nicht bearbeiten, umfärben, in der Größe ändern oder verschieben und nicht schließen, bis du sie entsperrst.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche macOS-Version braucht pinFiy?&lt;/h3&gt;
+&lt;p&gt;macOS 13 oder neuer. Zum Bauen braucht es Swift 5.9 oder neuer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wie installiere ich pinFiy?&lt;/h3&gt;
+&lt;p&gt;Klone das Repository, führe &lt;code&gt;swift test&lt;/code&gt; und &lt;code&gt;./scripts/build-app.sh&lt;/code&gt; aus und öffne dann &lt;code&gt;PinFiy.app&lt;/code&gt;. Der Build ist ad hoc signiert, nicht mit einem Apple-Developer-Zertifikat.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Kann ich Schriftgröße und Farben ändern?&lt;/h3&gt;
+&lt;p&gt;Ja. Jede Notiz hat Farbfelder und Schaltflächen für die Schriftgröße, von 12 bis 36. In den Einstellungen legst du die Größe für neue Notizen oder für alle Notizen fest.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>closeAll: jede Dock-App mit einer Schaltfläche in der Menüleiste auf dem Mac sofort beenden</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/closeall/"/>
+    <id>https://hamou.de/de/articles/closeall/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>closeAll beendet jede normale Dock-App mit einer Schaltfläche in der Menüleiste sofort. Du prüfst zuerst die Liste, entfernst das Häkchen bei allem, was offen bleiben soll, und drückst „Force Quit“. Das sofortige Beenden fordert Apps nicht zum Sichern auf, nicht gesicherte Arbeit geht also verloren. Der Code ist offen unter der MIT-Lizenz.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-closeall&quot;&gt;Was ist closeAll?&lt;/h2&gt;
+&lt;p&gt;closeAll ist eine kleine Open-Source-Menüleisten-App für macOS mit einer einzigen Aufgabe: alle laufenden normalen Apps auf einen Schlag zu schließen. Ihr Symbol in der Menüleiste ist ein kleiner Stapel von Fenstern. Klicke darauf, prüfe die Liste und drücke dann &lt;strong&gt;Force Quit&lt;/strong&gt;. Die angehakten Apps werden per „Sofort beenden“ geschlossen.&lt;/p&gt;
+&lt;p&gt;Lies das einmal, bevor du es benutzt: „Sofort beenden“ fordert eine App nicht zum Sichern auf. Nicht gesicherte Arbeit in den geschlossenen Apps geht verloren.&lt;/p&gt;
+&lt;h2 id=&quot;so-benutzt-du-es&quot;&gt;So benutzt du es&lt;/h2&gt;
+&lt;p&gt;1. Klicke oben am Bildschirm auf das Symbol mit dem Fensterstapel. 2. Lass bei jeder App, die geschlossen werden soll, das Häkchen stehen. Entferne es, damit eine App offen bleibt; closeAll merkt sich diese Wahl. 3. Hake unter &lt;strong&gt;Background apps&lt;/strong&gt; jede Menüleisten-App an, die ebenfalls geschlossen werden soll. 4. Drücke &lt;strong&gt;Force Quit&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Jede Zeile zeigt das eigene Symbol der App, sodass du sie erkennst, bevor sie sich schließt. Schließe oder entferne zuerst das Häkchen bei allem, was nicht gesicherte Arbeit enthält.&lt;/p&gt;
+&lt;h2 id=&quot;was-geschlossen-wird&quot;&gt;Was geschlossen wird&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Jede normale Anwendung,&lt;/strong&gt; also die Art, die du sonst im Dock mit der rechten Maustaste anklickst und beendest. Editoren, Browser und Chat-Apps gehören dazu, entferne also das Häkchen bei denen, die du behalten willst.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hintergrund-Apps, die du anhakst.&lt;/strong&gt; Der Bereich „Background apps“ listet Menüleisten-Apps, die du in &lt;code&gt;/Applications&lt;/code&gt; oder &lt;code&gt;~/Applications&lt;/code&gt; installiert hast, etwa einen Zwischenablage-Manager oder einen VPN-Client. Sie sind zunächst nicht angehakt, dort wird also nichts geschlossen, solange du es nicht anhakst.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;closeAll prüft, ob jede App wirklich beendet wurde. Überlebt eine App das sofortige Beenden oder kommt sie gleich zurück, sendet closeAll ein hartes Kill (SIGKILL), bis zu dreimal. Jede App, die sich trotzdem nicht schließen ließ, wird in Rot genannt.&lt;/p&gt;
+&lt;h2 id=&quot;was-offen-bleibt&quot;&gt;Was offen bleibt&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Finder,&lt;/strong&gt; damit der Schreibtisch stehen bleibt, und &lt;strong&gt;closeAll&lt;/strong&gt; selbst, damit die Schaltfläche noch da ist.&lt;/li&gt;
+&lt;li&gt;Das Dock, das Kontrollzentrum, WindowServer und die anderen Prozesse, die deine Anmeldesitzung am Leben halten.&lt;/li&gt;
+&lt;li&gt;Jede App, bei der du das Häkchen entfernst, und Hintergrund-Apps, die du nicht angehakt hast.&lt;/li&gt;
+&lt;li&gt;Apples eigene Menüleisten-Agenten, Helfer innerhalb einer anderen App, Updater in Library-Ordnern und Prozesse ohne Fenster oder Menü werden gar nicht aufgelistet. Sie schließen sich meist zusammen mit ihrer Eltern-App.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;datenschutz-und-berechtigungen&quot;&gt;Datenschutz und Berechtigungen&lt;/h2&gt;
+&lt;p&gt;closeAll läuft nicht in der Sandbox, weil die App Sandbox es daran hindern würde, andere Anwendungen zu beenden. Laut README nutzt es das Netzwerk nicht und sammelt keine Analysedaten. Deine Behalten-Liste liegt nur in deinen lokalen Einstellungen.&lt;/p&gt;
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;closeAll braucht macOS 14 oder neuer. Die App, die &lt;code&gt;make app&lt;/code&gt; auf einem Apple-Silicon-Mac baut, ist eine Apple-Silicon-App. Klone das Repository von GitHub, führe &lt;code&gt;make app&lt;/code&gt; aus und öffne &lt;code&gt;build/closeAll.app&lt;/code&gt;. Kopiere sie nach &lt;code&gt;/Applications&lt;/code&gt;, wenn sie installiert bleiben soll. Sie zeigt kein Dock-Symbol.&lt;/p&gt;
+&lt;p&gt;Der Build ist ad hoc signiert, damit er auf deinem Mac starten kann, und nicht notarisiert. Blockiert macOS den ersten Start, klicke &lt;code&gt;closeAll.app&lt;/code&gt; bei gedrückter Control-Taste an, wähle „Öffnen“ und bestätige. Damit sie beim Anmelden startet, füge sie in den Systemeinstellungen unter „Allgemein“ zu den Anmeldeobjekten hinzu. Zum Beenden öffnest du das Fenster und wählst „Quit closeAll“.&lt;/p&gt;
+&lt;h2 id=&quot;den-plan-pruefen-ohne-etwas-zu-schliessen&quot;&gt;Den Plan prüfen, ohne etwas zu schließen&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;swift run closeAll -- --dry-run&lt;/code&gt; gibt den Beenden-Plan als JSON aus und endet, ohne eine App zu schließen. &lt;code&gt;make check&lt;/code&gt; führt die Unit-Tests aus und gibt dann den aktuellen Plan aus, und es schlägt fehl, wenn der Plan den Finder, closeAll selbst oder einen anderen Sitzungsprozess enthält.&lt;/p&gt;
+&lt;h2 id=&quot;open-source&quot;&gt;Open Source&lt;/h2&gt;
+&lt;p&gt;closeAll steht unter der MIT-Lizenz. Die Beenden-Regeln liegen in einem eigenen Kernmodul ohne AppKit, abgedeckt durch Unit-Tests, und die Menüleisten-App ist darauf aufgebaut. Das Repository hat außerdem ein arabisches README.&lt;/p&gt;
+&lt;p&gt;Emad Alhamou, der Autor dieser Website, veröffentlicht closeAll auf &lt;a href=&quot;https://github.com/Alhamou/closeAll&quot;&gt;GitHub&lt;/a&gt;. Hinweise zum Mitwirken, ein Verhaltenskodex und eine Sicherheitsrichtlinie liegen im Repository.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist closeAll?&lt;/h3&gt;
+&lt;p&gt;closeAll ist eine Open-Source-Menüleisten-App für macOS, die jede normale Dock-App mit einer Schaltfläche sofort beendet, nachdem du die Liste geprüft und bei allem, was offen bleiben soll, das Häkchen entfernt hast.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Verliere ich nicht gesicherte Arbeit?&lt;/h3&gt;
+&lt;p&gt;Ja. „Sofort beenden“ fordert Apps nicht zum Sichern auf. Schließe oder entferne das Häkchen bei allem mit nicht gesicherter Arbeit, bevor du die Schaltfläche drückst.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Apps schließt closeAll, und welche bleiben offen?&lt;/h3&gt;
+&lt;p&gt;Es schließt jede normale Anwendung, die macOS im Dock zeigt, dazu die Hintergrund-Menüleisten-Apps, die du anhakst. Finder, closeAll selbst, das Dock, das Kontrollzentrum, WindowServer und andere Sitzungsprozesse bleiben immer offen, ebenso jede App, bei der du das Häkchen entfernst.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Kann ich einzelne Apps offen lassen?&lt;/h3&gt;
+&lt;p&gt;Ja. Entferne in der Liste das Häkchen bei einer App, dann lässt closeAll sie offen und merkt sich die Wahl.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Schließt es Menüleisten-Apps wie einen VPN-Client?&lt;/h3&gt;
+&lt;p&gt;Nur wenn du sie anhakst. Der Bereich „Background apps“ listet Menüleisten-Apps aus &lt;code&gt;/Applications&lt;/code&gt; und &lt;code&gt;~/Applications&lt;/code&gt;, und sie sind zunächst nicht angehakt.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was, wenn eine App sich nicht beenden lässt?&lt;/h3&gt;
+&lt;p&gt;closeAll prüft, ob jede App wirklich beendet wurde. Überlebt eine App oder kommt sie sofort zurück, sendet es ein hartes Kill (SIGKILL), bis zu dreimal, und nennt jede App, die sich trotzdem nicht schließen ließ, in Rot.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Nutzt closeAll das Netzwerk oder sammelt es Daten?&lt;/h3&gt;
+&lt;p&gt;Laut README nein. Es läuft nicht in der Sandbox, nutzt das Netzwerk nicht und sammelt keine Analysedaten. Deine Behalten-Liste bleibt in den lokalen Einstellungen.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Macs und macOS-Versionen werden unterstützt?&lt;/h3&gt;
+&lt;p&gt;macOS 14 oder neuer. Die App, die &lt;code&gt;make app&lt;/code&gt; auf einem Apple-Silicon-Mac baut, ist eine Apple-Silicon-App.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>SafeShare: private Apps beim Teilen deines Mac-Bildschirms in Teams, Zoom oder Meet verbergen</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/safeshare/"/>
+    <id>https://hamou.de/de/articles/safeshare/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>SafeShare löst ein Dilemma beim Bildschirmteilen: den ganzen Bildschirm teilen und private Chats und Benachrichtigungen riskieren, oder ein Fenster teilen und auf Multitasking verzichten. Es baut ein gefiltertes Safe-View-Fenster, das die von dir geschützten Apps auslässt. Dieses Fenster teilst du in Teams, Zoom oder Meet, und auf deinem echten Desktop arbeitest du weiter. Der Code ist offen unter der MIT-Lizenz.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-safeshare&quot;&gt;Was ist SafeShare?&lt;/h2&gt;
+&lt;p&gt;SafeShare (auch ScreenGuard genannt) ist ein Open-Source-Dienstprogramm für macOS für alle, die ihren Desktop in Remote-Meetings zeigen. Es verbirgt die Apps und Fenster, die du als privat markierst, vor dem, was das Meeting sieht, während du auf deinem echten Bildschirm ganz normal weiterarbeitest.&lt;/p&gt;
+&lt;h2 id=&quot;das-problem-das-es-loest&quot;&gt;Das Problem, das es löst&lt;/h2&gt;
+&lt;p&gt;Wenn du von einem Mac aus präsentierst, hat jede der eingebauten Möglichkeiten ihren Preis. Teilst du den ganzen Bildschirm, können ein privater Chat, ein Passwortmanager, ein Posteingang oder eine Benachrichtigung ins Meeting gelangen. Teilst du ein einzelnes Anwendungsfenster, kannst du nicht mehr zwischen Apps wechseln oder einen Ablauf zeigen, der mehrere Apps durchquert.&lt;/p&gt;
+&lt;h2 id=&quot;so-funktioniert-es&quot;&gt;So funktioniert es&lt;/h2&gt;
+&lt;p&gt;SafeShare ergänzt eine dritte Möglichkeit, eine gefilterte Vorschau namens &lt;strong&gt;Safe View&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;1. Es nimmt deinen Bildschirm mit Apples ScreenCaptureKit auf. 2. Es entfernt mit einem Inhaltsfilter die Apps und Fenster, die du schützt, aus dieser Aufnahme. 3. Es zeigt den bereinigten Desktop in einem eigenen Fenster, Safe View. 4. In Teams, Zoom oder Google Meet teilst du das Safe-View-Fenster statt deines Bildschirms.&lt;/p&gt;
+&lt;p&gt;Du siehst auf deinem echten Desktop alles. Die Teilnehmenden sehen nur, was du erlaubst.&lt;/p&gt;
+&lt;h2 id=&quot;mit-teams-zoom-oder-meet-nutzen&quot;&gt;Mit Teams, Zoom oder Meet nutzen&lt;/h2&gt;
+&lt;p&gt;Öffne zuerst SafeShare über das Schild-Symbol in der Menüleiste, markiere die sensiblen Apps als geschützt und wähle „Start Safe View“ (solange das SafeShare-Fenster offen ist, schaltet &lt;code&gt;⌘⇧S&lt;/code&gt; es um). Dann in deiner Meeting-App (die Beschriftungen stehen hier wie im README auf Englisch und heißen in deutscher Oberfläche etwas anders):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Microsoft Teams:&lt;/strong&gt; Wähle „Share“, dann unter „Window“ die Option „SafeShare — Safe View“.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zoom:&lt;/strong&gt; Wähle „Share Screen“, nimm in der Liste das Fenster „SafeShare — Safe View“ und wähle „Share“.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Google Meet:&lt;/strong&gt; Wähle „Present now“, dann „A window“, und nimm „SafeShare — Safe View“.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Teilst du statt des Safe-View-Fensters deinen ganzen Bildschirm, wird nichts gefiltert. Wähle also immer das Fenster.&lt;/p&gt;
+&lt;h2 id=&quot;das-safe-view-fenster-gross-halten&quot;&gt;Das Safe-View-Fenster groß halten&lt;/h2&gt;
+&lt;p&gt;Meeting-Apps teilen ein Fenster in seiner Größe auf dem Bildschirm, ein in eine Ecke geschrumpftes Safe-View-Fenster ist für die Teilnehmenden daher unlesbar. Laut README sperrt SafeShare das Fenster auf das Seitenverhältnis des Displays, geht nicht unter die halbe Displaygröße und zeigt beim Verkleinern einen Hinweis mit der genauen Auflösung, die die Zuschauenden erhalten. Die Schaltfläche „Send to Back“ im Menü legt das Fenster in voller Größe hinter deine Arbeit, und der Strom läuft weiter, solange das Fenster verdeckt ist.&lt;/p&gt;
+&lt;h2 id=&quot;was-es-kann&quot;&gt;Was es kann&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Schutz mit einem Klick:&lt;/strong&gt; Schalte jede laufende App in der Menüleiste auf geschützt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Steuerung pro Fenster und Instanz:&lt;/strong&gt; Gruppiere Apps mit mehreren Fenstern, etwa einen Browser oder ein Terminal, und setze jedes Fenster auf „Visible“, „Protected“ oder „Inherit“.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fail-closed-Abdunkelung:&lt;/strong&gt; Der Strom wird bei Bildschirmsperre, Ruhezustand oder einer Änderung der Berechtigungen leer, sodass kein Bild durchsickert.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mehrere Displays:&lt;/strong&gt; Wähle, welches physische Display aufgenommen wird.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stromqualität:&lt;/strong&gt; Wechsle zwischen 15, 30 und 60 Bildern pro Sekunde, ohne den Strom neu zu starten.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Benachrichtigungen automatisch ausblenden:&lt;/strong&gt; Banner der Mitteilungszentrale bleiben aus dem Strom heraus.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Beim Anmelden starten, VoiceOver-Beschriftungen und Tastenkürzel.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;datenschutz-und-berechtigungen&quot;&gt;Datenschutz und Berechtigungen&lt;/h2&gt;
+&lt;p&gt;SafeShare braucht eine einzige Berechtigung, den üblichen Zugriff auf Bildschirm- und Systemaudioaufnahme, ohne Root-Rechte und ohne Kernel-Erweiterungen. Laut README speichert es keine Videobilder oder Fenstertitel auf dem Datenträger, hat keine Telemetrie und macht keine Netzwerkaufrufe. Das Repository enthält eine Sicherheitsrichtlinie mit den Einzelheiten.&lt;/p&gt;
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;SafeShare braucht macOS 14 Sonoma oder neuer. Lade das DMG vom neuesten Release auf GitHub herunter, öffne es und ziehe SafeShare in den Ordner „Programme“. Zum Selbstbauen brauchst du Xcode 15 oder neuer: Klone das Repository, führe &lt;code&gt;swift test&lt;/code&gt; und dann &lt;code&gt;./scripts/build_app.sh&lt;/code&gt; aus, und &lt;code&gt;./scripts/package_dmg.sh&lt;/code&gt;, wenn du ein DMG willst.&lt;/p&gt;
+&lt;h2 id=&quot;open-source&quot;&gt;Open Source&lt;/h2&gt;
+&lt;p&gt;SafeShare steht unter der MIT-Lizenz. Emad Alhamou, der Autor dieser Website, veröffentlicht es auf &lt;a href=&quot;https://github.com/Alhamou/SafeShare&quot;&gt;GitHub&lt;/a&gt;. Das Repository hat einen Continuous-Integration-Workflow. Fehlerberichte und Pull Requests sind willkommen.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist SafeShare?&lt;/h3&gt;
+&lt;p&gt;SafeShare ist ein Open-Source-Dienstprogramm für macOS, das private Apps und Fenster verbirgt, während du deinen Bildschirm in Teams, Zoom oder Google Meet teilst. Es tut das über ein gefiltertes Vorschaufenster namens Safe View.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wie verbirgt SafeShare Apps beim Bildschirmteilen?&lt;/h3&gt;
+&lt;p&gt;Es nimmt deinen Bildschirm mit ScreenCaptureKit auf, filtert die Apps und Fenster heraus, die du als geschützt markiert hast, und zeigt das Ergebnis im Safe-View-Fenster. Dieses Fenster teilst du in deiner Meeting-App statt deines ganzen Bildschirms.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Funktioniert es mit Teams, Zoom und Google Meet?&lt;/h3&gt;
+&lt;p&gt;Ja. In jedem davon teilst du das Fenster „SafeShare — Safe View“: in Teams über „Share“ und „Window“, in Zoom über „Share Screen“ und in Google Meet über „Present now“ und „A window“.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was, wenn ich meinen ganzen Bildschirm statt des Safe-View-Fensters teile?&lt;/h3&gt;
+&lt;p&gt;Dann wird nichts gefiltert, und die Teilnehmenden sehen alles. Der Schutz gilt nur für das, was im Safe-View-Fenster erscheint. Wähle in deiner Meeting-App also immer dieses Fenster.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Warum sollte das Safe-View-Fenster groß bleiben?&lt;/h3&gt;
+&lt;p&gt;Meeting-Apps teilen ein Fenster in seiner Größe auf dem Bildschirm, ein winziges Fenster ist daher schwer lesbar. SafeShare behält das Seitenverhältnis des Displays, geht nicht unter die halbe Displaygröße und hat eine Schaltfläche „Send to Back“, die das Fenster in voller Größe aus dem Weg räumt.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Berechtigung braucht SafeShare, und sendet es Daten irgendwohin?&lt;/h3&gt;
+&lt;p&gt;Es braucht den Zugriff auf Bildschirm- und Systemaudioaufnahme. Laut README hat es keine Telemetrie, macht keine Netzwerkaufrufe und speichert keine Videobilder oder Fenstertitel auf dem Datenträger.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was passiert, wenn der Bildschirm gesperrt wird oder der Mac in den Ruhezustand geht?&lt;/h3&gt;
+&lt;p&gt;Der Strom wird bei Bildschirmsperre, Ruhezustand und Änderungen der Berechtigungen leer, was das README Fail-closed-Abdunkelung nennt. Banner der Mitteilungszentrale bleiben ebenfalls aus dem Strom heraus.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche macOS-Version braucht SafeShare?&lt;/h3&gt;
+&lt;p&gt;macOS 14 Sonoma oder neuer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>TopMovies: eine native Mac-App zum Entdecken von Filmen und Serien, mit lokaler Bibliothek</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/topmovies/"/>
+    <id>https://hamou.de/de/articles/topmovies/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>TopMovies hilft dir zu entscheiden, was du auf deinem Mac schauen willst. Es bietet kuratierte Entdeckungs-Feeds wie „For You“, „Tonight“ und „Hidden Gems“, Filter nach Typ, Land, Jahr, Bewertung und Laufzeit sowie eine lokale Bibliothek für Favoriten, eine Merkliste und deine eigenen Bewertungen. Es funktioniert offline in einem Demo-Modus und verbindet sich mit TMDB für echte Daten. Es ist mit SwiftUI gebaut und offen unter der MIT-Lizenz.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-topmovies&quot;&gt;Was ist TopMovies?&lt;/h2&gt;
+&lt;p&gt;TopMovies ist eine native macOS-App zum Entdecken von Filmen und Serien, gebaut mit SwiftUI und Swift 6. Das README beschreibt sie als datenschutzorientiert: Deine Bibliothek bleibt auf deinem Mac, es gibt keine Abhängigkeiten von Dritten, und sie läuft in der Sandbox. Sie hat kuratierte Feeds, tiefe Filter, eine lokale Bibliothek und einen vollständigen Offline-Demo-Modus.&lt;/p&gt;
+&lt;h2 id=&quot;entdeckungs-feeds&quot;&gt;Entdeckungs-Feeds&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Discover:&lt;/strong&gt; Stöbere in weltweiten Katalogen über die großen Film- und Fernsehgenres.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For You:&lt;/strong&gt; deterministische Empfehlungen anhand deiner Lieblingsgenres und Bewertungen, ohne KI- oder Machine-Learning-Tracking.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tonight:&lt;/strong&gt; eine zeitbegrenzte Auswahl, standardmäßig 120 Minuten, die Titel auslässt, die du schon gesehen hast.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hidden Gems:&lt;/strong&gt; hoch bewertete Titel mit moderater Stimmenzahl.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trending und Best New Releases:&lt;/strong&gt; was täglich und wöchentlich Aufmerksamkeit bekommt, mit verifizierter Zuschauerbeteiligung.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;filter&quot;&gt;Filter&lt;/h2&gt;
+&lt;p&gt;Filtere nach Medientyp (All, Movies oder TV Shows), nach Originalsprache und regionalen Gruppierungen, nach Zeitraum, Jahr oder Jahrzehnt der Veröffentlichung sowie nach Mindestbewertung, Stimmenschwelle und Laufzeitgrenze. Die Inhaltsfilterung ist zurückhaltend: Explizite und nur für Erwachsene bestimmte Titel sind standardmäßig gesperrt.&lt;/p&gt;
+&lt;h2 id=&quot;deine-bibliothek-bleibt-auf-deinem-mac&quot;&gt;Deine Bibliothek bleibt auf deinem Mac&lt;/h2&gt;
+&lt;p&gt;Favoriten, die Merkliste (Watchlist), gesehene Titel und deine persönlichen Bewertungen von 1 bis 10 Sternen werden lokal gespeichert. Die App läuft in der macOS-App-Sandbox, und dein TMDB-Token liegt im macOS-Schlüsselbund, nicht in einer Datei.&lt;/p&gt;
+&lt;h2 id=&quot;demo-modus-und-verbindung-mit-tmdb&quot;&gt;Demo-Modus und Verbindung mit TMDB&lt;/h2&gt;
+&lt;p&gt;TopMovies funktioniert sofort mit einem anschaulichen Offline-Katalog: erzeugte Plakatgrafiken, fiktive Handlungen, Besetzungen und Bewertungen. Um echte Filme und Serien zu sehen, verbindest du es mit TMDB, The Movie Database:&lt;/p&gt;
+&lt;p&gt;1. Lege ein TMDB-Konto an und beantrage in deinen Kontoeinstellungen einen API-Schlüssel für die nichtkommerzielle Nutzung. 2. Kopiere das API Read Access Token (das lange v4-Token, nicht den kurzen API-Schlüssel). 3. Öffne in TopMovies mit &lt;code&gt;⌘,&lt;/code&gt; die „Settings &amp;amp; Sources“, füge das Token ein und wähle „Save &amp;amp; Connect“.&lt;/p&gt;
+&lt;p&gt;Entfernst du das Token, kehrt die App in den Demo-Modus zurück, ohne deine lokale Bibliothek oder Einstellungen zu löschen. TopMovies nutzt die TMDB-API, wird von TMDB aber weder unterstützt noch zertifiziert.&lt;/p&gt;
+&lt;h2 id=&quot;inhaltsfilterung&quot;&gt;Inhaltsfilterung&lt;/h2&gt;
+&lt;p&gt;Laut README sind explizite und nur für Erwachsene bestimmte Titel, &lt;span class=&quot;nb&quot;&gt;NC-17&lt;/span&gt; und TV-MA standardmäßig ausgeschlossen, und Titel mit R-Einstufung bleiben verborgen, bis du sie in den Inhaltseinstellungen aktivierst.&lt;/p&gt;
+&lt;h2 id=&quot;kuerzel&quot;&gt;Kürzel&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;⌘F&lt;/code&gt; fokussiert die Suchleiste und &lt;code&gt;⌘R&lt;/code&gt; aktualisiert Katalog und Feeds.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;⇧⌘F&lt;/code&gt; blendet das Filterfeld ein oder aus und &lt;code&gt;⇧⌘0&lt;/code&gt; setzt alle Filter zurück.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;⌘,&lt;/code&gt; öffnet „Settings &amp;amp; Sources“, und Escape schließt ein Detail- oder Einstellungsblatt.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;TopMovies braucht macOS 14 Sonoma oder neuer, auf Apple Silicon oder Intel. Das README verweist auf einen vorgebauten Review-Build im Repository, oder du baust es aus dem Quellcode: Klone das Repository, führe &lt;code&gt;swift test&lt;/code&gt; und dann &lt;code&gt;./scripts/run-mac.sh&lt;/code&gt; aus, das ein Release baut, lokal signiert und startet.&lt;/p&gt;
+&lt;h2 id=&quot;open-source&quot;&gt;Open Source&lt;/h2&gt;
+&lt;p&gt;Der Anwendungscode und die originalen Demo-Grafiken stehen unter der MIT-Lizenz. TMDB-Markenzeichen, Anbieterdaten und Apple-Frameworks behalten ihre eigenen Bedingungen. Emad Alhamou, der Autor dieser Website, veröffentlicht TopMovies auf &lt;a href=&quot;https://github.com/Alhamou/topMoves&quot;&gt;GitHub&lt;/a&gt;. Das Repository hat Hinweise zum Mitwirken, einen Verhaltenskodex und eine Sicherheitsrichtlinie.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist TopMovies?&lt;/h3&gt;
+&lt;p&gt;TopMovies ist eine native Open-Source-macOS-App zum Entdecken von Filmen und Serien. Sie hat kuratierte Feeds, Filter, eine lokale Bibliothek und einen Offline-Demo-Modus und ist mit SwiftUI gebaut.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Entdeckungs-Feeds gibt es?&lt;/h3&gt;
+&lt;p&gt;Discover, For You, Tonight, Hidden Gems sowie Trending und Best New Releases. „For You“ ist deterministisch und nutzt weder KI noch Machine Learning, und „Tonight“ lässt dich nach der Zeit wählen, die du hast.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Brauche ich ein Konto, um es zu benutzen?&lt;/h3&gt;
+&lt;p&gt;Nicht zum Ausprobieren. Es funktioniert sofort in einem Offline-Demo-Modus. Um echte Filme und Serien zu sehen, verbindest du es mit einem TMDB API Read Access Token.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wie verbinde ich TMDB?&lt;/h3&gt;
+&lt;p&gt;Lege ein TMDB-Konto an, beantrage einen API-Schlüssel für die nichtkommerzielle Nutzung, kopiere das API Read Access Token, öffne mit &lt;code&gt;⌘,&lt;/code&gt; die „Settings &amp;amp; Sources“, füge das Token ein und wähle „Save &amp;amp; Connect“.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wo werden meine Favoriten und Bewertungen gespeichert?&lt;/h3&gt;
+&lt;p&gt;Auf deinem Mac. Favoriten, die Merkliste, gesehene Titel und deine Bewertungen von 1 bis 10 Sternen werden lokal gespeichert, und dein TMDB-Token liegt im macOS-Schlüsselbund.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Filtert TopMovies Inhalte für Erwachsene?&lt;/h3&gt;
+&lt;p&gt;Ja. Explizite und nur für Erwachsene bestimmte Titel, &lt;span class=&quot;nb&quot;&gt;NC-17&lt;/span&gt; und TV-MA sind standardmäßig ausgeschlossen, und Titel mit R-Einstufung bleiben verborgen, bis du sie in den Inhaltseinstellungen aktivierst.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Macs und macOS-Versionen werden unterstützt?&lt;/h3&gt;
+&lt;p&gt;macOS 14 Sonoma oder neuer, auf Apple Silicon oder Intel.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Ist TopMovies mit TMDB verbunden?&lt;/h3&gt;
+&lt;p&gt;Nein. Es nutzt die TMDB-API, wird von TMDB aber weder unterstützt noch zertifiziert.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>moveMouse: eine Mac-Menüleisten-App, die hilft, RDP-Verbindungen offen zu halten</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/movemouse/"/>
+    <id>https://hamou.de/de/articles/movemouse/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>moveMouse hilft, eine Remotedesktop-Verbindung (RDP) offen zu halten. Es bewegt den Mauszeiger in einem Intervall, das du wählst, und hält den Mac wach, solange es läuft, damit eine ruhige Sitzung seltener getrennt wird. Es sitzt in der Menüleiste, und sein Code ist offen unter der MIT-Lizenz.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-movemouse&quot;&gt;Was ist moveMouse?&lt;/h2&gt;
+&lt;p&gt;moveMouse ist eine kleine Open-Source-App für die macOS-Menüleiste. In einem Intervall, das du wählst, bewegt sie den Mauszeiger von selbst, und solange sie läuft, hält sie den Mac davon ab, wegen Inaktivität in den Ruhezustand zu gehen. Gebaut wurde sie für ein praktisches Problem: eine Remotedesktop-Verbindung (RDP), die abbricht, wenn du den Mac nicht anfasst. Der Tooltip der App in der Menüleiste sagt das selbst, auf Arabisch: Sie soll verhindern, dass RDP-Verbindungen getrennt werden.&lt;/p&gt;
+&lt;p&gt;Das README beschreibt sie allgemeiner als automatische Mausbewegung nach deinem Zeitplan: nützlich für Demonstrationen am Desktop, zum Testen von Mausinteraktionen oder um einen Mac während einer Aufgabe aktiv zu halten. Sie ist in Swift und AppKit geschrieben und läuft ohne Dock-Symbol.&lt;/p&gt;
+&lt;h2 id=&quot;warum-eine-rdp-verbindung-abbricht&quot;&gt;Warum eine RDP-Verbindung abbricht&lt;/h2&gt;
+&lt;p&gt;Remotedesktop-Sitzungen enden meist aus banalen Gründen. Der Mac, von dem aus du dich verbindest, geht in den Ruhezustand und nimmt die Netzwerkverbindung mit, oder die Gegenseite hält eine Sitzung ohne Eingaben für untätig und beendet oder sperrt sie. moveMouse arbeitet von deinem Mac aus und packt beides an: Es verhindert den Ruhezustand durch Inaktivität, solange es läuft, und erzeugt Zeigeraktivität im eingestellten Intervall.&lt;/p&gt;
+&lt;p&gt;Zwei ehrliche Grenzen. Die App weiß nichts von deinem RDP-Client: Sie bewegt den Zeiger auf deinem Mac, die Aktivität erreicht die entfernte Sitzung also nur, solange das RDP-Fenster unter dem Zeiger liegt. Halte das Remotedesktop-Fenster deshalb dort, wo sich der Zeiger bewegt, beim Standardmuster ist das die Bildschirmmitte. Und moveMouse ändert nichts am entfernten Rechner, eine dort erzwungene Sitzungsgrenze bleibt also bestehen.&lt;/p&gt;
+&lt;h2 id=&quot;was-es-kann&quot;&gt;Was es kann&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sechs Intervalle:&lt;/strong&gt; alle 15, 30 oder 45 Sekunden oder alle 1, 2 oder 5 Minuten. Beim ersten Start gilt 30 Sekunden.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zwei Bewegungsmuster:&lt;/strong&gt; „Bildschirmmitte“ führt den Zeiger zur Mitte des Bildschirms, dann nach rechts und links und endet in der Mitte. „Aktuelle Zeigerposition“ bewegt ihn ein kurzes Stück nach rechts und links und bringt ihn an den Ausgangspunkt zurück.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ein optionaler Linksklick&lt;/strong&gt; nach jeder Bewegung, mit optionalem Ton. Der Klick geschieht an der letzten Zeigerposition und trifft alles, was darunter liegt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Einfache Steuerung in der Menüleiste:&lt;/strong&gt; Start oder Pause, „Move Now“ (funktioniert auch während der Pause) und Beenden. Eine Statuszeile zeigt, ob die Bewegung läuft und wann der letzte Vorgang stattfand.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gespeicherte Einstellungen:&lt;/strong&gt; Intervall, Muster, Klick und Ton bleiben zwischen den Starts erhalten.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ruhezustand verhindern:&lt;/strong&gt; Der Ruhezustand durch Inaktivität wird blockiert, solange die automatische Bewegung läuft. Pause oder Beenden gibt ihn wieder frei.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;moveMouse beginnt zu bewegen, sobald es startet, mit deinen gespeicherten Einstellungen. Die Menübeschriftungen sind auf Arabisch, mit englischen Bezeichnungen für mehrere Steuerelemente: Start, Pause, Move Now, Interval und Left Click.&lt;/p&gt;
+&lt;h2 id=&quot;berechtigungen&quot;&gt;Berechtigungen&lt;/h2&gt;
+&lt;p&gt;Simulierte Mauseingaben brauchen die Berechtigung „Bedienungshilfen“. Beim ersten Start fragt macOS möglicherweise danach: Öffne die Systemeinstellungen, gehe zu „Datenschutz &amp;amp; Sicherheit“, dann „Bedienungshilfen“, und aktiviere moveMouse. Der Eintrag für die Bedienungshilfen im Menü der App öffnet diese Seite für dich. Laut README braucht vor allem das Klicken diese Berechtigung. Wenn das Klicken nach einem Neubau oder Verschieben der App nicht mehr funktioniert, entferne ihren Eintrag bei den Bedienungshilfen, füge die App erneut hinzu und starte sie neu.&lt;/p&gt;
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;moveMouse braucht macOS 11 Big Sur oder neuer. Die mitgelieferte App und das Build-Skript zielen auf Apple Silicon (arm64). Klone das Repository von GitHub und führe dann &lt;code&gt;./build.sh&lt;/code&gt; und &lt;code&gt;./run.sh&lt;/code&gt; aus. Zum Bauen brauchst du die Xcode Command Line Tools, die &lt;code&gt;xcode-select --install&lt;/code&gt; installiert. Das Skript signiert die App lokal mit einer Ad-hoc-Signatur.&lt;/p&gt;
+&lt;p&gt;Damit moveMouse beim Anmelden startet, füge &lt;code&gt;MoveMouse.app&lt;/code&gt; in den Systemeinstellungen unter „Allgemein“ zu den Anmeldeobjekten hinzu. Zum Beenden wählst du „Beenden“ im Menü oder führst &lt;code&gt;./stop.sh&lt;/code&gt; im Projektordner aus.&lt;/p&gt;
+&lt;h2 id=&quot;open-source&quot;&gt;Open Source&lt;/h2&gt;
+&lt;p&gt;moveMouse steht unter der MIT-Lizenz. Es nutzt nur native macOS-Frameworks und wird direkt mit &lt;code&gt;swiftc&lt;/code&gt; gebaut, ohne Abhängigkeiten von Dritten und ohne Xcode-Projekt. Der Code besteht aus wenigen Swift-Dateien: der Menüleisten-Oberfläche, dem Bewegungs-Timer mit Zeigereingabe und gespeicherten Einstellungen sowie der Verhinderung des Ruhezustands.&lt;/p&gt;
+&lt;p&gt;Emad Alhamou, der Autor dieser Website, veröffentlicht moveMouse auf &lt;a href=&quot;https://github.com/Alhamou/moveMouse&quot;&gt;GitHub&lt;/a&gt;. Fehlerberichte, Ideen und Pull Requests sind willkommen; nenne deine macOS-Version, die Schritte zum Nachstellen und was du erwartet hast.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist moveMouse?&lt;/h3&gt;
+&lt;p&gt;moveMouse ist eine Open-Source-Menüleisten-App für macOS, die den Mauszeiger automatisch in einem Intervall bewegt, das du wählst, und den Mac wach hält, solange sie läuft. Sie wurde gebaut, um eine RDP-Verbindung vor dem Abbruch zu bewahren.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wie hilft moveMouse bei einer RDP-Verbindung?&lt;/h3&gt;
+&lt;p&gt;Es arbeitet von deinem Mac aus. Es verhindert den Ruhezustand durch Inaktivität, der die Verbindung sonst kappen würde, und erzeugt Zeigeraktivität im gewählten Intervall, damit eine Sitzung nicht völlig still bleibt. Die Aktivität erreicht die entfernte Sitzung nur, solange das RDP-Fenster unter dem Zeiger liegt, und moveMouse ändert keine Einstellung auf dem entfernten Rechner.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Kann der Klick etwas treffen, das ich nicht wollte?&lt;/h3&gt;
+&lt;p&gt;Ja, das ist möglich. Der optionale Linksklick geschieht an der letzten Zeigerposition und trifft alles, was darunter liegt. Wenn du nur die Bewegung willst, schalte „Left Click“ im Menü aus. Standardmäßig ist er an.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Intervalle und Bewegungsmuster gibt es?&lt;/h3&gt;
+&lt;p&gt;Die Intervalle sind 15, 30 und 45 Sekunden sowie 1, 2 und 5 Minuten, mit 30 Sekunden als Standard. Die zwei Muster sind „Bildschirmmitte“ (Mitte, rechts, links, zurück zur Mitte) und „Aktuelle Zeigerposition“ (ein kleines Wackeln nach rechts und links, dann zurück zum Start).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Berechtigung braucht moveMouse?&lt;/h3&gt;
+&lt;p&gt;„Bedienungshilfen“, für simulierte Mauseingaben, vor allem das Klicken. Aktiviere moveMouse in den Systemeinstellungen unter „Datenschutz &amp;amp; Sicherheit“, dann „Bedienungshilfen“.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Macs und macOS-Versionen werden unterstützt?&lt;/h3&gt;
+&lt;p&gt;macOS 11 Big Sur oder neuer. Die mitgelieferte App und das Build-Skript zielen auf Apple Silicon (arm64).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wie pausiere oder beende ich moveMouse?&lt;/h3&gt;
+&lt;p&gt;Wähle im Menüleisten-Menü „Pause“, um die geplante Bewegung zu stoppen und die Verhinderung des Ruhezustands freizugeben, oder „Beenden“, um die App zu schließen. „Move Now“ führt eine Bewegung auf Abruf aus, auch während der Pause.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Ist moveMouse Open Source?&lt;/h3&gt;
+&lt;p&gt;Ja. Es steht unter der MIT-Lizenz, und der Quellcode liegt auf GitHub.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
+    <title>Haki (حكي): Push-to-Talk-Diktat für die Mac-Menüleiste, auf Arabisch abgestimmt</title>
+    <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/haki/"/>
+    <id>https://hamou.de/de/articles/haki/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>Haki macht aus deiner Stimme überall auf deinem Mac Text. Halte Option+Leertaste, sprich, lass los, und der transkribierte Text wird an deinem Cursor eingefügt. Es ist auf natürliches Arabisch abgestimmt, auch levantinisches und syrisches Sprechen, und beherrscht außerdem Englisch, Deutsch und Französisch. Die Transkription nutzt OpenAI-Modelle mit deinem eigenen API-Schlüssel, dein Audio geht also an OpenAI. Der Code ist offen unter der MIT-Lizenz.</summary>
+    <content type="html">&lt;h2 id=&quot;was-ist-haki&quot;&gt;Was ist Haki?&lt;/h2&gt;
+&lt;p&gt;Haki (حكي, ein levantinisch-arabisches Wort für „Sprechen“) ist eine leichte native macOS-Menüleisten-App für Sprache-zu-Text-Diktat. Klicke in ein beliebiges Textfeld in einer beliebigen App, halte die Push-to-Talk-Taste, sprich und lass los. Haki transkribiert, was du gesagt hast, und fügt es am Cursor ein. Der arabische Slogan lautet „احكي، وحكي بيكتبها“, etwa „du sprichst, Haki schreibt“.&lt;/p&gt;
+&lt;p&gt;Es ist besonders für natürliches Arabisch und levantinisches Sprechen gedacht, mit Unterstützung für Englisch, Deutsch, Französisch und automatische Spracherkennung. Es hat kein lokales Sprachmodell und keine Python- oder Node.js-Laufzeit: Die App ist natives Swift, und die Transkription übernimmt OpenAI.&lt;/p&gt;
+&lt;h2 id=&quot;so-funktioniert-das-diktat&quot;&gt;So funktioniert das Diktat&lt;/h2&gt;
+&lt;p&gt;1. Fokussiere ein Textfeld in einer beliebigen Anwendung, etwa Notizen, TextEdit, einem Browser, einer Chat-App oder einem Editor. 2. Halte &lt;code&gt;⌥ Option + Leertaste&lt;/code&gt; gedrückt und sprich. 3. Lass die Tasten los. Haki sendet die Aufnahme an OpenAI, erhält den Text und fügt ihn an deinem Cursor ein.&lt;/p&gt;
+&lt;p&gt;Haki sichert deine Zwischenablage vor dem Einfügen und stellt sie danach wieder her, und das, ohne der App, in die du tippst, den Fokus zu nehmen. Eine kleine schwebende Anzeige zeigt, ob gerade aufgenommen, transkribiert oder fertig ist. Versehentliche Antipper, die kürzer als etwa eine Drittelsekunde sind, werden lokal verworfen.&lt;/p&gt;
+&lt;h2 id=&quot;sprachen-und-modelle&quot;&gt;Sprachen und Modelle&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sprachen:&lt;/strong&gt; Arabisch (mit Optimierung für levantinisches und syrisches Sprechen), Englisch, Deutsch, Französisch oder automatische Erkennung.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Modelle:&lt;/strong&gt; &lt;code&gt;gpt-transcribe&lt;/code&gt; ist der Standard und auf schnelles, latenzarmes Alltagsdiktat ausgelegt. &lt;code&gt;&lt;span class=&quot;nb&quot;&gt;gpt-4o-transcribe&lt;/span&gt;&lt;/code&gt; ist die genauere Option für komplexe Sätze, Dialekte und Fachbegriffe. Du wechselst in den Einstellungen oder in der Menüleiste.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mikrofone:&lt;/strong&gt; Wähle das eingebaute Mikrofon, ein USB-Interface oder AirPods. Haki kümmert sich über CoreAudio um das Wiederverbinden und kann AirPods bevorzugen, sobald sie verbunden sind. Eine Pegelanzeige in Echtzeit lässt dich den Eingang testen.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;datenschutz-was-auf-deinem-mac-bleibt-und-was-an-openai-geht&quot;&gt;Datenschutz: was auf deinem Mac bleibt und was an OpenAI geht&lt;/h2&gt;
+&lt;p&gt;Sei dir des Kompromisses bewusst: &lt;strong&gt;Deine Sprachaufnahmen werden an OpenAI gesendet.&lt;/strong&gt; Laut README gehen sie direkt von deinem Mac über TLS an den Transkriptions-Endpunkt von OpenAI, ohne Zwischenserver. Das Diktat braucht daher eine Internetverbindung und deinen eigenen OpenAI-API-Schlüssel, genutzt nach den Bedingungen und Preisen von OpenAI.&lt;/p&gt;
+&lt;p&gt;Auf deinem Mac enthält Haki laut README keine Analytik, Diagnose, Absturzberichte oder SDKs von Dritten. Audio wird in temporäre Dateien aufgenommen und gelöscht, sobald die Transkription fertig ist oder fehlschlägt, es bleibt also kein Audioverlauf. Dein API-Schlüssel liegt im macOS-Schlüsselbund und nicht in Einstellungen, Konfigurationsdateien oder Protokollen.&lt;/p&gt;
+&lt;h2 id=&quot;berechtigungen&quot;&gt;Berechtigungen&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Mikrofon:&lt;/strong&gt; um deine Stimme aufzunehmen, und nur, solange du die Taste hältst oder das Diktat über das Menü startest.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bedienungshilfen:&lt;/strong&gt; für die globale Push-to-Talk-Taste und zum Einfügen von Text durch simuliertes &lt;code&gt;⌘V&lt;/code&gt;. Laut README ist „Eingabeüberwachung“ nicht zusätzlich nötig.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;einrichten&quot;&gt;Einrichten&lt;/h2&gt;
+&lt;p&gt;1. Öffne Haki. Erlaube den Mikrofonzugriff, wenn macOS fragt, und aktiviere Haki unter Systemeinstellungen, „Datenschutz &amp;amp; Sicherheit“, „Bedienungshilfen“. 2. Öffne die Einstellungen über das Menüleisten-Symbol oder mit &lt;code&gt;⌘,&lt;/code&gt;. Füge im Tab „Transcription“ deinen OpenAI-API-Schlüssel ein, wähle „Save“ und dann „Test API Key“. 3. Wähle ein Modell, und wähle im Tab „Audio“ dein Mikrofon.&lt;/p&gt;
+&lt;h2 id=&quot;vom-iphone-diktieren-mit-airmouse&quot;&gt;Vom iPhone diktieren mit AirMouse&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/Alhamou/AirMouse&quot;&gt;AirMouse&lt;/a&gt; ist eine eigenständige Open-Source-App, die ein iPhone über dein lokales WLAN zum Trackpad für deinen Mac macht. Ihr Sprach-Tab nimmt auf dem Telefon auf und übergibt das Audio an Haki, das den Text auf deinem Mac eintippt. Haki muss installiert sein und laufen, und es nutzt deinen üblichen API-Schlüssel sowie deine Modell- und Spracheinstellungen.&lt;/p&gt;
+&lt;p&gt;Die Übergabe ist einfach und auch für andere Absender offen. Eine Aufnahme (&lt;code&gt;m4a&lt;/code&gt;, &lt;code&gt;mp4&lt;/code&gt;, &lt;code&gt;webm&lt;/code&gt;, &lt;code&gt;wav&lt;/code&gt;, &lt;code&gt;mp3&lt;/code&gt; oder &lt;code&gt;ogg&lt;/code&gt;, bis 25 MB) wird nach &lt;code&gt;~/Library/Caches/Haki/Inbox/&lt;/code&gt; geschrieben, dann wird die URL &lt;code&gt;haki://transcribe?file=&amp;lt;Dateiname&amp;gt;&lt;/code&gt; geöffnet. Haki transkribiert die Datei, fügt den Text ein und löscht die Datei. Es werden nur einfache Dateinamen im Posteingang akzeptiert, Pfade, versteckte Dateien und Symlinks werden also abgelehnt.&lt;/p&gt;
+&lt;h2 id=&quot;selbst-bauen&quot;&gt;Selbst bauen&lt;/h2&gt;
+&lt;p&gt;Haki braucht macOS 13 Ventura oder neuer, auf Apple Silicon oder Intel, sowie die Xcode Command Line Tools mit Swift 6.0 oder neuer. Klone das Repository von GitHub, führe &lt;code&gt;swift test&lt;/code&gt; und dann &lt;code&gt;./scripts/build_app.sh&lt;/code&gt; aus. Das Skript baut die Release-Binärdatei, stellt &lt;code&gt;Haki.app&lt;/code&gt; zusammen, signiert sie mit deinem lokalen Apple-Development-Zertifikat oder einer Ad-hoc-Signatur und installiert sie in &lt;code&gt;/Applications&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;open-source&quot;&gt;Open Source&lt;/h2&gt;
+&lt;p&gt;Haki steht unter der MIT-Lizenz. Der Leitfaden zum Mitwirken verlangt keine lokalen Modelle, kein Python, kein Node.js und kein Electron und dass API-Schlüssel nie committet werden. Emad Alhamou, der Autor dieser Website, veröffentlicht Haki auf &lt;a href=&quot;https://github.com/Alhamou/Haki&quot;&gt;GitHub&lt;/a&gt;. Fehlerberichte und Pull Requests sind willkommen, und Sicherheitsbedenken laufen über die Sicherheitsrichtlinie des Repositorys.&lt;/p&gt;
+&lt;section class=&quot;artFaq&quot; aria-labelledby=&quot;haeufige-fragen&quot;&gt;
+&lt;h2 id=&quot;haeufige-fragen&quot;&gt;Häufige Fragen&lt;/h2&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Was ist Haki?&lt;/h3&gt;
+&lt;p&gt;Haki ist eine Open-Source-macOS-Menüleisten-App für Push-to-Talk-Diktat. Halte &lt;code&gt;⌥ Option + Leertaste&lt;/code&gt;, sprich und lass los, und der transkribierte Text wird in jeder App an deinem Cursor eingefügt. Es ist auf Arabisch abgestimmt und unterstützt auch Englisch, Deutsch und Französisch.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Wie diktiere ich mit Haki?&lt;/h3&gt;
+&lt;p&gt;Klicke in ein Textfeld, halte &lt;code&gt;⌥ Option + Leertaste&lt;/code&gt; gedrückt, sprich und lass dann los. Haki sendet die Aufnahme an OpenAI und fügt den Text an deinem Cursor ein.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Sprachen und Modelle unterstützt Haki?&lt;/h3&gt;
+&lt;p&gt;Arabisch (mit Optimierung für levantinisches und syrisches Sprechen), Englisch, Deutsch, Französisch und automatische Erkennung. Die Modelle sind &lt;code&gt;gpt-transcribe&lt;/code&gt;, der Standard, und &lt;code&gt;&lt;span class=&quot;nb&quot;&gt;gpt-4o-transcribe&lt;/span&gt;&lt;/code&gt; für höhere Genauigkeit.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Sendet Haki meine Stimme an OpenAI?&lt;/h3&gt;
+&lt;p&gt;Ja. Die Transkription übernimmt OpenAI, daher wird jede Aufnahme von deinem Mac direkt über TLS an OpenAI gesendet. Haki löscht die temporäre Audiodatei, sobald die Transkription fertig ist oder fehlschlägt, und führt keinen Audioverlauf.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Brauche ich einen OpenAI-API-Schlüssel?&lt;/h3&gt;
+&lt;p&gt;Ja. Haki nutzt deinen eigenen OpenAI-API-Schlüssel, den es im macOS-Schlüsselbund speichert. Die Nutzung richtet sich nach den Bedingungen und Preisen von OpenAI.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Berechtigungen braucht Haki?&lt;/h3&gt;
+&lt;p&gt;Mikrofon, um deine Stimme aufzunehmen, solange du die Taste hältst, und Bedienungshilfen, für die globale Taste und für das Einfügen mit simuliertem &lt;code&gt;⌘V&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Welche Macs und macOS-Versionen werden unterstützt?&lt;/h3&gt;
+&lt;p&gt;macOS 13 Ventura oder neuer, auf Apple Silicon oder Intel. Zum Bauen braucht es Swift 6.0 oder neuer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;artQ&quot;&gt;
+&lt;h3&gt;Kann ich vom iPhone aus diktieren?&lt;/h3&gt;
+&lt;p&gt;Ja, mit AirMouse, einer Open-Source-Begleit-App. Ihr Sprach-Tab nimmt auf dem Telefon auf, und Haki tippt den Text auf deinem Mac. Haki muss installiert sein und laufen.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;</content>
+  </entry>
+  <entry>
     <title>TakeCar: die syrische App für Mitfahrten zwischen Städten, Fahrten in der Stadt und Lieferungen</title>
     <link rel="alternate" type="text/html" href="https://hamou.de/de/articles/takecar/"/>
     <id>https://hamou.de/de/articles/takecar/</id>

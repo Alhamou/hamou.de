@@ -65,6 +65,7 @@ FONTS = ('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300
 
 LANGS = ['en', 'de', 'ar']   # the first one is the x-default
 DEFAULT = 'en'
+GROUPS = ('product', 'tool')   # the order the article list shows them in; meta.json "group" picks one
 HOME_ORDER = ['ar', 'en', 'de']   # the home page's source language comes first
 
 LANG = {
@@ -92,6 +93,8 @@ UI = {
         'yt_notice': 'The video loads from YouTube (Google) only when you press play.',
         'visit': 'Visit {}', 'since': 'since', 'more': 'More articles', 'lang': 'Language',
         'product': 'About the product', 'feed': 'Atom feed',
+        'group_product': 'Products', 'group_tool': 'Open source tools',
+        'tool': 'About the tool', 'repo': 'View on GitHub',
         'articles_title': 'Articles by Emad Alhamou: products, tools and how they are built',
         'articles_h1': 'Articles',
         'articles_intro': 'Stories behind the products and tools I build: what they do, '
@@ -109,6 +112,8 @@ UI = {
         'yt_notice': 'Das Video wird erst beim Abspielen von YouTube (Google) geladen.',
         'visit': '{} besuchen', 'since': 'seit', 'more': 'Weitere Artikel', 'lang': 'Sprache',
         'product': 'Zum Produkt', 'feed': 'Atom-Feed',
+        'group_product': 'Produkte', 'group_tool': 'Open-Source-Tools',
+        'tool': 'Zum Tool', 'repo': 'Auf GitHub ansehen',
         'articles_title': 'Artikel von Emad Alhamou: Produkte, Tools und wie sie entstehen',
         'articles_h1': 'Artikel',
         'articles_intro': 'Geschichten hinter den Produkten und Tools, die ich baue: was sie können, '
@@ -126,6 +131,8 @@ UI = {
         'yt_notice': 'لا يُحمَّل الفيديو من يوتيوب (Google) إلا عند الضغط على تشغيل.',
         'visit': 'زيارة {}', 'since': 'منذ', 'more': 'مقالات أخرى', 'lang': 'اللغة',
         'product': 'عن المنتج', 'feed': 'خلاصة Atom',
+        'group_product': 'المنتجات', 'group_tool': 'أدوات مفتوحة المصدر',
+        'tool': 'عن الأداة', 'repo': 'المستودع على GitHub',
         'articles_title': 'مقالات عماد الحمو: المنتجات والأدوات وكيف تُبنى',
         'articles_h1': 'مقالات',
         'articles_intro': 'قصص المنتجات والأدوات التي أبنيها: ماذا تفعل، ولماذا وُجدت، وكيف تعمل.',
@@ -154,6 +161,10 @@ CHEV = ('<svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidde
 
 
 # ---------------------------------------------------------------- helpers
+
+def group_of(a):
+    return a.get('group', 'product')
+
 
 def esc(s):
     return html.escape(str(s), quote=True)
@@ -292,6 +303,17 @@ BOLD = re.compile(r'\*\*(.+?)\*\*')
 LINK = re.compile(r'\[([^\]]+)\]\(([^)\s]+)\)')
 
 
+NOBREAK = re.compile(r'(?<![\w-])[A-Za-z]+-\d[\w.]*(?:-[A-Za-z0-9.]+)*(?![\w-])')
+
+
+def nb(markup):
+    """Keep identifiers such as GPL-3.0 on one line. A break after the hyphen splits them, and in
+    right-to-left text it also shows the hyphen on the wrong side. Only text outside tags is touched."""
+    parts = re.split(r'(<[^>]+>)', markup)
+    return ''.join(p if p.startswith('<') else
+                   NOBREAK.sub(lambda m: '<span class="nb">%s</span>' % m.group(0), p) for p in parts)
+
+
 def inline_html(text):
     out = []
     for part in re.split(r'(`[^`]+`)', text):
@@ -302,7 +324,7 @@ def inline_html(text):
         s = BOLD.sub(r'<strong>\1</strong>', s)
         s = LINK.sub(lambda m: '<a href="%s">%s</a>' % (m.group(2).replace('"', '%22'), m.group(1)), s)
         out.append(s)
-    return ''.join(out)
+    return nb(''.join(out))
 
 
 def plain(text):
@@ -454,6 +476,8 @@ def load_articles():
         if not re.match(r'^[a-z0-9]+(-[a-z0-9]+)*$', slug):
             raise SystemExit('%s: the folder name is the URL, use lowercase letters, digits and -' % folder)
         meta['slug'] = slug
+        if group_of(meta) not in GROUPS:
+            raise SystemExit('%s: "group" must be one of %s' % (meta_path, ', '.join(GROUPS)))
         for key in ('date_published', 'date_modified'):
             if not re.match(r'^\d{4}-\d{2}-\d{2}$', meta.get(key, '')):
                 raise SystemExit('%s: "%s" must look like 2026-11-07' % (meta_path, key))
@@ -484,8 +508,24 @@ def load_articles():
             raise SystemExit('%s: %s.md is required' % (folder, DEFAULT))
         meta['langs'] = langs
         articles.append(meta)
-    articles.sort(key=lambda a: (a['date_published'], a['slug']), reverse=True)
+    # newest first; on the same day a lower "order" comes first, then the slug
+    articles.sort(key=lambda a: (a['date_published'], -int(a.get('order', 0)), a['slug']), reverse=True)
     return articles
+
+
+def grouped(articles, lang=None):
+    """Articles split by group, in GROUPS order, newest first inside each group."""
+    items = [a for a in articles if lang is None or lang in a['langs']]
+    return [(g, [a for a in items if group_of(a) == g]) for g in GROUPS if any(group_of(a) == g for a in items)]
+
+
+def related(a, articles, lang, n=3):
+    """Articles to link at the bottom of a page: the same group first, walking round the list
+    from this article so every article gets linked from a few others, then the other group."""
+    pool = [o for o in articles if lang in o['langs']]
+    same = [o for o in pool if group_of(o) == group_of(a)]
+    i = same.index(a)
+    return (same[i + 1:] + same[:i] + [o for o in pool if group_of(o) != group_of(a)])[:n]
 
 
 # ---------------------------------------------------------------- page parts
@@ -623,7 +663,7 @@ def card_html(a, lang, heading='h2'):
         '<span>%s</span></span>' % (esc(a['icon']), esc(fm['kicker'])),
         '  <span class="artCardBody">',
         '    <%s class="artCardTitle">%s</%s>' % (heading, esc(fm['title']), heading),
-        '    <span class="artCardDek">%s</span>' % esc(fm['dek']),
+        '    <span class="artCardDek">%s</span>' % nb(esc(fm['dek'])),
         '    <span class="artCardMeta"><time datetime="%s">%s</time> · %s</span>'
         % (a['date_published'], fmt_date(a['date_published'], lang), minutes_label(t['minutes'], lang)),
         '  </span>',
@@ -701,10 +741,14 @@ def ld_article(a, lang):
               'url': p.get('url', {}).get(lang) or p.get('url', {}).get(DEFAULT),
               'applicationCategory': p.get('category', 'UtilitiesApplication'),
               'image': abs_url('/' + a['icon'])}
-        if p.get('publisher', 'org') != 'none':
-            # "publisher": "none" in meta.json leaves the maker out, for a product Alhamou did not publish
+        maker = p.get('publisher', 'org')
+        if maker == 'org':
             sw['publisher'] = {'@id': ORG_ID}
             sw['author'] = {'@id': ORG_ID}
+        elif maker == 'person':
+            # a personal open-source tool: Emad is the author, Alhamou is not named as publisher
+            sw['author'] = {'@id': PERSON_ID}
+        # "none" leaves the maker out, for a product Alhamou did not publish
         for src, dst in (('alternate_name', 'alternateName'), ('operating_system', 'operatingSystem'),
                          ('requirements', 'softwareRequirements'), ('languages', 'inLanguage')):
             if p.get(src):
@@ -713,7 +757,21 @@ def ld_article(a, lang):
             sw['description'] = fm['product_line']
         if fm.get('status'):
             sw['creativeWorkStatus'] = fm['status']
+        lic = p.get('license') or {}
+        if lic.get('url'):
+            sw['license'] = lic['url']
+        if p.get('repo'):
+            sw['sameAs'] = [p['repo']]
         graph.append(sw)
+        if p.get('repo'):
+            src = {'@type': 'SoftwareSourceCode', '@id': base_url + '#source',
+                   'name': '%s source code' % p['name'], 'codeRepository': p['repo'],
+                   'targetProduct': {'@id': base_url + '#software'}, 'author': {'@id': PERSON_ID}}
+            if p.get('language'):
+                src['programmingLanguage'] = p['language']
+            if lic.get('url'):
+                src['license'] = lic['url']
+            graph.append(src)
 
     if v:
         yid = v['youtube_id']
@@ -783,7 +841,7 @@ def article_page(a, lang, articles):
         '        <p class="artKicker"><img src="/%s" width="40" height="40" alt="">%s%s</p>'
         % (esc(a['icon']), esc(fm['kicker']), pill),
         '        <h1>%s</h1>' % esc(fm['title']),
-        '        <p class="artDek">%s</p>' % esc(fm['dek']),
+        '        <p class="artDek">%s</p>' % nb(esc(fm['dek'])),
         '        <div class="artMeta">%s</div>' % ''.join(meta),
         '      </div>',
         '    </header>',
@@ -821,9 +879,16 @@ def article_page(a, lang, articles):
         facts = []
         if status:
             facts.append('%s · %s %s' % (status, ui['since'], fmt_month(p['since'], lang)) if p.get('since') else status)
+        elif p.get('since'):
+            facts.append('%s %s' % (ui['since'][:1].upper() + ui['since'][1:], fmt_month(p['since'], lang)))
         if fm.get('requirements'):
             facts.append(fm['requirements'])
-        actions = ['<a class="artBtn" href="%s">%s <b>%s</b></a>' % (esc(url), esc(ui['visit'].format(domain)), ARR_EXT)]
+        if p.get('repo'):
+            # an open-source tool: the main button leads to its repository
+            actions = ['<a class="artBtn" href="%s">%s <b>%s</b></a>' % (esc(p['repo']), esc(ui['repo']), ARR_EXT)]
+        else:
+            actions = ['<a class="artBtn" href="%s">%s <b>%s</b></a>'
+                       % (esc(url), esc(ui['visit'].format(domain)), ARR_EXT)]
         if v:
             actions.append('<a class="artBtn ghost" href="https://www.youtube.com/watch?v=%s" target="_blank" '
                            'rel="noopener">%s <b>%s</b></a>' % (v['youtube_id'], esc(ui['watch_yt']), ARR_EXT))
@@ -831,7 +896,7 @@ def article_page(a, lang, articles):
             '      <aside class="artProduct" aria-labelledby="product-title">',
             '        <img src="/%s" width="72" height="72" alt="" loading="lazy">' % esc(a['icon']),
             '        <div>',
-            '          <p class="label">%s</p>' % esc(ui['product']),
+            '          <p class="label">%s</p>' % esc(ui['tool'] if group_of(a) == 'tool' else ui['product']),
             '          <p class="artProductName" id="product-title">%s</p>' % esc(p['name']),
             '          <p>%s</p>' % esc(fm.get('product_line', '')),
             '          <ul class="artFacts">%s</ul>' % ''.join('<li>%s</li>' % esc(f) for f in facts),
@@ -840,7 +905,7 @@ def article_page(a, lang, articles):
             '      </aside>',
         ]
     body += ['      </div>', '    </div>', '  </article>']
-    more = [o for o in articles if o is not a and lang in o['langs']][:3]
+    more = related(a, articles, lang)
     if more:
         body += ['  <section class="container artMore" aria-labelledby="more-title">',
                  '    <p class="label" id="more-title">%s</p>' % esc(ui['more']),
@@ -852,7 +917,8 @@ def article_page(a, lang, articles):
 
 def index_page(lang, articles):
     ui = UI[lang]
-    items = [a for a in articles if lang in a['langs']]
+    groups = grouped(articles, lang)
+    items = [a for _, xs in groups for a in xs]   # products first, then tools
     url = abs_url(index_path(lang))
     alternates = [(l, index_path(l)) for l in LANGS]
     graph = ld_base()
@@ -867,7 +933,18 @@ def index_page(lang, articles):
                      description=ui['articles_desc'], canonical=index_path(lang), alternates=alternates,
                      og_image=FALLBACK_OG, og_type='website',
                      jsonld={'@context': 'https://schema.org', '@graph': graph})
-    cards = '\n'.join(card_html(a, lang) for a in items) or '<p class="artEmpty">%s</p>' % esc(ui['empty'])
+    many = len(groups) > 1
+    sections = []
+    for g, xs in groups:
+        if many:
+            sections.append('    <h2 class="container artGroupTitle" id="group-%s">%s</h2>' % (g, esc(ui['group_' + g])))
+        sections += ['    <section class="container artList artListMain" %s>'
+                     % ('aria-labelledby="group-%s"' % g if many else 'aria-label="%s"' % esc(ui['articles'])),
+                     '\n'.join(card_html(a, lang, 'h3' if many else 'h2') for a in xs),
+                     '    </section>']
+    if not sections:
+        sections = ['    <section class="container artList artListMain" aria-label="%s">' % esc(ui['articles']),
+                    '<p class="artEmpty">%s</p>' % esc(ui['empty']), '    </section>']
     body = [
         page_nav(lang, 'index'),
         '  <main id="main" class="art">',
@@ -879,9 +956,7 @@ def index_page(lang, articles):
         '        <p class="artFeed"><a href="%s">%s</a></p>' % (feed_path(lang), esc(ui['feed'])),
         '      </div>',
         '    </header>',
-        '    <section class="container artList artListMain" aria-label="%s">' % esc(ui['articles']),
-        cards,
-        '    </section>',
+    ] + sections + [
         '  </main>',
     ]
     return head + '\n<body>\n' + '\n'.join(body) + '\n' + page_footer(lang, alternates)
@@ -907,7 +982,11 @@ def article_md(a, lang):
     if p:
         url = p.get('url', {}).get(lang) or p.get('url', {}).get(DEFAULT)
         facts = [x for x in (fm.get('status'), fm.get('requirements')) if x]
-        lines.append('- Product: [%s](%s)%s' % (p['name'], url, ''.join(' · ' + f for f in facts)))
+        lines.append('- %s: [%s](%s)%s' % ('Tool' if group_of(a) == 'tool' else 'Product', p['name'],
+                                           p.get('repo') or url, ''.join(' · ' + f for f in facts)))
+        if p.get('repo'):
+            lic = (p.get('license') or {}).get('name')
+            lines.append('- Source code: %s%s' % (p['repo'], ' (%s license)' % lic if lic else ''))
     lines += ['', t['md'].strip(), '']
     return '\n'.join(lines)
 
@@ -943,8 +1022,9 @@ def atom_feed(lang, articles):
 
 
 def home_cards(articles):
+    # product stories only: the tool articles are linked from the open-source cards on the home page
     cards = []
-    for a in articles[:6]:
+    for a in [o for o in articles if group_of(o) == 'product'][:6]:
         def pick(l):
             return l if l in a['langs'] else DEFAULT
 
@@ -969,8 +1049,8 @@ def home_cards(articles):
     return '\n'.join(cards)
 
 
-def replace_block(text, block, where, indent=''):
-    start, end = '<!-- articles:start -->', '<!-- articles:end -->'
+def replace_block(text, block, where, indent='', name='articles'):
+    start, end = '<!-- %s:start -->' % name, '<!-- %s:end -->' % name
     if start not in text or end not in text:
         print('note: %s has no %s ... %s markers, skipped' % (where, start, end))
         return text
@@ -1031,29 +1111,38 @@ def sitemap(articles):
     return '\n'.join(out)
 
 
+def llms_line(a):
+    t = a['langs'][DEFAULT]
+    others = [l for l in LANGS if l in a['langs'] and l != DEFAULT]
+    tail = ''
+    if others:
+        tail = ' Also in ' + ' and '.join('[%s](%s)' % (LANG[l]['name'], abs_url(art_path(a, l)) + 'index.md')
+                                          for l in others) + '.'
+    return '- [%s](%s): %s%s' % (t['fm']['title'], abs_url(art_path(a, DEFAULT)) + 'index.md',
+                                 t['fm']['description'], tail)
+
+
 def llms_block(articles):
     lines = ['## Articles', '',
              'Articles are static pages in English, German and Arabic (where a translation exists). Add index.md to an article URL '
-             'for a plain Markdown copy. All English articles in one file: [llms-full.txt](%s/llms-full.txt).' % SITE,
+             'for a plain Markdown copy. All English articles in one file: [llms-full.txt](%s/llms-full.txt). '
+             'The articles about the open-source tools are listed under Open source below.' % SITE,
              '']
-    for a in articles:
-        t = a['langs'][DEFAULT]
-        others = [l for l in LANGS if l in a['langs'] and l != DEFAULT]
-        tail = ''
-        if others:
-            tail = ' Also in ' + ' and '.join('[%s](%s)' % (LANG[l]['name'], abs_url(art_path(a, l)) + 'index.md')
-                                              for l in others) + '.'
-        lines.append('- [%s](%s): %s%s' % (t['fm']['title'], abs_url(art_path(a, DEFAULT)) + 'index.md',
-                                            t['fm']['description'], tail))
+    lines += [llms_line(a) for a in articles if group_of(a) == 'product']
     return '\n'.join(lines)
+
+
+def llms_tools_block(articles):
+    return '\n'.join(llms_line(a) for a in articles if group_of(a) == 'tool')
 
 
 def llms_full(articles):
     out = ['# Emad Alhamou: articles in full', '',
            '> The full text of every article on hamou.de, in English, for AI assistants and language models. '
            'Index of the site: %s/llms.txt' % SITE, '']
-    for a in articles:
-        out += ['---', '', article_md(a, DEFAULT).strip(), '']
+    for _, xs in grouped(articles):
+        for a in xs:
+            out += ['---', '', article_md(a, DEFAULT).strip(), '']
     return '\n'.join(out)
 
 
@@ -1123,7 +1212,8 @@ def main():
     write('sitemap.xml', sitemap(articles))
     llms = os.path.join(ROOT, 'llms.txt')
     with open(llms, encoding='utf-8') as f:
-        write('llms.txt', replace_block(f.read(), llms_block(articles), 'llms.txt'))
+        text = replace_block(f.read(), llms_block(articles), 'llms.txt')
+    write('llms.txt', replace_block(text, llms_tools_block(articles), 'llms.txt', name='tools'))
     write('llms-full.txt', llms_full(articles))
     print('%d article(s), %d page(s)' % (len(articles), sum(len(a['langs']) for a in articles)))
 

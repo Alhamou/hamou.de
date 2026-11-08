@@ -1,0 +1,23 @@
+{
+  "slug": "haki",
+  "group": "tool",
+  "order": 8,
+  "date_published": "2026-11-08",
+  "date_modified": "2026-11-08",
+  "theme": { "bg": "#0d1e2c", "accent": "#4fd8c7", "fg": "#eefbf8" },
+  "mark": "HAKI",
+  "icon": "oss/haki.png",
+  "product": {
+    "name": "Haki",
+    "alternate_name": "حكي",
+    "category": "UtilitiesApplication",
+    "publisher": "person",
+    "operating_system": "macOS 13 or later",
+    "requirements": "macOS 13 or later, an OpenAI API key, Microphone and Accessibility permissions",
+    "since": "2026-09",
+    "url": { "en": "https://github.com/Alhamou/Haki" },
+    "repo": "https://github.com/Alhamou/Haki",
+    "license": { "name": "MIT", "url": "https://opensource.org/license/mit" },
+    "language": ["Swift"]
+  }
+}

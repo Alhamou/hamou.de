@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>RemoteDesk: سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك (LAN)</title>
+  <meta name="description" content="RemoteDesk سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك على الشبكة المحلية. يبث الشاشة بترميز H.264 العتادي ويمرّر الإدخال. للشبكات الموثوقة فقط.">
+  <meta name="author" content="عماد الحمو">
+  <meta name="keywords" content="RemoteDesk, سطح مكتب بعيد من ماك إلى ماك, مشاركة شاشة macOS على الشبكة المحلية, سطح مكتب بعيد مفتوح المصدر ماك, ScreenCaptureKit, VideoToolbox H.264, Bonjour, التحكم بجهاز ماك من جهاز آخر, Swift, ترخيص MIT">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/ar/articles/remotedesk/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/remotedesk/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/remotedesk/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/remotedesk/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/remotedesk/">
+  <link rel="alternate" type="text/markdown" href="/ar/articles/remotedesk/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/ar/articles/feed.xml" title="خلاصة Atom">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ar_AR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:url" content="https://hamou.de/ar/articles/remotedesk/">
+  <meta property="og:title" content="RemoteDesk: سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك عبر شبكتك المحلية">
+  <meta property="og:description" content="RemoteDesk سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك على الشبكة المحلية. يبث الشاشة بترميز H.264 العتادي ويمرّر الإدخال. للشبكات الموثوقة فقط.">
+  <meta property="og:image" content="https://hamou.de/ar/articles/remotedesk/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="RemoteDesk: سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك عبر شبكتك المحلية">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="أداة مفتوحة المصدر">
+  <meta property="article:tag" content="RemoteDesk">
+  <meta property="article:tag" content="سطح مكتب بعيد من ماك إلى ماك">
+  <meta property="article:tag" content="مشاركة شاشة macOS على الشبكة المحلية">
+  <meta property="article:tag" content="سطح مكتب بعيد مفتوح المصدر ماك">
+  <meta property="article:tag" content="ScreenCaptureKit">
+  <meta property="article:tag" content="VideoToolbox H.264">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RemoteDesk: سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك عبر شبكتك المحلية">
+  <meta name="twitter:description" content="RemoteDesk سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك على الشبكة المحلية. يبث الشاشة بترميز H.264 العتادي ويمرّر الإدخال. للشبكات الموثوقة فقط.">
+  <meta name="twitter:image" content="https://hamou.de/ar/articles/remotedesk/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/ar/articles/remotedesk/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "مقالات",
+          "item": "https://hamou.de/ar/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "RemoteDesk",
+          "item": "https://hamou.de/ar/articles/remotedesk/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/ar/articles/remotedesk/#webpage",
+      "url": "https://hamou.de/ar/articles/remotedesk/",
+      "name": "RemoteDesk: سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك (LAN)",
+      "description": "RemoteDesk سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك على الشبكة المحلية. يبث الشاشة بترميز H.264 العتادي ويمرّر الإدخال. للشبكات الموثوقة فقط.",
+      "inLanguage": "ar",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/ar/articles/remotedesk/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/ar/articles/remotedesk/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/ar/articles/remotedesk/#primaryimage",
+      "url": "https://hamou.de/ar/articles/remotedesk/og.jpg",
+      "contentUrl": "https://hamou.de/ar/articles/remotedesk/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "RemoteDesk: سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك عبر شبكتك المحلية"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/ar/articles/remotedesk/#article",
+      "headline": "RemoteDesk: سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك عبر شبكتك المحلية",
+      "description": "RemoteDesk سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك على الشبكة المحلية. يبث الشاشة بترميز H.264 العتادي ويمرّر الإدخال. للشبكات الموثوقة فقط.",
+      "abstract": "يشارك RemoteDesk شاشة جهاز ماك ويتيح لك التحكم به من جهاز ماك آخر عبر شبكتك المحلية. يلتقط الشاشة بـ ScreenCaptureKit ويضغطها بترميز H.264 العتادي ويرسلها عبر TCP. لا يوجد فيه تشفير ولا تسجيل دخول، لذلك هو للشبكات الخاصة الموثوقة فقط. الكود مفتوح بترخيص MIT.",
+      "inLanguage": "ar",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/ar/articles/remotedesk/#webpage"
+      },
+      "image": [
+        "https://hamou.de/ar/articles/remotedesk/og.jpg"
+      ],
+      "articleSection": "أداة مفتوحة المصدر",
+      "wordCount": 925,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "RemoteDesk",
+        "سطح مكتب بعيد من ماك إلى ماك",
+        "مشاركة شاشة macOS على الشبكة المحلية",
+        "سطح مكتب بعيد مفتوح المصدر ماك",
+        "ScreenCaptureKit",
+        "VideoToolbox H.264",
+        "Bonjour",
+        "التحكم بجهاز ماك من جهاز آخر",
+        "Swift",
+        "ترخيص MIT"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/remotedesk/#software"
+      },
+      "translationOfWork": {
+        "@id": "https://hamou.de/articles/remotedesk/#article"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/remotedesk/#software",
+      "name": "RemoteDesk",
+      "url": "https://github.com/Alhamou/RemoteDesk",
+      "applicationCategory": "UtilitiesApplication",
+      "image": "https://hamou.de/oss/remotedesk.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "operatingSystem": "macOS 14 or later",
+      "softwareRequirements": "macOS 14 or later on both Macs, same local network",
+      "description": "سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك للشبكات المحلية: بث H.264 عتادي، وتمرير كامل للإدخال، ومزامنة الحافظة. للشبكات الموثوقة فقط.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/RemoteDesk"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/remotedesk/#source",
+      "name": "RemoteDesk source code",
+      "codeRepository": "https://github.com/Alhamou/RemoteDesk",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/remotedesk/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/ar/articles/remotedesk/#faq",
+      "inLanguage": "ar",
+      "isPartOf": {
+        "@id": "https://hamou.de/ar/articles/remotedesk/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ما هو RemoteDesk؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RemoteDesk سطح مكتب بعيد مفتوح المصدر لنظام macOS. يشارك شاشة جهاز ماك ويتيح لك التحكم به من جهاز ماك آخر على الشبكة المحلية نفسها، ببث H.264 عتادي وتمرير كامل للإدخال."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل RemoteDesk آمن للاستخدام؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "على شبكة خاصة موثوقة فقط. يرسل الحركة عبر TCP عادي بلا تشفير، وليس فيه تسجيل دخول: أي جهاز على الشبكة يصل إلى منفذ المضيف يحصل على تحكم كامل. لا تستخدمه على شبكات Wi-Fi العامة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل أستطيع استخدام RemoteDesk عبر الإنترنت؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ليس مباشرة. يقول README إن عليك تمرير الحركة عبر قناة مشفّرة مثل Tailscale أو WireGuard أو تمرير منافذ SSH، وألا تعرّضه أبدًا على شبكات غير موثوقة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما أجهزة ماك وإصدارات macOS المدعومة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 14 Sonoma أو أحدث على المضيف والعميل. التطبيق ملف ثنائي شامل لأجهزة Apple silicon وIntel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما الأذونات التي يحتاجها RemoteDesk؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يحتاج المضيف إلى تسجيل الشاشة وإمكانية الوصول. ويحتاج العميل إلى إمكانية الوصول لوضع «Capture All Input» في ملء الشاشة فقط."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أصل بين جهازي ماك؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "افتح RemoteDesk على الجهازين. على المضيف اختر Share This Mac. وعلى العميل اختر Connect to a Mac، ثم اختر المضيف من قائمة Bonjour أو اكتب عنوان IP المحلي له، ثم اختر Connect."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما الذي لا يفعله RemoteDesk بعد؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "لا يشفّر الحركة ولا يطلب PIN. وبث الصوت واختيار الشاشات المتعددة على خارطة الطريق أيضًا. ومزامنة الحافظة تشمل النص فقط."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "لماذا يحذّرني macOS عند فتح RemoteDesk؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يُوزَّع الإصدار بلا شهادة Apple Developer ID مدفوعة. انقر التطبيق مع الضغط على Control واختر «فتح»، أو أزل سمة الحجر الصحي بالأمر xattr -cr."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">تخطَّ إلى المحتوى</a>
+  <header>
+    <nav class="nav container" aria-label="التنقل الرئيسي">
+      <a class="brand" href="/?lang=ar" aria-label="الرئيسية"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=ar">الرئيسية</a>
+        <a href="/ar/articles/">مقالات</a>
+      </div>
+      <a class="navCta" href="/?lang=ar#contact">لنتواصل</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#12143a;--art-accent:#5ccfff;--art-fg:#eef1ff">
+    <header class="artHero noVideo" data-mark="DESK">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="مسار التنقل"><ol><li><a href="/?lang=ar">الرئيسية</a></li><li><a href="/ar/articles/">مقالات</a></li><li aria-current="page">RemoteDesk</li></ol></nav>
+        <p class="artKicker"><img src="/oss/remotedesk.png" width="40" height="40" alt="">أداة مفتوحة المصدر</p>
+        <h1>RemoteDesk: سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك عبر شبكتك المحلية</h1>
+        <p class="artDek">يشارك RemoteDesk شاشة جهاز ماك ويتيح لك التحكم به من جهاز ماك آخر عبر شبكتك المحلية. يلتقط الشاشة بـ ScreenCaptureKit ويضغطها بترميز H.264 العتادي ويرسلها عبر TCP. لا يوجد فيه تشفير ولا تسجيل دخول، لذلك هو للشبكات الخاصة الموثوقة فقط. الكود مفتوح بترخيص MIT.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>عماد الحمو</b><small>مؤسس وصانع منتجات</small></span></span><span>نُشر في <time datetime="2026-11-08">8 نوفمبر 2026</time></span><span>قراءة 6 دقائق</span><span class="artLangs">بلغات أخرى: <a href="/articles/remotedesk/" hreflang="en" lang="en">English</a> · <a href="/de/articles/remotedesk/" hreflang="de" lang="de">Deutsch</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">في هذه الصفحة</p><ol><li><a href="#ما-هو-remotedesk">ما هو RemoteDesk؟</a></li><li><a href="#كيف-يعمل">كيف يعمل</a></li><li><a href="#ماذا-يستطيع">ماذا يستطيع</a></li><li><a href="#الأمان-اقرأ-هذا-أول-ا">الأمان: اقرأ هذا أولًا</a></li><li><a href="#الأذونات">الأذونات</a></li><li><a href="#التثبيت">التثبيت</a></li><li><a href="#الاستخدام">الاستخدام</a></li><li><a href="#مفتوح-المصدر">مفتوح المصدر</a></li><li><a href="#الأسئلة-الشائعة">الأسئلة الشائعة</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="ما-هو-remotedesk">ما هو RemoteDesk؟</h2>
+<p>RemoteDesk سطح مكتب بعيد مفتوح المصدر لنظام macOS يعمل بين جهازي ماك على الشبكة المحلية نفسها. جهاز يشارك شاشته، والآخر يعرضها ويعيد إليه حركة الماوس ولوحة المفاتيح والتمرير والحافظة. كُتب بلغة Swift ويعتمد على أطر Apple الأصلية فقط، بلا مكتبات من أطراف أخرى.</p>
+<p>هو أداة مركّزة: من ماك إلى ماك عبر شبكة محلية. ليس خدمة سحابية، ولا يتطلب حسابًا، وليس مصممًا للإنترنت المفتوح. اقرأ قسم الأمان قبل أن تستخدمه.</p>
+<h2 id="كيف-يعمل">كيف يعمل</h2>
+<ul>
+<li><strong>المضيف (Host)</strong> هو الجهاز الذي يُتحكَّم به. يلتقط الشاشة بـ ScreenCaptureKit ويضغطها بترميز H.264 العتادي عبر VideoToolbox ويرسلها عبر مقبس TCP بحزم مسبوقة بالطول. ويُحقن إدخال الماوس ولوحة المفاتيح البعيد عبر <code>CGEvent</code>.</li>
+<li><strong>العميل (Client)</strong> هو الجهاز الذي تجلس أمامه. يفك ترميز بث H.264 عتاديًا، ويرسمه عبر <code>CALayer</code>، ويلتقط أحداث الماوس ولوحة المفاتيح والتمرير والحافظة.</li>
+</ul>
+<p>يصف ملف README بروتوكولًا ثنائيًا خاصًا بلا إطارات B وبتحكم تكيّفي في الازدحام، هدفه زمن تأخير منخفض. وملاحظات البنية في المستودع تشرح البروتوكول ونموذج التزامن.</p>
+<h2 id="ماذا-يستطيع">ماذا يستطيع</h2>
+<ul>
+<li><strong>تمرير كامل للإدخال:</strong> حركة دقيقة للمؤشر، ونقرات الأزرار الأيسر والأيمن والأوسط، وتمرير بدقة البكسل في الاتجاهين، ولوحة المفاتيح.</li>
+<li><strong>وضع «Capture All Input» في ملء الشاشة:</strong> اختصارات النظام مثل Cmd+Tab وCmd+Space وMission Control تذهب إلى الجهاز البعيد بدل جهازك.</li>
+<li><strong>إيماءات لوحة التتبع وSpaces:</strong> في ملء الشاشة تعمل إيماءات Spaces وMission Control وApp Exposé والقرص على الجهاز البعيد، وفق إعدادات لوحة التتبع لديك.</li>
+<li><strong>«Match Remote Resolution to This Screen»:</strong> يبدّل المضيف إلى الدقة الأنسب لشاشة العميل ليملأها ملء الشاشة، ويستعيد الدقة عند قطع الاتصال.</li>
+<li><strong>حواف نظيفة في ملء الشاشة:</strong> يبقى Dock المحلي مخفيًا، ولا تُظهر قائمتك المحلية وأزرار النافذة سوى الحافة العلوية.</li>
+<li><strong>مزامنة حافظة النص في الاتجاهين</strong> مع منع حلقات التكرار.</li>
+<li><strong>اكتشاف بلا إعداد:</strong> تعلن المضيفات عن نفسها عبر Bonjour (<code>_remotedesk._tcp</code>) على شبكة Wi-Fi أو Ethernet، أو تتصل مباشرة بعنوان IP.</li>
+</ul>
+<h2 id="الأمان-اقرأ-هذا-أول-ا">الأمان: اقرأ هذا أولًا</h2>
+<p>RemoteDesk مصمم للشبكات المحلية الخاصة الموثوقة فقط، وملف README صريح بشأن حدوده:</p>
+<ul>
+<li><strong>بلا تشفير.</strong> تمرّ الحركة عبر TCP عادي بلا TLS، فتعبر لقطات الشاشة والمفاتيح التي تكتبها شبكتك كنص صريح.</li>
+<li><strong>بلا مصادقة.</strong> أي جهاز على الشبكة نفسها يصل إلى منفذ المضيف يحصل على تحكم كامل.</li>
+<li><strong>بث الحافظة.</strong> النص الذي تنسخه يُرسل تلقائيًا إلى الجهاز المتصل.</li>
+</ul>
+<p>لا تشغّله أبدًا على شبكات Wi-Fi العامة غير الموثوقة مثل المطارات والفنادق والمقاهي. وللوصول إلى جهاز ماك عبر الإنترنت مرّر الحركة عبر قناة مشفّرة مثل Tailscale أو WireGuard أو تمرير منافذ SSH. وتشفير TLS بمفتاح مشترك مسبقًا ومطالبة PIN أو كلمة مرور لمرة واحدة على المضيف ضمن خارطة الطريق، وليست في التطبيق بعد.</p>
+<h2 id="الأذونات">الأذونات</h2>
+<ul>
+<li><strong>المضيف:</strong> تسجيل الشاشة (Screen Recording) وإمكانية الوصول (Accessibility)، كلاهما في إعدادات النظام ضمن الخصوصية والأمان. أعد تشغيل RemoteDesk بعد منح إذن تسجيل الشاشة.</li>
+<li><strong>العميل:</strong> إمكانية الوصول، ولوضع «Capture All Input» في ملء الشاشة فقط.</li>
+</ul>
+<h2 id="التثبيت">التثبيت</h2>
+<p>يحتاج RemoteDesk إلى macOS 14 Sonoma أو أحدث على الجهازين. التطبيق ملف ثنائي شامل (Universal Binary) فيعمل على Apple silicon وعلى Intel. نزّل ملف DMG من أحدث إصدار على GitHub واسحب RemoteDesk إلى مجلد التطبيقات. يُوزَّع الإصدار بلا شهادة Apple Developer ID مدفوعة، لذلك قد يرفض macOS التشغيل الأول: انقر على التطبيق مع الضغط على Control واختر «فتح» ثم أكّد. ويذكر README بديلًا في الطرفية يزيل سمة الحجر الصحي بالأمر <code>xattr -cr</code>.</p>
+<p>وللبناء بنفسك تحتاج إلى أدوات Swift (Xcode أو Command Line Tools). انسخ المستودع وشغّل <code>./scripts/make-app.sh</code>.</p>
+<h2 id="الاستخدام">الاستخدام</h2>
+<p>افتح RemoteDesk على الجهازين. على جهاز المضيف اختر <strong>Share This Mac</strong> ووافق على طلبات الأذونات. وعلى جهاز العميل اختر <strong>Connect to a Mac</strong> واختر المضيف من قائمة Bonjour أو اكتب عنوان IP المحلي له (المنفذ الافتراضي 8790) ثم اختر <strong>Connect</strong>. تختفي نافذة المضيف أثناء اتصال عميل؛ انقر أيقونة Dock لرؤية الحالة أو لقطع الاتصال.</p>
+<p>اختصارات العميل: Ctrl+Cmd+F يبدّل ملء الشاشة، وCtrl+Opt+Cmd+G يشغّل التقاط الإدخال أو يوقفه، وCtrl+Opt+Cmd+Q يقطع الاتصال فورًا ولا يُمرَّر أبدًا إلى المضيف.</p>
+<p>ويمكن تشغيل RemoteDesk أيضًا من سطر الأوامر، ومنها مضيف بلا نافذة بالخيارين <code>--host --no-ui</code>.</p>
+<h2 id="مفتوح-المصدر">مفتوح المصدر</h2>
+<p>صدر RemoteDesk بترخيص MIT. ينشره عماد الحمو، صاحب هذا الموقع، على <a href="https://github.com/Alhamou/RemoteDesk">GitHub</a>. تضم خارطة الطريق تشفير TLS ومطالبة PIN أو كلمة مرور لمرة واحدة وبث الصوت واختيار شاشات متعددة. تقارير الأخطاء وطلبات الدمج (Pull Requests) مرحّب بها.</p>
+<section class="artFaq" aria-labelledby="الأسئلة-الشائعة">
+<h2 id="الأسئلة-الشائعة">الأسئلة الشائعة</h2>
+<div class="artQ">
+<h3>ما هو RemoteDesk؟</h3>
+<p>RemoteDesk سطح مكتب بعيد مفتوح المصدر لنظام macOS. يشارك شاشة جهاز ماك ويتيح لك التحكم به من جهاز ماك آخر على الشبكة المحلية نفسها، ببث H.264 عتادي وتمرير كامل للإدخال.</p>
+</div>
+<div class="artQ">
+<h3>هل RemoteDesk آمن للاستخدام؟</h3>
+<p>على شبكة خاصة موثوقة فقط. يرسل الحركة عبر TCP عادي بلا تشفير، وليس فيه تسجيل دخول: أي جهاز على الشبكة يصل إلى منفذ المضيف يحصل على تحكم كامل. لا تستخدمه على شبكات Wi-Fi العامة.</p>
+</div>
+<div class="artQ">
+<h3>هل أستطيع استخدام RemoteDesk عبر الإنترنت؟</h3>
+<p>ليس مباشرة. يقول README إن عليك تمرير الحركة عبر قناة مشفّرة مثل Tailscale أو WireGuard أو تمرير منافذ SSH، وألا تعرّضه أبدًا على شبكات غير موثوقة.</p>
+</div>
+<div class="artQ">
+<h3>ما أجهزة ماك وإصدارات macOS المدعومة؟</h3>
+<p>macOS 14 Sonoma أو أحدث على المضيف والعميل. التطبيق ملف ثنائي شامل لأجهزة Apple silicon وIntel.</p>
+</div>
+<div class="artQ">
+<h3>ما الأذونات التي يحتاجها RemoteDesk؟</h3>
+<p>يحتاج المضيف إلى تسجيل الشاشة وإمكانية الوصول. ويحتاج العميل إلى إمكانية الوصول لوضع «Capture All Input» في ملء الشاشة فقط.</p>
+</div>
+<div class="artQ">
+<h3>كيف أصل بين جهازي ماك؟</h3>
+<p>افتح RemoteDesk على الجهازين. على المضيف اختر Share This Mac. وعلى العميل اختر Connect to a Mac، ثم اختر المضيف من قائمة Bonjour أو اكتب عنوان IP المحلي له، ثم اختر Connect.</p>
+</div>
+<div class="artQ">
+<h3>ما الذي لا يفعله RemoteDesk بعد؟</h3>
+<p>لا يشفّر الحركة ولا يطلب PIN. وبث الصوت واختيار الشاشات المتعددة على خارطة الطريق أيضًا. ومزامنة الحافظة تشمل النص فقط.</p>
+</div>
+<div class="artQ">
+<h3>لماذا يحذّرني macOS عند فتح RemoteDesk؟</h3>
+<p>يُوزَّع الإصدار بلا شهادة Apple Developer ID مدفوعة. انقر التطبيق مع الضغط على Control واختر «فتح»، أو أزل سمة الحجر الصحي بالأمر <code>xattr -cr</code>.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/remotedesk.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">عن الأداة</p>
+          <p class="artProductName" id="product-title">RemoteDesk</p>
+          <p>سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك للشبكات المحلية: بث H.264 عتادي، وتمرير كامل للإدخال، ومزامنة الحافظة. للشبكات الموثوقة فقط.</p>
+          <ul class="artFacts"><li>منذ أكتوبر 2026</li><li>macOS 14 أو أحدث على الجهازين · الشبكة المحلية نفسها · ترخيص MIT</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/RemoteDesk">المستودع على GitHub <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">مقالات أخرى</p>
+    <div class="artList">
+<a class="artCard" href="/ar/articles/pinfiy/" style="--art-bg:#2a1f0a;--art-accent:#f3c15b;--art-fg:#fff6e0">
+  <span class="artCardTop"><img src="/oss/pinfiy.png" width="56" height="56" alt="" loading="lazy"><span>أداة مفتوحة المصدر</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">pinFiy: ملاحظات لاصقة ملوّنة لجهاز ماك، بدبّوس صغير في شريط القوائم</h3>
+    <span class="artCardDek">يمنح pinFiy جهاز ماك ملاحظات لاصقة ملوّنة تعيش خلف دبّوس صغير في شريط القوائم. كل ملاحظة نافذة مستقلة، والنص العربي يمتد من اليمين إلى اليسار والإنجليزي من اليسار إلى اليمين، والملاحظة المثبّتة تبقى فوق نوافذك الأخرى. لا حساب ولا مزامنة سحابية ولا اتصال بالشبكة. الكود مفتوح بترخيص MIT.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 نوفمبر 2026</time> · قراءة 4 دقائق</span>
+  </span>
+</a>
+<a class="artCard" href="/ar/articles/closeall/" style="--art-bg:#151512;--art-accent:#ff7a6b;--art-fg:#f6f3ec">
+  <span class="artCardTop"><img src="/oss/closeall.png" width="56" height="56" alt="" loading="lazy"><span>أداة مفتوحة المصدر</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">closeAll: أغلق كل تطبيقات Dock بإنهاء إجباري من زر واحد في شريط القوائم على ماك</h3>
+    <span class="artCardDek">ينهي closeAll إجباريًا كل تطبيقات Dock العادية من زر واحد في شريط القوائم. تراجع القائمة أولًا، وتُلغي العلامة عمّا يجب أن يبقى مفتوحًا، ثم تضغط Force Quit. الإنهاء الإجباري لا يطلب من التطبيقات الحفظ، لذلك يضيع العمل غير المحفوظ. الكود مفتوح بترخيص MIT.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 نوفمبر 2026</time> · قراءة 5 دقائق</span>
+  </span>
+</a>
+<a class="artCard" href="/ar/articles/safeshare/" style="--art-bg:#100d24;--art-accent:#a78bfa;--art-fg:#f3f0ff">
+  <span class="artCardTop"><img src="/oss/safeshare.png" width="56" height="56" alt="" loading="lazy"><span>أداة مفتوحة المصدر</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">SafeShare: أخفِ التطبيقات الخاصة أثناء مشاركة شاشة ماك في Teams أو Zoom أو Meet</h3>
+    <span class="artCardDek">يحل SafeShare معضلة مشاركة الشاشة: إما أن تشارك الشاشة كلها فتخاطر بتسريب محادثات خاصة وإشعارات، وإما أن تشارك نافذة واحدة فتفقد القدرة على تعدد المهام. يبني نافذة Safe View مصفّاة تستبعد التطبيقات التي تحميها. تشارك هذه النافذة في Teams أو Zoom أو Meet وتواصل العمل على سطح مكتبك الحقيقي. الكود مفتوح بترخيص MIT.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 نوفمبر 2026</time> · قراءة 5 دقائق</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=ar"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="اللغة" data-nav><option value="/articles/remotedesk/" lang="en">English</option><option value="/de/articles/remotedesk/" lang="de">Deutsch</option><option value="/ar/articles/remotedesk/" lang="ar" selected>العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

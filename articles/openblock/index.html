@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>OpenBlock: open-source ad blocker for Safari on Mac</title>
+  <meta name="description" content="OpenBlock is an open-source ad blocker for Safari on macOS. It turns real filter lists into Safari&#x27;s native content blockers and has no tracking.">
+  <meta name="author" content="Emad Alhamou">
+  <meta name="keywords" content="OpenBlock, Safari ad blocker, open source ad blocker Mac, Safari content blocker, macOS ad blocker, AdGuard filter lists, EasyList, EasyPrivacy, Safari web extension, GPL-3.0, Swift">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/articles/openblock/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/openblock/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/openblock/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/openblock/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/openblock/">
+  <link rel="alternate" type="text/markdown" href="/articles/openblock/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/articles/feed.xml" title="Atom feed">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:url" content="https://hamou.de/articles/openblock/">
+  <meta property="og:title" content="OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking">
+  <meta property="og:description" content="OpenBlock is an open-source ad blocker for Safari on macOS. It turns real filter lists into Safari&#x27;s native content blockers and has no tracking.">
+  <meta property="og:image" content="https://hamou.de/articles/openblock/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="Open source tool">
+  <meta property="article:tag" content="OpenBlock">
+  <meta property="article:tag" content="Safari ad blocker">
+  <meta property="article:tag" content="open source ad blocker Mac">
+  <meta property="article:tag" content="Safari content blocker">
+  <meta property="article:tag" content="macOS ad blocker">
+  <meta property="article:tag" content="AdGuard filter lists">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking">
+  <meta name="twitter:description" content="OpenBlock is an open-source ad blocker for Safari on macOS. It turns real filter lists into Safari&#x27;s native content blockers and has no tracking.">
+  <meta name="twitter:image" content="https://hamou.de/articles/openblock/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/articles/openblock/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://hamou.de/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "OpenBlock",
+          "item": "https://hamou.de/articles/openblock/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/articles/openblock/#webpage",
+      "url": "https://hamou.de/articles/openblock/",
+      "name": "OpenBlock: open-source ad blocker for Safari on Mac",
+      "description": "OpenBlock is an open-source ad blocker for Safari on macOS. It turns real filter lists into Safari's native content blockers and has no tracking.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/articles/openblock/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/articles/openblock/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/articles/openblock/#primaryimage",
+      "url": "https://hamou.de/articles/openblock/og.jpg",
+      "contentUrl": "https://hamou.de/articles/openblock/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/articles/openblock/#article",
+      "headline": "OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking",
+      "description": "OpenBlock is an open-source ad blocker for Safari on macOS. It turns real filter lists into Safari's native content blockers and has no tracking.",
+      "abstract": "OpenBlock blocks ads and trackers in Safari on your Mac. It downloads real filter lists, converts them into Safari's own rule format and lets Safari enforce them, so nothing sits between you and the web. The code is open under the GPL-3.0 license.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/articles/openblock/#webpage"
+      },
+      "image": [
+        "https://hamou.de/articles/openblock/og.jpg"
+      ],
+      "articleSection": "Open source tool",
+      "wordCount": 818,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "OpenBlock",
+        "Safari ad blocker",
+        "open source ad blocker Mac",
+        "Safari content blocker",
+        "macOS ad blocker",
+        "AdGuard filter lists",
+        "EasyList",
+        "EasyPrivacy",
+        "Safari web extension",
+        "GPL-3.0",
+        "Swift"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/openblock/#software"
+      },
+      "workTranslation": [
+        {
+          "@id": "https://hamou.de/de/articles/openblock/#article"
+        },
+        {
+          "@id": "https://hamou.de/ar/articles/openblock/#article"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/openblock/#software",
+      "name": "OpenBlock",
+      "url": "https://github.com/Alhamou/OpenBlock",
+      "applicationCategory": "BrowserApplication",
+      "image": "https://hamou.de/oss/openblock.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "operatingSystem": "macOS 15 or later",
+      "softwareRequirements": "Safari on macOS 15 Sequoia or later",
+      "description": "Open-source ad blocker for Safari on macOS: four native content blockers, real filter lists and a web extension for advanced rules.",
+      "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+      "sameAs": [
+        "https://github.com/Alhamou/OpenBlock"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/openblock/#source",
+      "name": "OpenBlock source code",
+      "codeRepository": "https://github.com/Alhamou/OpenBlock",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/openblock/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift",
+        "JavaScript"
+      ],
+      "license": "https://www.gnu.org/licenses/gpl-3.0.html"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/articles/openblock/#faq",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/articles/openblock/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is OpenBlock?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "OpenBlock is an open-source ad blocker for Safari on macOS. It converts real filter lists into Safari's native content blockers and adds a web extension for advanced rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does OpenBlock work in Chrome, Firefox or other apps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. OpenBlock blocks only inside Safari, because Safari compiles the rules into its own engine and other browsers and apps never see them. DNS-based blocking for every app is planned."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which filter lists does OpenBlock use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AdGuard Base, Tracking, Social, Cookie and Popups, EasyList, EasyPrivacy and regional lists, plus any list URL you add. Lists can use AdBlock syntax or be hosts files."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does OpenBlock collect my data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "According to its README and security policy, no. It has no telemetry, analytics or crash reporting, and the only network traffic is the download of the filter lists you turned on."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which macOS version does OpenBlock need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 15 Sequoia or later."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does macOS warn me when I open OpenBlock?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The release build is signed with an Apple Development certificate, not a Developer ID, and it is not notarized. Use Open Anyway in System Settings under Privacy & Security to open it. Signing with a Developer ID and notarization are on the project's roadmap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is OpenBlock affiliated with AdGuard?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is built the same way (filter lists, a converter, Safari content blockers) and bundles AdGuard's open-source Scriptlets and ExtendedCss libraries, which is why it is licensed under GPL-3.0."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">Skip to content</a>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="/?lang=en" aria-label="Home"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=en">Home</a>
+        <a href="/articles/">Articles</a>
+      </div>
+      <a class="navCta" href="/?lang=en#contact">Let&#x27;s talk</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#0c1a36;--art-accent:#7db7ff;--art-fg:#f1f5ff">
+    <header class="artHero noVideo" data-mark="BLOCK">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/?lang=en">Home</a></li><li><a href="/articles/">Articles</a></li><li aria-current="page">OpenBlock</li></ol></nav>
+        <p class="artKicker"><img src="/oss/openblock.png" width="40" height="40" alt="">Open source tool</p>
+        <h1>OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking</h1>
+        <p class="artDek">OpenBlock blocks ads and trackers in Safari on your Mac. It downloads real filter lists, converts them into Safari&#x27;s own rule format and lets Safari enforce them, so nothing sits between you and the web. The code is open under the <span class="nb">GPL-3.0</span> license.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Founder &amp; Product Builder</small></span></span><span>Published <time datetime="2026-11-08">8 November 2026</time></span><span>4 min read</span><span class="artLangs">Also in: <a href="/de/articles/openblock/" hreflang="de" lang="de">Deutsch</a> · <a href="/ar/articles/openblock/" hreflang="ar" lang="ar">العربية</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">On this page</p><ol><li><a href="#what-is-openblock">What is OpenBlock?</a></li><li><a href="#what-it-blocks-with">What it blocks with</a></li><li><a href="#openblock-advanced">OpenBlock Advanced</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#install">Install</a></li><li><a href="#open-source">Open source</a></li><li><a href="#frequently-asked-questions">Frequently asked questions</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="what-is-openblock">What is OpenBlock?</h2>
+<p>OpenBlock is an open-source ad blocker for Safari on macOS. It follows the same recipe as AdGuard for Safari: filter lists go through a converter and become Safari content blockers. The app downloads the lists, converts them to Safari's native rule format and hands them to Safari, which compiles them into its own engine. Nothing sits between you and the web, and OpenBlock sends no data about your browsing anywhere.</p>
+<p>It blocks only inside Safari. Other browsers and apps never see the rules. DNS-based blocking for every app on the Mac is the next feature on the project's roadmap.</p>
+<h2 id="what-it-blocks-with">What it blocks with</h2>
+<ul>
+<li><strong>Four Safari content blockers:</strong> Ads, Privacy, Annoyances and Custom. Each has its own budget of 150,000 rules.</li>
+<li><strong>Real filter lists:</strong> AdGuard Base, Tracking, Social, Cookie and Popups (the Safari builds), EasyList, EasyPrivacy, regional lists, or any list URL you add, in AdBlock syntax or as a hosts file.</li>
+<li><strong>Your own rules and an allowlist,</strong> written in AdBlock syntax. Sites on the allowlist are left alone.</li>
+<li><strong>Automatic updates:</strong> the lists refresh every 24 hours while OpenBlock is running, and the menu bar has an Update Filters Now command next to Pause Blocking and Launch at Login.</li>
+</ul>
+<h2 id="openblock-advanced">OpenBlock Advanced</h2>
+<p>Safari's content blockers cannot express every rule. For the rest there is OpenBlock Advanced, a Safari web extension. It runs scriptlets (AdGuard's <code>#%#//scriptlet(...)</code> rules and uBlock Origin's <code>##+js(...)</code> rules), injects CSS (<code>#$#</code>), supports extended CSS selectors (<code>#?#</code>, <code>:has-text()</code>, <code>:remove()</code>) and handles rules for domains with a wildcard top-level domain such as <code>example.*</code>. The project names YouTube ads and anti-adblock walls as examples. Its toolbar button shows the status of the current site and lets you pause the advanced rules for that site.</p>
+<h2 id="privacy">Privacy</h2>
+<p>The README describes OpenBlock as having no tracking, and its security policy says the only network traffic is the download of the filter lists you turned on. There is no telemetry, no analytics and no crash reporting, and OpenBlock does not read your browsing history. Because Safari compiles the rules itself, the app never sits in the path of your web traffic.</p>
+<h2 id="install">Install</h2>
+<p>OpenBlock needs macOS 15 Sequoia or later. Download the DMG from the latest release on GitHub and drag OpenBlock to Applications. The build is signed with an Apple Development certificate and is not notarized, so macOS asks for confirmation the first time: open System Settings, go to Privacy &amp; Security and choose Open Anyway next to OpenBlock.</p>
+<p>Then open OpenBlock, pick your filter lists and wait for the first conversion to finish. In Safari, open Settings, then Extensions: enable the four OpenBlock content blockers and OpenBlock Advanced, and allow it on every website. Keep a single copy of the app on disk, because Safari gets confused when two builds register the same extensions.</p>
+<p>To build it yourself you need Xcode 16 or later and XcodeGen. Safari only loads signed extensions, so an unsigned build does not block anything.</p>
+<h2 id="open-source">Open source</h2>
+<p>OpenBlock is licensed under <span class="nb">GPL-3.0</span>, because OpenBlock Advanced bundles AdGuard's <span class="nb">GPL-3</span> Scriptlets and ExtendedCss libraries. The filter lists are downloaded when the app runs and keep their own licenses. OpenBlock is not affiliated with AdGuard. The repository also includes a command-line converter that you can verify against WebKit's own rule compiler.</p>
+<p>Emad Alhamou, the author of this site, publishes OpenBlock on <a href="https://github.com/Alhamou/OpenBlock">GitHub</a>. Bug reports and pull requests are welcome.</p>
+<section class="artFaq" aria-labelledby="frequently-asked-questions">
+<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+<div class="artQ">
+<h3>What is OpenBlock?</h3>
+<p>OpenBlock is an open-source ad blocker for Safari on macOS. It converts real filter lists into Safari's native content blockers and adds a web extension for advanced rules.</p>
+</div>
+<div class="artQ">
+<h3>Does OpenBlock work in Chrome, Firefox or other apps?</h3>
+<p>No. OpenBlock blocks only inside Safari, because Safari compiles the rules into its own engine and other browsers and apps never see them. DNS-based blocking for every app is planned.</p>
+</div>
+<div class="artQ">
+<h3>Which filter lists does OpenBlock use?</h3>
+<p>AdGuard Base, Tracking, Social, Cookie and Popups, EasyList, EasyPrivacy and regional lists, plus any list URL you add. Lists can use AdBlock syntax or be hosts files.</p>
+</div>
+<div class="artQ">
+<h3>Does OpenBlock collect my data?</h3>
+<p>According to its README and security policy, no. It has no telemetry, analytics or crash reporting, and the only network traffic is the download of the filter lists you turned on.</p>
+</div>
+<div class="artQ">
+<h3>Which macOS version does OpenBlock need?</h3>
+<p>macOS 15 Sequoia or later.</p>
+</div>
+<div class="artQ">
+<h3>Why does macOS warn me when I open OpenBlock?</h3>
+<p>The release build is signed with an Apple Development certificate, not a Developer ID, and it is not notarized. Use Open Anyway in System Settings under Privacy &amp; Security to open it. Signing with a Developer ID and notarization are on the project's roadmap.</p>
+</div>
+<div class="artQ">
+<h3>Is OpenBlock affiliated with AdGuard?</h3>
+<p>No. It is built the same way (filter lists, a converter, Safari content blockers) and bundles AdGuard's open-source Scriptlets and ExtendedCss libraries, which is why it is licensed under <span class="nb">GPL-3.0.</span></p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/openblock.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">About the tool</p>
+          <p class="artProductName" id="product-title">OpenBlock</p>
+          <p>Open-source ad blocker for Safari on macOS: four native content blockers, real filter lists and a web extension for advanced rules.</p>
+          <ul class="artFacts"><li>Since October 2026</li><li>macOS 15 Sequoia or later · Swift · GPL-3.0 license</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/OpenBlock">View on GitHub <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">More articles</p>
+    <div class="artList">
+<a class="artCard" href="/articles/remotedesk/" style="--art-bg:#12143a;--art-accent:#5ccfff;--art-fg:#eef1ff">
+  <span class="artCardTop"><img src="/oss/remotedesk.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">RemoteDesk: an open-source Mac-to-Mac remote desktop for your local network</h3>
+    <span class="artCardDek">RemoteDesk shares one Mac&#x27;s screen and lets you control it from another Mac over your local network. It captures the screen with ScreenCaptureKit, compresses it with hardware H.264 and sends it over TCP. It has no encryption or login, so it is meant for trusted private networks only. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/pinfiy/" style="--art-bg:#2a1f0a;--art-accent:#f3c15b;--art-fg:#fff6e0">
+  <span class="artCardTop"><img src="/oss/pinfiy.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">pinFiy: colored sticky notes for the Mac, with a small pin in the menu bar</h3>
+    <span class="artCardDek">pinFiy gives your Mac colored sticky notes that live behind a small pin in the menu bar. Each note is its own window, Arabic text runs right to left and English left to right, and a pinned note stays above your other windows. There is no account, no cloud sync and no network access. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 4 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/closeall/" style="--art-bg:#151512;--art-accent:#ff7a6b;--art-fg:#f6f3ec">
+  <span class="artCardTop"><img src="/oss/closeall.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">closeAll: force-quit every Dock app from one menu-bar button on Mac</h3>
+    <span class="artCardDek">closeAll force-quits every normal Dock app from one button in the menu bar. You review the list first, uncheck what should stay open and press Force Quit. Force Quit does not ask apps to save, so unsaved work is lost. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=en"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Language" data-nav><option value="/articles/openblock/" lang="en" selected>English</option><option value="/de/articles/openblock/" lang="de">Deutsch</option><option value="/ar/articles/openblock/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

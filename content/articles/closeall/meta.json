@@ -1,0 +1,22 @@
+{
+  "slug": "closeall",
+  "group": "tool",
+  "order": 4,
+  "date_published": "2026-11-08",
+  "date_modified": "2026-11-08",
+  "theme": { "bg": "#151512", "accent": "#ff7a6b", "fg": "#f6f3ec" },
+  "mark": "CLOSE",
+  "icon": "oss/closeall.png",
+  "product": {
+    "name": "closeAll",
+    "category": "UtilitiesApplication",
+    "publisher": "person",
+    "operating_system": "macOS 14 or later",
+    "requirements": "macOS 14 or later, Apple silicon build",
+    "since": "2026-10",
+    "url": { "en": "https://github.com/Alhamou/closeAll" },
+    "repo": "https://github.com/Alhamou/closeAll",
+    "license": { "name": "MIT", "url": "https://opensource.org/license/mit" },
+    "language": ["Swift"]
+  }
+}

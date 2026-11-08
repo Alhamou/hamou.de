@@ -1,0 +1,22 @@
+{
+  "slug": "pinfiy",
+  "group": "tool",
+  "order": 3,
+  "date_published": "2026-11-08",
+  "date_modified": "2026-11-08",
+  "theme": { "bg": "#2a1f0a", "accent": "#f3c15b", "fg": "#fff6e0" },
+  "mark": "PIN",
+  "icon": "oss/pinfiy.png",
+  "product": {
+    "name": "pinFiy",
+    "category": "UtilitiesApplication",
+    "publisher": "person",
+    "operating_system": "macOS 13 or later",
+    "requirements": "macOS 13 or later",
+    "since": "2026-10",
+    "url": { "en": "https://github.com/Alhamou/pinFiy" },
+    "repo": "https://github.com/Alhamou/pinFiy",
+    "license": { "name": "MIT", "url": "https://opensource.org/license/mit" },
+    "language": ["Swift"]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "movemouse",
+  "group": "tool",
+  "order": 7,
+  "date_published": "2026-11-08",
+  "date_modified": "2026-11-08",
+  "theme": { "bg": "#151a2c", "accent": "#4cc2ff", "fg": "#eef3ff" },
+  "mark": "MOUSE",
+  "icon": "oss/movemouse.png",
+  "product": {
+    "name": "moveMouse",
+    "category": "UtilitiesApplication",
+    "publisher": "person",
+    "operating_system": "macOS 11 or later",
+    "requirements": "macOS 11 Big Sur or later, Apple silicon build, Accessibility permission",
+    "since": "2026-10",
+    "url": { "en": "https://github.com/Alhamou/moveMouse" },
+    "repo": "https://github.com/Alhamou/moveMouse",
+    "license": { "name": "MIT", "url": "https://opensource.org/license/mit" },
+    "language": ["Swift"]
+  }
+}

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>moveMouse: RDP-Verbindung auf dem Mac offen halten</title>
+  <meta name="description" content="moveMouse ist eine Open-Source-Menüleisten-App für macOS. Sie bewegt den Mauszeiger nach Zeitplan und verhindert den Ruhezustand, damit eine RDP-Verbindung seltener abbricht.">
+  <meta name="author" content="Emad Alhamou">
+  <meta name="keywords" content="moveMouse, RDP-Verbindung offen halten Mac, RDP-Trennung verhindern, Mouse Jiggler Mac, Mausbewegung macOS, Ruhezustand verhindern Mac, Remotedesktop Leerlauf-Timeout, Menüleisten-App, Bedienungshilfen, Swift, MIT-Lizenz">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/de/articles/movemouse/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/movemouse/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/movemouse/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/movemouse/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/movemouse/">
+  <link rel="alternate" type="text/markdown" href="/de/articles/movemouse/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/de/articles/feed.xml" title="Atom-Feed">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:url" content="https://hamou.de/de/articles/movemouse/">
+  <meta property="og:title" content="moveMouse: eine Mac-Menüleisten-App, die hilft, RDP-Verbindungen offen zu halten">
+  <meta property="og:description" content="moveMouse ist eine Open-Source-Menüleisten-App für macOS. Sie bewegt den Mauszeiger nach Zeitplan und verhindert den Ruhezustand, damit eine RDP-Verbindung seltener abbricht.">
+  <meta property="og:image" content="https://hamou.de/de/articles/movemouse/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="moveMouse: eine Mac-Menüleisten-App, die hilft, RDP-Verbindungen offen zu halten">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="Open-Source-Tool">
+  <meta property="article:tag" content="moveMouse">
+  <meta property="article:tag" content="RDP-Verbindung offen halten Mac">
+  <meta property="article:tag" content="RDP-Trennung verhindern">
+  <meta property="article:tag" content="Mouse Jiggler Mac">
+  <meta property="article:tag" content="Mausbewegung macOS">
+  <meta property="article:tag" content="Ruhezustand verhindern Mac">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="moveMouse: eine Mac-Menüleisten-App, die hilft, RDP-Verbindungen offen zu halten">
+  <meta name="twitter:description" content="moveMouse ist eine Open-Source-Menüleisten-App für macOS. Sie bewegt den Mauszeiger nach Zeitplan und verhindert den Ruhezustand, damit eine RDP-Verbindung seltener abbricht.">
+  <meta name="twitter:image" content="https://hamou.de/de/articles/movemouse/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/de/articles/movemouse/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Artikel",
+          "item": "https://hamou.de/de/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "moveMouse",
+          "item": "https://hamou.de/de/articles/movemouse/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/de/articles/movemouse/#webpage",
+      "url": "https://hamou.de/de/articles/movemouse/",
+      "name": "moveMouse: RDP-Verbindung auf dem Mac offen halten",
+      "description": "moveMouse ist eine Open-Source-Menüleisten-App für macOS. Sie bewegt den Mauszeiger nach Zeitplan und verhindert den Ruhezustand, damit eine RDP-Verbindung seltener abbricht.",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/de/articles/movemouse/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/de/articles/movemouse/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/de/articles/movemouse/#primaryimage",
+      "url": "https://hamou.de/de/articles/movemouse/og.jpg",
+      "contentUrl": "https://hamou.de/de/articles/movemouse/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "moveMouse: eine Mac-Menüleisten-App, die hilft, RDP-Verbindungen offen zu halten"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/de/articles/movemouse/#article",
+      "headline": "moveMouse: eine Mac-Menüleisten-App, die hilft, RDP-Verbindungen offen zu halten",
+      "description": "moveMouse ist eine Open-Source-Menüleisten-App für macOS. Sie bewegt den Mauszeiger nach Zeitplan und verhindert den Ruhezustand, damit eine RDP-Verbindung seltener abbricht.",
+      "abstract": "moveMouse hilft, eine Remotedesktop-Verbindung (RDP) offen zu halten. Es bewegt den Mauszeiger in einem Intervall, das du wählst, und hält den Mac wach, solange es läuft, damit eine ruhige Sitzung seltener getrennt wird. Es sitzt in der Menüleiste, und sein Code ist offen unter der MIT-Lizenz.",
+      "inLanguage": "de",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/de/articles/movemouse/#webpage"
+      },
+      "image": [
+        "https://hamou.de/de/articles/movemouse/og.jpg"
+      ],
+      "articleSection": "Open-Source-Tool",
+      "wordCount": 977,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "moveMouse",
+        "RDP-Verbindung offen halten Mac",
+        "RDP-Trennung verhindern",
+        "Mouse Jiggler Mac",
+        "Mausbewegung macOS",
+        "Ruhezustand verhindern Mac",
+        "Remotedesktop Leerlauf-Timeout",
+        "Menüleisten-App",
+        "Bedienungshilfen",
+        "Swift",
+        "MIT-Lizenz"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/movemouse/#software"
+      },
+      "translationOfWork": {
+        "@id": "https://hamou.de/articles/movemouse/#article"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/movemouse/#software",
+      "name": "moveMouse",
+      "url": "https://github.com/Alhamou/moveMouse",
+      "applicationCategory": "UtilitiesApplication",
+      "image": "https://hamou.de/oss/movemouse.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "operatingSystem": "macOS 11 or later",
+      "softwareRequirements": "macOS 11 Big Sur or later, Apple silicon build, Accessibility permission",
+      "description": "Open-Source-Menüleisten-App für macOS, die den Mauszeiger im Intervall bewegt und den Ruhezustand verhindert, gebaut, damit eine RDP-Verbindung nicht abbricht.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/moveMouse"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/movemouse/#source",
+      "name": "moveMouse source code",
+      "codeRepository": "https://github.com/Alhamou/moveMouse",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/movemouse/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/de/articles/movemouse/#faq",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://hamou.de/de/articles/movemouse/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist moveMouse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "moveMouse ist eine Open-Source-Menüleisten-App für macOS, die den Mauszeiger automatisch in einem Intervall bewegt, das du wählst, und den Mac wach hält, solange sie läuft. Sie wurde gebaut, um eine RDP-Verbindung vor dem Abbruch zu bewahren."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie hilft moveMouse bei einer RDP-Verbindung?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es arbeitet von deinem Mac aus. Es verhindert den Ruhezustand durch Inaktivität, der die Verbindung sonst kappen würde, und erzeugt Zeigeraktivität im gewählten Intervall, damit eine Sitzung nicht völlig still bleibt. Die Aktivität erreicht die entfernte Sitzung nur, solange das RDP-Fenster unter dem Zeiger liegt, und moveMouse ändert keine Einstellung auf dem entfernten Rechner."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann der Klick etwas treffen, das ich nicht wollte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, das ist möglich. Der optionale Linksklick geschieht an der letzten Zeigerposition und trifft alles, was darunter liegt. Wenn du nur die Bewegung willst, schalte „Left Click“ im Menü aus. Standardmäßig ist er an."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Intervalle und Bewegungsmuster gibt es?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Intervalle sind 15, 30 und 45 Sekunden sowie 1, 2 und 5 Minuten, mit 30 Sekunden als Standard. Die zwei Muster sind „Bildschirmmitte“ (Mitte, rechts, links, zurück zur Mitte) und „Aktuelle Zeigerposition“ (ein kleines Wackeln nach rechts und links, dann zurück zum Start)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Berechtigung braucht moveMouse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "„Bedienungshilfen“, für simulierte Mauseingaben, vor allem das Klicken. Aktiviere moveMouse in den Systemeinstellungen unter „Datenschutz & Sicherheit“, dann „Bedienungshilfen“."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Macs und macOS-Versionen werden unterstützt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 11 Big Sur oder neuer. Die mitgelieferte App und das Build-Skript zielen auf Apple Silicon (arm64)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie pausiere oder beende ich moveMouse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wähle im Menüleisten-Menü „Pause“, um die geplante Bewegung zu stoppen und die Verhinderung des Ruhezustands freizugeben, oder „Beenden“, um die App zu schließen. „Move Now“ führt eine Bewegung auf Abruf aus, auch während der Pause."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist moveMouse Open Source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Es steht unter der MIT-Lizenz, und der Quellcode liegt auf GitHub."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">Zum Inhalt springen</a>
+  <header>
+    <nav class="nav container" aria-label="Hauptnavigation">
+      <a class="brand" href="/?lang=de" aria-label="Startseite"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=de">Startseite</a>
+        <a href="/de/articles/">Artikel</a>
+      </div>
+      <a class="navCta" href="/?lang=de#contact">Kontakt</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#151a2c;--art-accent:#4cc2ff;--art-fg:#eef3ff">
+    <header class="artHero noVideo" data-mark="MOUSE">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="Brotkrümelnavigation"><ol><li><a href="/?lang=de">Startseite</a></li><li><a href="/de/articles/">Artikel</a></li><li aria-current="page">moveMouse</li></ol></nav>
+        <p class="artKicker"><img src="/oss/movemouse.png" width="40" height="40" alt="">Open-Source-Tool</p>
+        <h1>moveMouse: eine Mac-Menüleisten-App, die hilft, RDP-Verbindungen offen zu halten</h1>
+        <p class="artDek">moveMouse hilft, eine Remotedesktop-Verbindung (RDP) offen zu halten. Es bewegt den Mauszeiger in einem Intervall, das du wählst, und hält den Mac wach, solange es läuft, damit eine ruhige Sitzung seltener getrennt wird. Es sitzt in der Menüleiste, und sein Code ist offen unter der MIT-Lizenz.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Gründer &amp; Produktentwickler</small></span></span><span>Veröffentlicht am <time datetime="2026-11-08">8. November 2026</time></span><span>5 Min. Lesezeit</span><span class="artLangs">Auch auf: <a href="/articles/movemouse/" hreflang="en" lang="en">English</a> · <a href="/ar/articles/movemouse/" hreflang="ar" lang="ar">العربية</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">Auf dieser Seite</p><ol><li><a href="#was-ist-movemouse">Was ist moveMouse?</a></li><li><a href="#warum-eine-rdp-verbindung-abbricht">Warum eine RDP-Verbindung abbricht</a></li><li><a href="#was-es-kann">Was es kann</a></li><li><a href="#berechtigungen">Berechtigungen</a></li><li><a href="#installation">Installation</a></li><li><a href="#open-source">Open Source</a></li><li><a href="#haeufige-fragen">Häufige Fragen</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="was-ist-movemouse">Was ist moveMouse?</h2>
+<p>moveMouse ist eine kleine Open-Source-App für die macOS-Menüleiste. In einem Intervall, das du wählst, bewegt sie den Mauszeiger von selbst, und solange sie läuft, hält sie den Mac davon ab, wegen Inaktivität in den Ruhezustand zu gehen. Gebaut wurde sie für ein praktisches Problem: eine Remotedesktop-Verbindung (RDP), die abbricht, wenn du den Mac nicht anfasst. Der Tooltip der App in der Menüleiste sagt das selbst, auf Arabisch: Sie soll verhindern, dass RDP-Verbindungen getrennt werden.</p>
+<p>Das README beschreibt sie allgemeiner als automatische Mausbewegung nach deinem Zeitplan: nützlich für Demonstrationen am Desktop, zum Testen von Mausinteraktionen oder um einen Mac während einer Aufgabe aktiv zu halten. Sie ist in Swift und AppKit geschrieben und läuft ohne Dock-Symbol.</p>
+<h2 id="warum-eine-rdp-verbindung-abbricht">Warum eine RDP-Verbindung abbricht</h2>
+<p>Remotedesktop-Sitzungen enden meist aus banalen Gründen. Der Mac, von dem aus du dich verbindest, geht in den Ruhezustand und nimmt die Netzwerkverbindung mit, oder die Gegenseite hält eine Sitzung ohne Eingaben für untätig und beendet oder sperrt sie. moveMouse arbeitet von deinem Mac aus und packt beides an: Es verhindert den Ruhezustand durch Inaktivität, solange es läuft, und erzeugt Zeigeraktivität im eingestellten Intervall.</p>
+<p>Zwei ehrliche Grenzen. Die App weiß nichts von deinem RDP-Client: Sie bewegt den Zeiger auf deinem Mac, die Aktivität erreicht die entfernte Sitzung also nur, solange das RDP-Fenster unter dem Zeiger liegt. Halte das Remotedesktop-Fenster deshalb dort, wo sich der Zeiger bewegt, beim Standardmuster ist das die Bildschirmmitte. Und moveMouse ändert nichts am entfernten Rechner, eine dort erzwungene Sitzungsgrenze bleibt also bestehen.</p>
+<h2 id="was-es-kann">Was es kann</h2>
+<ul>
+<li><strong>Sechs Intervalle:</strong> alle 15, 30 oder 45 Sekunden oder alle 1, 2 oder 5 Minuten. Beim ersten Start gilt 30 Sekunden.</li>
+<li><strong>Zwei Bewegungsmuster:</strong> „Bildschirmmitte“ führt den Zeiger zur Mitte des Bildschirms, dann nach rechts und links und endet in der Mitte. „Aktuelle Zeigerposition“ bewegt ihn ein kurzes Stück nach rechts und links und bringt ihn an den Ausgangspunkt zurück.</li>
+<li><strong>Ein optionaler Linksklick</strong> nach jeder Bewegung, mit optionalem Ton. Der Klick geschieht an der letzten Zeigerposition und trifft alles, was darunter liegt.</li>
+<li><strong>Einfache Steuerung in der Menüleiste:</strong> Start oder Pause, „Move Now“ (funktioniert auch während der Pause) und Beenden. Eine Statuszeile zeigt, ob die Bewegung läuft und wann der letzte Vorgang stattfand.</li>
+<li><strong>Gespeicherte Einstellungen:</strong> Intervall, Muster, Klick und Ton bleiben zwischen den Starts erhalten.</li>
+<li><strong>Ruhezustand verhindern:</strong> Der Ruhezustand durch Inaktivität wird blockiert, solange die automatische Bewegung läuft. Pause oder Beenden gibt ihn wieder frei.</li>
+</ul>
+<p>moveMouse beginnt zu bewegen, sobald es startet, mit deinen gespeicherten Einstellungen. Die Menübeschriftungen sind auf Arabisch, mit englischen Bezeichnungen für mehrere Steuerelemente: Start, Pause, Move Now, Interval und Left Click.</p>
+<h2 id="berechtigungen">Berechtigungen</h2>
+<p>Simulierte Mauseingaben brauchen die Berechtigung „Bedienungshilfen“. Beim ersten Start fragt macOS möglicherweise danach: Öffne die Systemeinstellungen, gehe zu „Datenschutz &amp; Sicherheit“, dann „Bedienungshilfen“, und aktiviere moveMouse. Der Eintrag für die Bedienungshilfen im Menü der App öffnet diese Seite für dich. Laut README braucht vor allem das Klicken diese Berechtigung. Wenn das Klicken nach einem Neubau oder Verschieben der App nicht mehr funktioniert, entferne ihren Eintrag bei den Bedienungshilfen, füge die App erneut hinzu und starte sie neu.</p>
+<h2 id="installation">Installation</h2>
+<p>moveMouse braucht macOS 11 Big Sur oder neuer. Die mitgelieferte App und das Build-Skript zielen auf Apple Silicon (arm64). Klone das Repository von GitHub und führe dann <code>./build.sh</code> und <code>./run.sh</code> aus. Zum Bauen brauchst du die Xcode Command Line Tools, die <code>xcode-select --install</code> installiert. Das Skript signiert die App lokal mit einer Ad-hoc-Signatur.</p>
+<p>Damit moveMouse beim Anmelden startet, füge <code>MoveMouse.app</code> in den Systemeinstellungen unter „Allgemein“ zu den Anmeldeobjekten hinzu. Zum Beenden wählst du „Beenden“ im Menü oder führst <code>./stop.sh</code> im Projektordner aus.</p>
+<h2 id="open-source">Open Source</h2>
+<p>moveMouse steht unter der MIT-Lizenz. Es nutzt nur native macOS-Frameworks und wird direkt mit <code>swiftc</code> gebaut, ohne Abhängigkeiten von Dritten und ohne Xcode-Projekt. Der Code besteht aus wenigen Swift-Dateien: der Menüleisten-Oberfläche, dem Bewegungs-Timer mit Zeigereingabe und gespeicherten Einstellungen sowie der Verhinderung des Ruhezustands.</p>
+<p>Emad Alhamou, der Autor dieser Website, veröffentlicht moveMouse auf <a href="https://github.com/Alhamou/moveMouse">GitHub</a>. Fehlerberichte, Ideen und Pull Requests sind willkommen; nenne deine macOS-Version, die Schritte zum Nachstellen und was du erwartet hast.</p>
+<section class="artFaq" aria-labelledby="haeufige-fragen">
+<h2 id="haeufige-fragen">Häufige Fragen</h2>
+<div class="artQ">
+<h3>Was ist moveMouse?</h3>
+<p>moveMouse ist eine Open-Source-Menüleisten-App für macOS, die den Mauszeiger automatisch in einem Intervall bewegt, das du wählst, und den Mac wach hält, solange sie läuft. Sie wurde gebaut, um eine RDP-Verbindung vor dem Abbruch zu bewahren.</p>
+</div>
+<div class="artQ">
+<h3>Wie hilft moveMouse bei einer RDP-Verbindung?</h3>
+<p>Es arbeitet von deinem Mac aus. Es verhindert den Ruhezustand durch Inaktivität, der die Verbindung sonst kappen würde, und erzeugt Zeigeraktivität im gewählten Intervall, damit eine Sitzung nicht völlig still bleibt. Die Aktivität erreicht die entfernte Sitzung nur, solange das RDP-Fenster unter dem Zeiger liegt, und moveMouse ändert keine Einstellung auf dem entfernten Rechner.</p>
+</div>
+<div class="artQ">
+<h3>Kann der Klick etwas treffen, das ich nicht wollte?</h3>
+<p>Ja, das ist möglich. Der optionale Linksklick geschieht an der letzten Zeigerposition und trifft alles, was darunter liegt. Wenn du nur die Bewegung willst, schalte „Left Click“ im Menü aus. Standardmäßig ist er an.</p>
+</div>
+<div class="artQ">
+<h3>Welche Intervalle und Bewegungsmuster gibt es?</h3>
+<p>Die Intervalle sind 15, 30 und 45 Sekunden sowie 1, 2 und 5 Minuten, mit 30 Sekunden als Standard. Die zwei Muster sind „Bildschirmmitte“ (Mitte, rechts, links, zurück zur Mitte) und „Aktuelle Zeigerposition“ (ein kleines Wackeln nach rechts und links, dann zurück zum Start).</p>
+</div>
+<div class="artQ">
+<h3>Welche Berechtigung braucht moveMouse?</h3>
+<p>„Bedienungshilfen“, für simulierte Mauseingaben, vor allem das Klicken. Aktiviere moveMouse in den Systemeinstellungen unter „Datenschutz &amp; Sicherheit“, dann „Bedienungshilfen“.</p>
+</div>
+<div class="artQ">
+<h3>Welche Macs und macOS-Versionen werden unterstützt?</h3>
+<p>macOS 11 Big Sur oder neuer. Die mitgelieferte App und das Build-Skript zielen auf Apple Silicon (arm64).</p>
+</div>
+<div class="artQ">
+<h3>Wie pausiere oder beende ich moveMouse?</h3>
+<p>Wähle im Menüleisten-Menü „Pause“, um die geplante Bewegung zu stoppen und die Verhinderung des Ruhezustands freizugeben, oder „Beenden“, um die App zu schließen. „Move Now“ führt eine Bewegung auf Abruf aus, auch während der Pause.</p>
+</div>
+<div class="artQ">
+<h3>Ist moveMouse Open Source?</h3>
+<p>Ja. Es steht unter der MIT-Lizenz, und der Quellcode liegt auf GitHub.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/movemouse.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">Zum Tool</p>
+          <p class="artProductName" id="product-title">moveMouse</p>
+          <p>Open-Source-Menüleisten-App für macOS, die den Mauszeiger im Intervall bewegt und den Ruhezustand verhindert, gebaut, damit eine RDP-Verbindung nicht abbricht.</p>
+          <ul class="artFacts"><li>Seit Oktober 2026</li><li>macOS 11 oder neuer · Build für Apple Silicon · Bedienungshilfen-Berechtigung · MIT-Lizenz</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/moveMouse">Auf GitHub ansehen <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">Weitere Artikel</p>
+    <div class="artList">
+<a class="artCard" href="/de/articles/haki/" style="--art-bg:#0d1e2c;--art-accent:#4fd8c7;--art-fg:#eefbf8">
+  <span class="artCardTop"><img src="/oss/haki.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">Haki (حكي): Push-to-Talk-Diktat für die Mac-Menüleiste, auf Arabisch abgestimmt</h3>
+    <span class="artCardDek">Haki macht aus deiner Stimme überall auf deinem Mac Text. Halte Option+Leertaste, sprich, lass los, und der transkribierte Text wird an deinem Cursor eingefügt. Es ist auf natürliches Arabisch abgestimmt, auch levantinisches und syrisches Sprechen, und beherrscht außerdem Englisch, Deutsch und Französisch. Die Transkription nutzt OpenAI-Modelle mit deinem eigenen API-Schlüssel, dein Audio geht also an OpenAI. Der Code ist offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 5 Min. Lesezeit</span>
+  </span>
+</a>
+<a class="artCard" href="/de/articles/openblock/" style="--art-bg:#0c1a36;--art-accent:#7db7ff;--art-fg:#f1f5ff">
+  <span class="artCardTop"><img src="/oss/openblock.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">OpenBlock: ein Open-Source-Werbeblocker für Safari auf dem Mac, ohne Tracking</h3>
+    <span class="artCardDek">OpenBlock blockiert Werbung und Tracker in Safari auf deinem Mac. Der Blocker lädt echte Filterlisten, wandelt sie in Safaris eigenes Regelformat um und überlässt Safari die Durchsetzung, sodass nichts zwischen dir und dem Web steht. Der Code ist offen unter der <span class="nb">GPL-3.0-Lizenz.</span></span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 4 Min. Lesezeit</span>
+  </span>
+</a>
+<a class="artCard" href="/de/articles/remotedesk/" style="--art-bg:#12143a;--art-accent:#5ccfff;--art-fg:#eef1ff">
+  <span class="artCardTop"><img src="/oss/remotedesk.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">RemoteDesk: ein Open-Source-Remotedesktop von Mac zu Mac für dein lokales Netzwerk</h3>
+    <span class="artCardDek">RemoteDesk teilt den Bildschirm eines Macs und lässt dich ihn von einem anderen Mac über dein lokales Netzwerk steuern. Es nimmt den Bildschirm mit ScreenCaptureKit auf, komprimiert ihn mit Hardware-H.264 und sendet ihn über TCP. Es hat weder Verschlüsselung noch Anmeldung und ist deshalb nur für vertrauenswürdige private Netze gedacht. Der Code ist offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 6 Min. Lesezeit</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=de"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Sprache" data-nav><option value="/articles/movemouse/" lang="en">English</option><option value="/de/articles/movemouse/" lang="de" selected>Deutsch</option><option value="/ar/articles/movemouse/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

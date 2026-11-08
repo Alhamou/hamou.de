@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>closeAll: إنهاء إجباري لكل تطبيقات ماك من شريط القوائم</title>
+  <meta name="description" content="closeAll تطبيق مفتوح المصدر في شريط قوائم macOS ينهي إجباريًا كل تطبيقات Dock العادية دفعة واحدة بعد أن تراجع القائمة. العمل غير المحفوظ فيها يضيع.">
+  <meta name="author" content="عماد الحمو">
+  <meta name="keywords" content="closeAll, إنهاء إجباري لكل التطبيقات ماك, إغلاق كل التطبيقات macOS, إغلاق كل تطبيقات Dock, تطبيق شريط القوائم, Force Quit, Apple silicon, Swift, ترخيص MIT">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/ar/articles/closeall/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/closeall/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/closeall/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/closeall/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/closeall/">
+  <link rel="alternate" type="text/markdown" href="/ar/articles/closeall/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/ar/articles/feed.xml" title="خلاصة Atom">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ar_AR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:url" content="https://hamou.de/ar/articles/closeall/">
+  <meta property="og:title" content="closeAll: أغلق كل تطبيقات Dock بإنهاء إجباري من زر واحد في شريط القوائم على ماك">
+  <meta property="og:description" content="closeAll تطبيق مفتوح المصدر في شريط قوائم macOS ينهي إجباريًا كل تطبيقات Dock العادية دفعة واحدة بعد أن تراجع القائمة. العمل غير المحفوظ فيها يضيع.">
+  <meta property="og:image" content="https://hamou.de/ar/articles/closeall/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="closeAll: أغلق كل تطبيقات Dock بإنهاء إجباري من زر واحد في شريط القوائم على ماك">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="أداة مفتوحة المصدر">
+  <meta property="article:tag" content="closeAll">
+  <meta property="article:tag" content="إنهاء إجباري لكل التطبيقات ماك">
+  <meta property="article:tag" content="إغلاق كل التطبيقات macOS">
+  <meta property="article:tag" content="إغلاق كل تطبيقات Dock">
+  <meta property="article:tag" content="تطبيق شريط القوائم">
+  <meta property="article:tag" content="Force Quit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="closeAll: أغلق كل تطبيقات Dock بإنهاء إجباري من زر واحد في شريط القوائم على ماك">
+  <meta name="twitter:description" content="closeAll تطبيق مفتوح المصدر في شريط قوائم macOS ينهي إجباريًا كل تطبيقات Dock العادية دفعة واحدة بعد أن تراجع القائمة. العمل غير المحفوظ فيها يضيع.">
+  <meta name="twitter:image" content="https://hamou.de/ar/articles/closeall/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/ar/articles/closeall/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "مقالات",
+          "item": "https://hamou.de/ar/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "closeAll",
+          "item": "https://hamou.de/ar/articles/closeall/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/ar/articles/closeall/#webpage",
+      "url": "https://hamou.de/ar/articles/closeall/",
+      "name": "closeAll: إنهاء إجباري لكل تطبيقات ماك من شريط القوائم",
+      "description": "closeAll تطبيق مفتوح المصدر في شريط قوائم macOS ينهي إجباريًا كل تطبيقات Dock العادية دفعة واحدة بعد أن تراجع القائمة. العمل غير المحفوظ فيها يضيع.",
+      "inLanguage": "ar",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/ar/articles/closeall/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/ar/articles/closeall/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/ar/articles/closeall/#primaryimage",
+      "url": "https://hamou.de/ar/articles/closeall/og.jpg",
+      "contentUrl": "https://hamou.de/ar/articles/closeall/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "closeAll: أغلق كل تطبيقات Dock بإنهاء إجباري من زر واحد في شريط القوائم على ماك"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/ar/articles/closeall/#article",
+      "headline": "closeAll: أغلق كل تطبيقات Dock بإنهاء إجباري من زر واحد في شريط القوائم على ماك",
+      "description": "closeAll تطبيق مفتوح المصدر في شريط قوائم macOS ينهي إجباريًا كل تطبيقات Dock العادية دفعة واحدة بعد أن تراجع القائمة. العمل غير المحفوظ فيها يضيع.",
+      "abstract": "ينهي closeAll إجباريًا كل تطبيقات Dock العادية من زر واحد في شريط القوائم. تراجع القائمة أولًا، وتُلغي العلامة عمّا يجب أن يبقى مفتوحًا، ثم تضغط Force Quit. الإنهاء الإجباري لا يطلب من التطبيقات الحفظ، لذلك يضيع العمل غير المحفوظ. الكود مفتوح بترخيص MIT.",
+      "inLanguage": "ar",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/ar/articles/closeall/#webpage"
+      },
+      "image": [
+        "https://hamou.de/ar/articles/closeall/og.jpg"
+      ],
+      "articleSection": "أداة مفتوحة المصدر",
+      "wordCount": 772,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "closeAll",
+        "إنهاء إجباري لكل التطبيقات ماك",
+        "إغلاق كل التطبيقات macOS",
+        "إغلاق كل تطبيقات Dock",
+        "تطبيق شريط القوائم",
+        "Force Quit",
+        "Apple silicon",
+        "Swift",
+        "ترخيص MIT"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/closeall/#software"
+      },
+      "translationOfWork": {
+        "@id": "https://hamou.de/articles/closeall/#article"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/closeall/#software",
+      "name": "closeAll",
+      "url": "https://github.com/Alhamou/closeAll",
+      "applicationCategory": "UtilitiesApplication",
+      "image": "https://hamou.de/oss/closeall.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "operatingSystem": "macOS 14 or later",
+      "softwareRequirements": "macOS 14 or later, Apple silicon build",
+      "description": "تطبيق مفتوح المصدر في شريط قوائم macOS ينهي إجباريًا كل تطبيقات Dock العادية دفعة واحدة، بقائمة مراجعة وقائمة إبقاء. العمل غير المحفوظ يضيع.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/closeAll"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/closeall/#source",
+      "name": "closeAll source code",
+      "codeRepository": "https://github.com/Alhamou/closeAll",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/closeall/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/ar/articles/closeall/#faq",
+      "inLanguage": "ar",
+      "isPartOf": {
+        "@id": "https://hamou.de/ar/articles/closeall/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ما هو closeAll؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "closeAll تطبيق مفتوح المصدر في شريط قوائم macOS ينهي إجباريًا كل تطبيقات Dock العادية من زر واحد، بعد أن تراجع القائمة وتُلغي علامة كل ما يجب أن يبقى مفتوحًا."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل سأخسر عملًا غير محفوظ؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. الإنهاء الإجباري لا يطلب من التطبيقات الحفظ. أغلق أو ألغِ علامة كل ما فيه عمل غير محفوظ قبل أن تضغط الزر."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما التطبيقات التي يغلقها closeAll وما التي تبقى مفتوحة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يغلق كل تطبيق عادي يعرضه macOS في Dock، إضافةً إلى تطبيقات شريط القوائم الخلفية التي تعلّمها. أما Finder وcloseAll نفسه وDock ومركز التحكم وWindowServer وبقية عمليات الجلسة فتبقى مفتوحة دائمًا، وكذلك أي تطبيق تُلغي علامته."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل أستطيع إبقاء بعض التطبيقات مفتوحة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. ألغِ علامة التطبيق في القائمة فيُبقيه closeAll مفتوحًا ويتذكر اختيارك."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يغلق تطبيقات شريط القوائم مثل عميل VPN؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "فقط إن علّمتها. يعرض قسم Background apps تطبيقات شريط القوائم من /Applications و~/Applications، وتبدأ غير معلَّمة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ماذا لو رفض تطبيق أن يخرج؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يتحقق closeAll من أن كل تطبيق خرج فعلًا. وإن نجا تطبيق أو عاد فورًا أرسل إليه قتلًا قاسيًا (SIGKILL) حتى ثلاث مرات، ويذكر باللون الأحمر أي تطبيق تعذّر إغلاقه رغم ذلك."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يستخدم closeAll الشبكة أو يجمع بيانات؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "بحسب README: لا. ليس داخل صندوق رمل، ولا يستخدم الشبكة، ولا يجمع تحليلات. وقائمة الإبقاء تبقى في التفضيلات المحلية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما أجهزة ماك وإصدارات macOS المدعومة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 14 أو أحدث. التطبيق الذي يبنيه make app على جهاز Apple silicon هو تطبيق لأجهزة Apple silicon."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">تخطَّ إلى المحتوى</a>
+  <header>
+    <nav class="nav container" aria-label="التنقل الرئيسي">
+      <a class="brand" href="/?lang=ar" aria-label="الرئيسية"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=ar">الرئيسية</a>
+        <a href="/ar/articles/">مقالات</a>
+      </div>
+      <a class="navCta" href="/?lang=ar#contact">لنتواصل</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#151512;--art-accent:#ff7a6b;--art-fg:#f6f3ec">
+    <header class="artHero noVideo" data-mark="CLOSE">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="مسار التنقل"><ol><li><a href="/?lang=ar">الرئيسية</a></li><li><a href="/ar/articles/">مقالات</a></li><li aria-current="page">closeAll</li></ol></nav>
+        <p class="artKicker"><img src="/oss/closeall.png" width="40" height="40" alt="">أداة مفتوحة المصدر</p>
+        <h1>closeAll: أغلق كل تطبيقات Dock بإنهاء إجباري من زر واحد في شريط القوائم على ماك</h1>
+        <p class="artDek">ينهي closeAll إجباريًا كل تطبيقات Dock العادية من زر واحد في شريط القوائم. تراجع القائمة أولًا، وتُلغي العلامة عمّا يجب أن يبقى مفتوحًا، ثم تضغط Force Quit. الإنهاء الإجباري لا يطلب من التطبيقات الحفظ، لذلك يضيع العمل غير المحفوظ. الكود مفتوح بترخيص MIT.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>عماد الحمو</b><small>مؤسس وصانع منتجات</small></span></span><span>نُشر في <time datetime="2026-11-08">8 نوفمبر 2026</time></span><span>قراءة 5 دقائق</span><span class="artLangs">بلغات أخرى: <a href="/articles/closeall/" hreflang="en" lang="en">English</a> · <a href="/de/articles/closeall/" hreflang="de" lang="de">Deutsch</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">في هذه الصفحة</p><ol><li><a href="#ما-هو-closeall">ما هو closeAll؟</a></li><li><a href="#كيف-تستخدمه">كيف تستخدمه</a></li><li><a href="#ما-الذي-ي-غلق">ما الذي يُغلق</a></li><li><a href="#ما-الذي-يبقى-مفتوح-ا">ما الذي يبقى مفتوحًا</a></li><li><a href="#الخصوصية-والأذونات">الخصوصية والأذونات</a></li><li><a href="#التثبيت">التثبيت</a></li><li><a href="#راجع-الخطة-دون-إغلاق-شيء">راجع الخطة دون إغلاق شيء</a></li><li><a href="#مفتوح-المصدر">مفتوح المصدر</a></li><li><a href="#الأسئلة-الشائعة">الأسئلة الشائعة</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="ما-هو-closeall">ما هو closeAll؟</h2>
+<p>closeAll تطبيق صغير مفتوح المصدر في شريط قوائم macOS له مهمة واحدة: إغلاق كل التطبيقات العادية العاملة دفعة واحدة. أيقونته في شريط القوائم رزمة صغيرة من النوافذ. انقر عليها وراجع القائمة ثم اضغط <strong>Force Quit</strong>. وتُغلق التطبيقات المعلَّمة بالإنهاء الإجباري.</p>
+<p>اقرأ هذا مرة واحدة قبل الاستخدام: الإنهاء الإجباري لا يطلب من التطبيق أن يحفظ. العمل غير المحفوظ في التطبيقات التي تغلقها يضيع.</p>
+<h2 id="كيف-تستخدمه">كيف تستخدمه</h2>
+<p>1. انقر أيقونة رزمة النوافذ في أعلى الشاشة. 2. اترك العلامة على كل تطبيق يجب أن يُغلق. وأزل العلامة لتُبقي تطبيقًا مفتوحًا؛ يتذكر closeAll هذا الاختيار. 3. تحت <strong>Background apps</strong> علّم أي تطبيق من شريط القوائم تريد إغلاقه أيضًا. 4. اضغط <strong>Force Quit</strong>.</p>
+<p>يعرض كل صف أيقونة التطبيق نفسه كي تتعرف عليه قبل أن يُغلق. أغلق أولًا أو ألغِ علامة كل ما فيه عمل غير محفوظ.</p>
+<h2 id="ما-الذي-ي-غلق">ما الذي يُغلق</h2>
+<ul>
+<li><strong>كل تطبيق عادي،</strong> من النوع الذي كنت تنقر عليه بزر الفأرة الأيمن في Dock لتنهيه. تدخل فيها المحررات والمتصفحات وتطبيقات المحادثة، فألغِ علامة ما تريد إبقاءه.</li>
+<li><strong>تطبيقات الخلفية التي تعلّمها.</strong> يعرض قسم Background apps تطبيقات شريط القوائم التي ثبّتها في <code>/Applications</code> أو <code>~/Applications</code>، مثل مدير الحافظة أو عميل VPN. تبدأ غير معلَّمة، فلا يُغلق منها شيء ما لم تعلّمه.</li>
+</ul>
+<p>يتحقق closeAll من أن كل تطبيق خرج فعلًا. وإن نجا تطبيق من الإنهاء الإجباري أو عاد فورًا، أرسل إليه قتلًا قاسيًا (SIGKILL) حتى ثلاث مرات. وأي تطبيق تعذّر إغلاقه رغم ذلك يُذكر اسمه باللون الأحمر.</p>
+<h2 id="ما-الذي-يبقى-مفتوح-ا">ما الذي يبقى مفتوحًا</h2>
+<ul>
+<li><strong>Finder</strong> كي يبقى سطح المكتب قائمًا، و<strong>closeAll</strong> نفسه كي يبقى الزر موجودًا.</li>
+<li>Dock ومركز التحكم وWindowServer وبقية العمليات التي تُبقي جلسة تسجيل الدخول حيّة.</li>
+<li>أي تطبيق تُلغي علامته، وتطبيقات الخلفية التي لم تعلّمها.</li>
+<li>وكلاء شريط القوائم التابعون لـ Apple، والمساعدات المضمّنة داخل تطبيق آخر، ومحدّثات مجلدات Library، والعمليات التي بلا نافذة أو قائمة، لا تظهر في القائمة أصلًا. وهي تُغلق عادةً مع تطبيقها الأم.</li>
+</ul>
+<h2 id="الخصوصية-والأذونات">الخصوصية والأذونات</h2>
+<p>closeAll ليس داخل صندوق رمل (sandbox)، لأن App Sandbox كان سيمنعه من إنهاء التطبيقات الأخرى. وبحسب README لا يستخدم الشبكة ولا يجمع تحليلات. وقائمة الإبقاء تُخزَّن في تفضيلاتك المحلية فقط.</p>
+<h2 id="التثبيت">التثبيت</h2>
+<p>يحتاج closeAll إلى macOS 14 أو أحدث. التطبيق الذي يبنيه <code>make app</code> على جهاز Apple silicon هو تطبيق لأجهزة Apple silicon. انسخ المستودع من GitHub، وشغّل <code>make app</code>، وافتح <code>build/closeAll.app</code>. انسخه إلى <code>/Applications</code> إن أردت إبقاءه مثبّتًا. ولا تظهر له أيقونة في Dock.</p>
+<p>البناء موقّع توقيعًا مؤقتًا (ad hoc) ليعمل على جهازك، وليس موثَّقًا لدى Apple (not notarized). إن منع macOS التشغيل الأول فانقر <code>closeAll.app</code> مع الضغط على Control واختر «فتح» ثم أكّد. ولفتحه عند تسجيل الدخول أضفه في إعدادات النظام ضمن «عام» ثم عناصر تسجيل الدخول. وللخروج منه افتح اللوحة واختر Quit closeAll.</p>
+<h2 id="راجع-الخطة-دون-إغلاق-شيء">راجع الخطة دون إغلاق شيء</h2>
+<p>الأمر <code>swift run closeAll -- --dry-run</code> يطبع خطة الإنهاء بصيغة JSON ثم ينتهي دون أن يغلق أي تطبيق. والأمر <code>make check</code> يشغّل اختبارات الوحدة ثم يطبع الخطة الحية، ويفشل إن تضمنت الخطة Finder أو closeAll نفسه أو عملية أخرى من الجلسة.</p>
+<h2 id="مفتوح-المصدر">مفتوح المصدر</h2>
+<p>صدر closeAll بترخيص MIT. قواعد الإنهاء في وحدة نواة مستقلة بلا AppKit وتغطيها اختبارات الوحدة، وتطبيق شريط القوائم مبني فوقها. وللمستودع أيضًا ملف README بالعربية.</p>
+<p>ينشر عماد الحمو، صاحب هذا الموقع، closeAll على <a href="https://github.com/Alhamou/closeAll">GitHub</a>. وفي المستودع إرشادات للمساهمة ومدونة سلوك وسياسة أمان.</p>
+<section class="artFaq" aria-labelledby="الأسئلة-الشائعة">
+<h2 id="الأسئلة-الشائعة">الأسئلة الشائعة</h2>
+<div class="artQ">
+<h3>ما هو closeAll؟</h3>
+<p>closeAll تطبيق مفتوح المصدر في شريط قوائم macOS ينهي إجباريًا كل تطبيقات Dock العادية من زر واحد، بعد أن تراجع القائمة وتُلغي علامة كل ما يجب أن يبقى مفتوحًا.</p>
+</div>
+<div class="artQ">
+<h3>هل سأخسر عملًا غير محفوظ؟</h3>
+<p>نعم. الإنهاء الإجباري لا يطلب من التطبيقات الحفظ. أغلق أو ألغِ علامة كل ما فيه عمل غير محفوظ قبل أن تضغط الزر.</p>
+</div>
+<div class="artQ">
+<h3>ما التطبيقات التي يغلقها closeAll وما التي تبقى مفتوحة؟</h3>
+<p>يغلق كل تطبيق عادي يعرضه macOS في Dock، إضافةً إلى تطبيقات شريط القوائم الخلفية التي تعلّمها. أما Finder وcloseAll نفسه وDock ومركز التحكم وWindowServer وبقية عمليات الجلسة فتبقى مفتوحة دائمًا، وكذلك أي تطبيق تُلغي علامته.</p>
+</div>
+<div class="artQ">
+<h3>هل أستطيع إبقاء بعض التطبيقات مفتوحة؟</h3>
+<p>نعم. ألغِ علامة التطبيق في القائمة فيُبقيه closeAll مفتوحًا ويتذكر اختيارك.</p>
+</div>
+<div class="artQ">
+<h3>هل يغلق تطبيقات شريط القوائم مثل عميل VPN؟</h3>
+<p>فقط إن علّمتها. يعرض قسم Background apps تطبيقات شريط القوائم من <code>/Applications</code> و<code>~/Applications</code>، وتبدأ غير معلَّمة.</p>
+</div>
+<div class="artQ">
+<h3>ماذا لو رفض تطبيق أن يخرج؟</h3>
+<p>يتحقق closeAll من أن كل تطبيق خرج فعلًا. وإن نجا تطبيق أو عاد فورًا أرسل إليه قتلًا قاسيًا (SIGKILL) حتى ثلاث مرات، ويذكر باللون الأحمر أي تطبيق تعذّر إغلاقه رغم ذلك.</p>
+</div>
+<div class="artQ">
+<h3>هل يستخدم closeAll الشبكة أو يجمع بيانات؟</h3>
+<p>بحسب README: لا. ليس داخل صندوق رمل، ولا يستخدم الشبكة، ولا يجمع تحليلات. وقائمة الإبقاء تبقى في التفضيلات المحلية.</p>
+</div>
+<div class="artQ">
+<h3>ما أجهزة ماك وإصدارات macOS المدعومة؟</h3>
+<p>macOS 14 أو أحدث. التطبيق الذي يبنيه <code>make app</code> على جهاز Apple silicon هو تطبيق لأجهزة Apple silicon.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/closeall.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">عن الأداة</p>
+          <p class="artProductName" id="product-title">closeAll</p>
+          <p>تطبيق مفتوح المصدر في شريط قوائم macOS ينهي إجباريًا كل تطبيقات Dock العادية دفعة واحدة، بقائمة مراجعة وقائمة إبقاء. العمل غير المحفوظ يضيع.</p>
+          <ul class="artFacts"><li>منذ أكتوبر 2026</li><li>macOS 14 أو أحدث · نسخة لأجهزة Apple silicon · ترخيص MIT</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/closeAll">المستودع على GitHub <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">مقالات أخرى</p>
+    <div class="artList">
+<a class="artCard" href="/ar/articles/safeshare/" style="--art-bg:#100d24;--art-accent:#a78bfa;--art-fg:#f3f0ff">
+  <span class="artCardTop"><img src="/oss/safeshare.png" width="56" height="56" alt="" loading="lazy"><span>أداة مفتوحة المصدر</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">SafeShare: أخفِ التطبيقات الخاصة أثناء مشاركة شاشة ماك في Teams أو Zoom أو Meet</h3>
+    <span class="artCardDek">يحل SafeShare معضلة مشاركة الشاشة: إما أن تشارك الشاشة كلها فتخاطر بتسريب محادثات خاصة وإشعارات، وإما أن تشارك نافذة واحدة فتفقد القدرة على تعدد المهام. يبني نافذة Safe View مصفّاة تستبعد التطبيقات التي تحميها. تشارك هذه النافذة في Teams أو Zoom أو Meet وتواصل العمل على سطح مكتبك الحقيقي. الكود مفتوح بترخيص MIT.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 نوفمبر 2026</time> · قراءة 5 دقائق</span>
+  </span>
+</a>
+<a class="artCard" href="/ar/articles/topmovies/" style="--art-bg:#16130f;--art-accent:#e8b64e;--art-fg:#f8f2e4">
+  <span class="artCardTop"><img src="/oss/topmoves.png" width="56" height="56" alt="" loading="lazy"><span>أداة مفتوحة المصدر</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">TopMovies: تطبيق ماك أصلي لاكتشاف الأفلام والمسلسلات، بمكتبة محلية</h3>
+    <span class="artCardDek">يساعدك TopMovies على أن تقرر ماذا تشاهد على جهاز ماك. فيه خلاصات اكتشاف منتقاة مثل For You وTonight وHidden Gems، ومرشّحات حسب النوع والبلد والسنة والتقييم والمدة، ومكتبة محلية للمفضلة وقائمة المشاهدة وتقييماتك الخاصة. يعمل دون اتصال في وضع تجريبي ويتصل بـ TMDB للحصول على بيانات حقيقية. بُني بـ SwiftUI وهو مفتوح بترخيص MIT.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 نوفمبر 2026</time> · قراءة 4 دقائق</span>
+  </span>
+</a>
+<a class="artCard" href="/ar/articles/movemouse/" style="--art-bg:#151a2c;--art-accent:#4cc2ff;--art-fg:#eef3ff">
+  <span class="artCardTop"><img src="/oss/movemouse.png" width="56" height="56" alt="" loading="lazy"><span>أداة مفتوحة المصدر</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">moveMouse: أداة في شريط القوائم على ماك تساعد على إبقاء اتصال RDP مفتوحًا</h3>
+    <span class="artCardDek">يساعد moveMouse على إبقاء اتصال سطح المكتب البعيد (RDP) مفتوحًا. يحرّك المؤشر بفاصل زمني تحدده ويمنع الجهاز من النوم أثناء تشغيله، فيقل احتمال أن تُقطع جلسة هادئة. يعيش في شريط القوائم، وكوده مفتوح بترخيص MIT.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 نوفمبر 2026</time> · قراءة 5 دقائق</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=ar"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="اللغة" data-nav><option value="/articles/closeall/" lang="en">English</option><option value="/de/articles/closeall/" lang="de">Deutsch</option><option value="/ar/articles/closeall/" lang="ar" selected>العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

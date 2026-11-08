@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>SafeShare: private Apps beim Teilen des Mac-Bildschirms verbergen</title>
+  <meta name="description" content="SafeShare ist eine Open-Source-App für macOS, die private Apps und Fenster verbirgt, wenn du deinen Bildschirm in Teams, Zoom oder Google Meet teilst, über ein Safe-View-Fenster.">
+  <meta name="author" content="Emad Alhamou">
+  <meta name="keywords" content="SafeShare, ScreenGuard, Apps beim Bildschirmteilen verbergen Mac, Datenschutz Bildschirmfreigabe Mac, Teams Zoom Google Meet Bildschirm teilen, ScreenCaptureKit, Safe View, Benachrichtigungen beim Teilen verbergen, Open-Source-Dienstprogramm macOS, Swift, MIT-Lizenz">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/de/articles/safeshare/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/safeshare/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/safeshare/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/safeshare/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/safeshare/">
+  <link rel="alternate" type="text/markdown" href="/de/articles/safeshare/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/de/articles/feed.xml" title="Atom-Feed">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:url" content="https://hamou.de/de/articles/safeshare/">
+  <meta property="og:title" content="SafeShare: private Apps beim Teilen deines Mac-Bildschirms in Teams, Zoom oder Meet verbergen">
+  <meta property="og:description" content="SafeShare ist eine Open-Source-App für macOS, die private Apps und Fenster verbirgt, wenn du deinen Bildschirm in Teams, Zoom oder Google Meet teilst, über ein Safe-View-Fenster.">
+  <meta property="og:image" content="https://hamou.de/de/articles/safeshare/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SafeShare: private Apps beim Teilen deines Mac-Bildschirms in Teams, Zoom oder Meet verbergen">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="Open-Source-Tool">
+  <meta property="article:tag" content="SafeShare">
+  <meta property="article:tag" content="ScreenGuard">
+  <meta property="article:tag" content="Apps beim Bildschirmteilen verbergen Mac">
+  <meta property="article:tag" content="Datenschutz Bildschirmfreigabe Mac">
+  <meta property="article:tag" content="Teams Zoom Google Meet Bildschirm teilen">
+  <meta property="article:tag" content="ScreenCaptureKit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SafeShare: private Apps beim Teilen deines Mac-Bildschirms in Teams, Zoom oder Meet verbergen">
+  <meta name="twitter:description" content="SafeShare ist eine Open-Source-App für macOS, die private Apps und Fenster verbirgt, wenn du deinen Bildschirm in Teams, Zoom oder Google Meet teilst, über ein Safe-View-Fenster.">
+  <meta name="twitter:image" content="https://hamou.de/de/articles/safeshare/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/de/articles/safeshare/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Artikel",
+          "item": "https://hamou.de/de/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "SafeShare",
+          "item": "https://hamou.de/de/articles/safeshare/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/de/articles/safeshare/#webpage",
+      "url": "https://hamou.de/de/articles/safeshare/",
+      "name": "SafeShare: private Apps beim Teilen des Mac-Bildschirms verbergen",
+      "description": "SafeShare ist eine Open-Source-App für macOS, die private Apps und Fenster verbirgt, wenn du deinen Bildschirm in Teams, Zoom oder Google Meet teilst, über ein Safe-View-Fenster.",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/de/articles/safeshare/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/de/articles/safeshare/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/de/articles/safeshare/#primaryimage",
+      "url": "https://hamou.de/de/articles/safeshare/og.jpg",
+      "contentUrl": "https://hamou.de/de/articles/safeshare/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "SafeShare: private Apps beim Teilen deines Mac-Bildschirms in Teams, Zoom oder Meet verbergen"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/de/articles/safeshare/#article",
+      "headline": "SafeShare: private Apps beim Teilen deines Mac-Bildschirms in Teams, Zoom oder Meet verbergen",
+      "description": "SafeShare ist eine Open-Source-App für macOS, die private Apps und Fenster verbirgt, wenn du deinen Bildschirm in Teams, Zoom oder Google Meet teilst, über ein Safe-View-Fenster.",
+      "abstract": "SafeShare löst ein Dilemma beim Bildschirmteilen: den ganzen Bildschirm teilen und private Chats und Benachrichtigungen riskieren, oder ein Fenster teilen und auf Multitasking verzichten. Es baut ein gefiltertes Safe-View-Fenster, das die von dir geschützten Apps auslässt. Dieses Fenster teilst du in Teams, Zoom oder Meet, und auf deinem echten Desktop arbeitest du weiter. Der Code ist offen unter der MIT-Lizenz.",
+      "inLanguage": "de",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/de/articles/safeshare/#webpage"
+      },
+      "image": [
+        "https://hamou.de/de/articles/safeshare/og.jpg"
+      ],
+      "articleSection": "Open-Source-Tool",
+      "wordCount": 927,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "SafeShare",
+        "ScreenGuard",
+        "Apps beim Bildschirmteilen verbergen Mac",
+        "Datenschutz Bildschirmfreigabe Mac",
+        "Teams Zoom Google Meet Bildschirm teilen",
+        "ScreenCaptureKit",
+        "Safe View",
+        "Benachrichtigungen beim Teilen verbergen",
+        "Open-Source-Dienstprogramm macOS",
+        "Swift",
+        "MIT-Lizenz"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/safeshare/#software"
+      },
+      "translationOfWork": {
+        "@id": "https://hamou.de/articles/safeshare/#article"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/safeshare/#software",
+      "name": "SafeShare",
+      "url": "https://github.com/Alhamou/SafeShare",
+      "applicationCategory": "SecurityApplication",
+      "image": "https://hamou.de/oss/safeshare.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "alternateName": "ScreenGuard",
+      "operatingSystem": "macOS 14 or later",
+      "softwareRequirements": "macOS 14 or later, Screen & System Audio Recording permission",
+      "description": "Open-Source-Dienstprogramm für macOS, das private Apps und Fenster verbirgt, während du deinen Bildschirm in Teams, Zoom oder Google Meet teilst, über ein gefiltertes Safe-View-Fenster.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/SafeShare"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/safeshare/#source",
+      "name": "SafeShare source code",
+      "codeRepository": "https://github.com/Alhamou/SafeShare",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/safeshare/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/de/articles/safeshare/#faq",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://hamou.de/de/articles/safeshare/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist SafeShare?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SafeShare ist ein Open-Source-Dienstprogramm für macOS, das private Apps und Fenster verbirgt, während du deinen Bildschirm in Teams, Zoom oder Google Meet teilst. Es tut das über ein gefiltertes Vorschaufenster namens Safe View."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie verbirgt SafeShare Apps beim Bildschirmteilen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es nimmt deinen Bildschirm mit ScreenCaptureKit auf, filtert die Apps und Fenster heraus, die du als geschützt markiert hast, und zeigt das Ergebnis im Safe-View-Fenster. Dieses Fenster teilst du in deiner Meeting-App statt deines ganzen Bildschirms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funktioniert es mit Teams, Zoom und Google Meet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. In jedem davon teilst du das Fenster „SafeShare — Safe View“: in Teams über „Share“ und „Window“, in Zoom über „Share Screen“ und in Google Meet über „Present now“ und „A window“."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was, wenn ich meinen ganzen Bildschirm statt des Safe-View-Fensters teile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dann wird nichts gefiltert, und die Teilnehmenden sehen alles. Der Schutz gilt nur für das, was im Safe-View-Fenster erscheint. Wähle in deiner Meeting-App also immer dieses Fenster."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Warum sollte das Safe-View-Fenster groß bleiben?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Meeting-Apps teilen ein Fenster in seiner Größe auf dem Bildschirm, ein winziges Fenster ist daher schwer lesbar. SafeShare behält das Seitenverhältnis des Displays, geht nicht unter die halbe Displaygröße und hat eine Schaltfläche „Send to Back“, die das Fenster in voller Größe aus dem Weg räumt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Berechtigung braucht SafeShare, und sendet es Daten irgendwohin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es braucht den Zugriff auf Bildschirm- und Systemaudioaufnahme. Laut README hat es keine Telemetrie, macht keine Netzwerkaufrufe und speichert keine Videobilder oder Fenstertitel auf dem Datenträger."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was passiert, wenn der Bildschirm gesperrt wird oder der Mac in den Ruhezustand geht?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Der Strom wird bei Bildschirmsperre, Ruhezustand und Änderungen der Berechtigungen leer, was das README Fail-closed-Abdunkelung nennt. Banner der Mitteilungszentrale bleiben ebenfalls aus dem Strom heraus."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche macOS-Version braucht SafeShare?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 14 Sonoma oder neuer."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">Zum Inhalt springen</a>
+  <header>
+    <nav class="nav container" aria-label="Hauptnavigation">
+      <a class="brand" href="/?lang=de" aria-label="Startseite"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=de">Startseite</a>
+        <a href="/de/articles/">Artikel</a>
+      </div>
+      <a class="navCta" href="/?lang=de#contact">Kontakt</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#100d24;--art-accent:#a78bfa;--art-fg:#f3f0ff">
+    <header class="artHero noVideo" data-mark="SAFE">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="Brotkrümelnavigation"><ol><li><a href="/?lang=de">Startseite</a></li><li><a href="/de/articles/">Artikel</a></li><li aria-current="page">SafeShare</li></ol></nav>
+        <p class="artKicker"><img src="/oss/safeshare.png" width="40" height="40" alt="">Open-Source-Tool</p>
+        <h1>SafeShare: private Apps beim Teilen deines Mac-Bildschirms in Teams, Zoom oder Meet verbergen</h1>
+        <p class="artDek">SafeShare löst ein Dilemma beim Bildschirmteilen: den ganzen Bildschirm teilen und private Chats und Benachrichtigungen riskieren, oder ein Fenster teilen und auf Multitasking verzichten. Es baut ein gefiltertes Safe-View-Fenster, das die von dir geschützten Apps auslässt. Dieses Fenster teilst du in Teams, Zoom oder Meet, und auf deinem echten Desktop arbeitest du weiter. Der Code ist offen unter der MIT-Lizenz.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Gründer &amp; Produktentwickler</small></span></span><span>Veröffentlicht am <time datetime="2026-11-08">8. November 2026</time></span><span>5 Min. Lesezeit</span><span class="artLangs">Auch auf: <a href="/articles/safeshare/" hreflang="en" lang="en">English</a> · <a href="/ar/articles/safeshare/" hreflang="ar" lang="ar">العربية</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">Auf dieser Seite</p><ol><li><a href="#was-ist-safeshare">Was ist SafeShare?</a></li><li><a href="#das-problem-das-es-loest">Das Problem, das es löst</a></li><li><a href="#so-funktioniert-es">So funktioniert es</a></li><li><a href="#mit-teams-zoom-oder-meet-nutzen">Mit Teams, Zoom oder Meet nutzen</a></li><li><a href="#das-safe-view-fenster-gross-halten">Das Safe-View-Fenster groß halten</a></li><li><a href="#was-es-kann">Was es kann</a></li><li><a href="#datenschutz-und-berechtigungen">Datenschutz und Berechtigungen</a></li><li><a href="#installation">Installation</a></li><li><a href="#open-source">Open Source</a></li><li><a href="#haeufige-fragen">Häufige Fragen</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="was-ist-safeshare">Was ist SafeShare?</h2>
+<p>SafeShare (auch ScreenGuard genannt) ist ein Open-Source-Dienstprogramm für macOS für alle, die ihren Desktop in Remote-Meetings zeigen. Es verbirgt die Apps und Fenster, die du als privat markierst, vor dem, was das Meeting sieht, während du auf deinem echten Bildschirm ganz normal weiterarbeitest.</p>
+<h2 id="das-problem-das-es-loest">Das Problem, das es löst</h2>
+<p>Wenn du von einem Mac aus präsentierst, hat jede der eingebauten Möglichkeiten ihren Preis. Teilst du den ganzen Bildschirm, können ein privater Chat, ein Passwortmanager, ein Posteingang oder eine Benachrichtigung ins Meeting gelangen. Teilst du ein einzelnes Anwendungsfenster, kannst du nicht mehr zwischen Apps wechseln oder einen Ablauf zeigen, der mehrere Apps durchquert.</p>
+<h2 id="so-funktioniert-es">So funktioniert es</h2>
+<p>SafeShare ergänzt eine dritte Möglichkeit, eine gefilterte Vorschau namens <strong>Safe View</strong>:</p>
+<p>1. Es nimmt deinen Bildschirm mit Apples ScreenCaptureKit auf. 2. Es entfernt mit einem Inhaltsfilter die Apps und Fenster, die du schützt, aus dieser Aufnahme. 3. Es zeigt den bereinigten Desktop in einem eigenen Fenster, Safe View. 4. In Teams, Zoom oder Google Meet teilst du das Safe-View-Fenster statt deines Bildschirms.</p>
+<p>Du siehst auf deinem echten Desktop alles. Die Teilnehmenden sehen nur, was du erlaubst.</p>
+<h2 id="mit-teams-zoom-oder-meet-nutzen">Mit Teams, Zoom oder Meet nutzen</h2>
+<p>Öffne zuerst SafeShare über das Schild-Symbol in der Menüleiste, markiere die sensiblen Apps als geschützt und wähle „Start Safe View“ (solange das SafeShare-Fenster offen ist, schaltet <code>⌘⇧S</code> es um). Dann in deiner Meeting-App (die Beschriftungen stehen hier wie im README auf Englisch und heißen in deutscher Oberfläche etwas anders):</p>
+<ul>
+<li><strong>Microsoft Teams:</strong> Wähle „Share“, dann unter „Window“ die Option „SafeShare — Safe View“.</li>
+<li><strong>Zoom:</strong> Wähle „Share Screen“, nimm in der Liste das Fenster „SafeShare — Safe View“ und wähle „Share“.</li>
+<li><strong>Google Meet:</strong> Wähle „Present now“, dann „A window“, und nimm „SafeShare — Safe View“.</li>
+</ul>
+<p>Teilst du statt des Safe-View-Fensters deinen ganzen Bildschirm, wird nichts gefiltert. Wähle also immer das Fenster.</p>
+<h2 id="das-safe-view-fenster-gross-halten">Das Safe-View-Fenster groß halten</h2>
+<p>Meeting-Apps teilen ein Fenster in seiner Größe auf dem Bildschirm, ein in eine Ecke geschrumpftes Safe-View-Fenster ist für die Teilnehmenden daher unlesbar. Laut README sperrt SafeShare das Fenster auf das Seitenverhältnis des Displays, geht nicht unter die halbe Displaygröße und zeigt beim Verkleinern einen Hinweis mit der genauen Auflösung, die die Zuschauenden erhalten. Die Schaltfläche „Send to Back“ im Menü legt das Fenster in voller Größe hinter deine Arbeit, und der Strom läuft weiter, solange das Fenster verdeckt ist.</p>
+<h2 id="was-es-kann">Was es kann</h2>
+<ul>
+<li><strong>Schutz mit einem Klick:</strong> Schalte jede laufende App in der Menüleiste auf geschützt.</li>
+<li><strong>Steuerung pro Fenster und Instanz:</strong> Gruppiere Apps mit mehreren Fenstern, etwa einen Browser oder ein Terminal, und setze jedes Fenster auf „Visible“, „Protected“ oder „Inherit“.</li>
+<li><strong>Fail-closed-Abdunkelung:</strong> Der Strom wird bei Bildschirmsperre, Ruhezustand oder einer Änderung der Berechtigungen leer, sodass kein Bild durchsickert.</li>
+<li><strong>Mehrere Displays:</strong> Wähle, welches physische Display aufgenommen wird.</li>
+<li><strong>Stromqualität:</strong> Wechsle zwischen 15, 30 und 60 Bildern pro Sekunde, ohne den Strom neu zu starten.</li>
+<li><strong>Benachrichtigungen automatisch ausblenden:</strong> Banner der Mitteilungszentrale bleiben aus dem Strom heraus.</li>
+<li><strong>Beim Anmelden starten, VoiceOver-Beschriftungen und Tastenkürzel.</strong></li>
+</ul>
+<h2 id="datenschutz-und-berechtigungen">Datenschutz und Berechtigungen</h2>
+<p>SafeShare braucht eine einzige Berechtigung, den üblichen Zugriff auf Bildschirm- und Systemaudioaufnahme, ohne Root-Rechte und ohne Kernel-Erweiterungen. Laut README speichert es keine Videobilder oder Fenstertitel auf dem Datenträger, hat keine Telemetrie und macht keine Netzwerkaufrufe. Das Repository enthält eine Sicherheitsrichtlinie mit den Einzelheiten.</p>
+<h2 id="installation">Installation</h2>
+<p>SafeShare braucht macOS 14 Sonoma oder neuer. Lade das DMG vom neuesten Release auf GitHub herunter, öffne es und ziehe SafeShare in den Ordner „Programme“. Zum Selbstbauen brauchst du Xcode 15 oder neuer: Klone das Repository, führe <code>swift test</code> und dann <code>./scripts/build_app.sh</code> aus, und <code>./scripts/package_dmg.sh</code>, wenn du ein DMG willst.</p>
+<h2 id="open-source">Open Source</h2>
+<p>SafeShare steht unter der MIT-Lizenz. Emad Alhamou, der Autor dieser Website, veröffentlicht es auf <a href="https://github.com/Alhamou/SafeShare">GitHub</a>. Das Repository hat einen Continuous-Integration-Workflow. Fehlerberichte und Pull Requests sind willkommen.</p>
+<section class="artFaq" aria-labelledby="haeufige-fragen">
+<h2 id="haeufige-fragen">Häufige Fragen</h2>
+<div class="artQ">
+<h3>Was ist SafeShare?</h3>
+<p>SafeShare ist ein Open-Source-Dienstprogramm für macOS, das private Apps und Fenster verbirgt, während du deinen Bildschirm in Teams, Zoom oder Google Meet teilst. Es tut das über ein gefiltertes Vorschaufenster namens Safe View.</p>
+</div>
+<div class="artQ">
+<h3>Wie verbirgt SafeShare Apps beim Bildschirmteilen?</h3>
+<p>Es nimmt deinen Bildschirm mit ScreenCaptureKit auf, filtert die Apps und Fenster heraus, die du als geschützt markiert hast, und zeigt das Ergebnis im Safe-View-Fenster. Dieses Fenster teilst du in deiner Meeting-App statt deines ganzen Bildschirms.</p>
+</div>
+<div class="artQ">
+<h3>Funktioniert es mit Teams, Zoom und Google Meet?</h3>
+<p>Ja. In jedem davon teilst du das Fenster „SafeShare — Safe View“: in Teams über „Share“ und „Window“, in Zoom über „Share Screen“ und in Google Meet über „Present now“ und „A window“.</p>
+</div>
+<div class="artQ">
+<h3>Was, wenn ich meinen ganzen Bildschirm statt des Safe-View-Fensters teile?</h3>
+<p>Dann wird nichts gefiltert, und die Teilnehmenden sehen alles. Der Schutz gilt nur für das, was im Safe-View-Fenster erscheint. Wähle in deiner Meeting-App also immer dieses Fenster.</p>
+</div>
+<div class="artQ">
+<h3>Warum sollte das Safe-View-Fenster groß bleiben?</h3>
+<p>Meeting-Apps teilen ein Fenster in seiner Größe auf dem Bildschirm, ein winziges Fenster ist daher schwer lesbar. SafeShare behält das Seitenverhältnis des Displays, geht nicht unter die halbe Displaygröße und hat eine Schaltfläche „Send to Back“, die das Fenster in voller Größe aus dem Weg räumt.</p>
+</div>
+<div class="artQ">
+<h3>Welche Berechtigung braucht SafeShare, und sendet es Daten irgendwohin?</h3>
+<p>Es braucht den Zugriff auf Bildschirm- und Systemaudioaufnahme. Laut README hat es keine Telemetrie, macht keine Netzwerkaufrufe und speichert keine Videobilder oder Fenstertitel auf dem Datenträger.</p>
+</div>
+<div class="artQ">
+<h3>Was passiert, wenn der Bildschirm gesperrt wird oder der Mac in den Ruhezustand geht?</h3>
+<p>Der Strom wird bei Bildschirmsperre, Ruhezustand und Änderungen der Berechtigungen leer, was das README Fail-closed-Abdunkelung nennt. Banner der Mitteilungszentrale bleiben ebenfalls aus dem Strom heraus.</p>
+</div>
+<div class="artQ">
+<h3>Welche macOS-Version braucht SafeShare?</h3>
+<p>macOS 14 Sonoma oder neuer.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/safeshare.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">Zum Tool</p>
+          <p class="artProductName" id="product-title">SafeShare</p>
+          <p>Open-Source-Dienstprogramm für macOS, das private Apps und Fenster verbirgt, während du deinen Bildschirm in Teams, Zoom oder Google Meet teilst, über ein gefiltertes Safe-View-Fenster.</p>
+          <ul class="artFacts"><li>Seit Oktober 2026</li><li>macOS 14 oder neuer · Berechtigung „Bildschirm- und Systemaudioaufnahme“ · MIT-Lizenz</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/SafeShare">Auf GitHub ansehen <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">Weitere Artikel</p>
+    <div class="artList">
+<a class="artCard" href="/de/articles/topmovies/" style="--art-bg:#16130f;--art-accent:#e8b64e;--art-fg:#f8f2e4">
+  <span class="artCardTop"><img src="/oss/topmoves.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">TopMovies: eine native Mac-App zum Entdecken von Filmen und Serien, mit lokaler Bibliothek</h3>
+    <span class="artCardDek">TopMovies hilft dir zu entscheiden, was du auf deinem Mac schauen willst. Es bietet kuratierte Entdeckungs-Feeds wie „For You“, „Tonight“ und „Hidden Gems“, Filter nach Typ, Land, Jahr, Bewertung und Laufzeit sowie eine lokale Bibliothek für Favoriten, eine Merkliste und deine eigenen Bewertungen. Es funktioniert offline in einem Demo-Modus und verbindet sich mit TMDB für echte Daten. Es ist mit SwiftUI gebaut und offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 4 Min. Lesezeit</span>
+  </span>
+</a>
+<a class="artCard" href="/de/articles/movemouse/" style="--art-bg:#151a2c;--art-accent:#4cc2ff;--art-fg:#eef3ff">
+  <span class="artCardTop"><img src="/oss/movemouse.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">moveMouse: eine Mac-Menüleisten-App, die hilft, RDP-Verbindungen offen zu halten</h3>
+    <span class="artCardDek">moveMouse hilft, eine Remotedesktop-Verbindung (RDP) offen zu halten. Es bewegt den Mauszeiger in einem Intervall, das du wählst, und hält den Mac wach, solange es läuft, damit eine ruhige Sitzung seltener getrennt wird. Es sitzt in der Menüleiste, und sein Code ist offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 5 Min. Lesezeit</span>
+  </span>
+</a>
+<a class="artCard" href="/de/articles/haki/" style="--art-bg:#0d1e2c;--art-accent:#4fd8c7;--art-fg:#eefbf8">
+  <span class="artCardTop"><img src="/oss/haki.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">Haki (حكي): Push-to-Talk-Diktat für die Mac-Menüleiste, auf Arabisch abgestimmt</h3>
+    <span class="artCardDek">Haki macht aus deiner Stimme überall auf deinem Mac Text. Halte Option+Leertaste, sprich, lass los, und der transkribierte Text wird an deinem Cursor eingefügt. Es ist auf natürliches Arabisch abgestimmt, auch levantinisches und syrisches Sprechen, und beherrscht außerdem Englisch, Deutsch und Französisch. Die Transkription nutzt OpenAI-Modelle mit deinem eigenen API-Schlüssel, dein Audio geht also an OpenAI. Der Code ist offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 5 Min. Lesezeit</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=de"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Sprache" data-nav><option value="/articles/safeshare/" lang="en">English</option><option value="/de/articles/safeshare/" lang="de" selected>Deutsch</option><option value="/ar/articles/safeshare/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "slug": "safeshare",
+  "group": "tool",
+  "order": 5,
+  "date_published": "2026-11-08",
+  "date_modified": "2026-11-08",
+  "theme": { "bg": "#100d24", "accent": "#a78bfa", "fg": "#f3f0ff" },
+  "mark": "SAFE",
+  "icon": "oss/safeshare.png",
+  "product": {
+    "name": "SafeShare",
+    "alternate_name": "ScreenGuard",
+    "category": "SecurityApplication",
+    "publisher": "person",
+    "operating_system": "macOS 14 or later",
+    "requirements": "macOS 14 or later, Screen & System Audio Recording permission",
+    "since": "2026-10",
+    "url": { "en": "https://github.com/Alhamou/SafeShare" },
+    "repo": "https://github.com/Alhamou/SafeShare",
+    "license": { "name": "MIT", "url": "https://opensource.org/license/mit" },
+    "language": ["Swift"]
+  }
+}

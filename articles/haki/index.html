@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Haki: Arabic push-to-talk dictation for Mac (OpenAI)</title>
+  <meta name="description" content="Haki is an open-source macOS menu-bar dictation app. Hold Option+Space, speak Arabic, English, German or French, release, and the text is pasted at your cursor.">
+  <meta name="author" content="Emad Alhamou">
+  <meta name="keywords" content="Haki, حكي, Arabic dictation Mac, speech to text macOS, push-to-talk dictation, Levantine Arabic speech recognition, OpenAI transcription, gpt-4o-transcribe, voice typing menu bar app, Swift, MIT license">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/articles/haki/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/haki/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/haki/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/haki/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/haki/">
+  <link rel="alternate" type="text/markdown" href="/articles/haki/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/articles/feed.xml" title="Atom feed">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:url" content="https://hamou.de/articles/haki/">
+  <meta property="og:title" content="Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic">
+  <meta property="og:description" content="Haki is an open-source macOS menu-bar dictation app. Hold Option+Space, speak Arabic, English, German or French, release, and the text is pasted at your cursor.">
+  <meta property="og:image" content="https://hamou.de/articles/haki/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="Open source tool">
+  <meta property="article:tag" content="Haki">
+  <meta property="article:tag" content="حكي">
+  <meta property="article:tag" content="Arabic dictation Mac">
+  <meta property="article:tag" content="speech to text macOS">
+  <meta property="article:tag" content="push-to-talk dictation">
+  <meta property="article:tag" content="Levantine Arabic speech recognition">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic">
+  <meta name="twitter:description" content="Haki is an open-source macOS menu-bar dictation app. Hold Option+Space, speak Arabic, English, German or French, release, and the text is pasted at your cursor.">
+  <meta name="twitter:image" content="https://hamou.de/articles/haki/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/articles/haki/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://hamou.de/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Haki",
+          "item": "https://hamou.de/articles/haki/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/articles/haki/#webpage",
+      "url": "https://hamou.de/articles/haki/",
+      "name": "Haki: Arabic push-to-talk dictation for Mac (OpenAI)",
+      "description": "Haki is an open-source macOS menu-bar dictation app. Hold Option+Space, speak Arabic, English, German or French, release, and the text is pasted at your cursor.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/articles/haki/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/articles/haki/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/articles/haki/#primaryimage",
+      "url": "https://hamou.de/articles/haki/og.jpg",
+      "contentUrl": "https://hamou.de/articles/haki/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/articles/haki/#article",
+      "headline": "Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic",
+      "description": "Haki is an open-source macOS menu-bar dictation app. Hold Option+Space, speak Arabic, English, German or French, release, and the text is pasted at your cursor.",
+      "abstract": "Haki turns your voice into text anywhere on your Mac. Hold Option+Space, speak, release, and the transcribed text is pasted at your cursor. It is tuned for natural Arabic, including Levantine and Syrian speech, and also handles English, German and French. Transcription uses OpenAI models with your own API key, so your audio goes to OpenAI. The code is open under the MIT license.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/articles/haki/#webpage"
+      },
+      "image": [
+        "https://hamou.de/articles/haki/og.jpg"
+      ],
+      "articleSection": "Open source tool",
+      "wordCount": 1047,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "Haki",
+        "حكي",
+        "Arabic dictation Mac",
+        "speech to text macOS",
+        "push-to-talk dictation",
+        "Levantine Arabic speech recognition",
+        "OpenAI transcription",
+        "gpt-4o-transcribe",
+        "voice typing menu bar app",
+        "Swift",
+        "MIT license"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/haki/#software"
+      },
+      "workTranslation": [
+        {
+          "@id": "https://hamou.de/de/articles/haki/#article"
+        },
+        {
+          "@id": "https://hamou.de/ar/articles/haki/#article"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/haki/#software",
+      "name": "Haki",
+      "url": "https://github.com/Alhamou/Haki",
+      "applicationCategory": "UtilitiesApplication",
+      "image": "https://hamou.de/oss/haki.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "alternateName": "حكي",
+      "operatingSystem": "macOS 13 or later",
+      "softwareRequirements": "macOS 13 or later, an OpenAI API key, Microphone and Accessibility permissions",
+      "description": "Open-source macOS menu-bar push-to-talk dictation: hold a hotkey, speak Arabic, English, German or French, and the text is pasted at your cursor. Uses OpenAI transcription with your own API key.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/Haki"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/haki/#source",
+      "name": "Haki source code",
+      "codeRepository": "https://github.com/Alhamou/Haki",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/haki/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/articles/haki/#faq",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/articles/haki/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Haki?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Haki is an open-source macOS menu-bar app for push-to-talk dictation. Hold ⌥ Option + Space, speak and release, and the transcribed text is pasted at your cursor in any app. It is tuned for Arabic and also supports English, German and French."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I dictate with Haki?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Click into a text field, press and hold ⌥ Option + Space, speak, then release. Haki sends the recording to OpenAI and pastes the text at your cursor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which languages and models does Haki support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Arabic (with Levantine and Syrian optimization), English, German, French and automatic detection. The models are gpt-transcribe, the default, and gpt-4o-transcribe for higher accuracy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Haki send my voice to OpenAI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Transcription is done by OpenAI, so each recording is sent from your Mac directly to OpenAI over TLS. Haki deletes the temporary audio file as soon as transcription finishes or fails, and keeps no audio history."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an OpenAI API key?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Haki uses your own OpenAI API key, which it stores in the macOS Keychain. Usage is under OpenAI's terms and pricing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which permissions does Haki need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Microphone, to capture your voice while you hold the hotkey, and Accessibility, for the global hotkey and for pasting with a simulated ⌘V."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Macs and macOS versions are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 13 Ventura or later, on Apple silicon or Intel. Building needs Swift 6.0 or newer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I dictate from my iPhone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with AirMouse, a companion open-source app. Its voice tab records on the phone and Haki types the text on your Mac. Haki must be installed and running."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">Skip to content</a>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="/?lang=en" aria-label="Home"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=en">Home</a>
+        <a href="/articles/">Articles</a>
+      </div>
+      <a class="navCta" href="/?lang=en#contact">Let&#x27;s talk</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#0d1e2c;--art-accent:#4fd8c7;--art-fg:#eefbf8">
+    <header class="artHero noVideo" data-mark="HAKI">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/?lang=en">Home</a></li><li><a href="/articles/">Articles</a></li><li aria-current="page">Haki</li></ol></nav>
+        <p class="artKicker"><img src="/oss/haki.png" width="40" height="40" alt="">Open source tool</p>
+        <h1>Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic</h1>
+        <p class="artDek">Haki turns your voice into text anywhere on your Mac. Hold Option+Space, speak, release, and the transcribed text is pasted at your cursor. It is tuned for natural Arabic, including Levantine and Syrian speech, and also handles English, German and French. Transcription uses OpenAI models with your own API key, so your audio goes to OpenAI. The code is open under the MIT license.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Founder &amp; Product Builder</small></span></span><span>Published <time datetime="2026-11-08">8 November 2026</time></span><span>5 min read</span><span class="artLangs">Also in: <a href="/de/articles/haki/" hreflang="de" lang="de">Deutsch</a> · <a href="/ar/articles/haki/" hreflang="ar" lang="ar">العربية</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">On this page</p><ol><li><a href="#what-is-haki">What is Haki?</a></li><li><a href="#how-dictation-works">How dictation works</a></li><li><a href="#languages-and-models">Languages and models</a></li><li><a href="#privacy-what-stays-on-your-mac-and-what-goes-to-openai">Privacy: what stays on your Mac and what goes to OpenAI</a></li><li><a href="#permissions">Permissions</a></li><li><a href="#set-it-up">Set it up</a></li><li><a href="#dictate-from-your-iphone-with-airmouse">Dictate from your iPhone with AirMouse</a></li><li><a href="#build-it">Build it</a></li><li><a href="#open-source">Open source</a></li><li><a href="#frequently-asked-questions">Frequently asked questions</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="what-is-haki">What is Haki?</h2>
+<p>Haki (حكي, a Levantine Arabic word for talking) is a lightweight native macOS menu-bar app for speech-to-text dictation. Click into any text field in any app, hold the push-to-talk hotkey, speak, and let go. Haki transcribes what you said and pastes it at the cursor. Its tagline in Arabic is "احكي، وحكي بيكتبها", roughly "you talk, Haki writes it".</p>
+<p>It is designed especially for natural Arabic and Levantine speech, with support for English, German, French and automatic language detection. It has no local speech model and no Python or Node.js runtime: the app is native Swift, and the transcription is done by OpenAI.</p>
+<h2 id="how-dictation-works">How dictation works</h2>
+<p>1. Focus a text field in any application, such as Notes, TextEdit, a browser, a chat app or an editor. 2. Press and hold <code>⌥ Option + Space</code> and speak. 3. Release the keys. Haki sends the recording to OpenAI, receives the text and pastes it at your cursor.</p>
+<p>Haki saves your clipboard before pasting and restores it afterwards, and it does this without stealing focus from the app you are typing in. A small floating indicator shows whether it is recording, transcribing or done. Accidental taps shorter than about a third of a second are discarded locally.</p>
+<h2 id="languages-and-models">Languages and models</h2>
+<ul>
+<li><strong>Languages:</strong> Arabic (with optimization for Levantine and Syrian speech), English, German, French, or automatic detection.</li>
+<li><strong>Models:</strong> <code>gpt-transcribe</code> is the default and is aimed at fast, low-latency daily voice typing. <code><span class="nb">gpt-4o-transcribe</span></code> is the higher-accuracy option for complex phrases, dialects and technical terms. You can switch from Settings or from the menu bar.</li>
+<li><strong>Microphones:</strong> pick the built-in microphone, a USB interface or AirPods. Haki handles reconnection through CoreAudio and can prefer AirPods when they connect. A live level meter lets you test the input.</li>
+</ul>
+<h2 id="privacy-what-stays-on-your-mac-and-what-goes-to-openai">Privacy: what stays on your Mac and what goes to OpenAI</h2>
+<p>Be clear about the trade-off: <strong>your voice recordings are sent to OpenAI.</strong> According to the README they go directly from your Mac to OpenAI's transcription endpoint over TLS, with no intermediary servers, so dictation needs an internet connection and your own OpenAI API key, used under OpenAI's terms and pricing.</p>
+<p>On your Mac, the README says Haki embeds no analytics, diagnostics, crash reporters or third-party SDKs. Audio is recorded to temporary files and deleted as soon as transcription finishes or fails, so no audio history is kept. Your API key is stored in the macOS Keychain and not in preferences, configuration files or logs.</p>
+<h2 id="permissions">Permissions</h2>
+<ul>
+<li><strong>Microphone:</strong> to capture your voice, and only while you hold the hotkey or start dictation from the menu.</li>
+<li><strong>Accessibility:</strong> for the global push-to-talk hotkey and to insert text by simulating <code>⌘V</code>. According to the README, Input Monitoring is not required separately.</li>
+</ul>
+<h2 id="set-it-up">Set it up</h2>
+<p>1. Open Haki. Allow Microphone access when macOS asks, and enable Haki under System Settings, Privacy &amp; Security, Accessibility. 2. Open Settings from the menu-bar icon or with <code>⌘,</code>. In the Transcription tab paste your OpenAI API key, choose Save, then Test API Key. 3. Choose a model, and in the Audio tab choose your microphone.</p>
+<h2 id="dictate-from-your-iphone-with-airmouse">Dictate from your iPhone with AirMouse</h2>
+<p><a href="https://github.com/Alhamou/AirMouse">AirMouse</a> is a separate open-source app that turns an iPhone into a trackpad for your Mac over your local Wi-Fi. Its voice tab records on the phone and hands the audio to Haki, which types the text on your Mac. Haki has to be installed and running, and it uses your normal API key, model and language settings.</p>
+<p>The handoff is simple and open to other senders too. A recording (<code>m4a</code>, <code>mp4</code>, <code>webm</code>, <code>wav</code>, <code>mp3</code> or <code>ogg</code>, up to 25 MB) is written to <code>~/Library/Caches/Haki/Inbox/</code>, then the URL <code>haki://transcribe?file=&lt;file name&gt;</code> is opened. Haki transcribes the file, pastes the text and deletes the file. Only plain file names inside the inbox are accepted, so paths, hidden files and symlinks are rejected.</p>
+<h2 id="build-it">Build it</h2>
+<p>Haki needs macOS 13 Ventura or later, on Apple silicon or Intel, and the Xcode Command Line Tools with Swift 6.0 or newer. Clone the repository from GitHub, run <code>swift test</code>, then <code>./scripts/build_app.sh</code>. The script builds the release binary, assembles <code>Haki.app</code>, signs it with your local Apple Development certificate or an ad-hoc signature, and installs it in <code>/Applications</code>.</p>
+<h2 id="open-source">Open source</h2>
+<p>Haki is released under the MIT license. The contribution guide asks for no local models, no Python, no Node.js and no Electron, and for API keys never to be committed. Emad Alhamou, the author of this site, publishes Haki on <a href="https://github.com/Alhamou/Haki">GitHub</a>. Bug reports and pull requests are welcome, and security concerns go through the repository's security policy.</p>
+<section class="artFaq" aria-labelledby="frequently-asked-questions">
+<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+<div class="artQ">
+<h3>What is Haki?</h3>
+<p>Haki is an open-source macOS menu-bar app for push-to-talk dictation. Hold <code>⌥ Option + Space</code>, speak and release, and the transcribed text is pasted at your cursor in any app. It is tuned for Arabic and also supports English, German and French.</p>
+</div>
+<div class="artQ">
+<h3>How do I dictate with Haki?</h3>
+<p>Click into a text field, press and hold <code>⌥ Option + Space</code>, speak, then release. Haki sends the recording to OpenAI and pastes the text at your cursor.</p>
+</div>
+<div class="artQ">
+<h3>Which languages and models does Haki support?</h3>
+<p>Arabic (with Levantine and Syrian optimization), English, German, French and automatic detection. The models are <code>gpt-transcribe</code>, the default, and <code><span class="nb">gpt-4o-transcribe</span></code> for higher accuracy.</p>
+</div>
+<div class="artQ">
+<h3>Does Haki send my voice to OpenAI?</h3>
+<p>Yes. Transcription is done by OpenAI, so each recording is sent from your Mac directly to OpenAI over TLS. Haki deletes the temporary audio file as soon as transcription finishes or fails, and keeps no audio history.</p>
+</div>
+<div class="artQ">
+<h3>Do I need an OpenAI API key?</h3>
+<p>Yes. Haki uses your own OpenAI API key, which it stores in the macOS Keychain. Usage is under OpenAI's terms and pricing.</p>
+</div>
+<div class="artQ">
+<h3>Which permissions does Haki need?</h3>
+<p>Microphone, to capture your voice while you hold the hotkey, and Accessibility, for the global hotkey and for pasting with a simulated <code>⌘V</code>.</p>
+</div>
+<div class="artQ">
+<h3>Which Macs and macOS versions are supported?</h3>
+<p>macOS 13 Ventura or later, on Apple silicon or Intel. Building needs Swift 6.0 or newer.</p>
+</div>
+<div class="artQ">
+<h3>Can I dictate from my iPhone?</h3>
+<p>Yes, with AirMouse, a companion open-source app. Its voice tab records on the phone and Haki types the text on your Mac. Haki must be installed and running.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/haki.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">About the tool</p>
+          <p class="artProductName" id="product-title">Haki</p>
+          <p>Open-source macOS menu-bar push-to-talk dictation: hold a hotkey, speak Arabic, English, German or French, and the text is pasted at your cursor. Uses OpenAI transcription with your own API key.</p>
+          <ul class="artFacts"><li>Since September 2026</li><li>macOS 13 or later · OpenAI API key · Microphone and Accessibility permissions · MIT license</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/Haki">View on GitHub <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">More articles</p>
+    <div class="artList">
+<a class="artCard" href="/articles/openblock/" style="--art-bg:#0c1a36;--art-accent:#7db7ff;--art-fg:#f1f5ff">
+  <span class="artCardTop"><img src="/oss/openblock.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking</h3>
+    <span class="artCardDek">OpenBlock blocks ads and trackers in Safari on your Mac. It downloads real filter lists, converts them into Safari&#x27;s own rule format and lets Safari enforce them, so nothing sits between you and the web. The code is open under the <span class="nb">GPL-3.0</span> license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 4 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/remotedesk/" style="--art-bg:#12143a;--art-accent:#5ccfff;--art-fg:#eef1ff">
+  <span class="artCardTop"><img src="/oss/remotedesk.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">RemoteDesk: an open-source Mac-to-Mac remote desktop for your local network</h3>
+    <span class="artCardDek">RemoteDesk shares one Mac&#x27;s screen and lets you control it from another Mac over your local network. It captures the screen with ScreenCaptureKit, compresses it with hardware H.264 and sends it over TCP. It has no encryption or login, so it is meant for trusted private networks only. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/pinfiy/" style="--art-bg:#2a1f0a;--art-accent:#f3c15b;--art-fg:#fff6e0">
+  <span class="artCardTop"><img src="/oss/pinfiy.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">pinFiy: colored sticky notes for the Mac, with a small pin in the menu bar</h3>
+    <span class="artCardDek">pinFiy gives your Mac colored sticky notes that live behind a small pin in the menu bar. Each note is its own window, Arabic text runs right to left and English left to right, and a pinned note stays above your other windows. There is no account, no cloud sync and no network access. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 4 min read</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=en"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Language" data-nav><option value="/articles/haki/" lang="en" selected>English</option><option value="/de/articles/haki/" lang="de">Deutsch</option><option value="/ar/articles/haki/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

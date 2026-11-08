@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Haki: إملاء صوتي بالعربية لماك بالضغط والتحدث (OpenAI)</title>
+  <meta name="description" content="Haki تطبيق مفتوح المصدر للإملاء الصوتي في شريط قوائم macOS. اضغط Option+Space مطوّلًا وتحدث بالعربية أو الإنجليزية أو الألمانية أو الفرنسية ثم اترك، فيُلصق النص عند المؤشر.">
+  <meta name="author" content="عماد الحمو">
+  <meta name="keywords" content="Haki, حكي, إملاء صوتي بالعربية ماك, تحويل الكلام إلى نص macOS, إملاء بالضغط والتحدث, التعرف على اللهجة الشامية, تفريغ صوتي OpenAI, gpt-4o-transcribe, كتابة صوتية تطبيق شريط القوائم, Swift, ترخيص MIT">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/ar/articles/haki/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/haki/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/haki/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/haki/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/haki/">
+  <link rel="alternate" type="text/markdown" href="/ar/articles/haki/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/ar/articles/feed.xml" title="خلاصة Atom">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ar_AR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:url" content="https://hamou.de/ar/articles/haki/">
+  <meta property="og:title" content="Haki (حكي): إملاء صوتي بالضغط والتحدث في شريط قوائم ماك، مضبوط للعربية">
+  <meta property="og:description" content="Haki تطبيق مفتوح المصدر للإملاء الصوتي في شريط قوائم macOS. اضغط Option+Space مطوّلًا وتحدث بالعربية أو الإنجليزية أو الألمانية أو الفرنسية ثم اترك، فيُلصق النص عند المؤشر.">
+  <meta property="og:image" content="https://hamou.de/ar/articles/haki/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Haki (حكي): إملاء صوتي بالضغط والتحدث في شريط قوائم ماك، مضبوط للعربية">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="أداة مفتوحة المصدر">
+  <meta property="article:tag" content="Haki">
+  <meta property="article:tag" content="حكي">
+  <meta property="article:tag" content="إملاء صوتي بالعربية ماك">
+  <meta property="article:tag" content="تحويل الكلام إلى نص macOS">
+  <meta property="article:tag" content="إملاء بالضغط والتحدث">
+  <meta property="article:tag" content="التعرف على اللهجة الشامية">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Haki (حكي): إملاء صوتي بالضغط والتحدث في شريط قوائم ماك، مضبوط للعربية">
+  <meta name="twitter:description" content="Haki تطبيق مفتوح المصدر للإملاء الصوتي في شريط قوائم macOS. اضغط Option+Space مطوّلًا وتحدث بالعربية أو الإنجليزية أو الألمانية أو الفرنسية ثم اترك، فيُلصق النص عند المؤشر.">
+  <meta name="twitter:image" content="https://hamou.de/ar/articles/haki/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/ar/articles/haki/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "مقالات",
+          "item": "https://hamou.de/ar/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Haki",
+          "item": "https://hamou.de/ar/articles/haki/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/ar/articles/haki/#webpage",
+      "url": "https://hamou.de/ar/articles/haki/",
+      "name": "Haki: إملاء صوتي بالعربية لماك بالضغط والتحدث (OpenAI)",
+      "description": "Haki تطبيق مفتوح المصدر للإملاء الصوتي في شريط قوائم macOS. اضغط Option+Space مطوّلًا وتحدث بالعربية أو الإنجليزية أو الألمانية أو الفرنسية ثم اترك، فيُلصق النص عند المؤشر.",
+      "inLanguage": "ar",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/ar/articles/haki/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/ar/articles/haki/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/ar/articles/haki/#primaryimage",
+      "url": "https://hamou.de/ar/articles/haki/og.jpg",
+      "contentUrl": "https://hamou.de/ar/articles/haki/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "Haki (حكي): إملاء صوتي بالضغط والتحدث في شريط قوائم ماك، مضبوط للعربية"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/ar/articles/haki/#article",
+      "headline": "Haki (حكي): إملاء صوتي بالضغط والتحدث في شريط قوائم ماك، مضبوط للعربية",
+      "description": "Haki تطبيق مفتوح المصدر للإملاء الصوتي في شريط قوائم macOS. اضغط Option+Space مطوّلًا وتحدث بالعربية أو الإنجليزية أو الألمانية أو الفرنسية ثم اترك، فيُلصق النص عند المؤشر.",
+      "abstract": "يحوّل Haki صوتك إلى نص في أي مكان على جهاز ماك. اضغط Option+Space مطوّلًا وتحدث ثم اترك، فيُلصق النص المحوَّل عند المؤشر. هو مضبوط للعربية الطبيعية، ومنها اللهجتان الشامية والسورية، ويتعامل أيضًا مع الإنجليزية والألمانية والفرنسية. يستخدم التحويل نماذج OpenAI بمفتاح API الخاص بك، لذلك يذهب صوتك إلى OpenAI. الكود مفتوح بترخيص MIT.",
+      "inLanguage": "ar",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/ar/articles/haki/#webpage"
+      },
+      "image": [
+        "https://hamou.de/ar/articles/haki/og.jpg"
+      ],
+      "articleSection": "أداة مفتوحة المصدر",
+      "wordCount": 879,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "Haki",
+        "حكي",
+        "إملاء صوتي بالعربية ماك",
+        "تحويل الكلام إلى نص macOS",
+        "إملاء بالضغط والتحدث",
+        "التعرف على اللهجة الشامية",
+        "تفريغ صوتي OpenAI",
+        "gpt-4o-transcribe",
+        "كتابة صوتية تطبيق شريط القوائم",
+        "Swift",
+        "ترخيص MIT"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/haki/#software"
+      },
+      "translationOfWork": {
+        "@id": "https://hamou.de/articles/haki/#article"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/haki/#software",
+      "name": "Haki",
+      "url": "https://github.com/Alhamou/Haki",
+      "applicationCategory": "UtilitiesApplication",
+      "image": "https://hamou.de/oss/haki.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "alternateName": "حكي",
+      "operatingSystem": "macOS 13 or later",
+      "softwareRequirements": "macOS 13 or later, an OpenAI API key, Microphone and Accessibility permissions",
+      "description": "إملاء صوتي مفتوح المصدر في شريط قوائم macOS بالضغط والتحدث: اضغط اختصارًا مطوّلًا وتحدث بالعربية أو الإنجليزية أو الألمانية أو الفرنسية فيُلصق النص عند المؤشر. يستخدم تفريغ OpenAI بمفتاح API الخاص بك.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/Haki"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/haki/#source",
+      "name": "Haki source code",
+      "codeRepository": "https://github.com/Alhamou/Haki",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/haki/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/ar/articles/haki/#faq",
+      "inLanguage": "ar",
+      "isPartOf": {
+        "@id": "https://hamou.de/ar/articles/haki/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ما هو Haki؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Haki تطبيق مفتوح المصدر في شريط قوائم macOS للإملاء الصوتي بالضغط والتحدث. اضغط ⌥ Option + Space مطوّلًا وتحدث ثم اترك، فيُلصق النص المحوَّل عند المؤشر في أي تطبيق. هو مضبوط للعربية ويدعم أيضًا الإنجليزية والألمانية والفرنسية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أُملي بـ Haki؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "انقر في حقل نصي، واضغط ⌥ Option + Space مطوّلًا، وتحدث، ثم اترك. يرسل Haki التسجيل إلى OpenAI ويلصق النص عند المؤشر."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما اللغات والنماذج التي يدعمها Haki؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "العربية (مع تحسين للهجتين الشامية والسورية)، والإنجليزية، والألمانية، والفرنسية، والتعرف التلقائي. والنماذج هي gpt-transcribe وهو الافتراضي، وgpt-4o-transcribe لدقة أعلى."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يرسل Haki صوتي إلى OpenAI؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. التحويل تقوم به OpenAI، لذلك يُرسل كل تسجيل من جهازك مباشرة إلى OpenAI عبر TLS. ويحذف Haki ملف الصوت المؤقت فور انتهاء التحويل أو فشله، ولا يحتفظ بسجل صوتي."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل أحتاج إلى مفتاح OpenAI API؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. يستخدم Haki مفتاح OpenAI API الخاص بك، ويخزّنه في سلسلة مفاتيح macOS. والاستخدام وفق شروط OpenAI وأسعارها."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما الأذونات التي يحتاجها Haki؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "الميكروفون لالتقاط صوتك ما دمت تضغط الاختصار، وإمكانية الوصول للاختصار العام وللصق بمحاكاة ⌘V."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما أجهزة ماك وإصدارات macOS المدعومة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 13 Ventura أو أحدث، على Apple silicon أو Intel. والبناء يحتاج إلى Swift 6.0 أو أحدث."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل أستطيع الإملاء من آيفون؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، عبر AirMouse، وهو تطبيق مرافق مفتوح المصدر. يسجّل تبويبه الصوتي على الهاتف ويكتب Haki النص على جهاز ماك. يجب أن يكون Haki مثبّتًا وقيد التشغيل."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">تخطَّ إلى المحتوى</a>
+  <header>
+    <nav class="nav container" aria-label="التنقل الرئيسي">
+      <a class="brand" href="/?lang=ar" aria-label="الرئيسية"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=ar">الرئيسية</a>
+        <a href="/ar/articles/">مقالات</a>
+      </div>
+      <a class="navCta" href="/?lang=ar#contact">لنتواصل</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#0d1e2c;--art-accent:#4fd8c7;--art-fg:#eefbf8">
+    <header class="artHero noVideo" data-mark="HAKI">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="مسار التنقل"><ol><li><a href="/?lang=ar">الرئيسية</a></li><li><a href="/ar/articles/">مقالات</a></li><li aria-current="page">Haki</li></ol></nav>
+        <p class="artKicker"><img src="/oss/haki.png" width="40" height="40" alt="">أداة مفتوحة المصدر</p>
+        <h1>Haki (حكي): إملاء صوتي بالضغط والتحدث في شريط قوائم ماك، مضبوط للعربية</h1>
+        <p class="artDek">يحوّل Haki صوتك إلى نص في أي مكان على جهاز ماك. اضغط Option+Space مطوّلًا وتحدث ثم اترك، فيُلصق النص المحوَّل عند المؤشر. هو مضبوط للعربية الطبيعية، ومنها اللهجتان الشامية والسورية، ويتعامل أيضًا مع الإنجليزية والألمانية والفرنسية. يستخدم التحويل نماذج OpenAI بمفتاح API الخاص بك، لذلك يذهب صوتك إلى OpenAI. الكود مفتوح بترخيص MIT.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>عماد الحمو</b><small>مؤسس وصانع منتجات</small></span></span><span>نُشر في <time datetime="2026-11-08">8 نوفمبر 2026</time></span><span>قراءة 5 دقائق</span><span class="artLangs">بلغات أخرى: <a href="/articles/haki/" hreflang="en" lang="en">English</a> · <a href="/de/articles/haki/" hreflang="de" lang="de">Deutsch</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">في هذه الصفحة</p><ol><li><a href="#ما-هو-haki">ما هو Haki؟</a></li><li><a href="#كيف-يعمل-الإملاء">كيف يعمل الإملاء</a></li><li><a href="#اللغات-والنماذج">اللغات والنماذج</a></li><li><a href="#الخصوصية-ما-يبقى-على-جهازك-وما-يذهب-إلى-openai">الخصوصية: ما يبقى على جهازك وما يذهب إلى OpenAI</a></li><li><a href="#الأذونات">الأذونات</a></li><li><a href="#الإعداد">الإعداد</a></li><li><a href="#الإملاء-من-آيفون-عبر-airmouse">الإملاء من آيفون عبر AirMouse</a></li><li><a href="#ابن-ه-بنفسك">ابنِه بنفسك</a></li><li><a href="#مفتوح-المصدر">مفتوح المصدر</a></li><li><a href="#الأسئلة-الشائعة">الأسئلة الشائعة</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="ما-هو-haki">ما هو Haki؟</h2>
+<p>Haki (حكي) تطبيق أصلي خفيف في شريط قوائم macOS لتحويل الكلام إلى نص. انقر في أي حقل نصي في أي تطبيق، واضغط اختصار الضغط والتحدث مطوّلًا، وتحدث ثم اترك. ينسخ Haki ما قلته نصًّا ويلصقه عند المؤشر. وشعاره: «احكي، وحكي بيكتبها».</p>
+<p>صُمم خصوصًا للعربية الطبيعية واللهجة الشامية، مع دعم الإنجليزية والألمانية والفرنسية والتعرف التلقائي على اللغة. ليس فيه نموذج كلام محلي ولا بيئة Python أو Node.js: التطبيق Swift أصلي، والتحويل تقوم به OpenAI.</p>
+<h2 id="كيف-يعمل-الإملاء">كيف يعمل الإملاء</h2>
+<p>1. ركّز على حقل نصي في أي تطبيق، مثل الملاحظات أو TextEdit أو متصفح أو تطبيق محادثة أو محرر. 2. اضغط <code>⌥ Option + Space</code> مطوّلًا وتحدث. 3. اترك المفتاحين. يرسل Haki التسجيل إلى OpenAI ويستلم النص ويلصقه عند المؤشر.</p>
+<p>يحفظ Haki حافظتك قبل اللصق ويستعيدها بعده، ويفعل ذلك دون أن ينتزع التركيز من التطبيق الذي تكتب فيه. ومؤشر عائم صغير يبيّن هل يسجّل الآن أم يحوّل أم انتهى. أما النقرات العرضية التي تقل عن ثلث ثانية تقريبًا فتُهمل محليًا.</p>
+<h2 id="اللغات-والنماذج">اللغات والنماذج</h2>
+<ul>
+<li><strong>اللغات:</strong> العربية (مع تحسين للهجتين الشامية والسورية)، والإنجليزية، والألمانية، والفرنسية، أو التعرف التلقائي.</li>
+<li><strong>النماذج:</strong> <code>gpt-transcribe</code> هو الافتراضي وموجّه للكتابة الصوتية اليومية السريعة منخفضة التأخير. و<code><span class="nb">gpt-4o-transcribe</span></code> خيار أعلى دقة للعبارات المعقدة واللهجات والمصطلحات التقنية. تبدّل من الإعدادات أو من شريط القوائم.</li>
+<li><strong>الميكروفونات:</strong> اختر الميكروفون المدمج أو واجهة USB أو AirPods. يتولى Haki إعادة الاتصال عبر CoreAudio ويمكنه تفضيل AirPods عند اتصالها. ومقياس مستوى حي يتيح لك اختبار الإدخال.</li>
+</ul>
+<h2 id="الخصوصية-ما-يبقى-على-جهازك-وما-يذهب-إلى-openai">الخصوصية: ما يبقى على جهازك وما يذهب إلى OpenAI</h2>
+<p>كن واضحًا بشأن المقايضة: <strong>تسجيلاتك الصوتية تُرسل إلى OpenAI.</strong> وبحسب README تذهب مباشرة من جهازك إلى نقطة التفريغ الصوتي لدى OpenAI عبر TLS بلا خوادم وسيطة، لذلك يحتاج الإملاء إلى اتصال بالإنترنت وإلى مفتاح OpenAI API الخاص بك، ويُستخدم وفق شروط OpenAI وأسعارها.</p>
+<p>وعلى جهازك يقول README إن Haki لا يضمّن أي تحليلات أو تشخيصات أو تقارير أعطال أو حزم SDK من أطراف أخرى. يُسجَّل الصوت في ملفات مؤقتة ويُحذف فور انتهاء التحويل أو فشله، فلا يُحتفظ بسجل صوتي. ويُخزَّن مفتاح API في سلسلة مفاتيح macOS (Keychain) وليس في التفضيلات أو ملفات الإعداد أو السجلات.</p>
+<h2 id="الأذونات">الأذونات</h2>
+<ul>
+<li><strong>الميكروفون:</strong> لالتقاط صوتك، وفقط ما دمت تضغط الاختصار أو تبدأ الإملاء من القائمة.</li>
+<li><strong>إمكانية الوصول (Accessibility):</strong> للاختصار العام للضغط والتحدث ولإدراج النص بمحاكاة <code>⌘V</code>. وبحسب README لا يلزم إذن «مراقبة الإدخال» (Input Monitoring) بشكل منفصل.</li>
+</ul>
+<h2 id="الإعداد">الإعداد</h2>
+<p>1. افتح Haki. اسمح بالوصول إلى الميكروفون حين يسأل macOS، وفعّل Haki ضمن إعدادات النظام، ثم الخصوصية والأمان، ثم «إمكانية الوصول». 2. افتح الإعدادات من أيقونة شريط القوائم أو بـ <code>⌘,</code>. في تبويب Transcription الصق مفتاح OpenAI API واختر Save ثم Test API Key. 3. اختر نموذجًا، وفي تبويب Audio اختر الميكروفون.</p>
+<h2 id="الإملاء-من-آيفون-عبر-airmouse">الإملاء من آيفون عبر AirMouse</h2>
+<p><a href="https://github.com/Alhamou/AirMouse">AirMouse</a> تطبيق مفتوح المصدر مستقل يحوّل آيفون إلى لوحة تتبّع لجهاز ماك عبر شبكة Wi-Fi المحلية. يسجّل تبويبه الصوتي على الهاتف ويسلّم الصوت إلى Haki الذي يكتب النص على جهاز ماك. يجب أن يكون Haki مثبّتًا وقيد التشغيل، ويستخدم مفتاح API المعتاد وإعدادات النموذج واللغة لديك.</p>
+<p>التسليم بسيط ومفتوح لمرسِلين آخرين أيضًا. يُكتب تسجيل (<code>m4a</code> أو <code>mp4</code> أو <code>webm</code> أو <code>wav</code> أو <code>mp3</code> أو <code>ogg</code>، حتى 25 ميغابايت) في <code>~/Library/Caches/Haki/Inbox/</code>، ثم يُفتح الرابط <code>haki://transcribe?file=&lt;اسم الملف&gt;</code>. يحوّل Haki الملف إلى نص ويلصقه ويحذف الملف. ولا تُقبل إلا أسماء الملفات البسيطة داخل صندوق الوارد، فتُرفض المسارات والملفات المخفية والروابط الرمزية.</p>
+<h2 id="ابن-ه-بنفسك">ابنِه بنفسك</h2>
+<p>يحتاج Haki إلى macOS 13 Ventura أو أحدث، على Apple silicon أو Intel، وإلى أدوات سطر الأوامر لـ Xcode مع Swift 6.0 أو أحدث. انسخ المستودع من GitHub وشغّل <code>swift test</code> ثم <code>./scripts/build_app.sh</code>. يبني السكربت الملف التنفيذي للإصدار، ويجمّع <code>Haki.app</code>، ويوقّعه بشهادة Apple Development المحلية لديك أو بتوقيع مؤقت (ad hoc)، ويثبّته في <code>/Applications</code>.</p>
+<h2 id="مفتوح-المصدر">مفتوح المصدر</h2>
+<p>صدر Haki بترخيص MIT. يشترط دليل المساهمة ألا تُضاف نماذج محلية ولا Python ولا Node.js ولا Electron، وألا تُرفع مفاتيح API أبدًا. ينشر عماد الحمو، صاحب هذا الموقع، Haki على <a href="https://github.com/Alhamou/Haki">GitHub</a>. تقارير الأخطاء وطلبات الدمج (Pull Requests) مرحّب بها، والمخاوف الأمنية تُبلَّغ وفق سياسة الأمان في المستودع.</p>
+<section class="artFaq" aria-labelledby="الأسئلة-الشائعة">
+<h2 id="الأسئلة-الشائعة">الأسئلة الشائعة</h2>
+<div class="artQ">
+<h3>ما هو Haki؟</h3>
+<p>Haki تطبيق مفتوح المصدر في شريط قوائم macOS للإملاء الصوتي بالضغط والتحدث. اضغط <code>⌥ Option + Space</code> مطوّلًا وتحدث ثم اترك، فيُلصق النص المحوَّل عند المؤشر في أي تطبيق. هو مضبوط للعربية ويدعم أيضًا الإنجليزية والألمانية والفرنسية.</p>
+</div>
+<div class="artQ">
+<h3>كيف أُملي بـ Haki؟</h3>
+<p>انقر في حقل نصي، واضغط <code>⌥ Option + Space</code> مطوّلًا، وتحدث، ثم اترك. يرسل Haki التسجيل إلى OpenAI ويلصق النص عند المؤشر.</p>
+</div>
+<div class="artQ">
+<h3>ما اللغات والنماذج التي يدعمها Haki؟</h3>
+<p>العربية (مع تحسين للهجتين الشامية والسورية)، والإنجليزية، والألمانية، والفرنسية، والتعرف التلقائي. والنماذج هي <code>gpt-transcribe</code> وهو الافتراضي، و<code><span class="nb">gpt-4o-transcribe</span></code> لدقة أعلى.</p>
+</div>
+<div class="artQ">
+<h3>هل يرسل Haki صوتي إلى OpenAI؟</h3>
+<p>نعم. التحويل تقوم به OpenAI، لذلك يُرسل كل تسجيل من جهازك مباشرة إلى OpenAI عبر TLS. ويحذف Haki ملف الصوت المؤقت فور انتهاء التحويل أو فشله، ولا يحتفظ بسجل صوتي.</p>
+</div>
+<div class="artQ">
+<h3>هل أحتاج إلى مفتاح OpenAI API؟</h3>
+<p>نعم. يستخدم Haki مفتاح OpenAI API الخاص بك، ويخزّنه في سلسلة مفاتيح macOS. والاستخدام وفق شروط OpenAI وأسعارها.</p>
+</div>
+<div class="artQ">
+<h3>ما الأذونات التي يحتاجها Haki؟</h3>
+<p>الميكروفون لالتقاط صوتك ما دمت تضغط الاختصار، وإمكانية الوصول للاختصار العام وللصق بمحاكاة <code>⌘V</code>.</p>
+</div>
+<div class="artQ">
+<h3>ما أجهزة ماك وإصدارات macOS المدعومة؟</h3>
+<p>macOS 13 Ventura أو أحدث، على Apple silicon أو Intel. والبناء يحتاج إلى Swift 6.0 أو أحدث.</p>
+</div>
+<div class="artQ">
+<h3>هل أستطيع الإملاء من آيفون؟</h3>
+<p>نعم، عبر AirMouse، وهو تطبيق مرافق مفتوح المصدر. يسجّل تبويبه الصوتي على الهاتف ويكتب Haki النص على جهاز ماك. يجب أن يكون Haki مثبّتًا وقيد التشغيل.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/haki.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">عن الأداة</p>
+          <p class="artProductName" id="product-title">Haki</p>
+          <p>إملاء صوتي مفتوح المصدر في شريط قوائم macOS بالضغط والتحدث: اضغط اختصارًا مطوّلًا وتحدث بالعربية أو الإنجليزية أو الألمانية أو الفرنسية فيُلصق النص عند المؤشر. يستخدم تفريغ OpenAI بمفتاح API الخاص بك.</p>
+          <ul class="artFacts"><li>منذ سبتمبر 2026</li><li>macOS 13 أو أحدث · مفتاح OpenAI API · إذنا الميكروفون وإمكانية الوصول · ترخيص MIT</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/Haki">المستودع على GitHub <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">مقالات أخرى</p>
+    <div class="artList">
+<a class="artCard" href="/ar/articles/openblock/" style="--art-bg:#0c1a36;--art-accent:#7db7ff;--art-fg:#f1f5ff">
+  <span class="artCardTop"><img src="/oss/openblock.png" width="56" height="56" alt="" loading="lazy"><span>أداة مفتوحة المصدر</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">OpenBlock: مانع إعلانات مفتوح المصدر لمتصفح Safari على ماك، وبلا تتبّع</h3>
+    <span class="artCardDek">يحجب OpenBlock الإعلانات ومتتبّعات المواقع في Safari على جهاز ماك. ينزّل قوائم تصفية حقيقية، ويحوّلها إلى صيغة القواعد الخاصة بـ Safari، ويترك لـ Safari تطبيقها، فلا يقف شيء بينك وبين الويب. الكود مفتوح بترخيص <span class="nb">GPL-3.0.</span></span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 نوفمبر 2026</time> · قراءة 5 دقائق</span>
+  </span>
+</a>
+<a class="artCard" href="/ar/articles/remotedesk/" style="--art-bg:#12143a;--art-accent:#5ccfff;--art-fg:#eef1ff">
+  <span class="artCardTop"><img src="/oss/remotedesk.png" width="56" height="56" alt="" loading="lazy"><span>أداة مفتوحة المصدر</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">RemoteDesk: سطح مكتب بعيد مفتوح المصدر من ماك إلى ماك عبر شبكتك المحلية</h3>
+    <span class="artCardDek">يشارك RemoteDesk شاشة جهاز ماك ويتيح لك التحكم به من جهاز ماك آخر عبر شبكتك المحلية. يلتقط الشاشة بـ ScreenCaptureKit ويضغطها بترميز H.264 العتادي ويرسلها عبر TCP. لا يوجد فيه تشفير ولا تسجيل دخول، لذلك هو للشبكات الخاصة الموثوقة فقط. الكود مفتوح بترخيص MIT.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 نوفمبر 2026</time> · قراءة 6 دقائق</span>
+  </span>
+</a>
+<a class="artCard" href="/ar/articles/pinfiy/" style="--art-bg:#2a1f0a;--art-accent:#f3c15b;--art-fg:#fff6e0">
+  <span class="artCardTop"><img src="/oss/pinfiy.png" width="56" height="56" alt="" loading="lazy"><span>أداة مفتوحة المصدر</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">pinFiy: ملاحظات لاصقة ملوّنة لجهاز ماك، بدبّوس صغير في شريط القوائم</h3>
+    <span class="artCardDek">يمنح pinFiy جهاز ماك ملاحظات لاصقة ملوّنة تعيش خلف دبّوس صغير في شريط القوائم. كل ملاحظة نافذة مستقلة، والنص العربي يمتد من اليمين إلى اليسار والإنجليزي من اليسار إلى اليمين، والملاحظة المثبّتة تبقى فوق نوافذك الأخرى. لا حساب ولا مزامنة سحابية ولا اتصال بالشبكة. الكود مفتوح بترخيص MIT.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 نوفمبر 2026</time> · قراءة 4 دقائق</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=ar"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="اللغة" data-nav><option value="/articles/haki/" lang="en">English</option><option value="/de/articles/haki/" lang="de">Deutsch</option><option value="/ar/articles/haki/" lang="ar" selected>العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

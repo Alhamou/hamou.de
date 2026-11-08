@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>closeAll: force-quit all Mac apps from one menu-bar button</title>
+  <meta name="description" content="closeAll is an open-source macOS menu-bar app that force-quits every normal Dock app at once, after you review the list. Unsaved work in those apps is lost.">
+  <meta name="author" content="Emad Alhamou">
+  <meta name="keywords" content="closeAll, force quit all apps Mac, quit all apps macOS, close all Dock apps, menu bar app, Force Quit, Apple silicon, Swift, MIT license">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/articles/closeall/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/closeall/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/closeall/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/closeall/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/closeall/">
+  <link rel="alternate" type="text/markdown" href="/articles/closeall/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/articles/feed.xml" title="Atom feed">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:url" content="https://hamou.de/articles/closeall/">
+  <meta property="og:title" content="closeAll: force-quit every Dock app from one menu-bar button on Mac">
+  <meta property="og:description" content="closeAll is an open-source macOS menu-bar app that force-quits every normal Dock app at once, after you review the list. Unsaved work in those apps is lost.">
+  <meta property="og:image" content="https://hamou.de/articles/closeall/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="closeAll: force-quit every Dock app from one menu-bar button on Mac">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="Open source tool">
+  <meta property="article:tag" content="closeAll">
+  <meta property="article:tag" content="force quit all apps Mac">
+  <meta property="article:tag" content="quit all apps macOS">
+  <meta property="article:tag" content="close all Dock apps">
+  <meta property="article:tag" content="menu bar app">
+  <meta property="article:tag" content="Force Quit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="closeAll: force-quit every Dock app from one menu-bar button on Mac">
+  <meta name="twitter:description" content="closeAll is an open-source macOS menu-bar app that force-quits every normal Dock app at once, after you review the list. Unsaved work in those apps is lost.">
+  <meta name="twitter:image" content="https://hamou.de/articles/closeall/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/articles/closeall/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://hamou.de/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "closeAll",
+          "item": "https://hamou.de/articles/closeall/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/articles/closeall/#webpage",
+      "url": "https://hamou.de/articles/closeall/",
+      "name": "closeAll: force-quit all Mac apps from one menu-bar button",
+      "description": "closeAll is an open-source macOS menu-bar app that force-quits every normal Dock app at once, after you review the list. Unsaved work in those apps is lost.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/articles/closeall/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/articles/closeall/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/articles/closeall/#primaryimage",
+      "url": "https://hamou.de/articles/closeall/og.jpg",
+      "contentUrl": "https://hamou.de/articles/closeall/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "closeAll: force-quit every Dock app from one menu-bar button on Mac"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/articles/closeall/#article",
+      "headline": "closeAll: force-quit every Dock app from one menu-bar button on Mac",
+      "description": "closeAll is an open-source macOS menu-bar app that force-quits every normal Dock app at once, after you review the list. Unsaved work in those apps is lost.",
+      "abstract": "closeAll force-quits every normal Dock app from one button in the menu bar. You review the list first, uncheck what should stay open and press Force Quit. Force Quit does not ask apps to save, so unsaved work is lost. The code is open under the MIT license.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/articles/closeall/#webpage"
+      },
+      "image": [
+        "https://hamou.de/articles/closeall/og.jpg"
+      ],
+      "articleSection": "Open source tool",
+      "wordCount": 891,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "closeAll",
+        "force quit all apps Mac",
+        "quit all apps macOS",
+        "close all Dock apps",
+        "menu bar app",
+        "Force Quit",
+        "Apple silicon",
+        "Swift",
+        "MIT license"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/closeall/#software"
+      },
+      "workTranslation": [
+        {
+          "@id": "https://hamou.de/de/articles/closeall/#article"
+        },
+        {
+          "@id": "https://hamou.de/ar/articles/closeall/#article"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/closeall/#software",
+      "name": "closeAll",
+      "url": "https://github.com/Alhamou/closeAll",
+      "applicationCategory": "UtilitiesApplication",
+      "image": "https://hamou.de/oss/closeall.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "operatingSystem": "macOS 14 or later",
+      "softwareRequirements": "macOS 14 or later, Apple silicon build",
+      "description": "Open-source macOS menu-bar app that force-quits every normal Dock app at once, with a review list and a keep-list. Unsaved work is lost.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/closeAll"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/closeall/#source",
+      "name": "closeAll source code",
+      "codeRepository": "https://github.com/Alhamou/closeAll",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/closeall/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/articles/closeall/#faq",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/articles/closeall/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is closeAll?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "closeAll is an open-source macOS menu-bar app that force-quits every normal Dock app from one button, after you review the list and uncheck anything that should stay open."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will I lose unsaved work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Force Quit does not ask apps to save. Close or uncheck anything with unsaved work before you press the button."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which apps does closeAll close, and which stay open?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It closes every normal application that macOS shows in the Dock, plus any background menu-bar apps you check. Finder, closeAll itself, the Dock, Control Center, WindowServer and other session processes always stay open, and so does any app you uncheck."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I keep some apps open?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Uncheck an app in the list and closeAll keeps it open and remembers that choice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it close menu-bar apps such as a VPN client?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only if you check them. The Background apps section lists menu-bar apps from /Applications and ~/Applications, and they start unchecked."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if an app will not quit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "closeAll checks that each app really exited. If one survives or comes straight back, it sends a hard kill (SIGKILL), up to three times, and names any app it still could not close in red."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does closeAll use the network or collect data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "According to the README, no. It is not sandboxed, it does not use the network and it does not collect analytics. Your keep-list stays in local preferences."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Macs and macOS versions are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 14 or later. The app that make app builds on an Apple silicon Mac is an Apple silicon app."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">Skip to content</a>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="/?lang=en" aria-label="Home"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=en">Home</a>
+        <a href="/articles/">Articles</a>
+      </div>
+      <a class="navCta" href="/?lang=en#contact">Let&#x27;s talk</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#151512;--art-accent:#ff7a6b;--art-fg:#f6f3ec">
+    <header class="artHero noVideo" data-mark="CLOSE">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/?lang=en">Home</a></li><li><a href="/articles/">Articles</a></li><li aria-current="page">closeAll</li></ol></nav>
+        <p class="artKicker"><img src="/oss/closeall.png" width="40" height="40" alt="">Open source tool</p>
+        <h1>closeAll: force-quit every Dock app from one menu-bar button on Mac</h1>
+        <p class="artDek">closeAll force-quits every normal Dock app from one button in the menu bar. You review the list first, uncheck what should stay open and press Force Quit. Force Quit does not ask apps to save, so unsaved work is lost. The code is open under the MIT license.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Founder &amp; Product Builder</small></span></span><span>Published <time datetime="2026-11-08">8 November 2026</time></span><span>5 min read</span><span class="artLangs">Also in: <a href="/de/articles/closeall/" hreflang="de" lang="de">Deutsch</a> · <a href="/ar/articles/closeall/" hreflang="ar" lang="ar">العربية</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">On this page</p><ol><li><a href="#what-is-closeall">What is closeAll?</a></li><li><a href="#how-you-use-it">How you use it</a></li><li><a href="#what-closes">What closes</a></li><li><a href="#what-stays-open">What stays open</a></li><li><a href="#privacy-and-permissions">Privacy and permissions</a></li><li><a href="#install">Install</a></li><li><a href="#check-the-plan-without-closing-anything">Check the plan without closing anything</a></li><li><a href="#open-source">Open source</a></li><li><a href="#frequently-asked-questions">Frequently asked questions</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="what-is-closeall">What is closeAll?</h2>
+<p>closeAll is a small open-source macOS menu-bar app with one job: close every normal app that is running, in one go. Its icon in the menu bar is a small stack of windows. Click it, review the list, then press <strong>Force Quit</strong>. The checked apps are closed with Force Quit.</p>
+<p>Read this once before you use it: Force Quit does not ask an app to save. Unsaved work in the apps you close is lost.</p>
+<h2 id="how-you-use-it">How you use it</h2>
+<p>1. Click the stack-of-windows icon at the top of the screen. 2. Leave a check on every app that should close. Remove the check to keep an app open; closeAll remembers that choice. 3. Under <strong>Background apps</strong>, check any menu-bar app that should close too. 4. Press <strong>Force Quit</strong>.</p>
+<p>Each row shows the app's own icon, so you can recognize it before it closes. Close or uncheck anything that has unsaved work first.</p>
+<h2 id="what-closes">What closes</h2>
+<ul>
+<li><strong>Every normal application,</strong> the kind you would otherwise right-click in the Dock and quit. Editors, browsers and chat apps are included, so uncheck any you want to keep.</li>
+<li><strong>Background apps you check.</strong> The Background apps section lists menu-bar apps that you installed in <code>/Applications</code> or <code>~/Applications</code>, such as a clipboard manager or a VPN client. They start unchecked, so nothing there closes unless you check it.</li>
+</ul>
+<p>closeAll verifies that each app really exited. If an app survives Force Quit or comes straight back, it sends a hard kill (SIGKILL), up to three times. Any app it still could not close is named in red.</p>
+<h2 id="what-stays-open">What stays open</h2>
+<ul>
+<li><strong>Finder,</strong> so the desktop stays up, and <strong>closeAll</strong> itself, so the button is still there.</li>
+<li>The Dock, Control Center, WindowServer and the other processes that keep your login session alive.</li>
+<li>Any app you uncheck, and background apps you did not check.</li>
+<li>Apple's own menu-bar agents, helpers packed inside another app, updaters kept in Library folders, and processes with no window or menu are not listed at all. They usually close together with their parent app.</li>
+</ul>
+<h2 id="privacy-and-permissions">Privacy and permissions</h2>
+<p>closeAll is not sandboxed, because the App Sandbox would block it from quitting other applications. According to the README it does not use the network and does not collect analytics. Your keep-list is stored only in your local preferences.</p>
+<h2 id="install">Install</h2>
+<p>closeAll needs macOS 14 or later. The app that <code>make app</code> builds on an Apple silicon Mac is an Apple silicon app. Clone the repository from GitHub, run <code>make app</code>, and open <code>build/closeAll.app</code>. Copy it to <code>/Applications</code> if you want to keep it installed. It shows no Dock icon.</p>
+<p>The build is signed ad hoc so it can launch on your Mac, and it is not notarized. If macOS blocks the first launch, Control-click <code>closeAll.app</code>, choose Open and confirm. To open it at login, add it under General in System Settings, then Login Items. To quit it, open the panel and choose Quit closeAll.</p>
+<h2 id="check-the-plan-without-closing-anything">Check the plan without closing anything</h2>
+<p><code>swift run closeAll -- --dry-run</code> prints the quit plan as JSON and exits without closing any app. <code>make check</code> runs the unit tests and then prints the live plan, and it fails if that plan includes Finder, closeAll itself or another session process.</p>
+<h2 id="open-source">Open source</h2>
+<p>closeAll is released under the MIT license. The quit rules live in a separate core module with no AppKit, covered by unit tests, and the menu-bar app is built on top of it. The repository also has an Arabic README.</p>
+<p>Emad Alhamou, the author of this site, publishes closeAll on <a href="https://github.com/Alhamou/closeAll">GitHub</a>. Contribution guidelines, a code of conduct and a security policy are in the repository.</p>
+<section class="artFaq" aria-labelledby="frequently-asked-questions">
+<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+<div class="artQ">
+<h3>What is closeAll?</h3>
+<p>closeAll is an open-source macOS menu-bar app that force-quits every normal Dock app from one button, after you review the list and uncheck anything that should stay open.</p>
+</div>
+<div class="artQ">
+<h3>Will I lose unsaved work?</h3>
+<p>Yes. Force Quit does not ask apps to save. Close or uncheck anything with unsaved work before you press the button.</p>
+</div>
+<div class="artQ">
+<h3>Which apps does closeAll close, and which stay open?</h3>
+<p>It closes every normal application that macOS shows in the Dock, plus any background menu-bar apps you check. Finder, closeAll itself, the Dock, Control Center, WindowServer and other session processes always stay open, and so does any app you uncheck.</p>
+</div>
+<div class="artQ">
+<h3>Can I keep some apps open?</h3>
+<p>Yes. Uncheck an app in the list and closeAll keeps it open and remembers that choice.</p>
+</div>
+<div class="artQ">
+<h3>Does it close menu-bar apps such as a VPN client?</h3>
+<p>Only if you check them. The Background apps section lists menu-bar apps from <code>/Applications</code> and <code>~/Applications</code>, and they start unchecked.</p>
+</div>
+<div class="artQ">
+<h3>What if an app will not quit?</h3>
+<p>closeAll checks that each app really exited. If one survives or comes straight back, it sends a hard kill (SIGKILL), up to three times, and names any app it still could not close in red.</p>
+</div>
+<div class="artQ">
+<h3>Does closeAll use the network or collect data?</h3>
+<p>According to the README, no. It is not sandboxed, it does not use the network and it does not collect analytics. Your keep-list stays in local preferences.</p>
+</div>
+<div class="artQ">
+<h3>Which Macs and macOS versions are supported?</h3>
+<p>macOS 14 or later. The app that <code>make app</code> builds on an Apple silicon Mac is an Apple silicon app.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/closeall.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">About the tool</p>
+          <p class="artProductName" id="product-title">closeAll</p>
+          <p>Open-source macOS menu-bar app that force-quits every normal Dock app at once, with a review list and a keep-list. Unsaved work is lost.</p>
+          <ul class="artFacts"><li>Since October 2026</li><li>macOS 14 or later · Apple silicon build · MIT license</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/closeAll">View on GitHub <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">More articles</p>
+    <div class="artList">
+<a class="artCard" href="/articles/safeshare/" style="--art-bg:#100d24;--art-accent:#a78bfa;--art-fg:#f3f0ff">
+  <span class="artCardTop"><img src="/oss/safeshare.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">SafeShare: hide private apps while you share your Mac screen in Teams, Zoom or Meet</h3>
+    <span class="artCardDek">SafeShare solves a screen-sharing dilemma: share the whole screen and risk leaking private chats and notifications, or share one window and lose multitasking. It builds a filtered Safe View window that leaves out the apps you protect. You share that window in Teams, Zoom or Meet and keep working on your real desktop. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/topmovies/" style="--art-bg:#16130f;--art-accent:#e8b64e;--art-fg:#f8f2e4">
+  <span class="artCardTop"><img src="/oss/topmoves.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">TopMovies: a native Mac app to discover movies and TV series, with a local library</h3>
+    <span class="artCardDek">TopMovies helps you decide what to watch on your Mac. It has curated discovery feeds such as For You, Tonight and Hidden Gems, filters across type, country, year, score and runtime, and a local library for favorites, a watchlist and your own ratings. It works offline in a demo mode and connects to TMDB for real data. It is built with SwiftUI and open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 4 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/movemouse/" style="--art-bg:#151a2c;--art-accent:#4cc2ff;--art-fg:#eef3ff">
+  <span class="artCardTop"><img src="/oss/movemouse.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping</h3>
+    <span class="artCardDek">moveMouse helps keep a remote desktop (RDP) connection open. It moves the pointer at an interval you choose and stops the Mac from sleeping while it runs, so a quiet session is less likely to be cut off. It lives in the menu bar and its code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=en"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Language" data-nav><option value="/articles/closeall/" lang="en" selected>English</option><option value="/de/articles/closeall/" lang="de">Deutsch</option><option value="/ar/articles/closeall/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

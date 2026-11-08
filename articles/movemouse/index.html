@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>moveMouse: keep an RDP connection from dropping on Mac</title>
+  <meta name="description" content="moveMouse is an open-source macOS menu-bar app that moves the pointer on a schedule and prevents idle sleep, so a remote desktop (RDP) connection is less likely to drop.">
+  <meta name="author" content="Emad Alhamou">
+  <meta name="keywords" content="moveMouse, keep RDP connection alive Mac, prevent RDP disconnect, mouse jiggler Mac, mouse mover macOS, prevent Mac sleep, remote desktop idle timeout, menu bar app, Accessibility permission, Swift, MIT license">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/articles/movemouse/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/movemouse/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/movemouse/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/movemouse/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/movemouse/">
+  <link rel="alternate" type="text/markdown" href="/articles/movemouse/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/articles/feed.xml" title="Atom feed">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:url" content="https://hamou.de/articles/movemouse/">
+  <meta property="og:title" content="moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping">
+  <meta property="og:description" content="moveMouse is an open-source macOS menu-bar app that moves the pointer on a schedule and prevents idle sleep, so a remote desktop (RDP) connection is less likely to drop.">
+  <meta property="og:image" content="https://hamou.de/articles/movemouse/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="Open source tool">
+  <meta property="article:tag" content="moveMouse">
+  <meta property="article:tag" content="keep RDP connection alive Mac">
+  <meta property="article:tag" content="prevent RDP disconnect">
+  <meta property="article:tag" content="mouse jiggler Mac">
+  <meta property="article:tag" content="mouse mover macOS">
+  <meta property="article:tag" content="prevent Mac sleep">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping">
+  <meta name="twitter:description" content="moveMouse is an open-source macOS menu-bar app that moves the pointer on a schedule and prevents idle sleep, so a remote desktop (RDP) connection is less likely to drop.">
+  <meta name="twitter:image" content="https://hamou.de/articles/movemouse/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/articles/movemouse/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://hamou.de/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "moveMouse",
+          "item": "https://hamou.de/articles/movemouse/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/articles/movemouse/#webpage",
+      "url": "https://hamou.de/articles/movemouse/",
+      "name": "moveMouse: keep an RDP connection from dropping on Mac",
+      "description": "moveMouse is an open-source macOS menu-bar app that moves the pointer on a schedule and prevents idle sleep, so a remote desktop (RDP) connection is less likely to drop.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/articles/movemouse/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/articles/movemouse/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/articles/movemouse/#primaryimage",
+      "url": "https://hamou.de/articles/movemouse/og.jpg",
+      "contentUrl": "https://hamou.de/articles/movemouse/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/articles/movemouse/#article",
+      "headline": "moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping",
+      "description": "moveMouse is an open-source macOS menu-bar app that moves the pointer on a schedule and prevents idle sleep, so a remote desktop (RDP) connection is less likely to drop.",
+      "abstract": "moveMouse helps keep a remote desktop (RDP) connection open. It moves the pointer at an interval you choose and stops the Mac from sleeping while it runs, so a quiet session is less likely to be cut off. It lives in the menu bar and its code is open under the MIT license.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/articles/movemouse/#webpage"
+      },
+      "image": [
+        "https://hamou.de/articles/movemouse/og.jpg"
+      ],
+      "articleSection": "Open source tool",
+      "wordCount": 1027,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "moveMouse",
+        "keep RDP connection alive Mac",
+        "prevent RDP disconnect",
+        "mouse jiggler Mac",
+        "mouse mover macOS",
+        "prevent Mac sleep",
+        "remote desktop idle timeout",
+        "menu bar app",
+        "Accessibility permission",
+        "Swift",
+        "MIT license"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/movemouse/#software"
+      },
+      "workTranslation": [
+        {
+          "@id": "https://hamou.de/de/articles/movemouse/#article"
+        },
+        {
+          "@id": "https://hamou.de/ar/articles/movemouse/#article"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/movemouse/#software",
+      "name": "moveMouse",
+      "url": "https://github.com/Alhamou/moveMouse",
+      "applicationCategory": "UtilitiesApplication",
+      "image": "https://hamou.de/oss/movemouse.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "operatingSystem": "macOS 11 or later",
+      "softwareRequirements": "macOS 11 Big Sur or later, Apple silicon build, Accessibility permission",
+      "description": "Open-source macOS menu-bar app that moves the pointer at an interval and prevents idle sleep, made to keep an RDP connection from dropping.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/moveMouse"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/movemouse/#source",
+      "name": "moveMouse source code",
+      "codeRepository": "https://github.com/Alhamou/moveMouse",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/movemouse/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/articles/movemouse/#faq",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hamou.de/articles/movemouse/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is moveMouse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "moveMouse is an open-source macOS menu-bar app that moves the pointer automatically at an interval you choose and keeps the Mac from sleeping while it runs. It was made to help keep an RDP connection from dropping."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does moveMouse help with an RDP connection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It works from your Mac. It prevents idle system sleep, which would otherwise take the connection down, and it creates pointer activity at your chosen interval so a session is not left completely quiet. The activity reaches the remote session only while the RDP window is under the pointer, and moveMouse does not change any setting on the remote machine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will the click land on something I did not intend?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It can. The optional left click happens at the final pointer position and interacts with whatever is underneath it. If you only want movement, turn off Left Click in the menu. It is on by default."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which intervals and movement patterns are available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Intervals are 15, 30 and 45 seconds and 1, 2 and 5 minutes, with 30 seconds as the default. The two patterns are Screen center (center, right, left, back to center) and Current pointer position (a small right and left wiggle, then back to the start)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which permission does moveMouse need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Accessibility, for simulated mouse input, especially clicking. Enable moveMouse under Privacy & Security, then Accessibility, in System Settings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Macs and macOS versions are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 11 Big Sur or later. The included app and the build script target Apple silicon (arm64)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I pause or stop moveMouse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose Pause in the menu-bar menu to stop scheduled movement and release sleep prevention, or Quit to close the app. Move Now performs one movement on demand, even while paused."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is moveMouse open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. It is released under the MIT license, and the source is on GitHub."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">Skip to content</a>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="/?lang=en" aria-label="Home"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=en">Home</a>
+        <a href="/articles/">Articles</a>
+      </div>
+      <a class="navCta" href="/?lang=en#contact">Let&#x27;s talk</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#151a2c;--art-accent:#4cc2ff;--art-fg:#eef3ff">
+    <header class="artHero noVideo" data-mark="MOUSE">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/?lang=en">Home</a></li><li><a href="/articles/">Articles</a></li><li aria-current="page">moveMouse</li></ol></nav>
+        <p class="artKicker"><img src="/oss/movemouse.png" width="40" height="40" alt="">Open source tool</p>
+        <h1>moveMouse: a Mac menu-bar app that helps keep your RDP connection from dropping</h1>
+        <p class="artDek">moveMouse helps keep a remote desktop (RDP) connection open. It moves the pointer at an interval you choose and stops the Mac from sleeping while it runs, so a quiet session is less likely to be cut off. It lives in the menu bar and its code is open under the MIT license.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Founder &amp; Product Builder</small></span></span><span>Published <time datetime="2026-11-08">8 November 2026</time></span><span>5 min read</span><span class="artLangs">Also in: <a href="/de/articles/movemouse/" hreflang="de" lang="de">Deutsch</a> · <a href="/ar/articles/movemouse/" hreflang="ar" lang="ar">العربية</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">On this page</p><ol><li><a href="#what-is-movemouse">What is moveMouse?</a></li><li><a href="#why-an-rdp-connection-drops">Why an RDP connection drops</a></li><li><a href="#what-it-does">What it does</a></li><li><a href="#permissions">Permissions</a></li><li><a href="#install">Install</a></li><li><a href="#open-source">Open source</a></li><li><a href="#frequently-asked-questions">Frequently asked questions</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="what-is-movemouse">What is moveMouse?</h2>
+<p>moveMouse is a small open-source app for the macOS menu bar. At an interval you choose it moves the mouse pointer by itself, and while it runs it keeps the Mac from going to sleep because of inactivity. It was made for one practical problem: a remote desktop (RDP) connection that drops when you are not touching the Mac. The app's own menu-bar tooltip says so, in Arabic: it is there to prevent RDP connections from being cut.</p>
+<p>The README describes it more broadly, as automatic pointer movement on your schedule: useful for desktop demonstrations, for testing mouse interactions, or for keeping a Mac active during a task. It is written in Swift and AppKit and runs without a Dock icon.</p>
+<h2 id="why-an-rdp-connection-drops">Why an RDP connection drops</h2>
+<p>Remote desktop sessions usually end for dull reasons. The Mac you connect from goes to sleep and takes the network connection with it, or the remote side treats a session with no input as idle and ends or locks it. moveMouse works from your Mac and tackles both: it prevents idle system sleep while it runs, and it produces pointer activity at the interval you set.</p>
+<p>Two honest limits. The app does not know about your RDP client: it moves the pointer on your Mac, so the activity only reaches the remote session while the RDP window is under the pointer. In practice, keep the remote desktop window where the pointer moves, which with the default pattern is the middle of the screen. And moveMouse changes nothing on the remote machine, so a session limit enforced there stays in force.</p>
+<h2 id="what-it-does">What it does</h2>
+<ul>
+<li><strong>Six intervals:</strong> every 15, 30 or 45 seconds, or every 1, 2 or 5 minutes. The first-launch default is 30 seconds.</li>
+<li><strong>Two movement patterns:</strong> Screen center moves the pointer to the middle of the screen, then right and left, and ends at the center. Current pointer position moves it a short distance right and left and returns it to where it started.</li>
+<li><strong>An optional left click</strong> after each movement, with an optional sound. The click happens at the final pointer position and lands on whatever is underneath it.</li>
+<li><strong>Simple menu-bar controls:</strong> Start or Pause, Move Now (it also works while paused), and Quit. A status line shows whether movement is running and when the last operation happened.</li>
+<li><strong>Saved preferences:</strong> interval, pattern, click and sound settings are kept between launches.</li>
+<li><strong>Sleep prevention:</strong> idle system sleep is blocked while automatic movement runs. Pausing or quitting releases it.</li>
+</ul>
+<p>moveMouse starts moving as soon as it launches, using your saved settings. The menu labels are in Arabic, with English labels for several controls: Start, Pause, Move Now, Interval and Left Click.</p>
+<h2 id="permissions">Permissions</h2>
+<p>Simulated mouse input needs the Accessibility permission. On first launch macOS may ask you to allow it: open System Settings, go to Privacy &amp; Security, then Accessibility, and enable moveMouse. The Accessibility item in the app's menu opens that page for you. According to the README, clicking is the part that needs it most. If clicking stops working after you rebuild or move the app, remove its Accessibility entry, add the app again and relaunch it.</p>
+<h2 id="install">Install</h2>
+<p>moveMouse needs macOS 11 Big Sur or later. The included app and the build script target Apple silicon (arm64). Clone the repository from GitHub, then run <code>./build.sh</code> and <code>./run.sh</code>. Building needs the Xcode Command Line Tools, which <code>xcode-select --install</code> installs. The script signs the app locally with an ad-hoc signature.</p>
+<p>To start moveMouse when you sign in, add <code>MoveMouse.app</code> to your Login Items in System Settings, under General. To stop it, choose Quit in the menu or run <code>./stop.sh</code> from the project folder.</p>
+<h2 id="open-source">Open source</h2>
+<p>moveMouse is released under the MIT license. It uses only native macOS frameworks and builds directly with <code>swiftc</code>, with no third-party dependencies and no Xcode project. The code is a handful of Swift files: the menu-bar interface, the movement timer with pointer input and saved preferences, and the sleep prevention.</p>
+<p>Emad Alhamou, the author of this site, publishes moveMouse on <a href="https://github.com/Alhamou/moveMouse">GitHub</a>. Bug reports, ideas and pull requests are welcome; include your macOS version, the steps to reproduce and what you expected.</p>
+<section class="artFaq" aria-labelledby="frequently-asked-questions">
+<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+<div class="artQ">
+<h3>What is moveMouse?</h3>
+<p>moveMouse is an open-source macOS menu-bar app that moves the pointer automatically at an interval you choose and keeps the Mac from sleeping while it runs. It was made to help keep an RDP connection from dropping.</p>
+</div>
+<div class="artQ">
+<h3>How does moveMouse help with an RDP connection?</h3>
+<p>It works from your Mac. It prevents idle system sleep, which would otherwise take the connection down, and it creates pointer activity at your chosen interval so a session is not left completely quiet. The activity reaches the remote session only while the RDP window is under the pointer, and moveMouse does not change any setting on the remote machine.</p>
+</div>
+<div class="artQ">
+<h3>Will the click land on something I did not intend?</h3>
+<p>It can. The optional left click happens at the final pointer position and interacts with whatever is underneath it. If you only want movement, turn off Left Click in the menu. It is on by default.</p>
+</div>
+<div class="artQ">
+<h3>Which intervals and movement patterns are available?</h3>
+<p>Intervals are 15, 30 and 45 seconds and 1, 2 and 5 minutes, with 30 seconds as the default. The two patterns are Screen center (center, right, left, back to center) and Current pointer position (a small right and left wiggle, then back to the start).</p>
+</div>
+<div class="artQ">
+<h3>Which permission does moveMouse need?</h3>
+<p>Accessibility, for simulated mouse input, especially clicking. Enable moveMouse under Privacy &amp; Security, then Accessibility, in System Settings.</p>
+</div>
+<div class="artQ">
+<h3>Which Macs and macOS versions are supported?</h3>
+<p>macOS 11 Big Sur or later. The included app and the build script target Apple silicon (arm64).</p>
+</div>
+<div class="artQ">
+<h3>How do I pause or stop moveMouse?</h3>
+<p>Choose Pause in the menu-bar menu to stop scheduled movement and release sleep prevention, or Quit to close the app. Move Now performs one movement on demand, even while paused.</p>
+</div>
+<div class="artQ">
+<h3>Is moveMouse open source?</h3>
+<p>Yes. It is released under the MIT license, and the source is on GitHub.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/movemouse.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">About the tool</p>
+          <p class="artProductName" id="product-title">moveMouse</p>
+          <p>Open-source macOS menu-bar app that moves the pointer at an interval and prevents idle sleep, made to keep an RDP connection from dropping.</p>
+          <ul class="artFacts"><li>Since October 2026</li><li>macOS 11 or later · Apple silicon build · Accessibility permission · MIT license</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/moveMouse">View on GitHub <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">More articles</p>
+    <div class="artList">
+<a class="artCard" href="/articles/haki/" style="--art-bg:#0d1e2c;--art-accent:#4fd8c7;--art-fg:#eefbf8">
+  <span class="artCardTop"><img src="/oss/haki.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">Haki (حكي): push-to-talk dictation for the Mac menu bar, tuned for Arabic</h3>
+    <span class="artCardDek">Haki turns your voice into text anywhere on your Mac. Hold Option+Space, speak, release, and the transcribed text is pasted at your cursor. It is tuned for natural Arabic, including Levantine and Syrian speech, and also handles English, German and French. Transcription uses OpenAI models with your own API key, so your audio goes to OpenAI. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/openblock/" style="--art-bg:#0c1a36;--art-accent:#7db7ff;--art-fg:#f1f5ff">
+  <span class="artCardTop"><img src="/oss/openblock.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">OpenBlock: an open-source ad blocker for Safari on Mac, with no tracking</h3>
+    <span class="artCardDek">OpenBlock blocks ads and trackers in Safari on your Mac. It downloads real filter lists, converts them into Safari&#x27;s own rule format and lets Safari enforce them, so nothing sits between you and the web. The code is open under the <span class="nb">GPL-3.0</span> license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 4 min read</span>
+  </span>
+</a>
+<a class="artCard" href="/articles/remotedesk/" style="--art-bg:#12143a;--art-accent:#5ccfff;--art-fg:#eef1ff">
+  <span class="artCardTop"><img src="/oss/remotedesk.png" width="56" height="56" alt="" loading="lazy"><span>Open source tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">RemoteDesk: an open-source Mac-to-Mac remote desktop for your local network</h3>
+    <span class="artCardDek">RemoteDesk shares one Mac&#x27;s screen and lets you control it from another Mac over your local network. It captures the screen with ScreenCaptureKit, compresses it with hardware H.264 and sends it over TCP. It has no encryption or login, so it is meant for trusted private networks only. The code is open under the MIT license.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8 November 2026</time> · 5 min read</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=en"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Language" data-nav><option value="/articles/movemouse/" lang="en" selected>English</option><option value="/de/articles/movemouse/" lang="de">Deutsch</option><option value="/ar/articles/movemouse/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>

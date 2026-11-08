@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>pinFiy: farbige Haftnotizen für den Mac in der Menüleiste</title>
+  <meta name="description" content="pinFiy ist eine Open-Source-Haftnotizen-App für macOS. Jede Notiz ist ein eigenes Fenster, Arabisch läuft von rechts nach links, und es gibt kein Konto, keine Cloud und keinen Netzwerkzugriff.">
+  <meta name="author" content="Emad Alhamou">
+  <meta name="keywords" content="pinFiy, Haftnotizen Mac, Notizen-App Menüleiste, macOS Haftnotizen, arabische Notizen-App Rechts-nach-links, angeheftete Notizen, Open-Source-Notizen-App Mac, Swift, MIT-Lizenz">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#12130f">
+  <link rel="canonical" href="https://hamou.de/de/articles/pinfiy/">
+  <link rel="alternate" hreflang="en" href="https://hamou.de/articles/pinfiy/">
+  <link rel="alternate" hreflang="de" href="https://hamou.de/de/articles/pinfiy/">
+  <link rel="alternate" hreflang="ar" href="https://hamou.de/ar/articles/pinfiy/">
+  <link rel="alternate" hreflang="x-default" href="https://hamou.de/articles/pinfiy/">
+  <link rel="alternate" type="text/markdown" href="/de/articles/pinfiy/index.md" title="Markdown">
+  <link rel="alternate" type="application/atom+xml" href="/de/articles/feed.xml" title="Atom-Feed">
+  <meta property="og:site_name" content="Emad Alhamou">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:url" content="https://hamou.de/de/articles/pinfiy/">
+  <meta property="og:title" content="pinFiy: farbige Haftnotizen für den Mac, mit einer kleinen Pinnnadel in der Menüleiste">
+  <meta property="og:description" content="pinFiy ist eine Open-Source-Haftnotizen-App für macOS. Jede Notiz ist ein eigenes Fenster, Arabisch läuft von rechts nach links, und es gibt kein Konto, keine Cloud und keinen Netzwerkzugriff.">
+  <meta property="og:image" content="https://hamou.de/de/articles/pinfiy/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="pinFiy: farbige Haftnotizen für den Mac, mit einer kleinen Pinnnadel in der Menüleiste">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <meta property="article:author" content="https://hamou.de/">
+  <meta property="article:section" content="Open-Source-Tool">
+  <meta property="article:tag" content="pinFiy">
+  <meta property="article:tag" content="Haftnotizen Mac">
+  <meta property="article:tag" content="Notizen-App Menüleiste">
+  <meta property="article:tag" content="macOS Haftnotizen">
+  <meta property="article:tag" content="arabische Notizen-App Rechts-nach-links">
+  <meta property="article:tag" content="angeheftete Notizen">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="pinFiy: farbige Haftnotizen für den Mac, mit einer kleinen Pinnnadel in der Menüleiste">
+  <meta name="twitter:description" content="pinFiy ist eine Open-Source-Haftnotizen-App für macOS. Jede Notiz ist ein eigenes Fenster, Arabisch läuft von rechts nach links, und es gibt kein Konto, keine Cloud und keinen Netzwerkzugriff.">
+  <meta name="twitter:image" content="https://hamou.de/de/articles/pinfiy/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=c69e3dcb">
+  <link rel="stylesheet" href="/articles/article.css?v=b058ca98">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hamou.de/#website",
+      "url": "https://hamou.de/",
+      "name": "Emad Alhamou",
+      "inLanguage": [
+        "ar",
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://hamou.de/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hamou.de/#person",
+      "name": "Emad Alhamou",
+      "alternateName": "عماد الحمو",
+      "url": "https://hamou.de/",
+      "jobTitle": "Founder & Product Builder",
+      "knowsLanguage": [
+        "ar",
+        "de",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/Alhamou",
+        "https://www.youtube.com/@emadalhamo"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hamou.de/#alhamou",
+      "name": "Alhamou",
+      "alternateName": "شركة الحمو",
+      "url": "https://hamou.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hamou.de/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hamou.de/de/articles/pinfiy/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://hamou.de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Artikel",
+          "item": "https://hamou.de/de/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "pinFiy",
+          "item": "https://hamou.de/de/articles/pinfiy/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hamou.de/de/articles/pinfiy/#webpage",
+      "url": "https://hamou.de/de/articles/pinfiy/",
+      "name": "pinFiy: farbige Haftnotizen für den Mac in der Menüleiste",
+      "description": "pinFiy ist eine Open-Source-Haftnotizen-App für macOS. Jede Notiz ist ein eigenes Fenster, Arabisch läuft von rechts nach links, und es gibt kein Konto, keine Cloud und keinen Netzwerkzugriff.",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://hamou.de/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://hamou.de/de/articles/pinfiy/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://hamou.de/de/articles/pinfiy/#primaryimage"
+      },
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://hamou.de/de/articles/pinfiy/#primaryimage",
+      "url": "https://hamou.de/de/articles/pinfiy/og.jpg",
+      "contentUrl": "https://hamou.de/de/articles/pinfiy/og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "pinFiy: farbige Haftnotizen für den Mac, mit einer kleinen Pinnnadel in der Menüleiste"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hamou.de/de/articles/pinfiy/#article",
+      "headline": "pinFiy: farbige Haftnotizen für den Mac, mit einer kleinen Pinnnadel in der Menüleiste",
+      "description": "pinFiy ist eine Open-Source-Haftnotizen-App für macOS. Jede Notiz ist ein eigenes Fenster, Arabisch läuft von rechts nach links, und es gibt kein Konto, keine Cloud und keinen Netzwerkzugriff.",
+      "abstract": "pinFiy gibt deinem Mac farbige Haftnotizen, die hinter einer kleinen Pinnnadel in der Menüleiste wohnen. Jede Notiz ist ein eigenes Fenster, arabischer Text läuft von rechts nach links und englischer von links nach rechts, und eine angeheftete Notiz bleibt über deinen anderen Fenstern. Es gibt kein Konto, keine Cloud-Synchronisation und keinen Netzwerkzugriff. Der Code ist offen unter der MIT-Lizenz.",
+      "inLanguage": "de",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "publisher": {
+        "@id": "https://hamou.de/#alhamou"
+      },
+      "copyrightHolder": {
+        "@id": "https://hamou.de/#person"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://hamou.de/de/articles/pinfiy/#webpage"
+      },
+      "image": [
+        "https://hamou.de/de/articles/pinfiy/og.jpg"
+      ],
+      "articleSection": "Open-Source-Tool",
+      "wordCount": 638,
+      "isAccessibleForFree": true,
+      "keywords": [
+        "pinFiy",
+        "Haftnotizen Mac",
+        "Notizen-App Menüleiste",
+        "macOS Haftnotizen",
+        "arabische Notizen-App Rechts-nach-links",
+        "angeheftete Notizen",
+        "Open-Source-Notizen-App Mac",
+        "Swift",
+        "MIT-Lizenz"
+      ],
+      "about": {
+        "@id": "https://hamou.de/articles/pinfiy/#software"
+      },
+      "translationOfWork": {
+        "@id": "https://hamou.de/articles/pinfiy/#article"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hamou.de/articles/pinfiy/#software",
+      "name": "pinFiy",
+      "url": "https://github.com/Alhamou/pinFiy",
+      "applicationCategory": "UtilitiesApplication",
+      "image": "https://hamou.de/oss/pinfiy.png",
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "operatingSystem": "macOS 13 or later",
+      "softwareRequirements": "macOS 13 or later",
+      "description": "Open-Source-Haftnotizen-App für macOS: farbige Notizen in eigenen Fenstern, automatische Schreibrichtung, Anheften im Vordergrund, nur lokale Speicherung.",
+      "license": "https://opensource.org/license/mit",
+      "sameAs": [
+        "https://github.com/Alhamou/pinFiy"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://hamou.de/articles/pinfiy/#source",
+      "name": "pinFiy source code",
+      "codeRepository": "https://github.com/Alhamou/pinFiy",
+      "targetProduct": {
+        "@id": "https://hamou.de/articles/pinfiy/#software"
+      },
+      "author": {
+        "@id": "https://hamou.de/#person"
+      },
+      "programmingLanguage": [
+        "Swift"
+      ],
+      "license": "https://opensource.org/license/mit"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hamou.de/de/articles/pinfiy/#faq",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://hamou.de/de/articles/pinfiy/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist pinFiy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "pinFiy ist eine Open-Source-Haftnotizen-App für macOS. Sie gibt dir farbige Notizen, jede in einem eigenen Fenster, gesteuert über eine kleine Pinnnadel in der Menüleiste."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Unterstützt pinFiy Arabisch und Text von rechts nach links?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Die Schreibrichtung folgt dem ersten starken Zeichen: Arabisch läuft von rechts nach links und Englisch von links nach rechts. Die Nadelecke einer Notiz folgt der Richtung ebenfalls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was macht „Pin“?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "„Pin“ hält eine Notiz über normalen Fenstern, ohne die Menüleiste zu verdecken. Nutze die Pin-Schaltfläche der Notiz oder drücke ⌘P."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wo werden meine Notizen gespeichert, und nutzt pinFiy das Netzwerk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Notizen liegen lokal in ~/Library/Application Support/pinFiy/notes.json, mit einer Sicherung. Laut README gibt es kein Konto, keine Cloud-Synchronisation und keinen Netzwerkzugriff."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was bewirkt das Sperren einer Notiz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eine gesperrte Notiz lässt sich nicht bearbeiten, umfärben, in der Größe ändern oder verschieben und nicht schließen, bis du sie entsperrst."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche macOS-Version braucht pinFiy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 13 oder neuer. Zum Bauen braucht es Swift 5.9 oder neuer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie installiere ich pinFiy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Klone das Repository, führe swift test und ./scripts/build-app.sh aus und öffne dann PinFiy.app. Der Build ist ad hoc signiert, nicht mit einem Apple-Developer-Zertifikat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich Schriftgröße und Farben ändern?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Jede Notiz hat Farbfelder und Schaltflächen für die Schriftgröße, von 12 bis 36. In den Einstellungen legst du die Größe für neue Notizen oder für alle Notizen fest."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skipLink" href="#main">Zum Inhalt springen</a>
+  <header>
+    <nav class="nav container" aria-label="Hauptnavigation">
+      <a class="brand" href="/?lang=de" aria-label="Startseite"><span>EA</span> Emad Alhamou</a>
+      <div class="links">
+        <a href="/?lang=de">Startseite</a>
+        <a href="/de/articles/">Artikel</a>
+      </div>
+      <a class="navCta" href="/?lang=de#contact">Kontakt</a>
+    </nav>
+  </header>
+  <main id="main">
+  <article class="art" style="--art-bg:#2a1f0a;--art-accent:#f3c15b;--art-fg:#fff6e0">
+    <header class="artHero noVideo" data-mark="PIN">
+      <div class="container artHeroIn">
+        <nav class="crumbs" aria-label="Brotkrümelnavigation"><ol><li><a href="/?lang=de">Startseite</a></li><li><a href="/de/articles/">Artikel</a></li><li aria-current="page">pinFiy</li></ol></nav>
+        <p class="artKicker"><img src="/oss/pinfiy.png" width="40" height="40" alt="">Open-Source-Tool</p>
+        <h1>pinFiy: farbige Haftnotizen für den Mac, mit einer kleinen Pinnnadel in der Menüleiste</h1>
+        <p class="artDek">pinFiy gibt deinem Mac farbige Haftnotizen, die hinter einer kleinen Pinnnadel in der Menüleiste wohnen. Jede Notiz ist ein eigenes Fenster, arabischer Text läuft von rechts nach links und englischer von links nach rechts, und eine angeheftete Notiz bleibt über deinen anderen Fenstern. Es gibt kein Konto, keine Cloud-Synchronisation und keinen Netzwerkzugriff. Der Code ist offen unter der MIT-Lizenz.</p>
+        <div class="artMeta"><span class="artAuthor"><span class="mono" aria-hidden="true">EA</span><span><b>Emad Alhamou</b><small>Gründer &amp; Produktentwickler</small></span></span><span>Veröffentlicht am <time datetime="2026-11-08">8. November 2026</time></span><span>4 Min. Lesezeit</span><span class="artLangs">Auch auf: <a href="/articles/pinfiy/" hreflang="en" lang="en">English</a> · <a href="/ar/articles/pinfiy/" hreflang="ar" lang="ar">العربية</a></span></div>
+      </div>
+    </header>
+    <div class="container artGrid">
+      <aside class="artToc" aria-labelledby="toc-title"><p class="label" id="toc-title">Auf dieser Seite</p><ol><li><a href="#was-ist-pinfiy">Was ist pinFiy?</a></li><li><a href="#was-es-kann">Was es kann</a></li><li><a href="#wo-deine-notizen-liegen">Wo deine Notizen liegen</a></li><li><a href="#kuerzel">Kürzel</a></li><li><a href="#installation">Installation</a></li><li><a href="#open-source">Open Source</a></li><li><a href="#haeufige-fragen">Häufige Fragen</a></li></ol></aside>
+      <div class="artBody">
+<h2 id="was-ist-pinfiy">Was ist pinFiy?</h2>
+<p>pinFiy ist eine Open-Source-Haftnotizen-App für macOS. Jede Notiz ist ein eigenes farbiges Fenster. Die App selbst ist eine kleine Pinnnadel in der Menüleiste und erscheint nicht im Dock, sie bleibt also aus dem Weg, bis du eine Notiz brauchst.</p>
+<p>Sie behandelt Arabisch und Englisch gleichberechtigt nebeneinander. Die Schreibrichtung folgt dem ersten starken Zeichen deines Textes: Arabisch läuft von rechts nach links und Englisch von links nach rechts, in derselben App und sogar auf benachbarten Notizen.</p>
+<h2 id="was-es-kann">Was es kann</h2>
+<ul>
+<li><strong>Ein Fenster pro Notiz,</strong> sodass du jede Notiz dorthin legen kannst, wo du sie brauchst.</li>
+<li><strong>„Pin“ hält eine Notiz im Vordergrund.</strong> Eine angeheftete Notiz bleibt über normalen Fenstern und verdeckt die Menüleiste nicht. Die Ecke der Nadel folgt der Textrichtung: rechts für Arabisch, links für Englisch.</li>
+<li><strong>Zwanzig Farben:</strong> zehn helle und zehn dunkle. Standard ist ein warmes Bernstein (<code>#F3C15B</code>). Dunkler Text steht auf hellen Farben und heller Text auf dunklen.</li>
+<li><strong>Schriftgröße von 12 bis 36</strong> für jede Notiz, und in den Einstellungen für neue Notizen oder für alle Notizen.</li>
+<li><strong>Eine Notiz sperren,</strong> um Änderungen an Text, Farbe, Größe und Position zu blockieren und das Schließen zu verhindern.</li>
+<li><strong>Ein Sicherheitsnetz:</strong> Beim Schließen einer Notiz mit Text wird zuerst nachgefragt.</li>
+<li><strong>Beim Anmelden öffnen,</strong> über die Einstellungen oder das Nadelmenü.</li>
+</ul>
+<h2 id="wo-deine-notizen-liegen">Wo deine Notizen liegen</h2>
+<p>Die Notizen liegen auf deinem Mac, in <code>~/Library/Application Support/pinFiy/notes.json</code>, mit einer Sicherungsdatei. Laut README gibt es kein Konto, keine Cloud-Synchronisation und keinen Netzwerkzugriff. Das Repository enthält eine Datenschutzerklärung und eine Sicherheitsrichtlinie.</p>
+<h2 id="kuerzel">Kürzel</h2>
+<ul>
+<li><strong>Neue Notiz:</strong> die Plus-Schaltfläche, <code>⌘N</code> oder das Nadelmenü.</li>
+<li><strong>Notiz schließen:</strong> die Schließen-Schaltfläche oder <code>⌘W</code>.</li>
+<li><strong>Über Fenstern halten:</strong> die Pin-Schaltfläche oder <code>⌘P</code>.</li>
+<li><strong>Einstellungen:</strong> <code>⌘,</code> oder das Nadelmenü.</li>
+<li><strong>Beenden:</strong> <code>⌘Q</code> oder das Nadelmenü.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>pinFiy braucht macOS 13 oder neuer und Swift 5.9 oder neuer, das die mit Xcode gelieferte Toolchain enthält. Klone das Repository von GitHub, führe <code>swift test</code> und dann <code>./scripts/build-app.sh</code> aus und öffne <code>PinFiy.app</code>. Das Skript signiert die App ad hoc. Das ist keine Apple-Developer-Signatur und kein App-Store-Release.</p>
+<h2 id="open-source">Open Source</h2>
+<p>pinFiy steht unter der MIT-Lizenz. Der Code ist aufgeteilt in eine Kernbibliothek für Modell und Speicherung, ohne AppKit, und ein App-Target für die Notizfenster und die Menüleiste. Der Kern hat XCTest-Tests.</p>
+<p>Emad Alhamou, der Autor dieser Website, veröffentlicht pinFiy auf <a href="https://github.com/Alhamou/pinFiy">GitHub</a>. Das Repository enthält Hinweise zum Mitwirken und einen Verhaltenskodex, und Sicherheitsprobleme werden vertraulich gemeldet, wie es die Sicherheitsrichtlinie beschreibt.</p>
+<section class="artFaq" aria-labelledby="haeufige-fragen">
+<h2 id="haeufige-fragen">Häufige Fragen</h2>
+<div class="artQ">
+<h3>Was ist pinFiy?</h3>
+<p>pinFiy ist eine Open-Source-Haftnotizen-App für macOS. Sie gibt dir farbige Notizen, jede in einem eigenen Fenster, gesteuert über eine kleine Pinnnadel in der Menüleiste.</p>
+</div>
+<div class="artQ">
+<h3>Unterstützt pinFiy Arabisch und Text von rechts nach links?</h3>
+<p>Ja. Die Schreibrichtung folgt dem ersten starken Zeichen: Arabisch läuft von rechts nach links und Englisch von links nach rechts. Die Nadelecke einer Notiz folgt der Richtung ebenfalls.</p>
+</div>
+<div class="artQ">
+<h3>Was macht „Pin“?</h3>
+<p>„Pin“ hält eine Notiz über normalen Fenstern, ohne die Menüleiste zu verdecken. Nutze die Pin-Schaltfläche der Notiz oder drücke <code>⌘P</code>.</p>
+</div>
+<div class="artQ">
+<h3>Wo werden meine Notizen gespeichert, und nutzt pinFiy das Netzwerk?</h3>
+<p>Die Notizen liegen lokal in <code>~/Library/Application Support/pinFiy/notes.json</code>, mit einer Sicherung. Laut README gibt es kein Konto, keine Cloud-Synchronisation und keinen Netzwerkzugriff.</p>
+</div>
+<div class="artQ">
+<h3>Was bewirkt das Sperren einer Notiz?</h3>
+<p>Eine gesperrte Notiz lässt sich nicht bearbeiten, umfärben, in der Größe ändern oder verschieben und nicht schließen, bis du sie entsperrst.</p>
+</div>
+<div class="artQ">
+<h3>Welche macOS-Version braucht pinFiy?</h3>
+<p>macOS 13 oder neuer. Zum Bauen braucht es Swift 5.9 oder neuer.</p>
+</div>
+<div class="artQ">
+<h3>Wie installiere ich pinFiy?</h3>
+<p>Klone das Repository, führe <code>swift test</code> und <code>./scripts/build-app.sh</code> aus und öffne dann <code>PinFiy.app</code>. Der Build ist ad hoc signiert, nicht mit einem Apple-Developer-Zertifikat.</p>
+</div>
+<div class="artQ">
+<h3>Kann ich Schriftgröße und Farben ändern?</h3>
+<p>Ja. Jede Notiz hat Farbfelder und Schaltflächen für die Schriftgröße, von 12 bis 36. In den Einstellungen legst du die Größe für neue Notizen oder für alle Notizen fest.</p>
+</div>
+</section>
+      <aside class="artProduct" aria-labelledby="product-title">
+        <img src="/oss/pinfiy.png" width="72" height="72" alt="" loading="lazy">
+        <div>
+          <p class="label">Zum Tool</p>
+          <p class="artProductName" id="product-title">pinFiy</p>
+          <p>Open-Source-Haftnotizen-App für macOS: farbige Notizen in eigenen Fenstern, automatische Schreibrichtung, Anheften im Vordergrund, nur lokale Speicherung.</p>
+          <ul class="artFacts"><li>Seit Oktober 2026</li><li>macOS 13 oder neuer · Swift 5.9 oder neuer zum Bauen · MIT-Lizenz</li></ul>
+          <p class="artActions"><a class="artBtn" href="https://github.com/Alhamou/pinFiy">Auf GitHub ansehen <b><svg class="icon-arr" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a></p>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </article>
+  <section class="container artMore" aria-labelledby="more-title">
+    <p class="label" id="more-title">Weitere Artikel</p>
+    <div class="artList">
+<a class="artCard" href="/de/articles/closeall/" style="--art-bg:#151512;--art-accent:#ff7a6b;--art-fg:#f6f3ec">
+  <span class="artCardTop"><img src="/oss/closeall.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">closeAll: jede Dock-App mit einer Schaltfläche in der Menüleiste auf dem Mac sofort beenden</h3>
+    <span class="artCardDek">closeAll beendet jede normale Dock-App mit einer Schaltfläche in der Menüleiste sofort. Du prüfst zuerst die Liste, entfernst das Häkchen bei allem, was offen bleiben soll, und drückst „Force Quit“. Das sofortige Beenden fordert Apps nicht zum Sichern auf, nicht gesicherte Arbeit geht also verloren. Der Code ist offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 5 Min. Lesezeit</span>
+  </span>
+</a>
+<a class="artCard" href="/de/articles/safeshare/" style="--art-bg:#100d24;--art-accent:#a78bfa;--art-fg:#f3f0ff">
+  <span class="artCardTop"><img src="/oss/safeshare.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">SafeShare: private Apps beim Teilen deines Mac-Bildschirms in Teams, Zoom oder Meet verbergen</h3>
+    <span class="artCardDek">SafeShare löst ein Dilemma beim Bildschirmteilen: den ganzen Bildschirm teilen und private Chats und Benachrichtigungen riskieren, oder ein Fenster teilen und auf Multitasking verzichten. Es baut ein gefiltertes Safe-View-Fenster, das die von dir geschützten Apps auslässt. Dieses Fenster teilst du in Teams, Zoom oder Meet, und auf deinem echten Desktop arbeitest du weiter. Der Code ist offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 5 Min. Lesezeit</span>
+  </span>
+</a>
+<a class="artCard" href="/de/articles/topmovies/" style="--art-bg:#16130f;--art-accent:#e8b64e;--art-fg:#f8f2e4">
+  <span class="artCardTop"><img src="/oss/topmoves.png" width="56" height="56" alt="" loading="lazy"><span>Open-Source-Tool</span></span>
+  <span class="artCardBody">
+    <h3 class="artCardTitle">TopMovies: eine native Mac-App zum Entdecken von Filmen und Serien, mit lokaler Bibliothek</h3>
+    <span class="artCardDek">TopMovies hilft dir zu entscheiden, was du auf deinem Mac schauen willst. Es bietet kuratierte Entdeckungs-Feeds wie „For You“, „Tonight“ und „Hidden Gems“, Filter nach Typ, Land, Jahr, Bewertung und Laufzeit sowie eine lokale Bibliothek für Favoriten, eine Merkliste und deine eigenen Bewertungen. Es funktioniert offline in einem Demo-Modus und verbindet sich mit TMDB für echte Daten. Es ist mit SwiftUI gebaut und offen unter der MIT-Lizenz.</span>
+    <span class="artCardMeta"><time datetime="2026-11-08">8. November 2026</time> · 4 Min. Lesezeit</span>
+  </span>
+</a>
+    </div>
+  </section>
+  </main>
+  <footer class="container">
+    <a class="brand" href="/?lang=de"><span>EA</span> Emad Alhamou</a>
+    <p>Founder &amp; Product Builder</p>
+    <label class="langPick"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></svg><select id="langSelect" aria-label="Sprache" data-nav><option value="/articles/pinfiy/" lang="en">English</option><option value="/de/articles/pinfiy/" lang="de" selected>Deutsch</option><option value="/ar/articles/pinfiy/" lang="ar">العربية</option></select><svg class="chev" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M2.5 4l2.5 2.5L7.5 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+    <p>© 2026</p>
+  </footer>
+  <script src="/video.js?v=6b57a398"></script>
+  <script src="/articles/article.js?v=d9035dc0"></script>
+</body>
+</html>
